@@ -1,0 +1,857 @@
+[  1: 15  3  3  3  3  3]  0 ab ac ad ae af.
+[  2: 12 12  6  6  6  6]  0 ac bc ad bd ae be af bf.
+[  3: 15 15  6  6  6  6]  0 ab ac bc ad bd ae be af bf.
+[  4:  9  9  9  9  9  9]  0 ad bd cd ae be ce af bf cf.
+[  5: 15 12 12  9  9  9]  0 ab ac ad bd cd ae be ce af bf cf.
+[  6: 15 15 15  9  9  9]  0 ab ac bc ad bd cd ae be ce af bf cf.
+[  7: 24 18 18  8  8  8]  0 bc ad abcd ae abce af abcf.
+[  8: 27 24 18 11 11 11]  0 ac ad bd abcd ae be abce af bf abcf.
+[  9: 27 27 21 11 11 11]  0 ac bc ad bd abcd ae be abce af bf abcf.
+[ 10: 27 27 24 14 14 14]  0 ab ad bd cd abcd ae be ce abce af bf cf abcf.
+[ 11: 30 27 27 14 14 14]  0 ab ac ad bd cd abcd ae be ce abce af bf cf abcf.
+[ 12: 30 30 30 14 14 14]  0 ab ac bc ad bd cd abcd ae be ce abce af bf cf abcf.
+[ 13:  9  9  9  9  9  9]  0 ac bc cd ae be de af bf df.
+[ 14:  9  9  9  9  9  9]  0 ab bc bd ae ce de af cf df.
+[ 15:  9  9  9  9  9  9]  0 ab ac ad be ce de bf cf df.
+[ 16: 12 12 12 12 12 12]  0 ac bc ad bd ae be ce de af bf cf df.
+[ 17: 15 15 12 12 12 12]  0 ab ac bc ad bd ae be ce de af bf cf df.
+[ 18: 12 12 12 12 12 12]  0 ab bc ad cd ae be ce de af bf cf df.
+[ 19: 12 12 12 12 12 12]  0 ab ac bd cd ae be ce de af bf cf df.
+[ 20: 15 15 15 15 12 12]  0 ab ac bc ad bd cd ae be ce de af bf cf df.
+[ 21: 26 26 13 13 13 13]  0 bc bd ae abce abde af abcf abdf.
+[ 22: 26 26 13 13 13 13]  0 ac ad be abce abde bf abcf abdf.
+[ 23: 32 32 16 16 16 16]  0 ac bc ad bd ae be abce abde af bf abcf abdf.
+[ 24: 34 34 18 18 16 16]  0 bc ad abcd ae be abce abde af bf abcf abdf.
+[ 25: 34 34 18 18 16 16]  0 ac bd abcd ae be abce abde af bf abcf abdf.
+[ 26: 37 37 21 21 16 16]  0 ac bc ad bd abcd ae be abce abde af bf abcf abdf.
+[ 27: 23 23 16 16 16 16]  0 ab ce abce de abde cf abcf df abdf.
+[ 28: 29 23 19 19 16 16]  0 ab ac ad ce abce de abde cf abcf df abdf.
+[ 29: 29 29 22 22 16 16]  0 ab ac bc ad bd ce abce de abde cf abcf df abdf.
+[ 30: 28 28 24 24 16 16]  0 ab cd abcd ce abce de abde cf abcf df abdf.
+[ 31: 34 34 30 30 16 16]  0 ab ac bc ad bd cd abcd ce abce de abde cf abcf df abdf.
+[ 32: 35 23 19 19 19 19]  0 ab ac ad ae ce abce de abde af cf abcf df abdf.
+[ 33: 26 26 19 19 19 19]  0 bc bd ae ce abce de abde af cf abcf df abdf.
+[ 34: 29 29 19 19 19 19]  0 ab bc bd ae ce abce de abde af cf abcf df abdf.
+[ 35: 32 26 22 22 19 19]  0 ac bc ad bd ae ce abce de abde af cf abcf df abdf.
+[ 36: 35 29 22 22 19 19]  0 ab ac bc ad bd ae ce abce de abde af cf abcf df abdf.
+[ 37: 34 31 30 27 19 19]  0 ac bc bd cd abcd ae ce abce de abde af cf abcf df abdf.
+[ 38: 37 31 30 30 19 19]  0 ac bc ad bd cd abcd ae ce abce de abde af cf abcf df abdf.
+[ 39: 40 34 30 30 19 19]  0 ab ac bc ad bd cd abcd ae ce abce de abde af cf abcf df abdf.
+[ 40: 26 26 19 19 19 19]  0 ac ad be ce abce de abde bf cf abcf df abdf.
+[ 41: 29 29 19 19 19 19]  0 ab ac ad be ce abce de abde bf cf abcf df abdf.
+[ 42: 32 32 22 22 22 22]  0 ac bc ad bd ae be ce abce de abde af bf cf abcf df abdf.
+[ 43: 35 35 22 22 22 22]  0 ab ac bc ad bd ae be ce abce de abde af bf cf abcf df abdf.
+[ 44: 37 37 30 24 22 22]  0 ab ac bc cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 45: 34 34 27 27 22 22]  0 bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 46: 37 37 27 27 22 22]  0 ab bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 47: 37 34 30 27 22 22]  0 ac bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 48: 40 37 30 27 22 22]  0 ab ac bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 49: 34 34 27 27 22 22]  0 ac bd cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 50: 37 37 27 27 22 22]  0 ab ac bd cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 51: 37 37 30 30 22 22]  0 ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 52: 40 40 30 30 22 22]  0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf.
+[ 53: 36 26 26 26 18 18]  0 bc bd cd ae abce abde acde af abcf abdf acdf.
+[ 54: 36 32 32 26 24 24]  0 bc bd cd ae be ce abce abde acde af bf cf abcf abdf acdf.
+[ 55: 44 34 34 28 24 24]  0 bc ad abcd ae be ce abce abde acde af bf cf abcf abdf acdf.
+[ 56: 36 29 29 26 24 24]  0 ab ac be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 57: 39 29 29 29 24 24]  0 ab ac ad be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 58: 36 35 35 32 24 24]  0 ab ac bc bd cd be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 59: 39 35 35 35 24 24]  0 ab ac bc ad bd cd be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 60: 41 37 37 37 24 24]  0 ac bc ad bd abcd be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 61: 41 37 37 37 24 24]  0 ab bc ad cd abcd be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 62: 41 37 37 37 24 24]  0 ab ac bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 63: 44 40 40 40 24 24]  0 ab ac bc ad bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf.
+[ 64: 45 29 29 29 27 27]  0 ab ac ad ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 65: 36 32 32 32 27 27]  0 bc bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 66: 42 35 35 32 27 27]  0 ab ac bc bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 67: 45 35 35 35 27 27]  0 ab ac bc ad bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 68: 44 37 37 34 27 27]  0 ac bc bd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 69: 47 37 37 37 27 27]  0 ac bc ad bd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 70: 44 37 37 34 27 27]  0 ab bc cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 71: 47 37 37 37 27 27]  0 ab bc ad cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 72: 47 37 37 37 27 27]  0 ab ac bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 73: 44 40 37 37 27 27]  0 ab bc bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 74: 47 40 40 37 27 27]  0 ab ac bc bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 75: 50 40 40 40 27 27]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf.
+[ 76: 42 42 39 39 26 26]  0 ac bc ad bd cd ae be abce abde acde bcde af bf abcf abdf acdf bcdf.
+[ 77: 42 42 42 36 32 32]  0 ab ac bc ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 78: 42 42 42 42 32 32]  0 ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 79: 45 45 42 42 32 32]  0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 80: 42 42 42 42 32 32]  0 ab bc ad cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 81: 42 42 42 42 32 32]  0 ab ac bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 82: 45 45 45 45 32 32]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 83: 44 44 44 44 32 32]  0 bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 84: 44 44 44 44 32 32]  0 ac bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 85: 47 47 47 47 32 32]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 86: 44 44 44 44 32 32]  0 ab cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 87: 47 47 47 47 32 32]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 88: 47 47 47 47 32 32]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 89: 50 50 50 50 32 32]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf.
+[ 90:  9  9  9  9  9  9]  0 ac bc ad bd ce de af bf ef.
+[ 91:  9  9  9  9  9  9]  0 ab bc ad cd be de af cf ef.
+[ 92:  9  9  9  9  9  9]  0 ab ac bd cd ae de bf cf ef.
+[ 93: 12 12 12 12 12 12]  0 ac bc ad bd cd ae be de af bf cf ef.
+[ 94: 15 15 12 12 12 12]  0 ab ac bc ad bd cd ae be de af bf cf ef.
+[ 95: 12 12 12 12 12 12]  0 ab bc ad bd cd ae ce de af bf cf ef.
+[ 96: 12 12 12 12 12 12]  0 ab ac ad bd cd be ce de af bf cf ef.
+[ 97:  9  9  9  9  9  9]  0 ab ac bd cd be ce af df ef.
+[ 98:  9  9  9  9  9  9]  0 ab bc ad cd ae ce bf df ef.
+[ 99: 12 12 12 12 12 12]  0 ac bc ad bd cd ae be ce af bf df ef.
+[100: 15 15 12 12 12 12]  0 ab ac bc ad bd cd ae be ce af bf df ef.
+[101: 12 12 12 12 12 12]  0 ab ac bc bd cd ae ce de af bf df ef.
+[102: 12 12 12 12 12 12]  0 ab ac bc ad cd be ce de af bf df ef.
+[103:  9  9  9  9  9  9]  0 ac bc ad bd ae be cf df ef.
+[104: 12 12 12 12 12 12]  0 ab bc ad bd cd ae be ce af cf df ef.
+[105: 12 12 12 12 12 12]  0 ab ac bc bd cd ae be de af cf df ef.
+[106: 12 12 12 12 12 12]  0 ab ac bc ad bd be ce de af cf df ef.
+[107: 12 12 12 12 12 12]  0 ab ac ad bd cd ae be ce bf cf df ef.
+[108: 12 12 12 12 12 12]  0 ab ac bc ad cd ae be de bf cf df ef.
+[109: 12 12 12 12 12 12]  0 ab ac bc ad bd ae ce de bf cf df ef.
+[110: 15 15 15 15 15 15]  0 ab ac bc ad bd cd ae be ce de af bf cf df ef.
+[111: 26 26 13 13 13 13]  0 bc ad abcd be abde af abcf abef.
+[112: 26 26 13 13 13 13]  0 ac bd abcd ae abde bf abcf abef.
+[113: 32 32 16 16 16 16]  0 ac bc ad bd abcd ae be abde af bf abcf abef.
+[114: 26 26 13 13 13 13]  0 ac bd abcd be abce af abdf abef.
+[115: 26 26 13 13 13 13]  0 bc ad abcd ae abce bf abdf abef.
+[116: 32 32 16 16 16 16]  0 ac bc ad bd abcd ae be abce af bf abdf abef.
+[117: 42 42 21 21 21 21]  0 ac bc ad bd abcd ae be abce abde af bf abcf abdf abef.
+[118: 23 23 16 16 16 16]  0 ab cd abcd de abde cf abcf ef abef.
+[119: 35 23 19 19 19 19]  0 ab ac ad cd abcd ae de abde af cf abcf ef abef.
+[120: 26 26 19 19 19 19]  0 bc ad cd abcd be de abde af cf abcf ef abef.
+[121: 29 29 19 19 19 19]  0 ab bc ad cd abcd be de abde af cf abcf ef abef.
+[122: 26 26 19 19 19 19]  0 ac bd cd abcd ae de abde bf cf abcf ef abef.
+[123: 29 29 19 19 19 19]  0 ab ac bd cd abcd ae de abde bf cf abcf ef abef.
+[124: 32 32 22 22 22 22]  0 ac bc ad bd cd abcd ae be de abde af bf cf abcf ef abef.
+[125: 35 35 22 22 22 22]  0 ab ac bc ad bd cd abcd ae be de abde af bf cf abcf ef abef.
+[126: 23 23 16 16 16 16]  0 ab cd abcd ce abce df abdf ef abef.
+[127: 35 23 19 19 19 19]  0 ab ac ad cd abcd ae ce abce af df abdf ef abef.
+[128: 26 26 19 19 19 19]  0 ac bd cd abcd be ce abce af df abdf ef abef.
+[129: 29 29 19 19 19 19]  0 ab ac bd cd abcd be ce abce af df abdf ef abef.
+[130: 26 26 19 19 19 19]  0 bc ad cd abcd ae ce abce bf df abdf ef abef.
+[131: 29 29 19 19 19 19]  0 ab bc ad cd abcd ae ce abce bf df abdf ef abef.
+[132: 32 32 22 22 22 22]  0 ac bc ad bd cd abcd ae be ce abce af bf df abdf ef abef.
+[133: 35 35 22 22 22 22]  0 ab ac bc ad bd cd abcd ae be ce abce af bf df abdf ef abef.
+[134: 33 33 24 24 24 24]  0 ab cd abcd ce abce de abde cf abcf df abdf ef abef.
+[135: 42 42 30 30 30 24]  0 ab ac bc ad bd cd abcd ae be ce abce de abde cf abcf df abdf ef abef.
+[136: 39 39 30 30 27 27]  0 ac bc ad bd cd abcd be ce abce de abde af cf abcf df abdf ef abef.
+[137: 42 42 30 30 27 27]  0 ab ac bc ad bd cd abcd be ce abce de abde af cf abcf df abdf ef abef.
+[138: 42 39 30 30 30 27]  0 ac bc ad bd cd abcd ae be ce abce de abde af cf abcf df abdf ef abef.
+[139: 45 42 30 30 30 27]  0 ab ac bc ad bd cd abcd ae be ce abce de abde af cf abcf df abdf ef abef.
+[140: 39 39 30 30 27 27]  0 ac bc ad bd cd abcd ae ce abce de abde bf cf abcf df abdf ef abef.
+[141: 42 42 30 30 27 27]  0 ab ac bc ad bd cd abcd ae ce abce de abde bf cf abcf df abdf ef abef.
+[142: 42 42 30 30 30 30]  0 ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf ef abef.
+[143: 45 45 30 30 30 30]  0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf ef abef.
+[144: 46 37 37 34 34 26]  0 bc ad bd cd abcd ae be ce abce abde acde bf cf abdf acdf abef acef.
+[145: 54 42 42 34 34 34]  0 bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf abdf acdf abef acef.
+[146: 42 29 29 27 27 26]  0 ab ac ad bd cd abcd ae be ce abce df abdf acdf ef abef acef.
+[147: 46 40 37 37 34 32]  0 ab ac bc bd cd abcd be abce de abde acde bf cf df abdf acdf ef abef acef.
+[148: 46 40 40 37 37 32]  0 ab ac bc bd cd abcd be ce abce de abde acde bf cf df abdf acdf ef abef acef.
+[149: 52 40 40 40 40 32]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf df abdf acdf ef abef acef.
+[150: 49 37 37 37 37 35]  0 ac bc bd cd abcd ae be abce de abde acde af bf cf df abdf acdf ef abef acef.
+[151: 52 40 37 37 37 35]  0 ab ac bc bd cd abcd ae be abce de abde acde af bf cf df abdf acdf ef abef acef.
+[152: 49 37 37 37 37 35]  0 ab bc bd cd abcd ae ce abce de abde acde af bf cf df abdf acdf ef abef acef.
+[153: 49 37 37 37 37 35]  0 ac bc ad bd abcd be ce abce de abde acde af bf cf df abdf acdf ef abef acef.
+[154: 52 40 37 37 37 35]  0 ab ac bc ad bd abcd be ce abce de abde acde af bf cf df abdf acdf ef abef acef.
+[155: 49 37 37 37 37 35]  0 ab bc ad cd abcd be ce abce de abde acde af bf cf df abdf acdf ef abef acef.
+[156: 52 40 40 40 37 35]  0 ab ac bc ad bd cd abcd be ce abce de abde acde af bf cf df abdf acdf ef abef acef.
+[157: 55 40 40 40 40 35]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf df abdf acdf ef abef acef.
+[158: 54 42 42 40 40 34]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bf abcf df abdf acdf ef abef acef.
+[159: 57 42 42 40 40 37]  0 ac bc ad bd cd abcd ae be ce abce de abde acde af bf abcf df abdf acdf ef abef acef.
+[160: 54 42 42 40 40 34]  0 ab bc ad bd cd abcd ae be ce abce de abde acde cf abcf df abdf acdf ef abef acef.
+[161: 57 42 42 40 40 37]  0 ab bc ad bd cd abcd ae be ce abce de abde acde af cf abcf df abdf acdf ef abef acef.
+[162: 51 42 42 37 37 37]  0 ab ac bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef.
+[163: 54 45 42 40 40 37]  0 ab bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef.
+[164: 57 45 45 40 40 37]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef.
+[165: 60 42 42 40 40 40]  0 ab ac ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef.
+[166: 54 42 42 40 40 40]  0 bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef.
+[167: 57 45 42 40 40 40]  0 ab bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef.
+[168: 60 45 45 40 40 40]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef.
+[169: 39 39 39 39 39 39]  0 ad bd cd ae be ce abde acde bcde af bf cf abdf acdf bcdf abef acef bcef.
+[170: 45 45 45 39 39 39]  0 ab ac bc ad bd cd ae be ce abde acde bcde af bf cf abdf acdf bcdf abef acef bcef.
+[171: 36 36 36 36 36 36]  0 ab ac bc de abde acde bcde df abdf acdf bcdf ef abef acef bcef.
+[172: 52 52 52 50 50 36]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde df abdf acdf bcdf ef abef acef bcef.
+[173: 52 52 52 50 44 42]  0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef.
+[174: 52 52 52 50 50 42]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef.
+[175: 55 55 52 50 50 42]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef.
+[176: 52 52 52 50 44 42]  0 ab ac bc ad bd cd abcd be abce de abde acde bcde af cf df abdf acdf bcdf ef abef acef bcef.
+[177: 52 52 52 50 50 42]  0 ab bc ad bd cd abcd ae be ce abce de abde acde bcde af cf df abdf acdf bcdf ef abef acef bcef.
+[178: 52 52 52 50 44 42]  0 ab ac bc ad bd cd abcd ae abce de abde acde bcde bf cf df abdf acdf bcdf ef abef acef bcef.
+[179: 52 52 52 50 50 42]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde bf cf df abdf acdf bcdf ef abef acef bcef.
+[180: 45 45 45 45 45 45]  0 ab ac bc ad bd cd ae be ce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[181: 55 49 49 47 47 45]  0 ab ac ad cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[182: 52 52 49 47 47 45]  0 ab bc ad cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[183: 55 52 52 47 47 45]  0 ab ac bc ad cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[184: 52 52 49 47 47 45]  0 ab ac bd cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[185: 52 52 52 50 47 45]  0 ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[186: 55 55 52 50 47 45]  0 ab ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[187: 55 49 49 47 47 45]  0 ab ac ad bd abcd ae ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[188: 52 52 49 47 47 45]  0 ab bc ad bd abcd ae ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[189: 55 52 52 47 47 45]  0 ab ac bc ad bd abcd ae ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[190: 52 52 52 50 47 45]  0 ab bc ad bd cd abcd ae ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[191: 52 52 49 47 47 45]  0 ab ac ad bd abcd be ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[192: 52 52 52 50 47 45]  0 ab ac ad bd cd abcd be ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[193: 55 52 52 50 50 45]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[194: 55 55 55 50 50 45]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef.
+[195: 55 52 52 50 45 44]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af abcf df abdf acdf bcdf ef abef acef bcef.
+[196: 57 57 51 47 47 47]  0 ac bc ad bd abcd ae be abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef.
+[197: 54 54 54 50 47 47]  0 bc ad bd cd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef.
+[198: 54 54 54 50 47 47]  0 ac ad bd cd abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef.
+[199: 57 54 54 50 50 47]  0 ac ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef.
+[200: 57 57 57 50 50 47]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef.
+[201: 54 54 54 50 47 47]  0 bc ad bd cd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef.
+[202: 54 54 54 50 47 47]  0 ab ad bd cd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef.
+[203: 57 54 54 50 50 47]  0 ab ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef.
+[204: 57 57 57 50 50 47]  0 ab bc ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef.
+[205: 54 54 54 50 47 47]  0 ac ad bd cd abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef.
+[206: 54 54 54 50 47 47]  0 ab ad bd cd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef.
+[207: 57 57 57 50 50 47]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef.
+[208: 57 57 54 50 50 50]  0 ab ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef.
+[209: 60 57 57 50 50 50]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef.
+[210: 60 60 60 50 50 50]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef.
+[211: 46 40 37 37 34 32]  0 ab bc ad bd cd abcd be ce abce abde acde bf cf abcf df acdf ef abef adef.
+[212: 52 40 40 40 40 32]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df acdf ef abef adef.
+[213: 49 37 37 37 37 35]  0 bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df acdf ef abef adef.
+[214: 52 40 37 37 37 35]  0 ab bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df acdf ef abef adef.
+[215: 55 40 40 37 37 35]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df acdf ef abef adef.
+[216: 49 37 37 37 37 35]  0 ab bc bd cd abcd ae ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[217: 49 37 37 37 37 35]  0 ac bc ad bd abcd be ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[218: 52 40 37 37 37 35]  0 ab ac bc ad bd abcd be ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[219: 49 37 37 37 37 35]  0 ab ac bd cd abcd be ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[220: 49 40 40 37 37 35]  0 ab ac bc bd cd abcd be ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[221: 52 40 40 40 37 35]  0 ab ac bc ad bd cd abcd be ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[222: 55 40 40 40 40 35]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df acdf ef abef adef.
+[223: 52 40 40 37 35 34]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bf cf abcf abdf acdf ef abef adef.
+[224: 52 40 40 40 40 32]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf ef acef adef.
+[225: 49 37 37 37 37 35]  0 bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df abdf ef acef adef.
+[226: 52 40 37 37 37 35]  0 ab bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df abdf ef acef adef.
+[227: 55 40 40 37 37 35]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df abdf ef acef adef.
+[228: 49 37 37 37 37 35]  0 ac bc bd cd abcd ae be abce de abde acde af bf cf abcf df abdf ef acef adef.
+[229: 52 40 37 37 37 35]  0 ab ac bc bd cd abcd ae be abce de abde acde af bf cf abcf df abdf ef acef adef.
+[230: 49 37 37 37 37 35]  0 ab bc ad cd abcd be ce abce de abde acde af bf cf abcf df abdf ef acef adef.
+[231: 49 37 37 37 37 35]  0 ab ac bd cd abcd be ce abce de abde acde af bf cf abcf df abdf ef acef adef.
+[232: 49 40 40 37 37 35]  0 ab ac bc bd cd abcd be ce abce de abde acde af bf cf abcf df abdf ef acef adef.
+[233: 52 40 40 40 37 35]  0 ab ac bc ad bd cd abcd be ce abce de abde acde af bf cf abcf df abdf ef acef adef.
+[234: 55 40 40 40 40 35]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf ef acef adef.
+[235: 49 40 37 37 35 34]  0 ab bc ad bd cd abcd ae be ce abce de abde bf cf abcf abdf acdf ef acef adef.
+[236: 52 40 40 37 35 34]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bf cf abcf abdf acdf ef acef adef.
+[237: 49 40 37 37 35 34]  0 ab ac bc bd cd abcd ae be ce abce de abde bf abcf df abdf acdf ef acef adef.
+[238: 54 42 40 40 39 37]  0 ac bc ad bd cd abcd be ce abce de abde acde af bf cf abcf df abdf abef acef adef.
+[239: 54 42 40 40 39 37]  0 ab ac bc ad bd cd abcd ce abce de abde acde bf cf abcf df abdf ef abef acef adef.
+[240: 57 42 40 40 40 39]  0 ab ac bc ad bd cd abcd ae be ce abce de abde cf abcf df abdf acdf ef abef acef adef.
+[241: 59 45 45 45 42 42]  0 ab ac bc ad bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef adef.
+[242: 62 45 45 45 45 42]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef adef.
+[243: 65 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef adef.
+[244: 39 39 39 39 39 39]  0 ac bc cd ae be abce de acde bcde af bf abcf df acdf bcdf abef adef bdef.
+[245: 36 36 36 36 36 36]  0 ab ad bd ce abce acde bcde cf abcf acdf bcdf ef abef adef bdef.
+[246: 52 49 47 46 44 42]  0 ac bc ad bd abcd ae ce abce abde acde bcde af bf cf abcf acdf bcdf ef abef adef bdef.
+[247: 45 45 45 45 45 45]  0 ab ac bc ad bd cd ae be ce abce de acde bcde af bf cf abcf df acdf bcdf ef abef adef bdef.
+[248: 55 52 50 49 47 45]  0 ab ac bc ad cd abcd ae be ce abce abde acde bcde af bf cf abcf df acdf bcdf ef abef adef bdef.
+[249: 52 52 50 49 45 44]  0 ab ac bc bd cd abcd ae be ce abce de acde bcde af cf abcf abdf acdf bcdf ef abef adef bdef.
+[250: 52 52 50 49 45 44]  0 ab ac bc ad cd abcd ae be ce abce de acde bcde bf cf abcf abdf acdf bcdf ef abef adef bdef.
+[251: 39 39 39 39 36 36]  0 ac bc ad bd abcd ce de acde bcde af bf abcf abdf acef bcef adef bdef.
+[252: 36 36 36 36 36 36]  0 ab cd abcd ae be acde bcde cf abcf df abdf acef bcef adef bdef.
+[253: 42 42 42 42 36 36]  0 ab ac bc ad bd cd abcd ae be acde bcde cf abcf df abdf acef bcef adef bdef.
+[254: 45 45 45 45 42 42]  0 ab ac bc ad bd cd abcd ae be ce de acde bcde af bf cf abcf df abdf acef bcef adef bdef.
+[255: 52 52 47 47 46 42]  0 ac bc ad bd cd abcd ae be abce abde acde bcde af bf cf abcf df abdf acef bcef adef bdef.
+[256: 52 52 50 50 46 42]  0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf cf abcf df abdf acef bcef adef bdef.
+[257: 36 36 36 36 36 36]  0 ab cd abcd ce abce de abde af bf acdf bcdf acef bcef adef bdef.
+[258: 42 42 42 42 36 36]  0 ab ac bc ad bd cd abcd ce abce de abde af bf acdf bcdf acef bcef adef bdef.
+[259: 45 45 42 42 42 36]  0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf acdf bcdf acef bcef adef bdef.
+[260: 39 39 39 39 36 36]  0 ac bc ad bd abcd ae be abce abde cf df acdf bcdf acef bcef adef bdef.
+[261: 45 45 45 45 42 42]  0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf cf df acdf bcdf acef bcef adef bdef.
+[262: 52 52 52 52 52 46]  0 ac bc ad bd cd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf acef bcef adef bdef.
+[263: 52 52 52 52 52 46]  0 ab ac bc ad bd ae be ce abce de abde acde bcde cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[264: 52 52 52 52 52 52]  0 ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[265: 55 55 52 52 52 52]  0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[266: 55 55 55 55 52 52]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[267: 57 57 57 57 52 52]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[268: 54 54 54 54 52 52]  0 ab cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[269: 60 60 60 60 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef.
+[270: 39 39 39 39 39 39]  0 ac bc ad bd abcd ce de acde bcde af bf abcf abdf ef acef bcef adef bdef.
+[271: 45 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce de acde bcde af bf cf abcf df abdf ef acef bcef adef bdef.
+[272: 39 39 39 39 39 39]  0 ac bc ad bd abcd ae be abce abde cf df acdf bcdf ef acef bcef adef bdef.
+[273: 45 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf cf df acdf bcdf ef acef bcef adef bdef.
+[274: 57 57 57 57 55 49]  0 ab bc ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[275: 57 57 57 57 55 49]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[276: 54 54 54 54 52 52]  0 bc ad cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[277: 54 54 54 54 52 52]  0 ac bd cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[278: 52 52 52 52 52 52]  0 ab bc ad bd cd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[279: 54 54 54 54 52 52]  0 ab bd cd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[280: 52 52 52 52 52 52]  0 ab ac ad bd cd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[281: 54 54 54 54 52 52]  0 ab ad cd abcd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[282: 60 57 57 57 55 52]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[283: 60 60 60 57 55 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef.
+[284: 57 57 57 57 55 49]  0 ab ac bc bd cd abcd ae be ce abce de abde acde bcde af abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[285: 57 57 57 57 55 49]  0 ab ac bc ad cd abcd ae be ce abce de abde acde bcde bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[286: 54 54 54 54 52 52]  0 bc ad cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[287: 54 54 54 54 52 52]  0 ac bd cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[288: 52 52 52 52 52 52]  0 ab ac bc bd cd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[289: 54 54 54 54 52 52]  0 ab bc cd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[290: 52 52 52 52 52 52]  0 ab ac bc ad cd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[291: 54 54 54 54 52 52]  0 ab ac cd abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[292: 60 57 57 57 55 52]  0 ab ac bc ad cd abcd ae be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[293: 52 52 52 52 52 52]  0 ab bc ad bd cd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[294: 54 54 54 54 52 52]  0 ab bd cd abcd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[295: 52 52 52 52 52 52]  0 ab ac bc bd cd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[296: 54 54 54 54 52 52]  0 ab bc cd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[297: 54 54 54 54 52 52]  0 ab bc ad abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[298: 54 54 54 54 52 52]  0 ab ac bd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[299: 52 52 52 52 52 52]  0 ab ac ad bd cd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[300: 54 54 54 54 52 52]  0 ab ad cd abcd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[301: 52 52 52 52 52 52]  0 ab ac bc ad cd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[302: 54 54 54 54 52 52]  0 ab ac cd abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[303: 54 54 54 54 52 52]  0 ab bc ad abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[304: 54 54 54 54 52 52]  0 ab ac bd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[305: 55 55 55 55 55 55]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[306: 57 57 57 57 55 55]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[307: 60 60 57 57 55 55]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[308: 57 57 57 57 55 55]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[309: 57 57 57 57 55 55]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[310: 60 60 60 60 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef.
+[311: 52 52 52 52 52 46]  0 ac bc ad bd cd abcd ae be ce de abde acde bcde af bf abcf acdf bcdf abef acef bcef adef bdef.
+[312: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef.
+[313: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef.
+[314: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef.
+[315: 57 57 57 55 54 52]  0 ab bc ad bd cd abcd ae ce abce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef.
+[316: 57 57 57 55 54 52]  0 ab ac ad bd cd abcd be ce abce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef.
+[317: 52 52 52 52 52 46]  0 ac bc ad bd cd abcd ae be ce abce de acde bcde af bf abdf acdf bcdf abef acef bcef adef bdef.
+[318: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce abce de acde bcde af bf cf df abdf acdf bcdf abef acef bcef adef bdef.
+[319: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce abce de acde bcde af bf cf df abdf acdf bcdf abef acef bcef adef bdef.
+[320: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf df abdf acdf bcdf abef acef bcef adef bdef.
+[321: 57 57 55 55 54 54]  0 ab ac bc ad bd cd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf abef acef bcef adef bdef.
+[322: 57 57 55 55 54 54]  0 ab ac bc ad bd cd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef.
+[323: 62 62 57 57 57 57]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef.
+[324: 59 59 57 57 57 57]  0 bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef.
+[325: 59 59 57 57 57 57]  0 ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef.
+[326: 62 62 60 60 57 57]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef.
+[327: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae be de abde acde bcde cf abcf acdf bcdf ef abef acef bcef adef bdef.
+[328: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be de abde acde bcde af bf cf abcf acdf bcdf ef abef acef bcef adef bdef.
+[329: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be de abde acde bcde af bf cf abcf acdf bcdf ef abef acef bcef adef bdef.
+[330: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce de abde acde bcde af bf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[331: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce de abde acde bcde af bf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[332: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[333: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abde acde bcde af cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[334: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce de abde acde bcde af cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[335: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd be abce de abde acde bcde af cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[336: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abde acde bcde bf cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[337: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce de abde acde bcde bf cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[338: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd ae abce de abde acde bcde bf cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[339: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df acdf bcdf ef abef acef bcef adef bdef.
+[340: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce abce de acde bcde af bf cf abdf acdf bcdf ef abef acef bcef adef bdef.
+[341: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce abce de acde bcde af bf cf abdf acdf bcdf ef abef acef bcef adef bdef.
+[342: 62 62 57 57 57 57]  0 ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef.
+[343: 59 59 57 57 57 57]  0 bc ad bd cd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef.
+[344: 59 59 57 57 57 57]  0 ac ad bd cd abcd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef.
+[345: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae be ce abce acde bcde df abdf acdf bcdf ef abef acef bcef adef bdef.
+[346: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abce acde bcde af bf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[347: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce acde bcde af bf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[348: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be abce de acde bcde af cf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[349: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce abce de acde bcde af cf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[350: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be abce de acde bcde bf cf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[351: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce abce de acde bcde bf cf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[352: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[353: 60 57 57 55 55 54]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[354: 62 62 57 57 57 57]  0 ac bc ad bd cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[355: 59 59 57 57 57 57]  0 ac bc bd cd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[356: 59 59 57 57 57 57]  0 ac bc ad cd abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[357: 62 62 60 60 60 54]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[358: 59 59 57 57 57 57]  0 bc ad bd cd abcd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[359: 59 59 57 57 57 57]  0 ac bc bd cd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[360: 59 59 57 57 57 57]  0 ab bc bd cd abcd ae ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[361: 59 59 57 57 57 57]  0 ac bc ad bd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[362: 59 59 57 57 57 57]  0 ab bc ad cd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[363: 59 59 57 57 57 57]  0 ab ac bd cd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[364: 62 62 60 60 57 57]  0 ab ac bc ad bd cd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[365: 65 62 60 60 60 57]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[366: 59 59 57 57 57 57]  0 ac ad bd cd abcd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[367: 59 59 57 57 57 57]  0 ac bc ad cd abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[368: 59 59 57 57 57 57]  0 ac bc ad bd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[369: 59 59 57 57 57 57]  0 ab bc ad cd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[370: 59 59 57 57 57 57]  0 ab ac bd cd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[371: 62 62 60 60 57 57]  0 ab ac bc ad bd cd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[372: 59 59 57 57 57 57]  0 ab ac ad cd abcd be ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[373: 62 62 60 60 60 60]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[374: 65 65 60 60 60 60]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef.
+[375: 39 39 36 36 36 36]  0 ab bc bd ae abce de abde bcde af cf abcf abdf bcdf acef adef cdef.
+[376: 39 39 36 36 36 36]  0 ab bc bd ae ce abce abde bcde af abcf df abdf bcdf acef adef cdef.
+[377: 39 39 39 39 39 39]  0 ab bc bd ae ce abce de abde bcde af cf abcf df abdf bcdf acef adef cdef.
+[378: 36 36 36 36 36 36]  0 ac ad cd be abce abde bcde bf abcf abdf bcdf ef acef adef cdef.
+[379: 45 45 42 42 42 42]  0 ab ac bc ad bd cd ae be abce de abde bcde af bf cf abcf abdf bcdf ef acef adef cdef.
+[380: 45 45 42 42 42 42]  0 ab ac bc ad bd cd ae be ce abce abde bcde af bf abcf df abdf bcdf ef acef adef cdef.
+[381: 45 45 45 45 45 45]  0 ab ac bc ad bd cd ae be ce abce de abde bcde af bf cf abcf df abdf bcdf ef acef adef cdef.
+[382: 39 39 36 36 36 36]  0 ab bc ad abcd be de abde bcde af cf abcf acdf abef bcef adef cdef.
+[383: 39 39 39 39 36 36]  0 ab bc ad cd abcd be de abde bcde af cf abcf acdf abef bcef adef cdef.
+[384: 36 36 36 36 36 36]  0 ac bd abcd ae ce abde bcde bf abcf df acdf abef bcef adef cdef.
+[385: 42 42 42 42 36 36]  0 ab ac bc ad bd cd abcd ae ce abde bcde bf abcf df acdf abef bcef adef cdef.
+[386: 45 45 42 42 42 42]  0 ab ac bc ad bd abcd ae be ce de abde bcde af bf cf abcf df acdf abef bcef adef cdef.
+[387: 45 45 45 45 42 42]  0 ab ac bc ad bd cd abcd ae be ce de abde bcde af bf cf abcf df acdf abef bcef adef cdef.
+[388: 52 50 49 47 46 42]  0 ab ac bc ad bd abcd be abce de abde acde bcde af bf cf abcf df acdf abef bcef adef cdef.
+[389: 36 36 36 36 36 36]  0 ac bd abcd be abce de acde af cf abdf bcdf abef bcef adef cdef.
+[390: 42 42 42 42 36 36]  0 ab ac bc ad bd cd abcd be abce de acde af cf abdf bcdf abef bcef adef cdef.
+[391: 39 39 36 36 36 36]  0 ab bc ad abcd ae ce abce acde bf df abdf bcdf abef bcef adef cdef.
+[392: 39 39 39 39 36 36]  0 ab bc ad cd abcd ae ce abce acde bf df abdf bcdf abef bcef adef cdef.
+[393: 45 45 42 42 42 42]  0 ab ac bc ad bd abcd ae be ce abce de acde af bf cf df abdf bcdf abef bcef adef cdef.
+[394: 45 45 45 45 42 42]  0 ab ac bc ad bd cd abcd ae be ce abce de acde af bf cf df abdf bcdf abef bcef adef cdef.
+[395: 52 52 52 52 52 46]  0 ab bc ad bd cd ae be ce abce de abde acde bcde af cf abcf abdf acdf bcdf abef bcef adef cdef.
+[396: 52 52 52 52 52 46]  0 ab ac bc ad cd ae be ce abce de abde acde bcde bf abcf df abdf acdf bcdf abef bcef adef cdef.
+[397: 55 55 52 52 52 52]  0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[398: 52 52 52 52 52 52]  0 ab bc ad cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[399: 55 55 55 55 52 52]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[400: 54 54 54 54 52 52]  0 ac bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[401: 60 60 57 57 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[402: 57 57 57 57 52 52]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[403: 60 60 60 60 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef.
+[404: 39 39 36 36 36 36]  0 ab bc ad cd abcd be abde bcde af abcf acdf ef abef bcef adef cdef.
+[405: 39 39 39 39 39 39]  0 ab bc ad cd abcd be de abde bcde af cf abcf acdf ef abef bcef adef cdef.
+[406: 45 45 42 42 42 42]  0 ab ac bc ad bd cd abcd ae be ce abde bcde af bf abcf df acdf ef abef bcef adef cdef.
+[407: 45 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce de abde bcde af bf cf abcf df acdf ef abef bcef adef cdef.
+[408: 39 39 36 36 36 36]  0 ab bc ad cd abcd ae abce acde bf abdf bcdf ef abef bcef adef cdef.
+[409: 45 45 42 42 42 42]  0 ab ac bc ad bd cd abcd ae be abce de acde af bf cf abdf bcdf ef abef bcef adef cdef.
+[410: 39 39 39 39 39 39]  0 ab bc ad cd abcd ae ce abce acde bf df abdf bcdf ef abef bcef adef cdef.
+[411: 45 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce abce de acde af bf cf df abdf bcdf ef abef bcef adef cdef.
+[412: 57 57 57 57 55 49]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[413: 60 60 57 57 55 49]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[414: 57 57 57 57 55 49]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[415: 52 52 52 52 52 52]  0 ac bc ad bd cd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[416: 55 55 52 52 52 52]  0 ab ac bc ad bd cd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[417: 57 57 54 54 52 52]  0 ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[418: 60 60 54 54 52 52]  0 ab ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[419: 54 54 54 54 52 52]  0 ac bd cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[420: 54 54 54 54 52 52]  0 bc ad bd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[421: 54 54 54 54 52 52]  0 ab bd cd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[422: 52 52 52 52 52 52]  0 ab ac ad bd cd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[423: 54 54 54 54 52 52]  0 ac ad bd abcd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[424: 60 57 57 57 55 52]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[425: 60 60 60 57 55 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef.
+[426: 57 57 57 57 55 49]  0 ab ac bc bd cd abcd ae be ce abce de abde acde bcde af abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[427: 52 52 52 52 52 52]  0 ac bc ad bd cd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[428: 55 55 52 52 52 52]  0 ab ac bc ad bd cd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[429: 57 57 54 54 52 52]  0 ac bc ad bd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[430: 60 60 54 54 52 52]  0 ab ac bc ad bd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[431: 54 54 54 54 52 52]  0 ac bd cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[432: 52 52 52 52 52 52]  0 ab ac bc bd cd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[433: 54 54 54 54 52 52]  0 ac bc bd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[434: 54 54 54 54 52 52]  0 ac bc ad abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[435: 54 54 54 54 52 52]  0 ab ac cd abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[436: 57 57 57 57 55 49]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[437: 54 54 54 54 52 52]  0 bc ad bd abcd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[438: 54 54 54 54 52 52]  0 ab bd cd abcd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[439: 52 52 52 52 52 52]  0 ab ac bc bd cd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[440: 54 54 54 54 52 52]  0 ac bc bd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[441: 52 52 52 52 52 52]  0 ab ac bc ad bd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[442: 54 54 54 54 52 52]  0 ab ac bd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[443: 60 57 57 57 55 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[444: 52 52 52 52 52 52]  0 ab ac ad bd cd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[445: 54 54 54 54 52 52]  0 ac ad bd abcd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[446: 54 54 54 54 52 52]  0 ac bc ad abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[447: 54 54 54 54 52 52]  0 ab ac cd abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[448: 52 52 52 52 52 52]  0 ab ac bc ad bd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[449: 54 54 54 54 52 52]  0 ab ac bd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[450: 55 55 55 55 55 55]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[451: 57 57 57 57 55 55]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[452: 60 60 57 57 55 55]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[453: 57 57 57 57 55 55]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[454: 57 57 57 57 55 55]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[455: 60 60 60 60 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef.
+[456: 52 52 52 52 52 46]  0 ab bc ad bd cd abcd ae be ce de abde acde bcde af cf abcf abdf bcdf abef acef bcef adef cdef.
+[457: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[458: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[459: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[460: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[461: 57 57 57 55 54 52]  0 ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[462: 60 60 57 55 54 52]  0 ab ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[463: 57 57 57 55 54 52]  0 ab ac ad bd cd abcd be ce abce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef.
+[464: 52 52 52 52 52 46]  0 ab bc ad bd cd abcd ae be ce abce de abde bcde af cf abdf acdf bcdf abef acef bcef adef cdef.
+[465: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce abce de abde bcde af bf cf df abdf acdf bcdf abef acef bcef adef cdef.
+[466: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde bcde af bf cf df abdf acdf bcdf abef acef bcef adef cdef.
+[467: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce abce de abde bcde af bf cf df abdf acdf bcdf abef acef bcef adef cdef.
+[468: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf df abdf acdf bcdf abef acef bcef adef cdef.
+[469: 57 55 54 54 54 52]  0 ab ac bc bd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf abef acef bcef adef cdef.
+[470: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae ce de abde acde bcde bf abcf abdf bcdf ef abef acef bcef adef cdef.
+[471: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be de abde acde bcde af bf cf abcf abdf bcdf ef abef acef bcef adef cdef.
+[472: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce de abde acde bcde af bf cf abcf abdf bcdf ef abef acef bcef adef cdef.
+[473: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abde acde bcde af bf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[474: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abde acde bcde af bf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[475: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce de abde acde bcde af bf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[476: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[477: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be de abde acde bcde af cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[478: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce de abde acde bcde af cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[479: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd be abce de abde acde bcde af cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[480: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abde acde bcde bf cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[481: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be de abde acde bcde bf cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[482: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd ae abce de abde acde bcde bf cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[483: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df abdf bcdf ef abef acef bcef adef cdef.
+[484: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abdf acdf bcdf ef abef acef bcef adef cdef.
+[485: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abdf acdf bcdf ef abef acef bcef adef cdef.
+[486: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce abce de abde bcde af bf cf abdf acdf bcdf ef abef acef bcef adef cdef.
+[487: 57 55 54 54 54 52]  0 ab ac bc ad bd abcd be abce de abde acde bcde af bf cf abdf acdf bcdf ef abef acef bcef adef cdef.
+[488: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae be ce abce abde bcde df abdf acdf bcdf ef abef acef bcef adef cdef.
+[489: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce abde bcde af bf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[490: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce abce de abde bcde af bf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[491: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce abce de abde bcde af bf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[492: 57 55 54 54 54 52]  0 ab ac bc bd cd abcd ae be abce abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[493: 57 55 54 54 54 52]  0 ab ac bc ad bd abcd be ce abce abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[494: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abce abde bcde af cf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[495: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be abce de abde bcde bf cf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[496: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce abce de abde bcde bf cf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[497: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[498: 60 57 57 55 55 54]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af abcf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[499: 62 60 59 57 57 57]  0 ab ac bc bd cd abcd ae be abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[500: 62 60 59 57 57 57]  0 ab ac bc ad bd abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[501: 62 60 59 57 57 57]  0 ab ac bc ad bd abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef cdef.
+[502: 36 36 36 36 36 36]  0 bc ad abcd ae abce de bcde bf cf abdf acdf abef acef bdef cdef.
+[503: 42 42 42 42 36 36]  0 ab ac bc ad bd cd abcd ae abce de bcde bf cf abdf acdf abef acef bdef cdef.
+[504: 39 39 36 36 36 36]  0 ab ac bd abcd be ce abce bcde af df abdf acdf abef acef bdef cdef.
+[505: 39 39 39 39 36 36]  0 ab ac bd cd abcd be ce abce bcde af df abdf acdf abef acef bdef cdef.
+[506: 45 45 42 42 42 42]  0 ab ac bc ad bd abcd ae be ce abce de bcde af bf cf df abdf acdf abef acef bdef cdef.
+[507: 45 45 45 45 42 42]  0 ab ac bc ad bd cd abcd ae be ce abce de bcde af bf cf df abdf acdf abef acef bdef cdef.
+[508: 39 39 36 36 36 36]  0 ab ac bd abcd ae de abde acde bf cf abcf bcdf abef acef bdef cdef.
+[509: 39 39 39 39 36 36]  0 ab ac bd cd abcd ae de abde acde bf cf abcf bcdf abef acef bdef cdef.
+[510: 36 36 36 36 36 36]  0 bc ad abcd be ce abde acde af abcf df bcdf abef acef bdef cdef.
+[511: 42 42 42 42 36 36]  0 ab ac bc ad bd cd abcd be ce abde acde af abcf df bcdf abef acef bdef cdef.
+[512: 45 45 42 42 42 42]  0 ab ac bc ad bd abcd ae be ce de abde acde af bf cf abcf df bcdf abef acef bdef cdef.
+[513: 45 45 45 45 42 42]  0 ab ac bc ad bd cd abcd ae be ce de abde acde af bf cf abcf df bcdf abef acef bdef cdef.
+[514: 52 52 52 52 52 46]  0 ab ac ad bd cd ae be ce abce de abde acde bcde bf cf abcf abdf acdf bcdf abef acef bdef cdef.
+[515: 52 52 52 52 52 46]  0 ab ac bc bd cd ae be ce abce de abde acde bcde af abcf df abdf acdf bcdf abef acef bdef cdef.
+[516: 55 55 52 52 52 52]  0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[517: 52 52 52 52 52 52]  0 ab ac bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[518: 55 55 55 55 52 52]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[519: 54 54 54 54 52 52]  0 bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[520: 60 57 57 54 52 52]  0 ab ac bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[521: 60 60 57 57 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[522: 57 57 57 57 52 52]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[523: 60 60 60 60 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef.
+[524: 39 39 36 36 36 36]  0 ab ac bd cd abcd be abce bcde af abdf acdf ef abef acef bdef cdef.
+[525: 45 45 42 42 42 42]  0 ab ac bc ad bd cd abcd ae be abce de bcde af bf cf abdf acdf ef abef acef bdef cdef.
+[526: 39 39 39 39 39 39]  0 ab ac bd cd abcd be ce abce bcde af df abdf acdf ef abef acef bdef cdef.
+[527: 45 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce abce de bcde af bf cf df abdf acdf ef abef acef bdef cdef.
+[528: 39 39 36 36 36 36]  0 ab ac bd cd abcd ae abde acde bf abcf bcdf ef abef acef bdef cdef.
+[529: 39 39 39 39 39 39]  0 ab ac bd cd abcd ae de abde acde bf cf abcf bcdf ef abef acef bdef cdef.
+[530: 45 45 42 42 42 42]  0 ab ac bc ad bd cd abcd ae be ce abde acde af bf abcf df bcdf ef abef acef bdef cdef.
+[531: 45 45 45 45 45 45]  0 ab ac bc ad bd cd abcd ae be ce de abde acde af bf cf abcf df bcdf ef abef acef bdef cdef.
+[532: 57 57 57 57 55 49]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[533: 60 60 57 57 55 49]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[534: 57 57 57 57 55 49]  0 ab bc ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[535: 52 52 52 52 52 52]  0 ac bc ad bd cd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[536: 55 55 52 52 52 52]  0 ab ac bc ad bd cd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[537: 57 57 54 54 52 52]  0 ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[538: 60 60 54 54 52 52]  0 ab ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[539: 54 54 54 54 52 52]  0 bc ad cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[540: 52 52 52 52 52 52]  0 ab bc ad bd cd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[541: 54 54 54 54 52 52]  0 bc ad bd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[542: 54 54 54 54 52 52]  0 ac ad bd abcd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[543: 54 54 54 54 52 52]  0 ab ad cd abcd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[544: 60 60 60 57 55 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bdef cdef.
+[545: 57 57 57 57 55 49]  0 ab ac bc ad cd abcd ae be ce abce de abde acde bcde bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[546: 52 52 52 52 52 52]  0 ac bc ad bd cd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[547: 55 55 52 52 52 52]  0 ab ac bc ad bd cd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[548: 57 57 54 54 52 52]  0 ac bc ad bd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[549: 60 60 54 54 52 52]  0 ab ac bc ad bd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[550: 54 54 54 54 52 52]  0 bc ad cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[551: 54 54 54 54 52 52]  0 ac bc bd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[552: 54 54 54 54 52 52]  0 ab bc cd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[553: 52 52 52 52 52 52]  0 ab ac bc ad cd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[554: 54 54 54 54 52 52]  0 ac bc ad abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[555: 60 57 57 57 55 52]  0 ab ac bc ad cd abcd ae be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[556: 57 57 57 57 55 49]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[557: 52 52 52 52 52 52]  0 ab bc ad bd cd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[558: 54 54 54 54 52 52]  0 bc ad bd abcd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[559: 54 54 54 54 52 52]  0 ac bc bd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[560: 54 54 54 54 52 52]  0 ab bc cd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[561: 52 52 52 52 52 52]  0 ab ac bc ad bd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[562: 54 54 54 54 52 52]  0 ab bc ad abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[563: 60 57 57 57 55 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[564: 54 54 54 54 52 52]  0 ac ad bd abcd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[565: 54 54 54 54 52 52]  0 ab ad cd abcd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[566: 52 52 52 52 52 52]  0 ab ac bc ad cd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[567: 54 54 54 54 52 52]  0 ac bc ad abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[568: 52 52 52 52 52 52]  0 ab ac bc ad bd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[569: 54 54 54 54 52 52]  0 ab bc ad abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[570: 55 55 55 55 55 55]  0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[571: 57 57 57 57 55 55]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[572: 60 60 57 57 55 55]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[573: 57 57 57 57 55 55]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[574: 57 57 57 57 55 55]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[575: 60 60 60 60 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef.
+[576: 39 39 36 36 36 36]  0 ab ac ad be abce de abde acde bf cf abcf abdf acdf bcef bdef cdef.
+[577: 39 39 36 36 36 36]  0 ab ac ad be ce abce abde acde bf abcf df abdf acdf bcef bdef cdef.
+[578: 39 39 39 39 39 39]  0 ab ac ad be ce abce de abde acde bf cf abcf df abdf acdf bcef bdef cdef.
+[579: 36 36 36 36 36 36]  0 bc bd cd ae abce abde acde af abcf abdf acdf ef bcef bdef cdef.
+[580: 45 45 42 42 42 42]  0 ab ac bc ad bd cd ae be abce de abde acde af bf cf abcf abdf acdf ef bcef bdef cdef.
+[581: 50 49 49 46 44 42]  0 ab ac bc ad abcd ae abce de abde acde bcde af bf cf abcf abdf acdf ef bcef bdef cdef.
+[582: 45 45 42 42 42 42]  0 ab ac bc ad bd cd ae be ce abce abde acde af bf abcf df abdf acdf ef bcef bdef cdef.
+[583: 45 45 45 45 45 45]  0 ab ac bc ad bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef bcef bdef cdef.
+[584: 52 52 52 52 52 46]  0 ab ac ad bd cd abcd ae be ce de abde acde bcde bf cf abcf abdf acdf abef acef bcef bdef cdef.
+[585: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[586: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[587: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[588: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[589: 57 57 57 55 54 52]  0 ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[590: 60 60 57 55 54 52]  0 ab ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[591: 57 57 57 55 54 52]  0 ab bc ad bd cd abcd ae ce abce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef bdef cdef.
+[592: 52 52 52 52 52 46]  0 ab ac ad bd cd abcd ae be ce abce de abde acde bf cf abdf acdf bcdf abef acef bcef bdef cdef.
+[593: 55 52 52 52 52 49]  0 ab ac bc ad cd abcd ae be ce abce de abde acde af bf df abdf acdf bcdf abef acef bcef bdef cdef.
+[594: 55 52 52 52 52 49]  0 ab ac bc ad bd abcd ae be ce abce de abde acde af cf df abdf acdf bcdf abef acef bcef bdef cdef.
+[595: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce abce de abde acde af bf cf df abdf acdf bcdf abef acef bcef bdef cdef.
+[596: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde af bf cf df abdf acdf bcdf abef acef bcef bdef cdef.
+[597: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce abce de abde acde af bf cf df abdf acdf bcdf abef acef bcef bdef cdef.
+[598: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf df abdf acdf bcdf abef acef bcef bdef cdef.
+[599: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd be ce de abde acde bcde af abcf abdf acdf ef abef acef bcef bdef cdef.
+[600: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be de abde acde bcde af bf cf abcf abdf acdf ef abef acef bcef bdef cdef.
+[601: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce de abde acde bcde af bf cf abcf abdf acdf ef abef acef bcef bdef cdef.
+[602: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abde acde bcde af bf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[603: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abde acde bcde af bf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[604: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce de abde acde bcde af bf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[605: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[606: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abde acde bcde af cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[607: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be de abde acde bcde af cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[608: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd be abce de abde acde bcde af cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[609: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be de abde acde bcde bf cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[610: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce de abde acde bcde bf cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[611: 57 57 57 55 54 52]  0 ab ac bc ad bd cd abcd ae abce de abde acde bcde bf cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[612: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df abdf acdf ef abef acef bcef bdef cdef.
+[613: 55 52 52 52 52 49]  0 ab ac bc ad bd cd abcd ae ce abce de abde acde af bf abdf acdf bcdf ef abef acef bcef bdef cdef.
+[614: 55 52 52 52 52 49]  0 ab ac bc ad bd cd abcd ae be abce de abde acde af cf abdf acdf bcdf ef abef acef bcef bdef cdef.
+[615: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be abce de abde acde af bf cf abdf acdf bcdf ef abef acef bcef bdef cdef.
+[616: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de abde acde af bf cf abdf acdf bcdf ef abef acef bcef bdef cdef.
+[617: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce abce de abde acde af bf cf abdf acdf bcdf ef abef acef bcef bdef cdef.
+[618: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[619: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[620: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce abce de abde acde af bf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[621: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce abce de abde acde af bf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[622: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be abce de abde acde af cf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[623: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce abce de abde acde af cf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[624: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abce abde acde bf cf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[625: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[626: 60 57 57 55 55 54]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af abcf df abdf acdf bcdf ef abef acef bcef bdef cdef.
+[627: 55 55 55 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf abdf bcdf abef acef adef bdef cdef.
+[628: 52 52 52 52 52 46]  0 ab ac bc bd cd abcd ae be ce abce de acde bcde af abcf df abdf bcdf abef acef adef bdef cdef.
+[629: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce abce de acde bcde af bf cf abcf df abdf bcdf abef acef adef bdef cdef.
+[630: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de acde bcde af bf cf abcf df abdf bcdf abef acef adef bdef cdef.
+[631: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce abce de acde bcde af bf cf abcf df abdf bcdf abef acef adef bdef cdef.
+[632: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf df abdf bcdf abef acef adef bdef cdef.
+[633: 60 57 55 54 54 52]  0 ab ac bc ad cd abcd ae be ce abce abde acde bcde af bf cf abcf df abdf bcdf abef acef adef bdef cdef.
+[634: 55 55 55 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf abcf acdf bcdf abef acef adef bdef cdef.
+[635: 52 52 52 52 52 46]  0 ab ac bc bd cd abcd ae be ce abce de abde bcde af abcf df acdf bcdf abef acef adef bdef cdef.
+[636: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce abce de abde bcde af bf cf abcf df acdf bcdf abef acef adef bdef cdef.
+[637: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde bcde af bf cf abcf df acdf bcdf abef acef adef bdef cdef.
+[638: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce abce de abde bcde af bf cf abcf df acdf bcdf abef acef adef bdef cdef.
+[639: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf abcf df acdf bcdf abef acef adef bdef cdef.
+[640: 57 55 54 54 54 52]  0 ab bc ad bd abcd ae be ce abce abde acde bcde af bf cf abcf df acdf bcdf abef acef adef bdef cdef.
+[641: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae ce abce de acde bcde bf abcf abdf bcdf ef abef acef adef bdef cdef.
+[642: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be abce de acde bcde af bf cf abcf abdf bcdf ef abef acef adef bdef cdef.
+[643: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de acde bcde af bf cf abcf abdf bcdf ef abef acef adef bdef cdef.
+[644: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce abce de acde bcde af bf cf abcf abdf bcdf ef abef acef adef bdef cdef.
+[645: 60 57 55 54 54 52]  0 ab ac bc ad bd cd abcd ae ce abce abde acde bcde af bf cf abcf abdf bcdf ef abef acef adef bdef cdef.
+[646: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce acde bcde af bf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[647: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce abce de acde bcde af bf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[648: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abce acde bcde af cf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[649: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce abce de acde bcde af cf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[650: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abce acde bcde bf cf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[651: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be abce de acde bcde bf cf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[652: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf df abdf bcdf ef abef acef adef bdef cdef.
+[653: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae be abce de abde bcde cf abcf acdf bcdf ef abef acef adef bdef cdef.
+[654: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abcf acdf bcdf ef abef acef adef bdef cdef.
+[655: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce abce de abde bcde af bf cf abcf acdf bcdf ef abef acef adef bdef cdef.
+[656: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce abce de abde bcde af bf cf abcf acdf bcdf ef abef acef adef bdef cdef.
+[657: 57 55 54 54 54 52]  0 ab bc ad bd cd abcd ae be abce abde acde bcde af bf cf abcf acdf bcdf ef abef acef adef bdef cdef.
+[658: 57 55 54 54 54 52]  0 ab ac bc ad bd abcd be abce de abde acde bcde af bf cf abcf acdf bcdf ef abef acef adef bdef cdef.
+[659: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abce abde bcde af bf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[660: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce abde bcde af bf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[661: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce abce de abde bcde af bf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[662: 57 55 54 54 54 52]  0 ab ac bc ad bd abcd be ce abce abde acde bcde af bf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[663: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be abce de abde bcde af cf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[664: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abce abde bcde bf cf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[665: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce abce de abde bcde bf cf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[666: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf abcf df acdf bcdf ef abef acef adef bdef cdef.
+[667: 65 60 60 59 57 57]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef adef bdef cdef.
+[668: 55 55 55 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf abdf acdf abef bcef adef bdef cdef.
+[669: 52 52 52 52 52 46]  0 ab ac bc ad cd abcd ae be ce abce de acde bcde bf abcf df abdf acdf abef bcef adef bdef cdef.
+[670: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce abce de acde bcde af bf cf abcf df abdf acdf abef bcef adef bdef cdef.
+[671: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de acde bcde af bf cf abcf df abdf acdf abef bcef adef bdef cdef.
+[672: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce abce de acde bcde af bf cf abcf df abdf acdf abef bcef adef bdef cdef.
+[673: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf df abdf acdf abef bcef adef bdef cdef.
+[674: 60 57 55 54 54 52]  0 ab ac bc ad cd abcd ae be ce abce abde acde bcde af bf cf abcf df abdf acdf abef bcef adef bdef cdef.
+[675: 55 52 52 52 52 49]  0 ab ac ad bd cd abcd ae be ce abce de abde acde af bf cf abcf acdf bcdf abef bcef adef bdef cdef.
+[676: 55 55 55 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf acdf bcdf abef bcef adef bdef cdef.
+[677: 52 52 52 52 52 46]  0 ab ac bc ad cd abcd ae be ce abce de abde acde bf abcf df acdf bcdf abef bcef adef bdef cdef.
+[678: 55 52 52 52 52 49]  0 ab ac bc ad bd abcd ae be ce abce de abde acde af cf abcf df acdf bcdf abef bcef adef bdef cdef.
+[679: 52 52 52 52 52 52]  0 ac bc ad bd abcd ae be ce abce de abde acde af bf cf abcf df acdf bcdf abef bcef adef bdef cdef.
+[680: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde af bf cf abcf df acdf bcdf abef bcef adef bdef cdef.
+[681: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce abce de abde acde af bf cf abcf df acdf bcdf abef bcef adef bdef cdef.
+[682: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df acdf bcdf abef bcef adef bdef cdef.
+[683: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd be ce abce de acde bcde af abcf abdf acdf ef abef bcef adef bdef cdef.
+[684: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be abce de acde bcde af bf cf abcf abdf acdf ef abef bcef adef bdef cdef.
+[685: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de acde bcde af bf cf abcf abdf acdf ef abef bcef adef bdef cdef.
+[686: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce abce de acde bcde af bf cf abcf abdf acdf ef abef bcef adef bdef cdef.
+[687: 60 57 55 54 54 52]  0 ab ac bc ad bd cd abcd ae ce abce abde acde bcde af bf cf abcf abdf acdf ef abef bcef adef bdef cdef.
+[688: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce acde bcde af bf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[689: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce abce de acde bcde af bf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[690: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abce acde bcde af cf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[691: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be abce de acde bcde af cf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[692: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abce acde bcde bf cf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[693: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce abce de acde bcde bf cf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[694: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf df abdf acdf ef abef bcef adef bdef cdef.
+[695: 55 52 52 52 52 49]  0 ab ac bc ad bd cd abcd ae ce abce de abde acde af bf abcf acdf bcdf ef abef bcef adef bdef cdef.
+[696: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae be abce de abde acde cf abcf acdf bcdf ef abef bcef adef bdef cdef.
+[697: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de abde acde af bf cf abcf acdf bcdf ef abef bcef adef bdef cdef.
+[698: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce abce de abde acde af bf cf abcf acdf bcdf ef abef bcef adef bdef cdef.
+[699: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce abce de abde acde af bf cf abcf acdf bcdf ef abef bcef adef bdef cdef.
+[700: 55 52 52 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[701: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abce abde acde af bf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[702: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[703: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce abce de abde acde af bf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[704: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abce abde acde af cf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[705: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce abce de abde acde af cf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[706: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be abce de abde acde bf cf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[707: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df acdf bcdf ef abef bcef adef bdef cdef.
+[708: 55 55 52 52 49 49]  0 ab ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abcf abdf acdf acef bcef adef bdef cdef.
+[709: 55 55 55 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf abcf abdf acdf acef bcef adef bdef cdef.
+[710: 55 55 52 52 49 49]  0 ab ac bc ad bd cd abcd ae be ce abce abde bcde af bf abcf df abdf acdf acef bcef adef bdef cdef.
+[711: 52 52 52 52 52 46]  0 ab ac bc ad bd abcd ae be ce abce de abde bcde cf abcf df abdf acdf acef bcef adef bdef cdef.
+[712: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde bcde af bf cf abcf df abdf acdf acef bcef adef bdef cdef.
+[713: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce abce de abde bcde af bf cf abcf df abdf acdf acef bcef adef bdef cdef.
+[714: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce abce de abde bcde af bf cf abcf df abdf acdf acef bcef adef bdef cdef.
+[715: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf abcf df abdf acdf acef bcef adef bdef cdef.
+[716: 57 55 54 54 54 52]  0 ab bc ad bd abcd ae be ce abce abde acde bcde af bf cf abcf df abdf acdf acef bcef adef bdef cdef.
+[717: 57 55 54 54 54 52]  0 ab ac bc bd abcd ae be abce de abde acde bcde af bf cf abcf df abdf acdf acef bcef adef bdef cdef.
+[718: 55 55 52 52 49 49]  0 ab ac bc ad bd cd abcd ae be abce de abde acde af bf cf abcf abdf bcdf acef bcef adef bdef cdef.
+[719: 55 52 52 52 52 49]  0 ab ac ad bd cd abcd ae be ce abce de abde acde af bf cf abcf abdf bcdf acef bcef adef bdef cdef.
+[720: 55 55 55 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf abdf bcdf acef bcef adef bdef cdef.
+[721: 55 55 52 52 49 49]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf abcf df abdf bcdf acef bcef adef bdef cdef.
+[722: 55 52 52 52 52 49]  0 ab ac bc ad cd abcd ae be ce abce de abde acde af bf abcf df abdf bcdf acef bcef adef bdef cdef.
+[723: 52 52 52 52 52 46]  0 ab ac bc ad bd abcd ae be ce abce de abde acde cf abcf df abdf bcdf acef bcef adef bdef cdef.
+[724: 55 55 52 52 52 52]  0 ab ac bc ad bd abcd ae be ce abce de abde acde af bf cf abcf df abdf bcdf acef bcef adef bdef cdef.
+[725: 52 52 52 52 52 52]  0 ab bc ad cd abcd ae be ce abce de abde acde af bf cf abcf df abdf bcdf acef bcef adef bdef cdef.
+[726: 52 52 52 52 52 52]  0 ab ac bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf bcdf acef bcef adef bdef cdef.
+[727: 55 55 55 55 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf bcdf acef bcef adef bdef cdef.
+[728: 55 55 54 54 54 54]  0 ab ac bc ad bd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf acef bcef adef bdef cdef.
+[729: 55 55 54 54 54 54]  0 ab ac bc ad bd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf acef bcef adef bdef cdef.
+[730: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd be ce abce de abde bcde af abcf abdf acdf ef acef bcef adef bdef cdef.
+[731: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abcf abdf acdf ef acef bcef adef bdef cdef.
+[732: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abcf abdf acdf ef acef bcef adef bdef cdef.
+[733: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae ce abce de abde bcde af bf cf abcf abdf acdf ef acef bcef adef bdef cdef.
+[734: 57 55 54 54 54 52]  0 ab bc ad bd cd abcd ae be abce abde acde bcde af bf cf abcf abdf acdf ef acef bcef adef bdef cdef.
+[735: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abce abde bcde af bf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[736: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce abde bcde af bf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[737: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae ce abce de abde bcde af bf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[738: 57 55 54 54 54 52]  0 ab ac bc bd cd abcd ae be abce abde acde bcde af bf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[739: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd be ce abce de abde bcde af cf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[740: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd ae be ce abce abde bcde bf cf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[741: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd ae be abce de abde bcde bf cf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[742: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde bcde af bf cf abcf df abdf acdf ef acef bcef adef bdef cdef.
+[743: 52 52 52 52 52 46]  0 ab ac bc ad bd cd abcd ae ce abce de abde acde bf abcf abdf bcdf ef acef bcef adef bdef cdef.
+[744: 55 52 52 52 52 49]  0 ab ac bc ad bd cd abcd ae be abce de abde acde af cf abcf abdf bcdf ef acef bcef adef bdef cdef.
+[745: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be abce de abde acde af bf cf abcf abdf bcdf ef acef bcef adef bdef cdef.
+[746: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be abce de abde acde af bf cf abcf abdf bcdf ef acef bcef adef bdef cdef.
+[747: 52 52 52 52 52 52]  0 ab ac ad bd cd abcd be ce abce de abde acde af bf cf abcf abdf bcdf ef acef bcef adef bdef cdef.
+[748: 55 52 52 52 52 49]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[749: 52 52 52 52 52 52]  0 ac bc ad bd cd abcd ae be ce abce abde acde af bf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[750: 55 55 52 52 52 52]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[751: 52 52 52 52 52 52]  0 ab ac bc ad cd abcd be ce abce de abde acde af bf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[752: 52 52 52 52 52 52]  0 ab bc ad bd cd abcd ae be ce abce abde acde af cf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[753: 52 52 52 52 52 52]  0 ab ac bc bd cd abcd ae be abce de abde acde af cf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[754: 52 52 52 52 52 52]  0 ab ac bc ad bd abcd ae ce abce de abde acde bf cf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[755: 55 55 55 55 55 55]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf bcdf ef acef bcef adef bdef cdef.
+[756: 60 60 59 59 57 57]  0 ab ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef cdef.
+[757: 60 60 59 59 57 57]  0 ab ac bc ad bd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef acef bcef adef bdef cdef.
+[758: 57 57 55 55 54 54]  0 ab ac bc ad bd cd abcd be ce abce de abde bcde af cf abcf df abdf acdf abef acef bcef adef bdef cdef.
+[759: 57 57 55 55 54 54]  0 ab ac bc ad bd cd abcd ae ce abce de abde bcde bf cf abcf df abdf acdf abef acef bcef adef bdef cdef.
+[760: 62 60 60 60 59 57]  0 ab ac bc ad bd cd abcd be ce abce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef adef bdef cdef.
+[761: 57 57 55 55 54 54]  0 ab ac bc ad bd cd abcd be ce abce de abde acde af cf abcf df abdf bcdf abef acef bcef adef bdef cdef.
+[762: 57 57 55 55 54 54]  0 ab ac bc ad bd cd abcd ae ce abce de abde acde bf cf abcf df abdf bcdf abef acef bcef adef bdef cdef.
+[763: 55 55 54 54 54 54]  0 ab ac bc ad bd abcd ae be de abde acde bcde af bf cf abcf acdf bcdf abef acef bcef adef bdef cdef.
+[764: 55 55 54 54 54 54]  0 ab ac bc ad bd abcd ae be ce abce acde bcde af bf df abdf acdf bcdf abef acef bcef adef bdef cdef.
+[765: 62 62 62 62 62 62]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef.
+[766: 65 65 62 62 62 62]  0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef.
+[767: 62 62 62 62 62 62]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef.
+[768: 62 62 62 62 62 62]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef.
+[769: 65 65 65 65 62 62]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef.
+[770: 55 55 54 54 54 54]  0 ab ac bc ad bd cd abcd ae be abde acde bcde af bf abcf acdf bcdf ef abef acef bcef adef bdef cdef.
+[771: 55 55 54 54 54 54]  0 ab ac bc ad bd cd abcd ae be abce acde bcde af bf abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[772: 62 62 62 62 62 62]  0 ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[773: 65 65 62 62 62 62]  0 ab ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[774: 62 62 62 62 62 62]  0 ab bc ad bd cd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[775: 62 62 62 62 62 62]  0 ab ac ad bd cd abcd be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[776: 62 62 62 62 62 62]  0 ac bc ad bd cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[777: 65 65 62 62 62 62]  0 ab ac bc ad bd cd abcd ae be ce abce abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[778: 62 62 62 62 62 62]  0 ab ac bc bd cd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[779: 62 62 62 62 62 62]  0 ab ac bc ad cd abcd be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[780: 62 62 62 62 62 62]  0 ab bc ad bd cd abcd ae be ce abce abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[781: 62 62 62 62 62 62]  0 ab ac bc bd cd abcd ae be abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[782: 62 62 62 62 62 62]  0 ab ac bc ad bd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[783: 62 62 62 62 62 62]  0 ab ac ad bd cd abcd ae be ce abce abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[784: 62 62 62 62 62 62]  0 ab ac bc ad cd abcd ae be abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[785: 62 62 62 62 62 62]  0 ab ac bc ad bd abcd ae ce abce de abde acde bcde bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[786: 65 65 65 65 65 65]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef.
+[787: 20 20 20 20 20 20]  0 cd be bcde af acdf abef abcdef.
+[788: 20 20 20 20 20 20]  0 cd ae acde bf bcdf abef abcdef.
+[789: 20 20 20 20 20 20]  0 bd ce bcde af abdf acef abcdef.
+[790: 20 20 20 20 20 20]  0 bd ae abde cf bcdf acef abcdef.
+[791: 20 20 20 20 20 20]  0 ad ce acde bf abdf bcef abcdef.
+[792: 20 20 20 20 20 20]  0 ad be abde cf acdf bcef abcdef.
+[793: 46 46 46 46 46 46]  0 ad bd cd ae be ce abde acde bcde af bf cf abdf acdf bcdf abef acef bcef abcdef.
+[794: 20 20 20 20 20 20]  0 bc de bcde af abcf adef abcdef.
+[795: 20 20 20 20 20 20]  0 bc ae abce df bcdf adef abcdef.
+[796: 43 43 41 41 41 41]  0 bc bd ae ce abce de abde bcde af cf abcf df abdf bcdf acef adef abcdef.
+[797: 58 54 54 54 54 54]  0 bc bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef adef abcdef.
+[798: 20 20 20 20 20 20]  0 bc ad abcd ef bcef adef abcdef.
+[799: 56 56 56 56 52 52]  0 bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef bcef adef abcdef.
+[800: 43 43 41 41 41 41]  0 bc ad cd abcd be de abde bcde af cf abcf acdf ef abef bcef adef abcdef.
+[801: 43 43 41 41 41 41]  0 bc ad cd abcd ae ce abce acde bf df abdf bcdf ef abef bcef adef abcdef.
+[802: 58 54 54 54 54 54]  0 bc ad bd cd abcd be ce de abde acde bcde af bf cf abcf abdf acdf ef abef acef bcef adef abcdef.
+[803: 58 54 54 54 54 54]  0 bc ad bd cd abcd ae be ce abce abde acde bf cf df abdf acdf bcdf ef abef acef bcef adef abcdef.
+[804: 20 20 20 20 20 20]  0 ac de acde bf abcf bdef abcdef.
+[805: 20 20 20 20 20 20]  0 ac be abce df acdf bdef abcdef.
+[806: 20 20 20 20 20 20]  0 ac bd abcd ef acef bdef abcdef.
+[807: 56 56 56 56 52 52]  0 ac bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bdef abcdef.
+[808: 43 43 41 41 41 41]  0 ac bd cd abcd be ce abce bcde af df abdf acdf ef abef acef bdef abcdef.
+[809: 43 43 41 41 41 41]  0 ac bd cd abcd ae de abde acde bf cf abcf bcdf ef abef acef bdef abcdef.
+[810: 43 43 41 41 41 41]  0 ac ad be ce abce de abde acde bf cf abcf df abdf acdf bcef bdef abcdef.
+[811: 46 46 46 46 46 46]  0 ac bc cd ae be abce de acde bcde af bf abcf df acdf bcdf abef adef bdef abcdef.
+[812: 58 54 54 54 54 54]  0 ac bc bd cd abcd be ce abce de acde bcde af bf abcf df abdf acdf ef abef acef adef bdef abcdef.
+[813: 58 54 54 54 54 54]  0 ac bc bd cd abcd ae be abce de abde acde bf cf abcf df acdf bcdf ef abef acef adef bdef abcdef.
+[814: 59 59 59 59 59 59]  0 ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef abcdef.
+[815: 46 46 46 46 46 46]  0 ac bc ad bd abcd ce de acde bcde af bf abcf abdf ef acef bcef adef bdef abcdef.
+[816: 58 54 54 54 54 54]  0 ac bc ad bd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef acef bcef adef bdef abcdef.
+[817: 46 46 46 46 46 46]  0 ac bc ad bd abcd ae be abce abde cf df acdf bcdf ef acef bcef adef bdef abcdef.
+[818: 64 64 64 64 62 62]  0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef abcdef.
+[819: 59 59 59 59 59 59]  0 ac bc ad bd cd abcd ae be de abde acde bcde af bf cf abcf acdf bcdf ef abef acef bcef adef bdef abcdef.
+[820: 59 59 59 59 59 59]  0 ac bc ad bd cd abcd ae be ce abce acde bcde af bf df abdf acdf bcdf ef abef acef bcef adef bdef abcdef.
+[821: 69 69 67 67 67 67]  0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef abcdef.
+[822: 20 20 20 20 20 20]  0 ab de abde cf abcf cdef abcdef.
+[823: 20 20 20 20 20 20]  0 ab ce abce df abdf cdef abcdef.
+[824: 30 30 28 28 28 28]  0 ab ce abce de abde cf abcf df abdf cdef abcdef.
+[825: 20 20 20 20 20 20]  0 ab cd abcd ef abef cdef abcdef.
+[826: 30 30 28 28 28 28]  0 ab cd abcd de abde cf abcf ef abef cdef abcdef.
+[827: 30 30 28 28 28 28]  0 ab cd abcd ce abce df abdf ef abef cdef abcdef.
+[828: 40 40 36 36 36 36]  0 ab cd abcd ce abce de abde cf abcf df abdf ef abef cdef abcdef.
+[829: 56 56 56 56 52 52]  0 ab cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef cdef abcdef.
+[830: 46 46 46 46 46 46]  0 ab bc bd ae ce abce de abde bcde af cf abcf df abdf bcdf acef adef cdef abcdef.
+[831: 58 54 54 54 54 54]  0 ab bc bd cd abcd be ce abce de abde bcde af cf abcf df abdf acdf ef abef acef adef cdef abcdef.
+[832: 58 54 54 54 54 54]  0 ab bc bd cd abcd ae ce abce de abde acde bf cf abcf df abdf bcdf ef abef acef adef cdef abcdef.
+[833: 59 59 59 59 59 59]  0 ab bc ad cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef abcdef.
+[834: 46 46 46 46 46 46]  0 ab bc ad cd abcd be de abde bcde af cf abcf acdf ef abef bcef adef cdef abcdef.
+[835: 58 54 54 54 54 54]  0 ab bc ad cd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef abef bcef adef cdef abcdef.
+[836: 46 46 46 46 46 46]  0 ab bc ad cd abcd ae ce abce acde bf df abdf bcdf ef abef bcef adef cdef abcdef.
+[837: 64 64 64 64 62 62]  0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef abcdef.
+[838: 59 59 59 59 59 59]  0 ab bc ad bd cd abcd ae ce de abde acde bcde af bf cf abcf abdf bcdf ef abef acef bcef adef cdef abcdef.
+[839: 59 59 59 59 59 59]  0 ab bc ad bd cd abcd ae be ce abce abde bcde af cf df abdf acdf bcdf ef abef acef bcef adef cdef abcdef.
+[840: 59 59 59 59 59 59]  0 ab ac bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef abcdef.
+[841: 46 46 46 46 46 46]  0 ab ac bd cd abcd be ce abce bcde af df abdf acdf ef abef acef bdef cdef abcdef.
+[842: 58 54 54 54 54 54]  0 ab ac bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef bdef cdef abcdef.
+[843: 46 46 46 46 46 46]  0 ab ac bd cd abcd ae de abde acde bf cf abcf bcdf ef abef acef bdef cdef abcdef.
+[844: 64 64 64 64 62 62]  0 ab ac bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bdef cdef abcdef.
+[845: 46 46 46 46 46 46]  0 ab ac ad be ce abce de abde acde bf cf abcf df abdf acdf bcef bdef cdef abcdef.
+[846: 59 59 59 59 59 59]  0 ab ac ad bd cd abcd be ce de abde acde bcde af bf cf abcf abdf acdf ef abef acef bcef bdef cdef abcdef.
+[847: 59 59 59 59 59 59]  0 ab ac ad bd cd abcd ae be ce abce abde acde bf cf df abdf acdf bcdf ef abef acef bcef bdef cdef abcdef.
+[848: 59 59 59 59 59 59]  0 ab ac bc bd cd abcd ae ce abce de acde bcde af bf abcf df abdf bcdf ef abef acef adef bdef cdef abcdef.
+[849: 59 59 59 59 59 59]  0 ab ac bc bd cd abcd ae be abce de abde bcde af cf abcf df acdf bcdf ef abef acef adef bdef cdef abcdef.
+[850: 59 59 59 59 59 59]  0 ab ac bc ad cd abcd be ce abce de acde bcde af bf abcf df abdf acdf ef abef bcef adef bdef cdef abcdef.
+[851: 59 59 59 59 59 59]  0 ab ac bc ad cd abcd ae be abce de abde acde bf cf abcf df acdf bcdf ef abef bcef adef bdef cdef abcdef.
+[852: 59 59 59 59 59 59]  0 ab ac bc ad bd abcd be ce abce de abde bcde af cf abcf df abdf acdf ef acef bcef adef bdef cdef abcdef.
+[853: 59 59 59 59 59 59]  0 ab ac bc ad bd abcd ae ce abce de abde acde bf cf abcf df abdf bcdf ef acef bcef adef bdef cdef abcdef.
+[854: 72 72 72 72 72 72]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef abcdef.
+
+Intstack difference 0.
+Done in 3444 seconds.

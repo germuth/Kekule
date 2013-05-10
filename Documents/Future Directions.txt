@@ -1,5 +1,10 @@
 Directions: 
 
+Possibly make java version of Hesselink's software
+
+Either way, provide nice GUI Interface
+Possible to use Jmol to display things....
+
 We do not know whether the class KC of the Kekulé cells is decidable [4] and [8], 
 i.e., whether one can make a computer program that reads (an encoding of) a cell K from its 
 input and then computes whether or not K is a Kekulé cell. It is easy to make a computer program 
