@@ -1,0 +1,19 @@
+Directions: 
+
+We do not know whether the class KC of the Kekulé cells is decidable [4] and [8], 
+i.e., whether one can make a computer program that reads (an encoding of) a cell K from its 
+input and then computes whether or not K is a Kekulé cell. It is easy to make a computer program 
+that enumerates all graphs, and verifies for each of them whether it has K as its Kekulé cell.
+This program, however, would not terminate if K is not a Kekulé cell. 
+The program therefore only shows that the class KC is semi-decidable.
+
+In order 6, we found 214 classes of linkable cells. Of these, 210 are Kekulé cells while for 4 
+of the classes this is presently unknown.
+
+In each case, the graph presented is the first one found by our computer program. We made no effort to 
+find graphs that fit the requirements of carbon chemistry. Recall from [7] and [12] that there are rather 
+far-reaching methods to transform a graph without changing the Kekulé cell. It is beyond the scope of this 
+paper to search for graphs that correspond to stable molecules of alternating hydrocarbons.
+
+For application to carbon chemistry, it would be interesting to see whether all Kekulé cells of Section 5.3 
+can be realized in stable molecules.
