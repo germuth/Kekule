@@ -4,6 +4,14 @@ Possibly make java version of Hesselink's software
 
 Either way, provide nice GUI Interface
 Possible to use Jmol to display things....
+-------------------------------------
+In our graph theoretical abstraction, we neglect
+all hydrogen atoms.
+
+In view of
+the application to conjugation in carbon chemistry, we could restrict attention
+to graphs where all nodes have degrees = 4. Since we have no use for this
+restriction, we do this only in some examples.
 
 We do not know whether the class KC of the Kekulé cells is decidable [4] and [8], 
 i.e., whether one can make a computer program that reads (an encoding of) a cell K from its 
