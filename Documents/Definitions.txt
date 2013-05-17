@@ -1,4 +1,4 @@
-Kekule state - every internal node has precisely one double bond
+Kekule state - A configuration of bonds such that every internal node has precisely one double bond
 Port - nodes with precisely one edge to the remainder of the graph
 Port Assignment - multiplicity of the bonds at the ports
 Channel - a pair of ports

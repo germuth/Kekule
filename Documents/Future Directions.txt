@@ -8,9 +8,11 @@ Possible to use Jmol to display things....
 In our graph theoretical abstraction, we neglect
 all hydrogen atoms.
 
+In our application to graph theory, numerical invariants and the symmetry of the graphs play no roles yet.
+
 In view of
 the application to conjugation in carbon chemistry, we could restrict attention
-to graphs where all nodes have degrees = 4. Since we have no use for this
+to graphs where all nodes have degrees <= 4. Since we have no use for this
 restriction, we do this only in some examples.
 
 We do not know whether the class KC of the Kekulé cells is decidable [4] and [8], 
