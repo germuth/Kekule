@@ -1,5 +1,7 @@
 Directions: 
 
+- Set up C program in visual studio ?
+
 (1) Discover chemistry relevant solutions to Hesselink's Paper
 
 "For application to carbon chemestry, it would be interesting to see whether all Kekule cells of Section 5.3
