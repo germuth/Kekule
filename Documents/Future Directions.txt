@@ -1,5 +1,70 @@
 Directions: 
 
+- Set up C program in visual studio ?
+
+This is great and a very impressive start.
+ It appears that you have already identified a problem to start with. 
+Wim Hessilink is a computer scientist having a little knowledge of chemistry 
+(I know him personally, and co-authored papers with him), and that is why this 
+project is very interesting and has good potential to get some interesting insight.
+ We would start with confirming his findings first, and then explore further to study
+ chemically relevant properties in the simpler model when restricted up to 4 degrees.
+ If we need help on theoretical side, we can always contact Wim, he will be happy to 
+collaborate with us if we find some interesting aspects. He is an established scientist,
+ any opportunity to collaborate with him would be wonderful. I am attaching Wim’s source
+ code, you can try when you have time. Let me know whether you are able to compile the
+ code successfully.
+
+
+(1) Discover chemistry relevant solutions to Hesselink's Paper
+
+"For application to carbon chemestry, it would be interesting to see whether all Kekule cells of Section 5.3
+can be realized in stable molecules" 2013 pp.119
+
+	Step 1. Become familiar with Hesselink's software
+		- test throughly on linux computers
+	
+	Step 2. Create our own software in Java
+		- first test results compared to Hesselink's software to ensure correctness
+		- perhaps provide graphical interface
+		- add our changes
+			- Restrict number of bonds to 4
+
+			"In view of the application to conjugation in carbon chemistry, we could restrict attention to graphs where all nodes
+			have degree <= 4" Hesselink 2007 pp.5
+
+			- Carbon bonds to 4 things, or 3 things with one double bond, Since all non-port nodes much have a double bond,
+all non-port nodes can only bond to 3 things in the graphs
+
+			- what about the ports?
+
+				- ports are allowed to not have double bonds, but have to have the capacity to have the double bond. Additionally,
+in order or electricy to flow, the port must be on an alternating path, which won't exist if the port doesn't have a double bond somewhere,
+therefore all nodes should be restricted to 3 bonds
+					
+					- however, ports are places which connect molecule to outside world, is this 'connection' through bonds, 
+because if it, then ports should be restricted to 2 bonds
+
+	Step 3. Evaluate Results
+		- not all results will be findable
+			- original paper has 4 which it hasn't even found any structure for
+			- expand search space
+				- high performance computing lab?
+
+		- not all results will be possible
+			- for example, triangles are not very stable in carbon chemistry
+			- also graph may not be connected, which is impossible in molecule, perhaps add constraint that results must be connected
+			- find some example compounds to back up our claims that certain molecules are stable
+
+		- ensure molecules are stable in presence of electricity
+			- some reactions take place with electricity, for example split water into oxygen and hydrogen (Electrolysis)
+
+		- can use techniques previously found to edit graph without changing Kekule cell
+			- bending and transforming
+			- can we make a program which does this for us, by hand is quite difficult?
+			- perhaps it is easier, to find the not - allowed solution, and alter it to a carbon chemistry approved structure?
+
+
 Possibly make java version of Hesselink's software
 
 Either way, provide nice GUI Interface

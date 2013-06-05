@@ -16,8 +16,10 @@ executables are compiled by means of the 'make' facility, as specified
  by the Makefile.  
 Five different executables can be made.
 
-1. From graphs to cells: g2cell 
 
+
+1. From graphs to cells: g2cell
+	
 
 The call 'make cell' compiles and yields an executable 'g2cell'.  
 	the data file 'Somegraphs' contains a number of graphs, given in a syntax 
@@ -47,8 +49,8 @@ space.
 	It does not necessarily succeeds, but it always terminates.
 
 
-3.  Classification of coherent cells
-
+3.  Classification of coherent cells 
+	
 
 The call 'make clf' compiles and yields an executable 'classify'.
 
@@ -75,6 +77,7 @@ lengthy computation,
 	Option 2 expects a raw classification on
 standard input, and yields the classification.
 
+	
 For the options 0 and 2, also the doubletons are computed: centered
 cells with the same weight list, but not equivalent under
 permutations.
@@ -82,7 +85,7 @@ permutations.
 
 4.  Decomposition of cells
 
-
+	
 The call 'make dec' compiles and yields an executable 'decompose'.  
 	It
  reads (regular) cells K from standard input and tries to decompose
@@ -98,7 +101,7 @@ indecomposable.
 
 5.  Classification of undirected graphs
 
-
+	
 The call 'make ugr' compiles and yields an executable 'ugraph'.  
 	It
  needs one integer parameter: rank, and constructs the list of
@@ -117,49 +120,66 @@ rank.
 	cells within 
 the set of even cells.
 	The call 'make com' yields an executable
-'complement' for 
-	this.
+'complement' for this.
 
-Data files:
+
+	Data files:
 README
 Somegraphs
 RawCells6on10March10
 Cells6wG31May2011
 
+
 Scenario 1 
 	to construct the graphs for all classes of 
 flexible coherent cells of rank 5:
 
+	
 make clf
 ./classify 5 > cells5Today
+	
 make graph
 ./c2graph 5 < cells5Today 
-
+	
 This gives graphs for the 24 classes of rank 5 in whh424, section 4.3.
 
+
 	make dec 
-./decompose 5 < cells5Today 
-make com
-./complement 5 < cells5Today 
+
+	./decompose 5 < cells5Today
+
+
+	make com
+
+	./complement 5 < cells5Today 
 
 Scenario 2
 
+
 	make clf
-make graph
-make dec
-./classify 6 2 < RawCells6on10March10 > cells6Today
-In the file 'cells6Today', 
-	to avoid very lengthy but fruitless 
+
+	make graph
+
+	make dec
+
+	./classify 6 2 < RawCells6on10March10 > cells6Today
+
+	In the file 'cells6Today', to avoid very lengthy but fruitless 
 calculations, manually move the cells 132, 133, 144, 152 to the end, 
-preceded by an empty line. 
+
+	preceded by an empty line. 
 	Then call:
-./c2graph 6 < cells6Today 
-This gives graphs for 210 of the 214 classes of rank 6.  
+
+	./c2graph 6 < cells6Today 
+
+	This gives graphs for 210 of the 214 classes of rank 6.  
 	Even after
  removal of the cells 132, 133, 144, 152, this calculation requires on
  my computer some 50 minutes.  
 	Therefore, the result is provided as 
 the data file 'Cells6wG31May2011'.  
-	The call './decompose 6 <
-cells6Today' takes several hours even if the original cells 132, 133,
+	The call 
+	'./decompose 6 <
+cells6Today' 
+	takes several hours even if the original cells 132, 133,
 144, 152 are removed.
