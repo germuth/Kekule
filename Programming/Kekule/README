@@ -1,0 +1,185 @@
+README
+
+Wim H. Hesselink, June 2011
+
+
+The archive 'kekprog.tgz' contains datafiles, C-programs, and a 
+corresponding makefile.  
+Under unix/linux, it can be opened by the
+ call 'tar zxvf kekprog.tgz'.  
+It then makes a directory 'cprog', with 
+the files as announced.  
+All files are plain text files that can be 
+read and modified by means of a simple text editor. 
+Under unix/linux,
+executables are compiled by means of the 'make' facility, as specified
+ by the Makefile.  
+Five different executables can be made.
+
+
+
+1. From graphs to cells: g2cell
+	
+
+The call 'make cell' compiles and yields an executable 'g2cell'.  
+	the data file 'Somegraphs' contains a number of graphs, given in a syntax 
+that is easily readable for a computer program.  
+	The call 'g2cell <
+Somegraphs' uses 'Somegraphs' as input for 'g2cell' and prints the
+cells corresponding to the given graphs on standard output.  
+	It also 
+normalizes them to the corresponding representative cell, which can be
+found in the classification obtained at point 3. 
+	The file Somegraphs
+begins with the 14 ways the pyracylene molecule can be loaded with 5
+ports (up to symmetry).
+
+
+2. From cells to graphs: c2graph
+
+The call 'make graph' compiles and yields an executable 'c2graph'.
+
+	This executable needs one integer parameter: the rank, the number of
+ports.  
+	The input is read from standard input and consists of a
+sequence of cells (e.g., made in the classification).  
+	For each given
+cell, the program tries to find a graph within a limited search
+space. 
+	It does not necessarily succeeds, but it always terminates.
+
+
+3.  Classification of coherent cells 
+	
+
+The call 'make clf' compiles and yields an executable 'classify'.
+
+	This executable generates a list of representatives of the classes of
+flexible coherent cells of the 
+	given rank, up to translation and port
+ permutation. 
+	Translations are eliminated by chosing a center
+(according to the definition in whh424).  
+	It needs two integer
+ parameters: the rank and the option. 
+	The option can be omitted when it
+is 0.
+
+Option 0 is the sequential composition of options 1 and 2, and gives
+ the entire classification.  
+	Use this for rank < 6.  Option 1 only 
+gives the raw classification. For rank = 6, even this takes around two
+hours.  
+	The result is a raw classification.  In order to avoid this 
+lengthy computation, 
+	the result is provided as a separate data file
+'RawCells6on10March10'.  
+	Option 2 expects a raw classification on
+standard input, and yields the classification.
+
+	
+For the options 0 and 2, also the doubletons are computed: centered
+cells with the same weight list, but not equivalent under
+permutations.
+
+
+4.  Decomposition of cells
+
+	
+The call 'make dec' compiles and yields an executable 'decompose'.  
+	It
+ reads (regular) cells K from standard input and tries to decompose
+them as K = a oplus (L odot M) with L and M regular and coherent.  
+	It 
+expects the rank as a parameter.  
+	Example call: decompose 5 <
+Cells5on21Aug09.  
+	A nonzero translation is chosen only when the cell is 
+indecomposable.  
+	The result also gives the original cells.
+
+
+5.  Classification of undirected graphs
+
+	
+The call 'make ugr' compiles and yields an executable 'ugraph'.  
+	It
+ needs one integer parameter: rank, and constructs the list of
+isomorphism classes of matched and unmatched graphs of a given
+rank. 
+	Note that there are no matched graphs of odd rank.
+
+	Example calls:  './ugraph 4' or './ugraph 5'.
+
+
+6.  Complementation
+
+
+	To see the geometry of the coherent cells, it may be useful to form
+ the complements of the elements of such a list of even 
+	cells within 
+the set of even cells.
+	The call 'make com' yields an executable
+'complement' for this.
+
+
+	Data files:
+README
+Somegraphs
+RawCells6on10March10
+Cells6wG31May2011
+
+
+Scenario 1 
+	to construct the graphs for all classes of 
+flexible coherent cells of rank 5:
+
+	
+make clf
+./classify 5 > cells5Today
+	
+make graph
+./c2graph 5 < cells5Today 
+	
+This gives graphs for the 24 classes of rank 5 in whh424, section 4.3.
+
+
+	make dec 
+
+	./decompose 5 < cells5Today
+
+
+	make com
+
+	./complement 5 < cells5Today 
+
+Scenario 2
+
+
+	make clf
+
+	make graph
+
+	make dec
+
+	./classify 6 2 < RawCells6on10March10 > cells6Today
+
+	In the file 'cells6Today', to avoid very lengthy but fruitless 
+calculations, manually move the cells 132, 133, 144, 152 to the end, 
+
+	preceded by an empty line. 
+	Then call:
+
+	./c2graph 6 < cells6Today 
+
+	This gives graphs for 210 of the 214 classes of rank 6.  
+	Even after
+ removal of the cells 132, 133, 144, 152, this calculation requires on
+ my computer some 50 minutes.  
+	Therefore, the result is provided as 
+the data file 'Cells6wG31May2011'.  
+	The call 
+	'./decompose 6 <
+cells6Today' 
+	takes several hours even if the original cells 132, 133,
+144, 152 are removed.

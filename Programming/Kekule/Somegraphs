@@ -1,0 +1,102 @@
+Pyracylene5a9 {1 2 3 5 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a13a {1 3 4 5 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a13b {1 2 4 5 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a15 {2 3 4 5 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a16a {2 4 5  7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a16b {1 2 4 5 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a19a {1 2 5 7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a19b {1 2 3 4 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a20a {1 2 3 5 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a20b {1 2 3 5 6} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a21a {2 3 4 7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a21b {1 3 4 5 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a22a {1 2 3 4 5} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene5a22b {1 2 3 4 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+
+Everything after the first blank line is treated as comment.
+
+The pyracylene molecule (see Section 1.1) has eight atoms where ports
+can be located according to the rules of carbon chemistry. Up to
+symmetry, there are 14 ways to choose 5 ports at these locations. It
+turns out that the resulting 14 graphs induce 8 different Kekul\'e
+cells, viz. $K_9$, $K_{13}$, $K_{15}$, $K_{16}$, $K_{19}$, $K_{20}$,
+$K_{21}$, $K_{22}$.  The reader can verify this by calling 'g2cell'
+with this file as input.
+
+Similarly, pyracylene offers 10 different ways to choose 6 ports at
+these locations. These are the 10 cases drawn below. It turns out that
+all these graphs have different Kekul\'e cells. To see this, put the
+next 10 graphs at the top of the file, followed by a blank line.
+
+Pyracylene6a70 {1 2 4 5 6 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a85 {2 3 4 5 6 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a105 {1 3 4 5 6 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a108 {1 2 3 5 6 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a114 {1 2 3 4 6 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a124 {2 3 4 5 7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a136 {1 3 4 5 7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a139 {1 2 3 4 5 7} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a159 {1 2 3 4 7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+Pyracylene6a163 {1 2 3 4 5 6} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+ 
+Some more graphs that can be tried:
+Pyracylene with eight ports {1 2 3 4 5 6 7 8} 14; \
+  0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, 9-13, 10-12.
+Indene with two ports {3 8} 9; 0-1-2-3-4-0-5-6-7-8-4.
+G0 k135 in section4dot1 6 10; 8-0-1-8-7-9-2-3-9, 7-6-4-5-6.
+G1 k145 in section4dot1 6 10; 8-0-1-6-2-3-7-4-5-8-9-6, 7-9.
+
+Gra5nr5   5  7; 0-2, 5-6, 1-6, 0-6, 4-5, 3-5.
+Gra6nr145 6 16; 4-12-10-11-15-14-9-8-13-6-12, 6-7-9, \  
+                7-11, 0-8, 1-14, 3-15, 2-10, 5-13. 
+Gg145 6 10;  6-0-1-7-2-3-8-4-5-6-9-7, 8-9.
+G145 6 16; 0-8-9-14-15-11-10-12-6-13-8, 1-14, 3-15, 2-10, 4-12, \
+5-13, 6-7-9, 7-11.
+G151 6 14; 3-6-9-0-8-4-11-10-12-13-7-8, 6-7, 9-10,5-11, 1-12, 2-13.
+G166 6 14; 5-11-10-12-13-7-8-4-11-1-6-9-2-8, 9-10, 6-7, 3 -12, 0-13.
+G171 6 10; 1-9-6-2-8-7-0-9, 8-3-6-5-7-4-6. 
+G175 6 14; 12-0-8-11-7-10-9-1-12-13-4-6-5-13, 6-7, 8-9, 2-10, 3-11.
+G18 5 7; 5-4-0-3-5-6-1-2-6. 
+
+The nodes of the graphs have to be numbered below 32, because we
+use integers as bitstrings to represent sets of nodes.
+The syntax of graphs is
+<graph> ::= <intro> ';' <edges> {',' <edges>} '.'
+<intro> ::= <name> {<name>} <ports> <number of nodes> 
+<ports> ::= '{' {<port>} '}' 
+          | <number of ports> 
+<edges> ::= <node> {'-' <node>}
+<port>  ::= <node>
+<node>  ::= <number>
+<name>   : any sequence of letters/digits that starts with a letter
+<number> : any nonempty sequence of digits
+Above, {X} means zero or more productions of X.
+
+The ports can be given as numbered nodes between braces. In the cells
+to be output, these ports are represented by a, b, c, etc.  In the
+other cases, the two numbers given are cP and cN; the ports are the
+nodes i < cP (again represented in the output by a, b, c, etc.).

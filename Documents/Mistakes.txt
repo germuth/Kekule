@@ -1,0 +1,2 @@
+mkCell.c
+- Comments indicate function M(u) is from section 4.2, when in reality it is from function 4.1

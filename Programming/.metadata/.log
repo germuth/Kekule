@@ -1,0 +1,116 @@
+!SESSION 2013-06-06 16:38:22.462 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 16:41:56.889
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 16:51:58.233
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 16:51:59.297
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 16:52:18.353
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 16:52:20.705
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 16:57:30.652
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Terminate failed
+	at org.eclipse.debug.core.Launch.terminate(Launch.java:263)
+	at org.eclipse.debug.internal.core.LaunchManager.shutdown(LaunchManager.java:2241)
+	at org.eclipse.debug.core.DebugPlugin.stop(DebugPlugin.java:571)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$3.run(BundleContextImpl.java:1040)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.stop(BundleContextImpl.java:1036)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.stopWorker(BundleHost.java:457)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.suspend(AbstractBundle.java:526)
+	at org.eclipse.osgi.framework.internal.core.Framework.suspendBundle(Framework.java:1148)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.decFWSL(StartLevelManager.java:675)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:291)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.shutdown(StartLevelManager.java:261)
+	at org.eclipse.osgi.framework.internal.core.SystemBundle.suspend(SystemBundle.java:188)
+	at org.eclipse.osgi.framework.internal.core.Framework.shutdown(Framework.java:622)
+	at org.eclipse.osgi.framework.internal.core.Framework.close(Framework.java:525)
+	at org.eclipse.osgi.framework.internal.core.OSGi.close(OSGi.java:41)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.shutdown(EclipseStarter.java:399)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:508)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:447)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1173)
+!SUBENTRY 1 org.eclipse.debug.core 4 5010 2013-06-06 16:57:30.653
+!MESSAGE Terminate failed
+!SESSION 2013-06-06 16:57:38.147 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-06 17:13:06.290
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
