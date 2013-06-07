@@ -1,0 +1,47 @@
+package bitvectors;
+
+public class BitVector {
+	/**
+	 * Integer representing bitVector 
+	 */
+	private int number;
+	public BitVector(int b){
+		this.number = b;
+	}
+	
+	public String toString(){
+		return this.number + " " + "(" + Integer.toBinaryString(number) + ")";
+	}
+	
+	public boolean isEmpty(){
+		if(this.number == 0){
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Returns the first node contained in this bitvector
+	 * does not remove it from the bitvector
+	 * @return
+	 */
+	public int firstNode(){
+		//no node to give
+		if(this.isEmpty()){
+			return 0;
+		}
+		int k = 1;
+		while(( this.number & k ) == 0){
+			
+		}
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+}

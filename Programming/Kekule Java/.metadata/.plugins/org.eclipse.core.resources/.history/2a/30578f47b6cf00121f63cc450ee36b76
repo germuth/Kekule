@@ -1,0 +1,7 @@
+
+public class BitVector {
+	/**
+	 * Integer representing bitVector 
+	 */
+	private int vector;
+}

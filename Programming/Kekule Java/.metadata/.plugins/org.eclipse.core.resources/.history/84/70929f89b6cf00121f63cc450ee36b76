@@ -1,0 +1,10 @@
+
+public class BitVector {
+	/**
+	 * Integer representing bitVector 
+	 */
+	private int vector;
+	public BitVector(int v){
+		this.vector = v;
+	}
+}

@@ -17,23 +17,25 @@ static int ports;
  * a set of them is represented as an ordered intstack.
  */
 Intstack mkcell(int uu, Graph g) {
+	
 	int u, i, v;
 	//only ed set to edges
 	//rest are null
 	Intstack acc, addend, ed = g->edges;
+	
 	ports = (1 << g->cP) - 1;
 	//Base case
 	if (uu == 0) {
 		acc = newIntstack(5, NULL);
 		putint(0, acc);
-	} 
-	else {
+	} else {
 		//find first occurence of vertex
 		u = firstspike(uu);
 		//remove vertex from set
 		uu = u ^ uu;
 		//recurse
 		acc = (u & ports ? mkcell(uu, g) : newIntstack(5, NULL));
+		
 		/* treat nbh(u, g) */
 		for (i = 0; i < ed->size; i++)
 			//if u in edge[i]

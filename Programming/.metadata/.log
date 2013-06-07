@@ -114,3 +114,103 @@ java.io.IOException: target is suspended
 	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
 	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
 	at java.lang.Thread.run(Unknown Source)
+!SESSION 2013-06-07 10:24:19.249 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui.ide 4 4 2013-06-07 10:25:49.948
+!MESSAGE Problems occurred refreshing the selected resources.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2013-06-07 10:25:49.948
+!MESSAGE The project description file (.project) for 'Kekule Java' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.ui.ide 4 4 2013-06-07 10:25:58.824
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2013-06-07 10:25:58.840
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2013-06-07 10:25:58.840
+!MESSAGE The project description file (.project) for 'Kekule Java' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SESSION 2013-06-07 10:26:38.448 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 1 2013-06-07 11:53:39.038
+!MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-07 12:49:46.306
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-07 13:24:53.649
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-07 13:27:50.906
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-07 13:29:48.001
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-07 15:57:28.290
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-07 15:57:29.226
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: target is suspended
+	at org.eclipse.cdt.debug.mi.core.MIInferior$1.write(MIInferior.java:76)
+	at java.io.OutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)

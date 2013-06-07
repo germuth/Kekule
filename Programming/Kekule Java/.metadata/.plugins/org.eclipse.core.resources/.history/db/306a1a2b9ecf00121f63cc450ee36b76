@@ -1,0 +1,16 @@
+import java.util.Set;
+
+
+public class Utils {
+	
+	public Set symmetricDifference(Set one, Set two){
+		//in order to get symmetric difference
+		//we add two sets together
+		//then subtract the intersection
+		
+		Set both = new TreeSet(one);
+		
+		
+		
+	}
+}

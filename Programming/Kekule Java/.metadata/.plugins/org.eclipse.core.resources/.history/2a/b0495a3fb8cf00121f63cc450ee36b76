@@ -1,0 +1,16 @@
+package bitvectors;
+
+public class BitVector {
+	/**
+	 * Integer representing bitVector 
+	 */
+	private BiInt number;
+	public BitVector(BiInt b){
+		this.vector = b;
+	}
+	
+	public String toString(){
+		return this.number + " " + "(" + Integer.toBinaryString(number) + ")";
+	}
+
+}

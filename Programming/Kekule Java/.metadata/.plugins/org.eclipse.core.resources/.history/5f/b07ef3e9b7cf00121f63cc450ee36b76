@@ -1,0 +1,12 @@
+package bitvectors;
+
+public class BiInt {
+	/**
+	 * Represents a binary integer
+	 */
+	private int number;
+	
+	public BiInt(int n){
+		this.number = n;
+	}
+}

@@ -1,0 +1,49 @@
+package bitvectors;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Cell {
+	/**
+	 * Set of bitvectors, each representing a port assignment of this cell
+	 */
+	private Set<BitVector> portAssignments;
+	
+	public Cell(){
+		this.portAssignments = new HashSet<BitVector>();
+	}
+	
+	public Cell(Set<BitVector> portsAssigns){
+		this.portAssignments = portsAssigns;
+	}
+	
+	/**
+	 * Translates a cell over port assignment 
+	 * @param portAssignment
+	 */
+	public void translate(BitVector translation){
+		if(translation.isEmpty()){
+			return;
+		}
+		
+		Set<BitVector> translated = new HashSet<BitVector>();
+		
+		Iterator i = this.portAssignments.iterator();
+		while(i.hasNext()){
+			BitVector portAssignment = (BitVector) i.next();
+			BitVector intersection = BitVector.intersection(
+					portAssignment,
+					translation);
+			translated.add(intersection);
+		}
+	}
+	
+	public void add(BitVector bv){
+		this.portAssignments.add(bv);
+	}
+	
+	public void clear(){
+		this.portAssignments.clear();
+	}
+}

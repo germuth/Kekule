@@ -295,6 +295,7 @@ void printar(Intstack a) {
 	printf("%3d", a->it[0]);
 	for (i = 1; i < a->size; i++)
 		printf(" %3d", a->it[i]);
+	printf(":");
 }
 
 void printarn(Intstack a) {

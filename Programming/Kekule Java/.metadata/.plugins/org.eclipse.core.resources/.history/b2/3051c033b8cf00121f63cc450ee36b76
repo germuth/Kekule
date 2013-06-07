@@ -1,0 +1,11 @@
+package bitvectors;
+
+public class BitVector {
+	/**
+	 * Integer representing bitVector 
+	 */
+	private BiInt vector;
+	public BitVector(BiInt b){
+		this.vector = b;
+	}
+}
