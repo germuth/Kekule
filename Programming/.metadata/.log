@@ -214,3 +214,29 @@ java.io.IOException: target is suspended
 	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
 	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
 	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.core.resources 4 273 2013-06-07 17:19:37.661
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2013-06-07 17:19:37.662
+!MESSAGE Could not delete 'C:\Users\Aaron\Documents\GitHub\Kekule\Programming\Kekule\MinGW GCC\Kekule.exe'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:107)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:303)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:769)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1655)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:700)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:590)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:172)
+	at org.eclipse.ui.ide.undo.AbstractResourcesOperation.delete(AbstractResourcesOperation.java:111)
+	at org.eclipse.ui.ide.undo.DeleteResourcesOperation.doExecute(DeleteResourcesOperation.java:67)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation$1.run(AbstractWorkspaceOperation.java:206)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1797)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.execute(AbstractWorkspaceOperation.java:204)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:511)
+	at org.eclipse.ui.actions.DeleteResourceAction$4.run(DeleteResourceAction.java:538)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.filesystem 4 273 2013-06-07 17:19:37.662
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2013-06-07 17:19:37.662
+!MESSAGE Could not delete: C:\Users\Aaron\Documents\GitHub\Kekule\Programming\Kekule\MinGW GCC\Kekule.exe.

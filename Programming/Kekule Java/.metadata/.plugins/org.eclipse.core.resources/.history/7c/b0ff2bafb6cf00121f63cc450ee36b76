@@ -1,7 +1,0 @@
-package bitvectors;
-
-public class Cell {
-	/**
-	 * Set of bitvectors, each representing a port assignment of this cell
-	 */
-}
