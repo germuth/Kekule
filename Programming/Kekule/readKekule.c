@@ -117,10 +117,21 @@ Graph readGraph() {
 		assert(0);
 	if (b) {
 		c = mkPortPermutation(cN, b);
+		
+		printf("\n");
+		printf("b is:");
+		printar(b);
+		printf("\n");
+		printf("c is:");
+		printar(c);
+		printf("\n");
 	}
 	do {
 		assert(getChar() == '0');
 		k = apply(c, getNumber());
+		printf("k is:");
+		printf("k: %d", k);
+		printf("\n");
 		scan();
 		while (accept('-')) {
 			assert(getChar() == '0');

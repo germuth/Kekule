@@ -17,13 +17,14 @@ static int ports;
  * a set of them is represented as an ordered intstack.
  */
 Intstack mkcell(int uu, Graph g) {
-	
+		
 	int u, i, v;
 	//only ed set to edges
 	//rest are null
 	Intstack acc, addend, ed = g->edges;
 	
 	ports = (1 << g->cP) - 1;
+	
 	//Base case
 	if (uu == 0) {
 		acc = newIntstack(5, NULL);
