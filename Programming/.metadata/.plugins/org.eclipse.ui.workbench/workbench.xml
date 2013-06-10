@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="-1485" y="97">
 <fastViewData fastViewLocation="1024"/>
@@ -39,30 +39,43 @@
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCell.c" partName="mkCell.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCell.c" title="mkCell.c" tooltip="Kekule/mkCell.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCell.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="923"/>
+<editorState selectionHPixel="0" selectionLength="3" selectionOffset="1518"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" partName="mkCellMain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCellMain.c" title="mkCellMain.c" tooltip="Kekule/mkCellMain.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCellMain.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="873"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" partName="cells.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/cells.c" title="cells.c" tooltip="Kekule/cells.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/cells.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="5282"/>
-</editor>
-<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="readKekule.c" partName="readKekule.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/readKekule.c" title="readKekule.c" tooltip="Kekule/readKekule.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/readKekule.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2293"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="750"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.c" partName="auxil.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/auxil.c" title="auxil.c" tooltip="Kekule/auxil.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/auxil.c"/>
-<editorState selectionHPixel="0" selectionLength="2" selectionOffset="5619"/>
+<editorState selectionHPixel="0" selectionLength="5" selectionOffset="1351"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.c" partName="histogram.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/histogram.c" title="histogram.c" tooltip="Kekule/histogram.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/histogram.c"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="623"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="permutations.c" partName="permutations.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/permutations.c" title="permutations.c" tooltip="Kekule/permutations.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/permutations.c"/>
+<editorState selectionHPixel="0" selectionLength="13" selectionOffset="245"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.debug.ui.DebugView" partName="Debug">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState columnWidth0="43" columnWidth1="19" columnWidth2="253" columnWidth3="78" columnWidth4="153" columnWidth5="63" columnWidth6="0" horizontalPosition="0" verticalPosition="0">
+<columnOrder columnOrderIndex="0"/>
+<columnOrder columnOrderIndex="1"/>
+<columnOrder columnOrderIndex="2"/>
+<columnOrder columnOrderIndex="3"/>
+<columnOrder columnOrderIndex="4"/>
+<columnOrder columnOrderIndex="5"/>
+<columnOrder columnOrderIndex="6"/>
+</viewState>
+</view>
 <view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
 <viewState>
 <isTrackingSelection value="false"/>
@@ -89,7 +102,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.cdt.ui.CPerspective">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -168,7 +181,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.6293478" ratioLeft="579" ratioRight="341" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.725" ratioLeft="667" ratioRight="253" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -233,6 +246,7 @@
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.eclipse.debug.ui.BreakpointView"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
@@ -268,7 +282,7 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.3628447" ratioLeft="250" ratioRight="439" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<info part="org.eclipse.ui.editorss" ratio="0.1810585" ratioLeft="130" ratioRight="588" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
 <info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.82707995" ratioLeft="507" ratioRight="106" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
@@ -279,183 +293,183 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="836" ratioRight="836" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.SignalsView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.ModulesView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.internal.presentations.r33.WorkbenchPresentationFactory_33">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 </mainWindow>
-<hiddenWindow height="1024" width="640" x="-1299" y="438">
-<view id="org.eclipse.debug.ui.VariableView"/>
-</hiddenWindow>
 </layout>
 </perspective>
 </perspectives>
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCell.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/histogram.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCellMain.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/graph.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/readKekule.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/permutations.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/permutations.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/auxil.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.binaryEditor" path="/Kekule/MinGW GCC/Kekule.exe"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/arraylist.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/arraylist.c"/>
 </editors>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="715" y="0"/>
-</item>
-<item historyLabel="graph.c" index="2">
-<position/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="729" y="0"/>
+<item historyLabel="mkCellMain.c" index="1">
+<position info="not_deleted" x="620" y="0"/>
 </item>
 <item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="872" y="0"/>
+<position info="not_deleted" x="745" y="0"/>
 </item>
-<item historyLabel="readKekule.c" index="3">
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4347" y="12"/>
+</item>
+<item historyLabel="permutations.h" index="3">
 <position/>
 </item>
-<item historyLabel="readKekule.c" index="3">
-<position/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4347" y="12"/>
 </item>
 <item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="873" y="0"/>
+<position info="not_deleted" x="752" y="0"/>
 </item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="1480" y="9"/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4347" y="12"/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="873" y="0"/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4412" y="0"/>
 </item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="584" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="873" y="0"/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="584" y="0"/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position/>
-</item>
-<item historyLabel="graph.c" index="2">
-<position info="not_deleted" x="1001" y="10"/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="730" y="0"/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="923" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="872" y="0"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="1480" y="9"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2157" y="0"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="1176" y="5"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="870" y="0"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2618" y="0"/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3787" y="0"/>
 </item>
 <item historyLabel="auxil.c" index="4">
-<position info="not_deleted" x="1033" y="9"/>
+<position info="not_deleted" x="1351" y="5"/>
 </item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2618" y="0"/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3869" y="0"/>
 </item>
-<item historyLabel="readKekule.c" index="3">
+<item historyLabel="histogram.c" index="0">
+<position info="not_deleted" x="255" y="9"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3869" y="0"/>
+</item>
+<item historyLabel="histogram.c" index="0">
+<position info="not_deleted" x="255" y="9"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3869" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4271" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4225" y="0"/>
+</item>
+<item historyLabel="mkCellMain.c" index="1">
+<position info="not_deleted" x="750" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4347" y="12"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4408" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3869" y="0"/>
+</item>
+<item historyLabel="histogram.c" index="0">
+<position info="not_deleted" x="255" y="9"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3869" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4704" y="0"/>
+</item>
+<item historyLabel="arraylist.h" index="5">
 <position/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="870" y="0"/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4704" y="0"/>
 </item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="923" y="0"/>
+<item historyLabel="arraylist.c" index="6">
+<position/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="869" y="0"/>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4704" y="0"/>
 </item>
-<item historyLabel="readKekule.c" index="3">
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="4452" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3020" y="15"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3156" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="1988" y="8"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="2500" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="1624" y="9"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="3154" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="2106" y="0"/>
+</item>
+<item historyLabel="arraylist.c" index="6">
+<position/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="2106" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="2400" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="940" y="7"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="1000" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="281" y="8"/>
+</item>
+<item historyLabel="histogram.c" index="0">
+<position info="not_deleted" x="623" y="0"/>
+</item>
+<item historyLabel="permutations.h" index="3">
+<position/>
+</item>
+<item historyLabel="histogram.c" index="0">
+<position info="not_deleted" x="623" y="0"/>
+</item>
+<item historyLabel="permutations.c" index="2">
 <position/>
 </item>
 <item historyLabel="auxil.c" index="4">
-<position info="not_deleted" x="5619" y="2"/>
+<position info="not_deleted" x="1351" y="5"/>
 </item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2110" y="0"/>
-</item>
-<item historyLabel="mkCell.c" index="0">
-<position info="not_deleted" x="923" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="869" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
+<item historyLabel="permutations.c" index="2">
 <position/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position/>
+<item historyLabel="arraylist.c" index="6">
+<position info="not_deleted" x="340" y="12"/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="873" y="0"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="1480" y="9"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2328" y="0"/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2293" y="0"/>
-</item>
-<item historyLabel="Kekule.exe" index="5">
-<position/>
-</item>
-<item historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2293" y="0"/>
-</item>
-<item historyLabel="Kekule.exe" index="5">
-<position/>
-</item>
-<item active="true" historyLabel="readKekule.c" index="3">
-<position info="not_deleted" x="2293" y="0"/>
+<item active="true" historyLabel="permutations.c" index="2">
+<position info="not_deleted" x="1135" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -474,14 +488,32 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.binaryEditor" name="Kekule.exe" tooltip="Kekule/MinGW GCC/Kekule.exe">
-<persistable path="/Kekule/MinGW GCC/Kekule.exe"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="arraylist.c" tooltip="Kekule/arraylist.c">
+<persistable path="/Kekule/arraylist.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="permutations.c" tooltip="Kekule/permutations.c">
+<persistable path="/Kekule/permutations.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="permutations.h" tooltip="Kekule/permutations.h">
+<persistable path="/Kekule/permutations.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="arraylist.h" tooltip="Kekule/arraylist.h">
+<persistable path="/Kekule/arraylist.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" tooltip="Kekule/cells.c">
+<persistable path="/Kekule/cells.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.c" tooltip="Kekule/histogram.c">
+<persistable path="/Kekule/histogram.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.c" tooltip="Kekule/auxil.c">
 <persistable path="/Kekule/auxil.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="readKekule.c" tooltip="Kekule/readKekule.c">
 <persistable path="/Kekule/readKekule.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.binaryEditor" name="Kekule.exe" tooltip="Kekule/MinGW GCC/Kekule.exe">
+<persistable path="/Kekule/MinGW GCC/Kekule.exe"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="graph.c" tooltip="Kekule/graph.c">
 <persistable path="/Kekule/graph.c"/>
@@ -492,23 +524,11 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.h" tooltip="Kekule/auxil.h">
 <persistable path="/Kekule/auxil.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.c" tooltip="Kekule/histogram.c">
-<persistable path="/Kekule/histogram.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="readKekule.h" tooltip="Kekule/readKekule.h">
 <persistable path="/Kekule/readKekule.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" tooltip="Kekule/cells.c">
-<persistable path="/Kekule/cells.c"/>
-</file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stdio.h" tooltip="C:/MinGW/include/stdio.h">
 <persistable path="C:\MinGW\include\stdio.h" project="Kekule"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" tooltip="Kekule/mkCellMain.c">
-<persistable path="/Kekule/mkCellMain.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mkCell.c" tooltip="Kekule/mkCell.c">
-<persistable path="/Kekule/mkCell.c"/>
 </file>
 </mruList>
 </workbench>
