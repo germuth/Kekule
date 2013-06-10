@@ -1,0 +1,25 @@
+package bitvectors;
+
+public class Permutations {
+
+	public static Cell firstVariant(Cell cell) {
+		//number of the ports
+		int rank = cell.getNumPorts();
+		Cell pe = somePHDVariant(rank, cell);
+		
+		return null;
+	}
+
+	/**
+	 * Cell must be centered
+	 * Permutes cell to become port Hist Descending PHD
+	 * @param rank
+	 * @param cell
+	 * @return
+	 */
+	private static Cell somePHDVariant(int rank, Cell cell) {
+		
+		return null;
+	}
+
+}

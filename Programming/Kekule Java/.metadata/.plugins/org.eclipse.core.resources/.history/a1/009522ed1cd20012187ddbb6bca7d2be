@@ -1,0 +1,38 @@
+package bitvectors;
+
+import java.util.Set;
+
+public class Permutations {
+
+	public static Cell firstVariant(Cell cell) {
+		//number of the ports
+		int rank = cell.getNumPorts();
+		Cell pe = somePHDVariant(rank, cell);
+		
+		return null;
+	}
+
+	/**
+	 * Cell must be centered
+	 * Permutes cell to become port Hist Descending PHD
+	 * destroys cell but returns new one to replace it
+	 * @param rank
+	 * @param cell
+	 * @return
+	 */
+	private static Cell somePHDVariant(int rank, Cell cell) {
+		int[] hh = new int[10];
+		Cell pe = below(rank); 
+		Cell pg = null;
+		return null;
+	}
+	
+	private static Cell below(int n){
+		Set<BitVector> set = new HashSet<BitVector>();
+		for(int i = 0; i < n; i++){
+			set.add(new BitVector(i));
+		}
+		return new Cell(set, 0);
+	}
+
+}

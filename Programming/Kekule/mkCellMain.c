@@ -12,12 +12,20 @@
 #include "histogram.h" 
 #include "mkCell.h"
 
-void normalize(int rank, int nr, Intstack cell) {
+/*
+Pyracylene5a16a {2 4 5  7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
+	  9-13, 10-12.
+*/
+void normalize(int rank, int nr, Intstack cell) {	
 	int pa;
 	Intstack nc = newIntstack(0, cell) ;
 	printf("Cell = ");
 	printCell(-1, cell) ;
 	toCenter(nc, &pa) ; /* see histogram.c */
+	
+	printf("\n");
+	printar(nc);
+	
 	printf("translated over '");
 	printPA(pa);
 	printf("' and normalized, gives:\n");
@@ -41,7 +49,7 @@ int main(int argc, char *argv[]) {
 	while (g) {
 		setRank(g->cP);
 		writeGraph(g);
-		a = kpa(g);
+		a = kpa(g);		
 #if 0
 		printCell(++nr, a);
 		if (isCentered(a)) {
@@ -52,6 +60,7 @@ int main(int argc, char *argv[]) {
 			freestack(a1);
 		} else printf("Not centered.\n");
 #endif
+		
 		normalize(g->cP, 0, a);
 		printf("\n");
 		freestack(a);

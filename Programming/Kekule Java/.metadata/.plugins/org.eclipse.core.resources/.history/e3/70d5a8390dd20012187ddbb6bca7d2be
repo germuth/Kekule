@@ -1,0 +1,50 @@
+package bitvectors;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ * 
+ * @author Aaron
+ *
+ */
+public class Utils {
+	
+	/**
+	 * 
+	 * @param unsorted
+	 * @return
+	 */
+	public static String sort(String unsorted){
+		char[] chars = unsorted.toCharArray();
+		Arrays.sort(chars);
+		return new String(chars);
+	}
+	
+	/**
+	 * Translates a set over a bitvector
+	 * @param portAssignment
+	 */
+	public void translate(Set<BitVectors> set, BitVector translation){
+		//if nothing to translate
+		if(translation.isEmpty()){
+			return;
+		}
+		//new set of translated port assignments
+		BitVector[] translated = new BitVector[this.size()];
+		
+		//iterate over all cells current port assignments
+		for(int i = 0; i < this.size(); i++){
+			BitVector bv = this.portAssignments[i];
+			//get symmetric difference of current and translation
+			BitVector symD = BitVector.symmetricDifference(
+					bv,
+					translation);
+			//place intersection in new port assignment set
+			translated[i] = symD;
+		}
+		
+		this.portAssignments = translated;
+	}
+	
+}

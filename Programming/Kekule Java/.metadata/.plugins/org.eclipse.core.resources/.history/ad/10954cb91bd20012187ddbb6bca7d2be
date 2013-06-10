@@ -1,0 +1,11 @@
+package bitvectors;
+
+public class Permutations {
+
+	public static Cell firstVariant(Cell cell) {
+		//number of the ports
+		int rank = cell.getNumPorts();
+		return null;
+	}
+
+}

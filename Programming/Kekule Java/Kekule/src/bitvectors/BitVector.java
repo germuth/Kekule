@@ -4,7 +4,7 @@ public class BitVector {
 	/**
 	 * Integer representing bitVector 
 	 */
-	private int number;
+	private final int number;
 	
 	public static BitVector symmetricDifference(BitVector a, BitVector b){
 		//^ is exclusive or
@@ -40,6 +40,45 @@ public class BitVector {
 		return this.number + " " + "(" + Integer.toBinaryString(number) + ")";
 	}
 	
+	public String getPA(int numPorts){
+		if(this.number == 0){
+			return "0";
+		}
+		else{
+			String ports = "";
+			for(int j = numPorts; j > 0; j--){
+				if( ( number & (1 << (j-1) ) ) != 0){
+					ports += (char)('a' + j - 1);
+				}
+			}
+			ports = Utils.sort(ports);
+			return ports;
+		}
+	}
+	
+	/**
+	 * counts the number of occurences in the bitvector
+	 * 10001001 = 3
+	 */
+	public int countBits(){
+		int amount = 0;
+		int x = this.number;
+		while( x > 0 ){
+			amount += x % 2;
+			x /= 2;
+		}
+		return amount;
+	}
+	
+	
+	/**
+	 * Avoids duplicates in Set
+	 */
+	@Override
+	public int hashCode() {
+		return this.number;
+	}
+
 	@Override
 	public boolean equals(Object obj){
 		BitVector another = (BitVector) obj;
@@ -79,7 +118,7 @@ public class BitVector {
 	 * Removes node n from this bitvector
 	 * @param n
 	 */
-	public void remove(int n){
+	public BitVector remove(int n){
 		//^ is exclusize or
 		//since n is node we want removed
 		//ie 000010000
@@ -88,7 +127,7 @@ public class BitVector {
 		//exclusive or gets
 		//   100100001
 		//which effectively removes that node
-		this.number ^= n;
+		return new BitVector(this.number ^ n);
 	}
 	
 	/**
@@ -113,9 +152,4 @@ public class BitVector {
 	public int getNumber() {
 		return number;
 	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
 }

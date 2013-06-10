@@ -82,8 +82,9 @@ void weightlist(Intstack cell) {
 
 int compareLex(int r, const int *h1, const int *h2) {
 	r--;
-	while (r >= 0 && h1[r] == h2[r])
+	while (r >= 0 && h1[r] == h2[r]){
 		r--;
+	}
 	return (r < 0 ? 0 : h1[r] - h2[r]);
 }
 
@@ -91,7 +92,9 @@ int compareL(const Intstack ce1, const Intstack ce2) {
 	int r = ce1->size - ce2->size;
 	if (r != 0)
 		return r;
-	return compareLex(ce1->size, ce1->it, ce2->it);
+	
+	int returned = compareLex(ce1->size, ce1->it, ce2->it);
+	return returned;
 }
 
 int compareW(const Intstack ce1, const Intstack ce2) {
@@ -141,10 +144,12 @@ void toCenter(Intstack cell, int *pa) {
 	wl = newIntstack(0, cell);
 	translate(cell->it[0], wl);
 	weightlist(wl);
+	
 	for (i = 1; i < cell->size; i++) {
 		owl = newIntstack(0, cell);
 		translate(cell->it[i], owl);
 		weightlist(owl);
+
 		if (compareL(owl, wl) < 0) {
 			k = i;
 			freestack(wl);
@@ -152,7 +157,9 @@ void toCenter(Intstack cell, int *pa) {
 		} else {
 			freestack(owl);
 		}
+		
 	}
+	
 	freestack(wl);
 	*pa = cell->it[k];
 	translate(cell->it[k], cell);
