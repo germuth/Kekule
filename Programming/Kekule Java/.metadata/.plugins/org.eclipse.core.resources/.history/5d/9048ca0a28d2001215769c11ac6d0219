@@ -2,7 +2,6 @@ package bitvectors;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -10,24 +9,28 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Reads in a graph and outputs it's Kekule cell
+ * Reads in a graph from graph.txt and attempts to find a Kekule cell for that graph. Normalizes the graph
+ * to classification found in Hesselink's paper
  * @author Aaron
  *
  */
 public class GraphtoCell {
-
-	private static File f;
-	private static Scanner s;
 	/**
-	 * @param args
-	 * @throws FileNotFoundException 
+	 * The file we are reading from. In this case "graphs.txt"
 	 */
+	private static File f;
+	/**
+	 * The scanner which reads from the file. 
+	 */
+	private static Scanner s;
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		f = new File("graphs.txt");
 		s = new Scanner(f);
 		Graph inputGraph = null;
 		
 		try{
+			//read in first graph from input
 			inputGraph = readGraph();			
 		} catch(NoSuchElementException e){
 			System.out.println("file invalid");
@@ -35,11 +38,14 @@ public class GraphtoCell {
 		}
 		
 		while(inputGraph != null){
-			Cell kekule = makeCell(inputGraph.getNodeVector(), inputGraph);
+			Set<BitVector> kCell = makeCell(inputGraph.getNodeVector(), inputGraph);
+			Cell kekule = new Cell(kCell, inputGraph.getNumPorts());
 			
-			kekule.setNumPorts(inputGraph.getNumPorts());
+			kekule.sortBySize();
 			
-			System.out.println(kekule.toString());
+			System.out.println(kekule.printUnweighted());
+			
+			kekule.normalize();
 		
 			try{
 				inputGraph = readGraph();
@@ -50,10 +56,19 @@ public class GraphtoCell {
 		
 	}
 	
-	private static Cell makeCell(BitVector bvNodes, Graph g){
+	/**
+	 * Main method which makes a cell from a graph. Uses a bitVector bvNodes, which
+	 * is the set of nodes we are currently considering
+	 * 100101 would be 1st, 3rd, and 6th node. Uses recursion by removing componetns 
+	 * of the graph and finding the Kekule cell of smaller graphs.
+	 * @param bvNodes
+	 * @param g
+	 * @return Set of Bit Vectors represnting the port assignments of the graph
+	 */
+	private static Set<BitVector> makeCell(BitVector bvNodes, Graph g){
 		
-		Cell kekuleCell = new Cell();
-		Cell addend = new Cell();
+		Set<BitVector> kekuleCell = new HashSet<BitVector>();
+		Set<BitVector> addend = new HashSet<BitVector>();
 		
 		BitVector ports = g.getPortVector();
 		Set<BitVector> edges = g.getEdges();
@@ -78,7 +93,7 @@ public class GraphtoCell {
 			}
 			
 			
-			//treat ndh(u,g)
+			//treat as ndh(u,g)
 			//iterate over all edges
 			Iterator<BitVector> i = edges.iterator();
 			while(i.hasNext()){
@@ -102,15 +117,15 @@ public class GraphtoCell {
 						//find sub cell
 						addend = makeCell(newNodes, g);
 						
-						//create bitvector we will use as translation
+						//create bit vector we will use as translation
 						BitVector portAssignment = BitVector.intersection(
 								ports,
 								new BitVector(nodeU + nodeV) );
-						//translate over port assignment bitvector
-						addend.translate(portAssignment);
+						//translate over port assignment bit vector
+						addend = Utils.translate(addend, portAssignment);
 						
 						//take union of answer and addend
-						kekuleCell = Cell.union(
+						kekuleCell = Utils.union(
 								kekuleCell,
 								addend );
 										
@@ -123,9 +138,25 @@ public class GraphtoCell {
 	}
 	
 	/**
-	 * Reads a single graph from graphs.txt and returns it as Graph object
-	 * @return
-	 * @throws FileNotFoundException
+	 * Reads a single graph from graphs.txt and returns it as Graph object. 
+	 * Graphs are kept in the following format
+	 * 
+	 * Name
+	 * #Nodes #Ports
+	 * Ports
+	 * Edges
+	 * Extra Edges
+	 * 
+	 * For example:
+	 * 
+	 * aMoleculeName
+	 * 7 3
+	 * 0 1 2
+	 * 0-1-2-3-4-6
+	 * 4-5, 5-6
+	 * 
+	 * @return Graph object read from text file
+	 * @throws FileNotFoundException, if file not found
 	 */
 	private static Graph readGraph() throws NoSuchElementException{
 		
@@ -137,11 +168,13 @@ public class GraphtoCell {
 		
 		String ports = s.nextLine();
 		
+		//parses close edge format "0-1-2-3"
 		int[] portRemapping = getPortPermutation(numNodes, numPorts, ports);
 		
 		String inputEdges = s.nextLine();
 		String inputExtraEdges = s.nextLine();
 		
+		//parses extra edge format "0-1, 1-2"
 		Set<String> edges = parseForEdgesCompact(inputEdges, portRemapping);
 		
 		if(!inputExtraEdges.isEmpty()){
@@ -154,12 +187,16 @@ public class GraphtoCell {
 	}
 	
 	/**
-	 * Remaps the nodes so the ports are the first 0 - numPorts nodes. This allows the edge numbers to be changed
-	 * based off of the new node permutation
+	 * Remaps the nodes so the ports are the first 0 - numPorts nodes.
+	 * This allows the edge numbers to be changed
+	 * based off of the new node permutation. This is what makes the difference 
+	 * between what nodes your ports are on. In stead of moving the algorithm to
+	 * our ports, we move every other node around so the ports are first.
 	 */
 	private static int[] getPortPermutation(int nodeNum, int portNum, String ports){
 		int[] remapping = new int[nodeNum];
 		
+		//fill with below zero
 		for(int i = 0; i < remapping.length; i++){
 			remapping[i] = -1;
 		}
@@ -179,6 +216,7 @@ public class GraphtoCell {
 				remapping[i] = currentNode++;
 			}
 		}
+		s.close();
 		
 		return remapping;
 	}
@@ -216,6 +254,7 @@ public class GraphtoCell {
 		while(index < edgeArray.length){
 			first = second;
 			second = edgeArray[index];
+			second = second.trim();
 			index++;
 			
 			//convert first and second to ints

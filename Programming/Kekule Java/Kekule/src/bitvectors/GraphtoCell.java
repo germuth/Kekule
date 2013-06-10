@@ -9,38 +9,42 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Reads in a graph and outputs it's Kekule cell
+ * Reads in a graph from graph.txt and attempts to find a Kekule cell for that graph. Normalizes the graph
+ * to classification found in Hesselink's paper
  * @author Aaron
  *
  */
 public class GraphtoCell {
-
-	private static File f;
-	private static Scanner s;
 	/**
-	 * @param args
-	 * @throws FileNotFoundException 
+	 * The file we are reading from. In this case "graphs.txt"
 	 */
+	private static File f;
+	/**
+	 * The scanner which reads from the file. 
+	 */
+	private static Scanner s;
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		f = new File("graphs.txt");
 		s = new Scanner(f);
 		Graph inputGraph = null;
 		
 		try{
+			//read in first graph from input
 			inputGraph = readGraph();			
 		} catch(NoSuchElementException e){
 			System.out.println("file invalid");
 			System.exit(0);
 		}
-		
+		//while another graph can be read from input
 		while(inputGraph != null){
 			Set<BitVector> kCell = makeCell(inputGraph.getNodeVector(), inputGraph);
 			Cell kekule = new Cell(kCell, inputGraph.getNumPorts());
 			
 			kekule.sortBySize();
-			
+			//print Kekule cell of graph before normalization
 			System.out.println(kekule.printUnweighted());
-			
+			//normalize graph to fit classification by Hesselink
 			kekule.normalize();
 		
 			try{
@@ -52,6 +56,15 @@ public class GraphtoCell {
 		
 	}
 	
+	/**
+	 * Main method which makes a cell from a graph. Uses a bitVector bvNodes, which
+	 * is the set of nodes we are currently considering
+	 * 100101 would be 1st, 3rd, and 6th node. Uses recursion by removing componetns 
+	 * of the graph and finding the Kekule cell of smaller graphs.
+	 * @param bvNodes
+	 * @param g
+	 * @return Set of Bit Vectors represnting the port assignments of the graph
+	 */
 	private static Set<BitVector> makeCell(BitVector bvNodes, Graph g){
 		
 		Set<BitVector> kekuleCell = new HashSet<BitVector>();
@@ -80,7 +93,7 @@ public class GraphtoCell {
 			}
 			
 			
-			//treat ndh(u,g)
+			//treat as ndh(u,g)
 			//iterate over all edges
 			Iterator<BitVector> i = edges.iterator();
 			while(i.hasNext()){
@@ -112,7 +125,6 @@ public class GraphtoCell {
 						addend = Utils.translate(addend, portAssignment);
 						
 						//take union of answer and addend
-						
 						kekuleCell = Utils.union(
 								kekuleCell,
 								addend );
@@ -126,9 +138,25 @@ public class GraphtoCell {
 	}
 	
 	/**
-	 * Reads a single graph from graphs.txt and returns it as Graph object
-	 * @return
-	 * @throws FileNotFoundException
+	 * Reads a single graph from graphs.txt and returns it as Graph object. 
+	 * Graphs are kept in the following format
+	 * 
+	 * Name
+	 * #Nodes #Ports
+	 * Ports
+	 * Edges
+	 * Extra Edges
+	 * 
+	 * For example:
+	 * 
+	 * aMoleculeName
+	 * 7 3
+	 * 0 1 2
+	 * 0-1-2-3-4-6
+	 * 4-5, 5-6
+	 * 
+	 * @return Graph object read from text file
+	 * @throws FileNotFoundException, if file not found
 	 */
 	private static Graph readGraph() throws NoSuchElementException{
 		
@@ -140,11 +168,13 @@ public class GraphtoCell {
 		
 		String ports = s.nextLine();
 		
+		//parses close edge format "0-1-2-3"
 		int[] portRemapping = getPortPermutation(numNodes, numPorts, ports);
 		
 		String inputEdges = s.nextLine();
 		String inputExtraEdges = s.nextLine();
 		
+		//parses extra edge format "0-1, 1-2"
 		Set<String> edges = parseForEdgesCompact(inputEdges, portRemapping);
 		
 		if(!inputExtraEdges.isEmpty()){
@@ -157,12 +187,16 @@ public class GraphtoCell {
 	}
 	
 	/**
-	 * Remaps the nodes so the ports are the first 0 - numPorts nodes. This allows the edge numbers to be changed
-	 * based off of the new node permutation
+	 * Remaps the nodes so the ports are the first 0 - numPorts nodes.
+	 * This allows the edge numbers to be changed
+	 * based off of the new node permutation. This is what makes the difference 
+	 * between what nodes your ports are on. In stead of moving the algorithm to
+	 * our ports, we move every other node around so the ports are first.
 	 */
 	private static int[] getPortPermutation(int nodeNum, int portNum, String ports){
 		int[] remapping = new int[nodeNum];
 		
+		//fill with below zero
 		for(int i = 0; i < remapping.length; i++){
 			remapping[i] = -1;
 		}

@@ -2,7 +2,6 @@ package bitvectors;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -10,13 +9,19 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Reads in a graph and outputs it's Kekule cell
+ * Reads in a graph from graph.txt and attempts to find a Kekule cell for that graph. Normalizes the graph
+ * to classification found in Hesselink's paper
  * @author Aaron
  *
  */
 public class GraphtoCell {
-
+	/**
+	 * The file we are reading from. In this case "graphs.txt"
+	 */
 	private static File f;
+	/**
+	 * The scanner which reads from the file. 
+	 */
 	private static Scanner s;
 	/**
 	 * @param args
@@ -35,10 +40,14 @@ public class GraphtoCell {
 		}
 		
 		while(inputGraph != null){
-			Cell kekule = makeCell(inputGraph.getNodeVector(), inputGraph);
-			kekule.setNumPorts(inputGraph.getNumPorts());
+			Set<BitVector> kCell = makeCell(inputGraph.getNodeVector(), inputGraph);
+			Cell kekule = new Cell(kCell, inputGraph.getNumPorts());
 			
-			System.out.println(kekule.toString());
+			kekule.sortBySize();
+			
+			System.out.println(kekule.printUnweighted());
+			
+			kekule.normalize();
 		
 			try{
 				inputGraph = readGraph();
@@ -49,10 +58,10 @@ public class GraphtoCell {
 		
 	}
 	
-	private static Cell makeCell(BitVector bvNodes, Graph g){
+	private static Set<BitVector> makeCell(BitVector bvNodes, Graph g){
 		
-		Cell kekuleCell = new Cell();
-		Cell addend = new Cell();
+		Set<BitVector> kekuleCell = new HashSet<BitVector>();
+		Set<BitVector> addend = new HashSet<BitVector>();
 		
 		BitVector ports = g.getPortVector();
 		Set<BitVector> edges = g.getEdges();
@@ -66,7 +75,7 @@ public class GraphtoCell {
 			//does not remove it
 			int nodeU = bvNodes.firstNode();
 			//remove vertex from nodes
-			bvNodes.remove(nodeU);
+			bvNodes = bvNodes.remove(nodeU);
 			
 			if(ports.contains(nodeU)){
 				//place new bit vector to ensure different object
@@ -87,7 +96,7 @@ public class GraphtoCell {
 					
 					//remove node U from edge
 					BitVector newEdge = new BitVector(edge);
-					newEdge.remove(nodeU);
+					newEdge = newEdge.remove(nodeU);
 					//grab other node from edge
 					int nodeV = newEdge.firstNode();
 							
@@ -96,20 +105,21 @@ public class GraphtoCell {
 						
 						//remove v from nodes
 						BitVector newNodes = new BitVector(bvNodes);
-						newNodes.remove(nodeV);
+						newNodes = newNodes.remove(nodeV);
 						
 						//find sub cell
 						addend = makeCell(newNodes, g);
 						
-						//create bitvector we will use as translation
+						//create bit vector we will use as translation
 						BitVector portAssignment = BitVector.intersection(
 								ports,
 								new BitVector(nodeU + nodeV) );
-						//translate over port assignment bitvector
-						addend.translate(portAssignment);
+						//translate over port assignment bit vector
+						addend = Utils.translate(addend, portAssignment);
 						
 						//take union of answer and addend
-						kekuleCell = Cell.union(
+						
+						kekuleCell = Utils.union(
 								kekuleCell,
 								addend );
 										
@@ -178,6 +188,7 @@ public class GraphtoCell {
 				remapping[i] = currentNode++;
 			}
 		}
+		s.close();
 		
 		return remapping;
 	}
@@ -200,19 +211,27 @@ public class GraphtoCell {
 		int index = 0;
 		String first = edgeArray[index];
 		index++;
+		first = first.trim();
 		String second = edgeArray[index];
 		index++;
+		second = second.trim();
 		
-		edges.add(first + " " + second);
+		//convert first and second to ints
+		int fir = Integer.parseInt(first);
+		int sec = Integer.parseInt(second);
+		
+		//use remapping
+		edges.add(remapping[fir] + " " + remapping[sec]);
 		
 		while(index < edgeArray.length){
 			first = second;
 			second = edgeArray[index];
+			second = second.trim();
 			index++;
 			
 			//convert first and second to ints
-			int fir = Integer.parseInt(first);
-			int sec = Integer.parseInt(second);
+			fir = Integer.parseInt(first);
+			sec = Integer.parseInt(second);
 			
 			//use remapping
 			edges.add(remapping[fir] + " " + remapping[sec]);
