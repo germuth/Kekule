@@ -49,6 +49,14 @@ public class Utils {
 		return translated;
 	}
 	
+	public static Set<BitVector> arToSet(BitVector[] ar){
+		Set<BitVector> bvSet = new HashSet<BitVector>();
+		for(BitVector bv: ar){
+			bvSet.add(bv);
+		}
+		return bvSet;
+	}
+	
 	/**
 	 *  
 	 * @param a

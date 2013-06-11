@@ -13,6 +13,7 @@ typedef struct alist* Arraylist ;
 
 Arraylist newArraylist(int upb) ;
 void freeArraylist(Arraylist a) ;
+void printArrayList(Arraylist a);
 void reportACnt() ;
 
 Arraylist putItem(void* x, Arraylist a) ;

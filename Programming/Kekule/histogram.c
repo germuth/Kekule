@@ -93,8 +93,8 @@ int compareL(const Intstack ce1, const Intstack ce2) {
 	if (r != 0)
 		return r;
 	
-	int returned = compareLex(ce1->size, ce1->it, ce2->it);
-	return returned;
+	return compareLex(ce1->size, ce1->it, ce2->it);
+	
 }
 
 int compareW(const Intstack ce1, const Intstack ce2) {

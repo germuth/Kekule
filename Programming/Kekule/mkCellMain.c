@@ -23,9 +23,6 @@ void normalize(int rank, int nr, Intstack cell) {
 	printCell(-1, cell) ;
 	toCenter(nc, &pa) ; /* see histogram.c */
 	
-	printf("\n");
-	printar(nc);
-	
 	printf("translated over '");
 	printPA(pa);
 	printf("' and normalized, gives:\n");

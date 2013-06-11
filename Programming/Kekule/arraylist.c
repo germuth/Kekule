@@ -34,6 +34,19 @@ void freeArraylist(Arraylist a) {
   }
 }
 
+void printArrayList(Arraylist a){
+	int i = 0;
+	Intstack t;
+	printf("Array List Size: %d", a->size);
+	printf("\n");
+	for(i = 0; i < a->size; i++){
+		t = (Intstack)a->it[i];
+		printf("Intstack %d%: size: ", i, t->size);
+		printar(t);
+		printf("\n");
+	}
+}
+
 Arraylist putItem(void *x, Arraylist a) {
   void* *b;
   if (a->size == a->upb) {

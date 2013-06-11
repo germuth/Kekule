@@ -58,7 +58,7 @@ Arraylist getPerm(int rank) {
 	for (i = 0; i < perm[rank-1]->size; i++) {
 		y = perm[rank-1]->it[i];
 		for (j = 0; j < rank; j++) {
-			z = newIntstack(rank, NULL) ;
+			z = newIntstack(rank, NULL);
 			for (k = 0; k < j; k++)
 				z->it[k] = y->it[k];
 			z->it[j] = rank - 1;
@@ -166,6 +166,7 @@ Intstack somePHDvariant(int rank, Intstack cell) {
 	int i, p, j, q;
 	setRank(rank) ;
 	portHisto(cell, hh) ;
+	
 	/* insertion sort of hh, invariant: hh[0..i) is sorted */
 	i = 1;
 	while (i < rank) {
@@ -181,6 +182,7 @@ Intstack somePHDvariant(int rank, Intstack cell) {
 		hh[j] = p;
 		pe->it[j] = q;
 	}
+	
 	pg->size = rank;
 	p = 1;
 	for (i = 0; i < rank; i++) {
@@ -188,6 +190,7 @@ Intstack somePHDvariant(int rank, Intstack cell) {
 		p <<= 1;
 	}
 	freestack(pe) ;
+	
 	pe = permuteCell(cell, pg) ;
 	freestack(pg) ;
 	freestack(cell) ;
@@ -195,8 +198,10 @@ Intstack somePHDvariant(int rank, Intstack cell) {
 }
 
 Intstack firstVariant(int rank, Intstack cell) {
+		
 	Intstack pe = somePHDvariant(rank, cell) ;
 	Arraylist ar = rawPermVariants(rank, pe) ;
+
 	int i;
 	freestack(pe) ;
 	pe = ar->it[0];

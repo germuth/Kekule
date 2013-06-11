@@ -15,6 +15,11 @@ public class Cell {
 	 */
 	private BitVector[] portAssignments;
 	
+	public Cell(BitVector[] set){
+		this.portAssignments = set;
+		this.numPorts = 0;
+	}
+	
 	public Cell(Set<BitVector> set, int numPorts){
 		this.portAssignments = new BitVector[set.size()];
 		int index = 0;
@@ -26,7 +31,12 @@ public class Cell {
 	}
 	
 	public Cell(Cell c){
-		this.portAssignments = c.portAssignments;
+		
+		this.portAssignments = new BitVector[c.portAssignments.length];
+		for(int i = 0; i < c.portAssignments.length; i++){
+			BitVector temp = new BitVector(c.portAssignments[i].getNumber());
+			this.portAssignments[i] = temp;
+		}
 		this.numPorts = c.numPorts;
 	}
 	
@@ -109,7 +119,7 @@ public class Cell {
 		System.out.println("Translated over \"" +pa.getPA(this.numPorts) + "\"" );
 		System.out.println("And normalized gets:");
 		Cell newKekule = Permutations.firstVariant(this);
-		System.out.println(newKekule.toString());
+		this.portAssignments = newKekule.portAssignments;
 	}
 	
 	/**
@@ -130,7 +140,7 @@ public class Cell {
 			
 			//w2
 			
-			if( compareL(owl, wl) < 0 ){
+			if( Histogram.compareL(owl, wl) < 0 ){
 				k = i;
 				wl = null;
 				wl = owl;
@@ -147,27 +157,6 @@ public class Cell {
 		int portAssignment = this.portAssignments[k].getNumber();
 		this.translate(this.portAssignments[k]);
 		return portAssignment;
-	}
-	
-	public int compareL(Cell one, Cell two){
-		
-		int diff = one.portAssignments.length - two.portAssignments.length;
-		if(diff != 0){
-			return diff;
-		}
-		
-		return compareLex(one.portAssignments.length, one, two);
-	}
-	
-	public int compareLex(int diff, Cell one, Cell two){
-		diff--;
-		while(diff >= 0 && one.portAssignments[diff].equals(two.portAssignments[diff])){
-			diff--;
-		}
-		if(diff < 0){
-			return 0;
-		}
-		return one.portAssignments[diff].getNumber() - two.portAssignments[diff].getNumber();
 	}
 	
 	public void printList(){
@@ -197,7 +186,7 @@ public class Cell {
 		String[] portAssigns = new String[this.size()];
 		int index = 0;
 		int[] bitVectors = new int[this.size()];
-		String answer = "Unweighted Cell: ";
+		String answer = "Cell: ";
 
 		for (BitVector bv : this.portAssignments) {
 			bitVectors[index++] = bv.getNumber();
@@ -246,7 +235,7 @@ public class Cell {
 		this.numPorts = numPorts;
 	}
 	
-	public BitVector[] getPortAssignments(){
+	public BitVector[] getPA(){
 		return this.portAssignments;
 	}
 }

@@ -41,11 +41,16 @@ public class GraphtoCell {
 			Set<BitVector> kCell = makeCell(inputGraph.getNodeVector(), inputGraph);
 			Cell kekule = new Cell(kCell, inputGraph.getNumPorts());
 			
+			System.out.println(inputGraph.getName() + ":");
+			
 			kekule.sortBySize();
 			//print Kekule cell of graph before normalization
-			System.out.println(kekule.printUnweighted());
+			System.out.println("Unweighted " + kekule.printUnweighted());
 			//normalize graph to fit classification by Hesselink
 			kekule.normalize();
+			
+			System.out.println(kekule.toString());
+			System.out.println("");
 		
 			try{
 				inputGraph = readGraph();

@@ -2,4 +2,11 @@
 <section name="Workbench">
 	<section name="completion_proposal_size">
 	</section>
+	<section name="PDOMSearchPage">
+		<item value="227191" key="searchFlags"/>
+		<item value="false" key="caseSensitive"/>
+		<list key="previousPatterns">
+			<item value="permuteCell"/>
+		</list>
+	</section>
 </section>

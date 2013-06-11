@@ -493,3 +493,12 @@ java.io.IOException: target is suspended
 	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
 	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
 	at java.lang.Thread.run(Unknown Source)
+!SESSION 2013-06-11 08:36:11.691 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 1 2013-06-11 09:12:00.707
+!MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.
