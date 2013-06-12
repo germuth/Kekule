@@ -4,7 +4,27 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Set;
-
+/**
+ * Cell
+ * 
+ * This class represents a Cell from Discrete Kekule Theory. A cell consists of a set of port assignments. 
+ * A port assignment is the set of ports which contain a double bond in this Kekule state or resonance contributor.
+ * In this way, A Kekule state shows which ports have a double bond in all possible resoance states of a molecule. A 
+ * Kekule Cell has been shown to fully describe the electrical switching behaviour seen in some aromatic hydrocarbons.
+ * 
+ * Ports are named from 'a' to 'z' as the number of ports increase. A port assignment is visualized as follows
+ * 0 or abc or abcde
+ * Above shows 3 different ports assignments, one where all ports have no double bond, one where a, b, and c have a double
+ * bond, and finally one where all 5 ports contain a double bond. 
+ * 
+ * Each port assignment is contained within the BitVector data structure. 
+ * 
+ * A Kekule cell is visualized as follows
+ * {0, ab, ac, abcd, abcde}
+ * 
+ * @author Aaron
+ *
+ */
 public class Cell {
 	/**
 	 * Number of ports in the cell
@@ -14,15 +34,28 @@ public class Cell {
 	 * Set of bit vectors, each representing a port assignment of this cell
 	 */
 	private BitVector[] portAssignments;
-	
+	/**
+	 * Creates a new bitvector based on a set (array) or port assignments.
+	 * Number of ports is initialized to 0. If you wish to visualize this
+	 * cell you must set the port number
+	 * @param set, array of BitVectors
+	 */
 	public Cell(BitVector[] set){
 		this.portAssignments = set;
 		this.numPorts = 0;
 	}
-	
+	/**
+	 * Creates a new BitVector based on an actual set of port assignments. 
+	 * Resulting cell will be unordered, as sets have no order.
+	 * 
+	 * @param set, Set of BitVectors
+	 * @param numPorts, number of ports
+	 */
 	public Cell(Set<BitVector> set, int numPorts){
 		this.portAssignments = new BitVector[set.size()];
 		int index = 0;
+		//convert set to array
+		//order of array is meaningless here
 		Iterator<BitVector> i = set.iterator();
 		while(i.hasNext()){
 			this.portAssignments[index++] = (BitVector) i.next();
@@ -30,8 +63,11 @@ public class Cell {
 		this.numPorts = numPorts;
 	}
 	
+	/**
+	 * Creates a new cell, which is duplicate of the supplied cell
+	 * @param c, cell to copy
+	 */
 	public Cell(Cell c){
-		
 		this.portAssignments = new BitVector[c.portAssignments.length];
 		for(int i = 0; i < c.portAssignments.length; i++){
 			BitVector temp = new BitVector(c.portAssignments[i].getNumber());
@@ -41,13 +77,14 @@ public class Cell {
 	}
 	
 	/**
-	 * sorts this cell
+	 * Performs a weighted Sort on this cell. This sorts all port assignments of this cell
+	 * according to rules defined in Hesselink's Paper.
 	 */
 	public void weightedSort(){
-		//11 is rank limit
 		//due to integer overflow
-		//move to static variable
-		int[] we = new int[11];
+		//can only have limited amount of nodes
+		//this is max rank
+		int[] we = new int[Permutations.MAX_RANK];
 		//port assignments in array
 		int x;
 		
@@ -87,7 +124,7 @@ public class Cell {
 	}
 	
 	/**
-	 * Translates a cell over port assignment 
+	 * Translates a cell over a port assignment.
 	 * @param portAssignment
 	 */
 	public void translate(BitVector translation){
@@ -112,19 +149,26 @@ public class Cell {
 		this.portAssignments = translated;
 	}
 	
+	/**
+	 * Normalizes this cell so it can be classified according to the specifications
+	 * in Hesselink's Paper.
+	 */
 	public void normalize(){
-		int PA = this.center();
+		//sort port assignments by their bitvector sizes
 		this.sortBySize();
-		BitVector pa = new BitVector(PA);
+		//create a new bit Vector holding the port assignment that is the center
+		//of this cell, along with translate across center
+		BitVector pa = new BitVector(this.center());
 		System.out.println("Translated over \"" +pa.getPA(this.numPorts) + "\"" );
 		System.out.println("And normalized gets:");
+		//normalize
 		Cell newKekule = Permutations.firstVariant(this);
 		this.portAssignments = newKekule.portAssignments;
 	}
 	
 	/**
-	 * Translate cell so it is centered
-	 * @return
+	 * Finds the center of this cell, and translates it across it
+	 * @return port assignment which is the center
 	 */
 	public int center(){
 		int k = 0;
@@ -159,6 +203,9 @@ public class Cell {
 		return portAssignment;
 	}
 	
+	/**
+	 * Prints the list of all port assignments of this Cell
+	 */
 	public void printList(){
 		String answer = "";
 		for(int i = 0; i < this.size(); i++){
@@ -167,6 +214,10 @@ public class Cell {
 		System.out.println(answer);
 	}
 	
+	/**
+	 * Sorts the port assignments of this cell by the size of the corresponding
+	 * BitVectors
+	 */
 	public void sortBySize(){
 		Arrays.sort(this.portAssignments, new Comparator<BitVector>(){
 			@Override
@@ -182,6 +233,12 @@ public class Cell {
 		});
 	}
 	
+	/**
+	 * Prints a final visualization of this cell. 
+	 * //TODO Should rename method
+	 * it doesn't print it returns a string
+	 * @return, String
+	 */
 	public String printUnweighted(){
 		String[] portAssigns = new String[this.size()];
 		int index = 0;

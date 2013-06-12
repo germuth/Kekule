@@ -9,8 +9,20 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Reads in a graph from graph.txt and attempts to find a Kekule cell for that graph. Normalizes the graph
- * to classification found in Hesselink's paper
+ * Graph to Cell 
+ * 
+ * This class reads in graphs from graphs.txt and attempts to find a Kekule cell 
+ * for each given graph. Graphs are then centered, and normalized according 
+ * to the classification found in Hesselink's paper.
+ * 
+ * Graphs are read in from graphs.txt in the following format:
+ * 
+ * Graph name
+ * #nodes #ports
+ * the set of ports
+ * edges
+ * extra edges (if necessary)
+ * 
  * @author Aaron
  *
  */
@@ -24,6 +36,11 @@ public class GraphtoCell {
 	 */
 	private static Scanner s;
 	
+	/**
+	 * Main method
+	 * @param args
+	 * @throws FileNotFoundException, if file not found, program will exit
+	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		f = new File("graphs.txt");
 		s = new Scanner(f);
@@ -32,23 +49,29 @@ public class GraphtoCell {
 		try{
 			//read in first graph from input
 			inputGraph = readGraph();			
-		} catch(NoSuchElementException e){
+		}
+		catch(NoSuchElementException e){
 			System.out.println("file invalid");
 			System.exit(0);
 		}
+		
 		//while another graph can be read from input
 		while(inputGraph != null){
+			//create Kekule cell for graph
 			Set<BitVector> kCell = makeCell(inputGraph.getNodeVector(), inputGraph);
 			Cell kekule = new Cell(kCell, inputGraph.getNumPorts());
-			
+			//print graph name
 			System.out.println(inputGraph.getName() + ":");
 			
+			//briefly sort cell for output
 			kekule.sortBySize();
+			
 			//print Kekule cell of graph before normalization
 			System.out.println("Unweighted " + kekule.printUnweighted());
 			//normalize graph to fit classification by Hesselink
 			kekule.normalize();
 			
+			//print after
 			System.out.println(kekule.toString());
 			System.out.println("");
 		
@@ -62,13 +85,17 @@ public class GraphtoCell {
 	}
 	
 	/**
-	 * Main method which makes a cell from a graph. Uses a bitVector bvNodes, which
+	 * Makes a cell from a graph. Uses a bitVector bvNodes, which
 	 * is the set of nodes we are currently considering
-	 * 100101 would be 1st, 3rd, and 6th node. Uses recursion by removing componetns 
+	 * 100101 would be 1st, 3rd, and 6th node. 
+	 * Uses recursion by removing components 
 	 * of the graph and finding the Kekule cell of smaller graphs.
-	 * @param bvNodes
-	 * @param g
-	 * @return Set of Bit Vectors represnting the port assignments of the graph
+	 * 
+	 * This all follows the Section 4.1 of Hesselink's Paper 
+	 * 
+	 * @param bvNodes, set of nodes in BitVector form
+	 * @param g, graph we want a Kekule cell for
+	 * @return Set of Bit Vectors representing the port assignments of the graph
 	 */
 	private static Set<BitVector> makeCell(BitVector bvNodes, Graph g){
 		
@@ -96,7 +123,6 @@ public class GraphtoCell {
 			else{
 				kekuleCell.clear();
 			}
-			
 			
 			//treat as ndh(u,g)
 			//iterate over all edges
@@ -197,6 +223,11 @@ public class GraphtoCell {
 	 * based off of the new node permutation. This is what makes the difference 
 	 * between what nodes your ports are on. In stead of moving the algorithm to
 	 * our ports, we move every other node around so the ports are first.
+	 *  
+	 * @param nodeNum, the number of nodes
+	 * @param portNum, the number of ports
+	 * @param ports, a string of ports
+	 * @return port remapping array
 	 */
 	private static int[] getPortPermutation(int nodeNum, int portNum, String ports){
 		int[] remapping = new int[nodeNum];

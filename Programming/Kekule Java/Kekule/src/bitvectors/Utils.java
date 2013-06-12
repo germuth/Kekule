@@ -5,16 +5,22 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
+ * Utils
  * 
+ * Utility class used to hold helper functions for the rest of the program
  * @author Aaron
  *
  */
 public class Utils {
 	
 	/**
+	 * Sorts a string of characters
+	 * For example, 
 	 * 
-	 * @param unsorted
-	 * @return
+	 * dca -> acd
+	 * 
+	 * @param unsorted String
+	 * @return, sorted String
 	 */
 	public static String sort(String unsorted){
 		char[] chars = unsorted.toCharArray();
@@ -23,8 +29,10 @@ public class Utils {
 	}
 	
 	/**
-	 * Translates a set over a bitvector
-	 * @param portAssignment
+	 * Translates a set of BitVectors over a BitVector. Alternate method to translate in cell, which 
+	 * translates all port assignments of that cell over the bitVector. This can be used seperately from
+	 * any cell Objects.
+	 * @param bitvector we want to translate over
 	 */
 	public static Set<BitVector> translate(Set<BitVector> set, BitVector translation){
 		//if nothing to translate
@@ -49,6 +57,12 @@ public class Utils {
 		return translated;
 	}
 	
+	/**
+	 * Converts an array of BitVectors to a Set of Bitvectors. 
+	 * Carefull: Order is lost
+	 * @param ar, array to copy
+	 * @return set, containing all elements the array had
+	 */
 	public static Set<BitVector> arToSet(BitVector[] ar){
 		Set<BitVector> bvSet = new HashSet<BitVector>();
 		for(BitVector bv: ar){
@@ -58,10 +72,11 @@ public class Utils {
 	}
 	
 	/**
-	 *  
-	 * @param a
-	 * @param b
-	 * @return
+	 * Takes the union of two Sets of BitVectors. Returns a new Set containing
+	 * all of elements of both sets
+	 * @param a, first Bitvector set
+	 * @param b, second BitVector set
+	 * @return their union
 	 */
 	public static Set<BitVector> union(Set<BitVector> a, Set<BitVector> b){
 		Set<BitVector> union = new HashSet<BitVector>();

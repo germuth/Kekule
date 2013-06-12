@@ -3,8 +3,21 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * In Kekule theory, a graph is characterized by the number of ports (cP), the number of nodes (cN), and 
- * the sequence of undirected edges between the nodes. cP <= cN <= 32. 
+ * Graph
+ * 
+ * This represents an undirected, simple, (connected? not yet) graph.
+ * 
+ * In Kekule theory, certain nodes of the graphs are called ports and represent connections outside the graph. 
+ * The graph keeps track of the number of total nodes, the number of ports, and which nodse are ports. 
+ * The Edges of this graph are stored in an adjacency matrix, although each Edge is converted to BitVector
+ * later in the program.
+ * 
+ * The Number of Nodes must never exceed 32 since the set of nodes is represented in BitVectors, and the BitVector
+ * for a set of 32 size would overflow the integer.
+ * cP <= cN <= 32
+ * 
+ * TODO this classed could be re-worked to conform with the rest of the program better
+ * 
  * @author Aaron
  *
  */
@@ -66,6 +79,10 @@ public class Graph {
 		this.portSet = ports;
 	}
 	
+	/**
+	 * Returns the set of nodes represented in a BitVector
+	 * @return, bitvector of all nodes
+	 */
 	public BitVector getNodeVector(){
 		//bitVector = 1 * 2 ^ nodes   - 1
 		//gives you x 1s, where node = x
@@ -73,14 +90,20 @@ public class Graph {
 		return new BitVector(bitVector);
 	}
 	
+	/**
+	 * Returns the set of ports in a bitvector. At this point, ports
+	 * should be nodes 0 - ports - 1
+	 * @return
+	 */
 	public BitVector getPortVector(){
 		int bitVector = ( 1 << numPorts ) - 1;
 		return new BitVector(bitVector);
 	}
 	
 	/**
-	 * Cycle through all edges and add bit vectors to set
-	 * @return
+	 * Cycle through all edges of the Adjacency Matrix
+	 * and return a set of bitvectors representing the deges
+	 * @return, edges in bitVector form
 	 */
 	public Set<BitVector> getEdges(){
 		return this.adjMatrix.getAllEdges();
@@ -90,32 +113,11 @@ public class Graph {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public int getNumPorts() {
 		return numPorts;
 	}
-
-	public void setNumPorts(int numPorts) {
-		this.numPorts = numPorts;
-	}
-
-	public int getNumNodes() {
-		return numNodes;
-	}
-
-	public void setNumNodes(int numNodes) {
-		this.numNodes = numNodes;
-	}
-
+	
 	public AdjacencyMatrix getAdjMatrix() {
 		return adjMatrix;
 	}
-
-	public void setAdjMatrix(AdjacencyMatrix adjMatrix) {
-		this.adjMatrix = adjMatrix;
-	}
-	
 }

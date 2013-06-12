@@ -5,10 +5,19 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Permutations 
+ * 
+ * Don't understand fully yet
+ * @author Aaron
+ *
+ */
 public class Permutations {
-	
-	private static final int MAX_RANK = 11;
+	/**
+	 * Represents the max rank which is allowed. Graphs with
+	 * more than 12 ports are not valid.
+	 */
+	public static final int MAX_RANK = 11;
 	
 	private static boolean permInitialized;
 	private static ArrayList<Cell>[] perms = new ArrayList[MAX_RANK];
