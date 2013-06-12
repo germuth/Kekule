@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
-<window height="768" maximized="true" width="1024" x="-1485" y="97">
+<window height="1024" width="1192" x="-1280" y="26">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="183"/>
@@ -34,33 +34,38 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCell.c" partName="mkCell.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCell.c" title="mkCell.c" tooltip="Kekule/mkCell.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCell.c"/>
-<editorState selectionHPixel="0" selectionLength="6" selectionOffset="555"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="scanner.h" partName="scanner.h" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/scanner.h" title="scanner.h" tooltip="Kekule/scanner.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/scanner.h"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="0"/>
 </editor>
-<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" partName="mkCellMain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCellMain.c" title="mkCellMain.c" tooltip="Kekule/mkCellMain.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCellMain.c"/>
-<editorState selectionHPixel="0" selectionLength="89" selectionOffset="321"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="clfmain.c" partName="clfmain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/clfmain.c" title="clfmain.c" tooltip="Kekule/clfmain.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/clfmain.c"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="601"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="permutations.c" partName="permutations.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/permutations.c" title="permutations.c" tooltip="Kekule/permutations.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/permutations.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="4678"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" partName="fdGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/fdGraph.c" title="fdGraph.c" tooltip="Kekule/fdGraph.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/fdGraph.c"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="5668"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="classify.c" partName="classify.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classify.c" title="classify.c" tooltip="Kekule/classify.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classify.c"/>
+<editorState selectionHPixel="0" selectionLength="11" selectionOffset="1261"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" partName="cells.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/cells.c" title="cells.c" tooltip="Kekule/cells.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/cells.c"/>
+<editorState selectionHPixel="0" selectionLength="10" selectionOffset="1068"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.c" partName="histogram.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/histogram.c" title="histogram.c" tooltip="Kekule/histogram.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/histogram.c"/>
-<editorState selectionHPixel="0" selectionLength="9" selectionOffset="255"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2550"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="arraylist.h" partName="arraylist.h" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/arraylist.h" title="arraylist.h" tooltip="Kekule/arraylist.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/arraylist.h"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="331"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="arraylist.c" partName="arraylist.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/arraylist.c" title="arraylist.c" tooltip="Kekule/arraylist.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/arraylist.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="855"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="coherence.c" partName="coherence.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/coherence.c" title="coherence.c" tooltip="Kekule/coherence.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/coherence.c"/>
+<editorState selectionHPixel="0" selectionLength="2835" selectionOffset="0"/>
 </editor>
 </editors>
 <views>
@@ -107,7 +112,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.cdt.ui.CPerspective">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -186,7 +191,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="250" ratioRight="750" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.031521738" ratioLeft="29" ratioRight="891" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.8304348" ratioLeft="764" ratioRight="156" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -303,159 +308,167 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/permutations.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCellMain.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/arraylist.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/cells.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classify.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classify.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/auxil.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/histogram.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/coherence.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/coherence.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/arraylist.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/fdGraph.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/clfmain.c"/>
 </editors>
-<item historyLabel="arraylist.c" index="2">
-<position info="not_deleted" x="939" y="0"/>
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="690" y="0"/>
 </item>
-<item historyLabel="arraylist.c" index="2">
-<position info="not_deleted" x="954" y="0"/>
-</item>
-<item historyLabel="arraylist.c" index="2">
-<position info="not_deleted" x="955" y="0"/>
-</item>
-<item historyLabel="arraylist.c" index="2">
-<position info="not_deleted" x="912" y="0"/>
-</item>
-<item historyLabel="arraylist.c" index="2">
-<position info="not_deleted" x="855" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="691" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="713" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4352" y="12"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4463" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4465" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="3019" y="15"/>
-</item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="classify.h" index="3">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1174" y="0"/>
+</item>
+<item historyLabel="auxil.c" index="4">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1004" y="0"/>
+</item>
+<item historyLabel="cells.c" index="1">
+<position info="not_deleted" x="1068" y="10"/>
+</item>
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1036" y="0"/>
+</item>
+<item historyLabel="histogram.c" index="5">
+<position info="not_deleted" x="669" y="18"/>
+</item>
+<item historyLabel="histogram.c" index="5">
+<position info="not_deleted" x="835" y="0"/>
+</item>
+<item historyLabel="cells.c" index="1">
+<position info="not_deleted" x="1068" y="10"/>
+</item>
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1036" y="0"/>
+</item>
+<item historyLabel="cells.c" index="1">
+<position info="not_deleted" x="1068" y="10"/>
+</item>
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1064" y="0"/>
+</item>
+<item historyLabel="histogram.c" index="5">
+<position info="not_deleted" x="2356" y="10"/>
+</item>
+<item historyLabel="histogram.c" index="5">
+<position info="not_deleted" x="2550" y="0"/>
+</item>
+<item historyLabel="cells.c" index="1">
+<position info="not_deleted" x="1068" y="10"/>
+</item>
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1084" y="0"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="2533" y="10"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="2707" y="0"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="2710" y="0"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1679" y="14"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1977" y="0"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1978" y="0"/>
+</item>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="456" y="27"/>
+</item>
+<item historyLabel="coherence.h" index="7">
 <position/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="321" y="89"/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="2021" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="3210" y="0"/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="2123" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1111" y="0"/>
+</item>
+<item historyLabel="auxil.c" index="4">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="1987" y="8"/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1262" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="2502" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="2500" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="2498" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="1623" y="9"/>
-</item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="arraylist.c" index="0">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="arraylist.h" index="8">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="arraylist.c" index="0">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1263" y="0"/>
+</item>
+<item historyLabel="arraylist.c" index="0">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="coherence.c" index="6">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="auxil.c" index="4">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="coherence.c" index="6">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
+<item historyLabel="arraylist.c" index="0">
 <position/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1309" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position/>
+<item historyLabel="arraylist.c" index="0">
+<position info="not_deleted" x="1223" y="8"/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="321" y="89"/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1601" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="1753" y="0"/>
+<item historyLabel="auxil.c" index="4">
+<position info="not_deleted" x="2028" y="6"/>
 </item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="321" y="89"/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="1601" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="2714" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4464" y="0"/>
+<item historyLabel="coherence.c" index="6">
+<position info="not_deleted" x="0" y="2835"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="3019" y="15"/>
+<item historyLabel="classify.c" index="2">
+<position info="not_deleted" x="768" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="3153" y="0"/>
+<item historyLabel="fdGraph.c" index="9">
+<position info="not_deleted" x="5668" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="3261" y="0"/>
+<item historyLabel="clfmain.c" index="10">
+<position info="not_deleted" x="601" y="0"/>
 </item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="2683" y="11"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="2722" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="410" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="2820" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4462" y="0"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4678" y="0"/>
-</item>
-<item historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="321" y="89"/>
-</item>
-<item historyLabel="permutations.c" index="0">
-<position info="not_deleted" x="4678" y="0"/>
-</item>
-<item active="true" historyLabel="mkCellMain.c" index="1">
-<position info="not_deleted" x="321" y="89"/>
+<item active="true" historyLabel="classify.c" index="2">
+<position info="not_deleted" x="1261" y="11"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -474,9 +487,6 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.h" tooltip="Kekule/auxil.h">
-<persistable path="/Kekule/auxil.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.c" tooltip="Kekule/auxil.c">
 <persistable path="/Kekule/auxil.c"/>
 </file>
@@ -486,35 +496,41 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="arraylist.h" tooltip="Kekule/arraylist.h">
 <persistable path="/Kekule/arraylist.h"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="coherence.h" tooltip="Kekule/coherence.h">
+<persistable path="/Kekule/coherence.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="coherence.c" tooltip="Kekule/coherence.c">
+<persistable path="/Kekule/coherence.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.c" tooltip="Kekule/histogram.c">
 <persistable path="/Kekule/histogram.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="permutations.c" tooltip="Kekule/permutations.c">
-<persistable path="/Kekule/permutations.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="permutations.h" tooltip="Kekule/permutations.h">
-<persistable path="/Kekule/permutations.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" tooltip="Kekule/cells.c">
 <persistable path="/Kekule/cells.c"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="classify.h" tooltip="Kekule/classify.h">
+<persistable path="/Kekule/classify.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="classify.c" tooltip="Kekule/classify.c">
+<persistable path="/Kekule/classify.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" tooltip="Kekule/fdGraph.c">
+<persistable path="/Kekule/fdGraph.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="readKekule.c" tooltip="Kekule/readKekule.c">
 <persistable path="/Kekule/readKekule.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.binaryEditor" name="Kekule.exe" tooltip="Kekule/MinGW GCC/Kekule.exe">
-<persistable path="/Kekule/MinGW GCC/Kekule.exe"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" tooltip="Kekule/mkCellMain.c">
+<persistable path="/Kekule/mkCellMain.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="graph.c" tooltip="Kekule/graph.c">
-<persistable path="/Kekule/graph.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="clfmain.c" tooltip="Kekule/clfmain.c">
+<persistable path="/Kekule/clfmain.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="graph.h" tooltip="Kekule/graph.h">
-<persistable path="/Kekule/graph.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="classGraph.c" tooltip="Kekule/classGraph.c">
+<persistable path="/Kekule/classGraph.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="readKekule.h" tooltip="Kekule/readKekule.h">
-<persistable path="/Kekule/readKekule.h"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stdio.h" tooltip="C:/MinGW/include/stdio.h">
-<persistable path="C:\MinGW\include\stdio.h" project="Kekule"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="scanner.h" tooltip="Kekule/scanner.h">
+<persistable path="/Kekule/scanner.h"/>
 </file>
 </mruList>
 </workbench>

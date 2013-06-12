@@ -229,7 +229,7 @@ Graph findGraph(int rank, int internal, Intstack cell) {
 	return g1;
 }
 
-int main4(int argc, char *argv[]) {
+int main7(int argc, char *argv[]) {
 	Intstack cell, ce;
 	Graph g;
 	int rank = 0, internal = 4, nr = 0;

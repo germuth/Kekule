@@ -1,7 +1,0 @@
-package bitvectors;
-
-public class Histogram {
-	public void portHisto(Cell cell, int[] hist){
-		
-	}
-}

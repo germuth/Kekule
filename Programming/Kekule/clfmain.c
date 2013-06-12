@@ -1,4 +1,3 @@
-
 /* clfmain.c, Wim H. Hesselink, June 2011 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,33 +11,36 @@
 #include "readKekule.h"
 #include "classify.h"
 
-int main7(int argc, char *argv[]) { /* Give the classification */
-  int rank, option = 0;
-  Arraylist ar;
-  assert(argc > 1);
-  rank = atoi(argv[1]);
-  if (argc > 2) option = atoi(argv[2]);
-  if (option == 2) {
-    ar = readCellList(); 
-    setRank(rank);
-  } else {
-    ar = classify(rank, option);
-  }
-  if (option != 1) {
-    sortAndWeed(rank, ar);
-    freePerm(); 
-    printCellList(ar);
+int main(int argc, char *argv[]) { /* Give the classification */
+	int rank, option = 0;
+	Arraylist ar;
+	assert(argc> 1);
+	rank = atoi(argv[1]);
+	if (argc > 2)
+		option = atoi(argv[2]);
+	if (option == 2) {
+		ar = readCellList();
+		setRank(rank);
+	} 
+	else {
+		ar = classify(rank, option);
+	}
+	if (option != 1) {
+		sortAndWeed(rank, ar);
+		freePerm();
+		printCellList(ar);
 #if 0
-    printDoubletons(ar);
+		printDoubletons(ar);
 #endif
-    freeStackList(ar);
-  }
-  if (option == 2) finalizeScanner();
-  printf("\n");
-  reportTime();
+		freeStackList(ar);
+	}
+	if (option == 2)
+		finalizeScanner();
+	printf("\n");
+	reportTime();
 #if 0
-  reportACnt();
-  reportCnt();
+	reportACnt();
+	reportCnt();
 #endif
-  return 0;
+	return 0;
 }
