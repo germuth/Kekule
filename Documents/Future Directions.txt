@@ -1,20 +1,11 @@
 Directions: 
 
-- Set up C program in visual studio ?
 
-This is great and a very impressive start.
- It appears that you have already identified a problem to start with. 
-Wim Hessilink is a computer scientist having a little knowledge of chemistry 
-(I know him personally, and co-authored papers with him), and that is why this 
-project is very interesting and has good potential to get some interesting insight.
- We would start with confirming his findings first, and then explore further to study
+We would start with confirming his findings first, and then explore further to study
  chemically relevant properties in the simpler model when restricted up to 4 degrees.
  If we need help on theoretical side, we can always contact Wim, he will be happy to 
 collaborate with us if we find some interesting aspects. He is an established scientist,
- any opportunity to collaborate with him would be wonderful. I am attaching Wim’s source
- code, you can try when you have time. Let me know whether you are able to compile the
- code successfully.
-
+ any opportunity to collaborate with him would be wonderful
 
 (1) Discover chemistry relevant solutions to Hesselink's Paper
 
@@ -69,6 +60,7 @@ Possibly make java version of Hesselink's software
 
 Either way, provide nice GUI Interface
 Possible to use Jmol to display things....
+
 -------------------------------------
 In our graph theoretical abstraction, we neglect
 all hydrogen atoms.
