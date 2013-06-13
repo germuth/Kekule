@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 import makeCell.Histogram;
@@ -13,26 +12,13 @@ import shared.BitVector;
 import shared.Cell; 
 import shared.Permutations;
 import shared.Utils;
+
 /**
- * trying to remoev duplicates from my list after raw perm variantts
+ * Classify
  * 
- * You can put the content of the ArrayList in a TreeSet using a custom Comparator which sould return 0 if the two subtitles are the same. After that you can convert the Set in a List and have the List without "duplicates". Here is an example for Object, of course you should use the correct class and logic.
-
-public void removeDuplicates(List<Object> l) {
-    // ... the list is already populated
-    Set<Object> s = new TreeSet<Object>(new Comparator<Object>() {
-
-        @Override
-        public int compare(Object o1, Object o2) {
-            // ... compare the two object according to your requirements
-            return 0;
-        }
-    });
-            s.addAll(l);
-    List<Object> res = Arrays.asList(s.toArray());
-}
-
-// perhaps use above with comparator
+ * This class composes all possible Kekule cells of a given rank (number of ports). It then reduces
+ * all possible states by normalization. This includes translating the cell to include 0 and centering it.
+ * Once normalized, there are only 24 distinct Kekule cells of 5 ports. 
  * @author Aaron
  *
  */
@@ -44,6 +30,7 @@ public class Classify {
 	public static void main(String[] args) {
 		
 		ArrayList<Cell> classifications = null;
+		//PARAMETERS
 		int rank = 5;
 		int option = 0;
 		
@@ -55,9 +42,9 @@ public class Classify {
 			classifications = classify(rank, option);
 		}
 		if(option != 1){
-			sortAndWeed(rank, classifications);
+			classifications = sortAndWeed(rank, classifications);
 			Permutations.freePerm();
-			System.out.println(classifications.size());
+			System.out.println("the end:" + classifications.size());
 			for(int i= 0; i < classifications.size(); i++){
 				System.out.println(classifications.get(i).printNumbers());
 			}
@@ -109,8 +96,15 @@ public class Classify {
 		return answer;
 	}
 
-	// turns raw classification into good one..?
-	public static void sortAndWeed(int rank, ArrayList<Cell> array){
+	/**
+	 * Takes in an array of kekule cells representing the raw classification for
+	 * one rank of Kekule cells. It then trims this list by merging Kekule cells
+	 * which are deemed equilvalent by Hesselink's standards.
+	 * @param rank
+	 * @param array
+	 * @return
+	 */
+	public static ArrayList<Cell> sortAndWeed(int rank, ArrayList<Cell> array){
 		Cell[] tobeSorted = Utils.listToArCell(array);
 		Arrays.sort(tobeSorted, new Comparator<Cell>(){
 
@@ -140,11 +134,8 @@ public class Classify {
 			}
 			else{
 				variants = Permutations.allVariants(rank, array.get(i) );
-				if(i == 6){
-					for(int p = 0; p < variants.size(); p++){
-						System.out.println(variants.get(p).printNumbers());
-					}
-				}
+				System.out.println("Variants");
+				Utils.printArrayList(variants);
 				int k = 1;
 				while( k < variants.size() && j < array.size() ){
 					if( array.get(j) != null && Histogram.compareL(array.get(j), variants.get(k) ) == 0){
@@ -160,5 +151,6 @@ public class Classify {
 			}
 		}
 		array = Utils.removeNulls(array);
+		return array;
 	}
 }

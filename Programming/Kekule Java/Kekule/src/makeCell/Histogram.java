@@ -1,8 +1,5 @@
 package makeCell;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import shared.BitVector;
 import shared.Cell;
 import shared.Permutations;
@@ -97,13 +94,15 @@ public class Histogram {
 		
 		owl.weightedSort();
 		answer.add(new BitVector(0));
-		for(int i = 0; i < cell.size(); i++){
+		for(int i = 1; i < cell.size(); i++){
 			BitVector[] otherCell = new BitVector[cell.size()];
 			for(int j = 0; j < cell.size(); j++){
 				otherCell[j] = BitVector.symmetricDifference(
 						cell.getPA()[i],   cell.getPA()[j]);
 			}
 			other = new Cell(otherCell);
+			other.setNumPorts(rank);
+			
 			other.weightedSort();
 			int r = compareL(owl, other);
 			if( r == 0){

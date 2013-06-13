@@ -152,11 +152,8 @@ Arraylist rawPermVariants(int rank, Intstack cell) {
 
 Arraylist permVariants(int rank, Intstack cell) {
 	Arraylist result = rawPermVariants(rank, cell) ;
-	printf("RESULT");
-	printArrayList(result);
 	sortDD(result, (int(*)(const void*, const void*)) compareL,
 			(void(*)(void*)) freestack) ;
-	printArrayList(result);
 	return result;
 }
 
@@ -223,6 +220,7 @@ Intstack firstVariant(int rank, Intstack cell) {
 Arraylist allVariants(int rank, Intstack cell) {
 	Arraylist ar, result = permVariants(rank, cell) ;
 	Intstack cen = centers(cell), ce0, ce1;
+
 	int i;
 	for (i = 1; i < cen->size; i++) {
 		ce0 = newIntstack(0, cell) ;

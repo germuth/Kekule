@@ -14,6 +14,35 @@
 #include "classify.h"
 #include "readKekule.h"
 
+/**
+
+[  1: 12  3  3  3  3]  0 ab ac ad ae.
+[  2: 16 13 13  8  8]  0 bc ad abcd ae abce.
+[  3:  9  9  6  6  6]  0 ac bc ad bd ae be.
+[  4: 12 12  6  6  6]  0 ab ac bc ad bd ae be.
+[  5: 19 16 13 11 11]  0 ac ad bd abcd ae be abce.
+[  6: 18 18 16 16 16]  0 ab cd abcd ce abce de abde.
+[  7: 12  9  9  9  9]  0 ab ac ad bd cd ae be ce.
+[  8: 19 19 16 11 11]  0 ac bc ad bd abcd ae be abce.
+[  9: 12 12 12  9  9]  0 ab ac bc ad bd cd ae be ce.
+[ 10: 19 19 16 14 14]  0 ab ad bd cd abcd ae be ce abce.
+[ 11: 24 24 16 16 16]  0 ac bc ad bd abcd ae be abce abde.
+[ 12: 12 12 12 12 12]  0 ab ac bc ad bd cd ae be ce de.
+[ 13: 22 19 19 14 14]  0 ab ac ad bd cd abcd ae be ce abce.
+[ 14: 22 21 21 19 19]  0 ab ac ad cd abcd ae be abce de bcde.
+[ 15: 22 22 22 14 14]  0 ab ac bc ad bd cd abcd ae be ce abce.
+[ 16: 24 22 22 21 19]  0 ab ac bc bd cd abcd ae be ce abde acde.
+[ 17: 24 24 22 22 16]  0 ab ac bc ad bd cd abcd ce abce de abde.
+[ 18: 26 24 24 24 24]  0 bc ad bd cd abcd ae be ce abce abde acde.
+[ 19: 24 24 22 22 22]  0 ac bc ad bd cd abcd ae be ce abce de abde.
+[ 20: 27 24 22 22 19]  0 ab ac bc ad bd cd abcd ae ce abce de abde.
+[ 21: 27 27 22 22 22]  0 ab ac bc ad bd cd abcd ae be ce abce de abde.
+[ 22: 29 27 27 27 24]  0 ab ac bc ad bd cd abcd be ce abce de abde acde.
+[ 23: 32 27 27 27 27]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde.
+[ 24: 32 32 32 32 32]  0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde.
+
+*/
+
 void borderEdges(int rank, Intstack cell, Intstack result) {
 	int lim = 1 << rank;
 	int p, q, i, ch, nf;
@@ -229,7 +258,7 @@ Graph findGraph(int rank, int internal, Intstack cell) {
 	return g1;
 }
 
-int main7(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	Intstack cell, ce;
 	Graph g;
 	int rank = 0, internal = 4, nr = 0;

@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.TreeSet;
 
 
 /**
@@ -104,7 +103,12 @@ public class Utils {
 		return newOne;
 	}
 	
+	/**
+	 * Prints an array list in BitVector number form
+	 * @param variants
+	 */
 	public static void printArrayList(ArrayList<Cell> variants){
+		System.out.println("Size: " + variants.size());
 		for(int p = 0; p < variants.size(); p++){
 			System.out.println(variants.get(p).printNumbers());
 		}
@@ -123,7 +127,8 @@ public class Utils {
 	}
 	
 	/**
-	 * Delete all duplicates in arraylist by turning to set and then back
+	 * Parses through ArrayList and adds element to newList everytime it encounters an element
+	 * it hasn't seen before. This is equilvalent to deleting all duplicates from the list.
 	 */
 	public static ArrayList<Cell> deleteDuplicates(ArrayList<Cell> cell){
 		ArrayList<Cell> newList = new ArrayList<Cell>();
@@ -148,7 +153,8 @@ public class Utils {
 	}
 	
 	/**
-	 * Removes all null entries from array list
+	 * Removes all null entries from array list by creating a new arraylist and only 
+	 * adding elements which are non-null. Returns this new arraylist
 	 */
 	public static ArrayList<Cell> removeNulls(ArrayList<Cell> array){
 		ArrayList<Cell> newList = new ArrayList<Cell>();

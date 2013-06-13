@@ -179,6 +179,7 @@ Intstack centers(Intstack cell) {
 	for (i = 1; i < cell->size; i++) {
 		for (j = 0; j < cell->size; j++)
 			other->it[j] = cell->it[i] ^ cell->it[j];
+		
 		weightlist(other);
 		r = compareL(owl, other);
 		assert(r <= 0);

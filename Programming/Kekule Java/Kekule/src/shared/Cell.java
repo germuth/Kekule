@@ -39,7 +39,7 @@ public class Cell {
 	public static Cell intersection(Cell a, Cell b){
 		Set<BitVector> set1 = Utils.arToSet(a.getPA());
 		Set<BitVector> set2 = Utils.arToSet(b.getPA());
-		Set<BitVector> intersection = new HashSet(set1);
+		Set<BitVector> intersection = new HashSet<BitVector>(set1);
 		intersection.retainAll(set2);
 		Cell both = new Cell(intersection, 0);
 		both.sortBySize();

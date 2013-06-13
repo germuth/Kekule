@@ -11,7 +11,7 @@
 #include "readKekule.h"
 #include "classify.h"
 
-int main(int argc, char *argv[]) { /* Give the classification */
+int main7(int argc, char *argv[]) { /* Give the classification */
 	int rank, option = 0;
 	Arraylist ar;
 	assert(argc> 1);

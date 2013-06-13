@@ -67,9 +67,6 @@ void sortAndWeed(int rank, Arraylist ar) {
 		} else {
 			variants = allVariants(rank, ar->it[i]);
 			
-			if(i == 6){
-				printArrayList(variants);
-			}
 			assert(compareL(ar->it[i], variants->it[0]) == 0);
 			freestack(variants->it[0]);
 			k = 1;
