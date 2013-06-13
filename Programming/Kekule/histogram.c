@@ -128,36 +128,11 @@ int isCentered(Intstack cell, long int x) {
 
 	other->size = cell->size;
 	for (i = 1; r <= 0 && i < cell->size; i++) {
-		if (x == 7927) {
-			printf("cell: ");
-			printar(cell);
-			printf("\n");
-		}
 		for (j = 0; j < cell->size; j++) {
 			other->it[j] = cell->it[i] ^ cell->it[j];
 		}
-
-		if (x == 7927) {
-			printf("other be: ");
-			printar(other);
-			printf("\n");
-		}
-
-			weightlist(other);
-			
-		if (x == 7927) {
-			printf("other af: ");
-			printar(other);
-			printf("\n");
-		}
-
+		weightlist(other);
 		r = compareL(owl, other);
-
-		if (x == 7927) {
-			printf("other fi: ");
-			printar(other);
-			printf("\n");
-		}
 	}
 	freestack(other);
 	freestack(owl);

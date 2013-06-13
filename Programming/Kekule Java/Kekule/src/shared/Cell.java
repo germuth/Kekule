@@ -352,6 +352,22 @@ public class Cell {
 		return false;
 	}
 	
+	/**
+	 * equals method
+	 */
+	public boolean equalsNoPorts(Object obj) {
+		Cell another = (Cell) obj;
+		this.sortBySize();
+		another.sortBySize();
+		
+		Set<BitVector> thisSet = Utils.arToSet(this.portAssignments);
+		Set<BitVector> anotherSet = Utils.arToSet(another.portAssignments);
+		
+		if(thisSet.equals(anotherSet)){
+			return true;
+		}
+		return false;
+	}
 	
 	/**
 	 * Prints a final visualization of this cell. 

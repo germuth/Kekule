@@ -13,7 +13,29 @@ import shared.BitVector;
 import shared.Cell; 
 import shared.Permutations;
 import shared.Utils;
+/**
+ * trying to remoev duplicates from my list after raw perm variantts
+ * 
+ * You can put the content of the ArrayList in a TreeSet using a custom Comparator which sould return 0 if the two subtitles are the same. After that you can convert the Set in a List and have the List without "duplicates". Here is an example for Object, of course you should use the correct class and logic.
 
+public void removeDuplicates(List<Object> l) {
+    // ... the list is already populated
+    Set<Object> s = new TreeSet<Object>(new Comparator<Object>() {
+
+        @Override
+        public int compare(Object o1, Object o2) {
+            // ... compare the two object according to your requirements
+            return 0;
+        }
+    });
+            s.addAll(l);
+    List<Object> res = Arrays.asList(s.toArray());
+}
+
+// perhaps use above with comparator
+ * @author Aaron
+ *
+ */
 public class Classify {
 
 	/**
@@ -31,15 +53,11 @@ public class Classify {
 		}
 		else{
 			classifications = classify(rank, option);
-			System.out.println(classifications.size());
-			for(int i = 0; i < classifications.size(); i++){
-				System.out.println(classifications.get(i).printNumbers());
-			}
 		}
-		System.out.println(" ");
 		if(option != 1){
 			sortAndWeed(rank, classifications);
 			Permutations.freePerm();
+			System.out.println(classifications.size());
 			for(int i= 0; i < classifications.size(); i++){
 				System.out.println(classifications.get(i).printNumbers());
 			}
@@ -75,12 +93,6 @@ public class Classify {
 				y /= 2;
 				i++;
 			}
-			// flexible is 9846 instead of about 10320
-			// Histogram is 1012 to 1012 i'm pretty sure
-
-			if(x == 7927){
-				System.out.println("");
-			}
 			
 			if (cand.isFlexible(ports.getNumber())
 					&& Histogram.isPortHistoDescending(cand)
@@ -89,10 +101,6 @@ public class Classify {
 					// printCell()
 				} else {
 					cand.sortBySize();
-					if (cand.printNumbers().contains("0 3 5 6 10 12 15 17")) {
-						System.out.println(cand.printNumbers());
-						System.out.println(x);
-					}
 					answer.add(new Cell(cand));
 				}
 			}
@@ -132,6 +140,11 @@ public class Classify {
 			}
 			else{
 				variants = Permutations.allVariants(rank, array.get(i) );
+				if(i == 6){
+					for(int p = 0; p < variants.size(); p++){
+						System.out.println(variants.get(p).printNumbers());
+					}
+				}
 				int k = 1;
 				while( k < variants.size() && j < array.size() ){
 					if( array.get(j) != null && Histogram.compareL(array.get(j), variants.get(k) ) == 0){

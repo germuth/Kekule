@@ -104,6 +104,12 @@ public class Utils {
 		return newOne;
 	}
 	
+	public static void printArrayList(ArrayList<Cell> variants){
+		for(int p = 0; p < variants.size(); p++){
+			System.out.println(variants.get(p).printNumbers());
+		}
+	}
+	
 	/**
 	 * Tests whether item is in the list
 	 */
@@ -120,15 +126,24 @@ public class Utils {
 	 * Delete all duplicates in arraylist by turning to set and then back
 	 */
 	public static ArrayList<Cell> deleteDuplicates(ArrayList<Cell> cell){
-		Set<Cell> set = new HashSet<Cell>();
-		for(int i = 0; i < cell.size(); i++){
-			set.add(cell.get(i));
-		}
 		ArrayList<Cell> newList = new ArrayList<Cell>();
-		Iterator<Cell> i = set.iterator();
-		while(i.hasNext()){
-			newList.add((Cell)i.next());
+		newList.add(cell.get(0));
+		for(int i = 0; i < cell.size(); i++){
+			
+			boolean found = false;
+			
+			inner:
+			for(int j = 0; j < newList.size(); j++){
+				if(newList.get(j).equalsNoPorts(cell.get(i))){
+					found = true;
+					break inner;
+				}
+			}
+			if(!found){
+				newList.add(cell.get(i));
+			}
 		}
+	
 		return newList;
 	}
 	

@@ -44,6 +44,7 @@ public class Permutations {
 	
 	public static ArrayList<Cell> allVariants(int rank, Cell cell){
 		ArrayList<Cell> answer = permVariants(rank, cell);
+		Utils.printArrayList(answer);
 		Cell centers = Histogram.centers(cell);
 		for(int i= 1; i < centers.size(); i++){
 			Cell center0 = new Cell(cell);
@@ -61,8 +62,15 @@ public class Permutations {
 	
 	public static ArrayList<Cell> permVariants(int rank, Cell cell){
 		ArrayList<Cell> answer = rawPermVariants(rank, cell);
+		
+		System.out.println("raw");
+		Utils.printArrayList(answer);
+		
 		//delete duplicates
 		answer = Utils.deleteDuplicates(answer);
+		
+		System.out.println("no dups");
+		Utils.printArrayList(answer);
 		//sort
 		Cell[] tobeSorted = Utils.listToArCell(answer);	
 		Arrays.sort(tobeSorted, new Comparator<Cell>(){

@@ -39,22 +39,6 @@ Arraylist classify(int r, int raw) {
 			y /= 2;
 			i++;
 		}
-		/*
-		if(x == 7927){
-			if(isFlexible(ports, cand)){
-				printf("FLEX");
-			}
-			if(portHistDescending(cand)){
-				printf("PHD");
-			}
-			if(isCentered(cand, x)){
-				printf("CENTER");
-			}
-			if(isCoherent(cand)){
-				printf("COHERENT");
-			}
-		}
-		*/
 		if (isFlexible(ports, cand) && portHistDescending(cand)
 				&& isCentered(cand, x) && isCoherent(cand) ) {
 			if (raw)
@@ -82,12 +66,15 @@ void sortAndWeed(int rank, Arraylist ar) {
 			i = j;
 		} else {
 			variants = allVariants(rank, ar->it[i]);
+			
+			if(i == 6){
+				printArrayList(variants);
+			}
 			assert(compareL(ar->it[i], variants->it[0]) == 0);
 			freestack(variants->it[0]);
 			k = 1;
 			while (k < variants->size && j < ar->size) {
-				if (ar->it[j] != NULL && compareL(ar->it[j], variants->it[k])
-						== 0) {
+				if (ar->it[j] != NULL && compareL(ar->it[j], variants->it[k]) == 0) {
 					freestack(variants->it[k]);
 					freestack(ar->it[j]);
 					ar->it[j] = NULL;
