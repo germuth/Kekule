@@ -1,13 +1,14 @@
-package makeCell;
+package shared;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import shared.BitVector;
-import shared.Cell;
+import makeCell.Histogram;
+
 /**
  * Permutations 
  * 
@@ -19,6 +20,8 @@ public class Permutations {
 	/**
 	 * Represents the max rank which is allowed. Graphs with
 	 * more than 12 ports are not valid.
+	 * maybe
+	 * i think so
 	 */
 	public static final int MAX_RANK = 11;
 	
@@ -37,6 +40,39 @@ public class Permutations {
 			}
 		}
 		return pe;
+	}
+	
+	public static ArrayList<Cell> allVariants(int rank, Cell cell){
+		ArrayList<Cell> answer = permVariants(rank, cell);
+		Cell centers = Histogram.centers(cell);
+		for(int i= 1; i < centers.size(); i++){
+			Cell center0 = new Cell(cell);
+			center0.translate(centers.getPA()[i]);
+			
+			Cell center1 = somePHDVariant(rank, center0);
+			if( !Utils.isMember(center1, answer)){
+				ArrayList<Cell> array = permVariants(rank, center1);
+				answer.addAll(array);
+			}
+		}
+		
+		return answer;
+	}
+	
+	public static ArrayList<Cell> permVariants(int rank, Cell cell){
+		ArrayList<Cell> answer = rawPermVariants(rank, cell);
+		//delete duplicates
+		answer = Utils.deleteDuplicates(answer);
+		//sort
+		Cell[] tobeSorted = Utils.listToArCell(answer);	
+		Arrays.sort(tobeSorted, new Comparator<Cell>(){
+			@Override
+			public int compare(Cell arg0, Cell arg1) {
+				return Histogram.compareL(arg0, arg1);
+			}
+			
+		});
+		return Utils.arToList(tobeSorted);
 	}
 	
 	/**
@@ -93,6 +129,12 @@ public class Permutations {
 		}
 		
 		return answer;
+	}
+	
+	public static void freePerm(){
+		for(int i = 0; i < Permutations.MAX_RANK; i++){
+				perms[i] = null;
+		}
 	}
 	
 	private static Cell applyPerm(int shift, Cell arg, Cell pm) {

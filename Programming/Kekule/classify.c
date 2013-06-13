@@ -29,6 +29,7 @@ Arraylist classify(int r, int raw) {
 	setRank(r);
 	putint(0, cand);
 	for (x = 0L; x < ulim; x ++) {
+		
 		cand->size = 1;
 		y = x;
 		i = 1;
@@ -38,8 +39,24 @@ Arraylist classify(int r, int raw) {
 			y /= 2;
 			i++;
 		}
+		/*
+		if(x == 7927){
+			if(isFlexible(ports, cand)){
+				printf("FLEX");
+			}
+			if(portHistDescending(cand)){
+				printf("PHD");
+			}
+			if(isCentered(cand, x)){
+				printf("CENTER");
+			}
+			if(isCoherent(cand)){
+				printf("COHERENT");
+			}
+		}
+		*/
 		if (isFlexible(ports, cand) && portHistDescending(cand)
-				&& isCentered(cand) && isCoherent(cand) ) {
+				&& isCentered(cand, x) && isCoherent(cand) ) {
 			if (raw)
 				printCell(++nr, cand);
 			else

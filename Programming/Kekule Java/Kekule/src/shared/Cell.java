@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import makeCell.Histogram;
-import makeCell.Permutations;
-import makeCell.Utils;
 
 /**
  * Cell
@@ -184,7 +182,7 @@ public class Cell {
 				trimmed.add(array[i]);
 			}
 		}
-		this.portAssignments = (BitVector[])trimmed.toArray();
+		this.portAssignments = Utils.listToArBV(trimmed);
 	}
 	
 	/**
@@ -274,13 +272,21 @@ public class Cell {
 		return (all.equals(ports));
 	}
 	
+	public boolean isFlexible(int ports){
+		int i, upb = 0;
+		for(i = 0; i < this.size(); i++){
+			upb |= this.getPA()[i].getNumber();
+		}
+		return (upb == ports);
+	}
+	
 	/**
 	 * Adds a BitVector to this cell. Warning, order is lost
 	 */
 	public void add(BitVector bv){
 		BitVector[] newSet = new BitVector[this.size()+1];
 		System.arraycopy(this.portAssignments, 0, newSet, 0, this.size());
-		newSet[newSet.length] = bv;
+		newSet[newSet.length - 1] = bv;
 		this.portAssignments = newSet;
 	}
 	
@@ -291,7 +297,7 @@ public class Cell {
 	public BitVector removeLast(){
 		BitVector[] newSet = new BitVector[this.size()-1];
 		System.arraycopy(this.portAssignments, 0, newSet, 0, this.size()-1);
-		BitVector last = this.portAssignments[this.size()];
+		BitVector last = this.portAssignments[this.size()-1];
 		this.portAssignments = newSet;
 		return last;
 	}
@@ -325,6 +331,27 @@ public class Cell {
 			}
 		});
 	}
+	
+	/**
+	 * equals method
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		Cell another = (Cell) obj;
+		this.sortBySize();
+		another.sortBySize();
+		
+		Set<BitVector> thisSet = Utils.arToSet(this.portAssignments);
+		Set<BitVector> anotherSet = Utils.arToSet(another.portAssignments);
+		
+		if(thisSet.equals(anotherSet)){
+			if(this.numPorts == another.numPorts){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 	/**
 	 * Prints a final visualization of this cell. 
@@ -367,6 +394,14 @@ public class Cell {
 		}
 		return answer;
 
+	}
+	
+	public String printNumbers(){
+		String answer = "";
+		for(int i = 0; i < this.size(); i++){
+			answer += this.portAssignments[i].getNumber() + " ";
+		}
+		return answer;
 	}
 	
 	public String toString() {

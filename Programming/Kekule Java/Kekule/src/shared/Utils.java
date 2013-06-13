@@ -1,10 +1,11 @@
-package makeCell;
+package shared;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeSet;
 
-import shared.BitVector;
 
 /**
  * Utils
@@ -71,6 +72,77 @@ public class Utils {
 			bvSet.add(bv);
 		}
 		return bvSet;
+	}
+	
+	/**
+	 * Converts an array to an array list
+	 */
+	public static ArrayList<Cell> arToList(Cell[] param){
+		ArrayList<Cell> answer = new ArrayList<Cell>();
+		for(int i=  0; i < param.length; i++){
+			answer.add(param[i]);
+		}
+		return answer;
+	}
+	
+	/**
+	 * Converts list to array
+	 */
+	public static Cell[] listToArCell(ArrayList<Cell> arr){
+		Cell[] newOne = new Cell[arr.size()];
+		for(int i = 0; i < arr.size(); i++){
+			newOne[i] = arr.get(i);
+		}
+		return newOne;
+	}
+	
+	public static BitVector[] listToArBV(ArrayList<BitVector> arr){
+		BitVector[] newOne= new BitVector[arr.size()];
+		for(int i = 0; i < arr.size(); i++){
+			newOne[i] = arr.get(i);
+		}
+		return newOne;
+	}
+	
+	/**
+	 * Tests whether item is in the list
+	 */
+	public static boolean isMember(Cell cell, ArrayList<Cell> list){
+		for(int i = 0; i < list.size(); i++){
+			if(list.get(i).equals(cell)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Delete all duplicates in arraylist by turning to set and then back
+	 */
+	public static ArrayList<Cell> deleteDuplicates(ArrayList<Cell> cell){
+		Set<Cell> set = new HashSet<Cell>();
+		for(int i = 0; i < cell.size(); i++){
+			set.add(cell.get(i));
+		}
+		ArrayList<Cell> newList = new ArrayList<Cell>();
+		Iterator<Cell> i = set.iterator();
+		while(i.hasNext()){
+			newList.add((Cell)i.next());
+		}
+		return newList;
+	}
+	
+	/**
+	 * Removes all null entries from array list
+	 */
+	public static ArrayList<Cell> removeNulls(ArrayList<Cell> array){
+		ArrayList<Cell> newList = new ArrayList<Cell>();
+		for(int i = 0; i < array.size(); i++){
+			if(array.get(i) != null){
+				newList.add(array.get(i));
+			}
+		}
+		return newList;
 	}
 	
 	/**

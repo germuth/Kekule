@@ -11,7 +11,7 @@ int compareCell(const Intstack ce1, const Intstack ce2) ;
 
 Intstack portHisto(Intstack cell, int* hist) ;
 int portHistDescending(Intstack cell) ;
-int isCentered(Intstack cell) ;
+int isCentered(Intstack cell, long int x) ;
 void toCenter(Intstack cell, int *pa) ;
 Intstack centers(Intstack cell) ;
 Intstack weightlist(Intstack cell) ;

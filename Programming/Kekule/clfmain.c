@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) { /* Give the classification */
 	} 
 	else {
 		ar = classify(rank, option);
+		printArrayList(ar);
 	}
 	if (option != 1) {
 		sortAndWeed(rank, ar);

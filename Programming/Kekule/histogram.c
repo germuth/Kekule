@@ -69,6 +69,7 @@ void weightlist(Intstack cell) {
 				we[p] += x;
 		}
 	}
+	
 	for (i = 0; i < cell->size; i++) {
 		x = cell->it[i];
 		cell->it[i] = 0;
@@ -115,20 +116,48 @@ int compareCell(const Intstack ce1, const Intstack ce2) {
 	return compareL(ce1, ce2);
 }
 
-int isCentered(Intstack cell) {
+int isCentered(Intstack cell, long int x) {
 	Intstack owl, other;
 	int i, j, r = 0;
-	if (cell->size == 0 || cell->it[0] > 0)
+	if (cell->size == 0 || cell->it[0] > 0){
 		return 0;
+	}
 	owl = newIntstack(0, cell);
 	other = newIntstack(cell->size, NULL);
 	weightlist(owl);
+
 	other->size = cell->size;
 	for (i = 1; r <= 0 && i < cell->size; i++) {
-		for (j = 0; j < cell->size; j++)
+		if (x == 7927) {
+			printf("cell: ");
+			printar(cell);
+			printf("\n");
+		}
+		for (j = 0; j < cell->size; j++) {
 			other->it[j] = cell->it[i] ^ cell->it[j];
-		weightlist(other);
+		}
+
+		if (x == 7927) {
+			printf("other be: ");
+			printar(other);
+			printf("\n");
+		}
+
+			weightlist(other);
+			
+		if (x == 7927) {
+			printf("other af: ");
+			printar(other);
+			printf("\n");
+		}
+
 		r = compareL(owl, other);
+
+		if (x == 7927) {
+			printf("other fi: ");
+			printar(other);
+			printf("\n");
+		}
 	}
 	freestack(other);
 	freestack(owl);
