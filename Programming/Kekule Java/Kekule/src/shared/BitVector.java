@@ -123,6 +123,15 @@ public class BitVector {
 		return k;
 	}
 	
+	public int firstBit(){
+		int k = 0;
+		int x = this.getNumber();
+		while( ( ( x>>k) & 1 ) == 0 ){
+			k++;
+		}
+		return k;
+	}
+	
 	/**
 	 * Returns a new BitVector which is identical to this one, except
 	 * n has now been removed.

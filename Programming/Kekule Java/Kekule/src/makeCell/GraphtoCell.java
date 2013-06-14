@@ -10,6 +10,7 @@ import java.util.Set;
 
 import shared.BitVector;
 import shared.Cell;
+import shared.Graph;
 import shared.Utils;
 
 /**
@@ -88,6 +89,10 @@ public class GraphtoCell {
 		
 	}
 	
+	public static Cell makeCell(Graph g){
+		return new Cell(makeCell(g.getNodeVector(), g), g.getNumPorts());
+	}
+	
 	/**
 	 * Makes a cell from a graph. Uses a bitVector bvNodes, which
 	 * is the set of nodes we are currently considering
@@ -107,7 +112,13 @@ public class GraphtoCell {
 		Set<BitVector> addend = new HashSet<BitVector>();
 		
 		BitVector ports = g.getPortVector();
-		Set<BitVector> edges = g.getEdges();
+		
+		Set<BitVector> edges = null;
+		try{
+			edges = g.getEdges();
+		} catch(Exception e){
+			edges = Utils.arToSet( g.getEdgeCell().getPA() );
+		}
 		
 		//Base case
 		if(bvNodes.isEmpty()){

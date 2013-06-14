@@ -1,9 +1,8 @@
-package makeCell;
+package shared;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import shared.BitVector;
 
 /**
  * Adjacency Matrix

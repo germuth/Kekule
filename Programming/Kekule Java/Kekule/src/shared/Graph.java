@@ -1,9 +1,10 @@
-package makeCell;
+package shared;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import shared.BitVector;
-import shared.Cell;
+import makeCell.GraphtoCell;
+
 
 /**
  * Graph
@@ -25,6 +26,51 @@ import shared.Cell;
  *
  */
 public class Graph {
+	
+	/**
+	 * assume g1 numPorts >= g2 numPorts 
+	 * destroys g1 and replaces with odot
+	 */
+	public static Graph oDot(Graph g1, Graph g2){
+		Set<BitVector> g1Edges = new HashSet<BitVector>();
+		for(int i = 0; i < g2.getEdgeCell().size(); i++){
+			g1Edges.add( renameEdge( g2.edgeCell.getPA()[i], g2.numPorts,
+					g1.numNodes - g2.numPorts ) );
+		}
+		g1.setEdgeCell(new Cell(g1Edges, 0));
+		g1.setNumNodes( g1.numNodes + g2.numNodes - g2.numPorts );
+		return g1;
+	}
+	
+	private static BitVector renameEdge(BitVector edge, int from, int over){
+		int k = 1;
+		int i = 0;
+		while( edge.contains(k) ){
+			k *= 2;
+			i++;
+		}
+		int answer;
+		if( i < from){
+			answer = k;
+		} else{
+			answer = k << over;
+		}
+		
+		do{
+			k *= 2;
+			i++;
+		} while( edge.contains(k) );
+		
+		if( i < from){
+			answer += k;
+		} else{
+			answer += k << over;
+		}
+		
+		return new BitVector(answer);
+		
+	}
+	
 	/**
 	 * Name of the graph
 	 */
@@ -82,9 +128,53 @@ public class Graph {
 		}
 	}
 	
+	public void minimizeGraph(){
+		Cell edges = this.edgeCell;
+		if(edges.size() == 0){
+			return;
+		}
+		int edgesSize = edges.size();
+		Cell cell =  GraphtoCell.makeCell(this);
+		BitVector lastRemoved = null;
+		
+		edgesSize--;
+		
+		int i = 0;
+		while( i <= edgesSize){
+			BitVector edge = edges.getPA()[i];
+			edges.getPA()[i] = edges.getPA()[edgesSize];
+			
+			Cell aCell = GraphtoCell.makeCell(this);
+			
+			//TODO minimization of graphs
+			if( false){
+			//if( aCell.isSubSetOf(cell) ){
+			//if( cell.isSubSetOf(aCell)){
+				System.out.println("Removing Edge");
+				cell = aCell;
+				edgesSize--;;
+			} else{
+				edges.getPA()[i] = edge;
+				i++;
+			}
+		}
+		edgesSize++;
+	}
 	
-	
-	
+	public void writeGraph(){
+		System.out.println(this.name);
+		System.out.println(this.numNodes + " " + this.numPorts);
+		System.out.println("ports 0 1 2 3 4");
+		String edges = "";
+		for(int i = 0; i < this.edgeCell.size(); i++){
+			BitVector edge = this.edgeCell.getPA()[i];
+			int p = edge.firstBit();
+			edge = new BitVector( edge.getNumber() - ( 1 << p ) );
+			int q = edge.firstBit();
+			edges += ( p ) + "-" + ( q ) + ", ";
+		}
+		System.out.println(edges);
+	}
 	
 	
 	

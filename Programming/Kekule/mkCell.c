@@ -76,6 +76,7 @@ void minimizeGraph(Graph g) {
 		ed->it[i] = ed->it[ed->size];
 		acell = kpa(g);
 		if (subset(cell, acell)) {
+			printf("THIS NEVER HAPPENS");
 			printf("  Removing edge.\n");
 			freestack(cell);
 			cell = acell;

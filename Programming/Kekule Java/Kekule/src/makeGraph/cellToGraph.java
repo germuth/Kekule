@@ -7,15 +7,16 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import makeCell.Graph;
 import makeCell.GraphtoCell;
 import makeCell.Histogram;
 import shared.BitVector;
 import shared.Cell;
+import shared.Graph;
 import shared.Permutations;
 
 public class cellToGraph {
-
+	private static File f = new File("myraw.txt");
+	private static Scanner fileScanner;;
 	/**
 	 * @param args
 	 * @throws FileNotFoundException 
@@ -24,6 +25,7 @@ public class cellToGraph {
 		
 		Cell input = null;
 		try{
+			fileScanner = new Scanner(f);
 			input = readCell();
 		} catch(Exception e){
 			System.out.println("error reading from file");
@@ -43,8 +45,8 @@ public class cellToGraph {
 			Graph g = findGraph(rank, internal, input);
 			
 			if(g != null){
-				minimizeGraph(g);
-				writeGraph(g);
+				g.minimizeGraph();
+				g.writeGraph();
 				
 				//try to find cell from graph
 				//and make sure they match up
@@ -65,6 +67,7 @@ public class cellToGraph {
 		Graph g1 = findGraphBEG(rank, internal, cell);
 		if(g1 == null){
 			System.out.println("Trying Decompositions");
+			int i = 0;
 			
 			Cell p1 = null;
 			Cell p2 = null;
@@ -75,20 +78,33 @@ public class cellToGraph {
 				BitVector pa = cell.getPA()[i];
 				Cell other = new Cell(cell);
 				other.translate(pa);
-				if( !indecomposable(other, p1, p2) ){
-					
+				if( ! other.indecomposable(p1, p2) ){
+					g1 = findGraphBEG(rank, internal, p1);
+					Graph g2 = findGraphBEG(rank, internal, p2);
+					if(g1 != null && g2 != null){
+						nf = false;
+						g1 = Graph.oDot(g1, g2);
+						g1.translate(pa);
+					} else{
+						g1 = null;
+					}
+					g2 = null;
 				}
+				i++;
 			}
 		}
+		return g1;
 	}
 	
 	private static Graph findGraphBEG(int rank, int internal, Cell cell){
+		cell.sortBySize();
 		//i think this is border edges
 		BitVector x = bestBorderGraph(rank, cell);
 		Cell nc = new Cell(cell);
 		Graph g; 
 		nc.translate(x);
 		g = findGraphEG(rank, internal, nc);
+		g.getEdgeCell().sortBySize();
 		if(g != null){
 			g.translate(x);
 		}
@@ -101,8 +117,7 @@ public class cellToGraph {
 	//use classification fo matched graphs of rank cN-cP
 	private static Graph findGraphEG(int rank, int internal, Cell cell){
 		Graph g0 = borderGraph(rank, cell);
-		Set<BitVector> cellC = GraphtoCell.makeCell( g0.getNodeVector() , g0);
-		Cell c0 = new Cell(cellC, g0.getNumPorts());
+		Cell c0 = GraphtoCell.makeCell(g0);
 		if( c0.size() == cell.size()){
 			return g0;
 		}
@@ -244,15 +259,14 @@ public class cellToGraph {
 	}
 	
 	private static Cell readCell() throws Exception{
-		File f = new File("myraw.txt");
-		Scanner fileScanner = new Scanner(f);
+		
 		String cell  = fileScanner.nextLine();
 		
 		Scanner lineScanner = new Scanner(cell);
 		String ports = lineScanner.next();
 		lineScanner.close();
 		
-		ports = ports.substring(1, ports.length());
+		ports = ports.substring(1, ports.length() - 1);
 		int portNum = Integer.parseInt(ports);
 		
 		String bitVectors = fileScanner.nextLine();
@@ -268,9 +282,6 @@ public class cellToGraph {
 			BitVector bV = new BitVector(number);
 			allBVs.add(bV);
 		}
-		
-		fileScanner.close();
-		lineScanner.close();
 		
 		Cell input = new Cell(allBVs, portNum);
 		return input;

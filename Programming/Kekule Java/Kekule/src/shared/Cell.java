@@ -73,6 +73,36 @@ public class Cell {
 		return answer;
 	}
 	
+	public static long toPlus(Cell a, Cell b){
+		long xx = 0;
+		for(int i = 0; i < a.size(); i++){
+			for(int j = 0; j < b.size(); j++){
+				BitVector aBV = a.getPA()[i];
+				BitVector bBV = b.getPA()[j];
+				if( ! BitVector.intersection(aBV, bBV).isEmpty() ){
+					BitVector symDif = BitVector.symmetricDifference(aBV, bBV);
+					xx = xx | ( 1 << symDif.getNumber() ) ;
+				}
+			}
+		}
+		return xx;
+	}
+	
+	public static Cell oDot(Cell a, Cell b){
+		Set<BitVector> answerSet = new HashSet<BitVector>();
+		
+		for(int i = 0; i < a.size(); i++){
+			BitVector x = a.getPA()[i];
+			for(int j = 0; j < b.size(); j++){
+				BitVector y = b.getPA()[j];
+				if( ! BitVector.intersection(x, y).isEmpty() ){
+					answerSet.add( BitVector.union(x, y) );
+				}
+			}
+		}
+		return new Cell(answerSet, a.getNumPorts());
+	}
+	
 	//NON-STATIC
 	/**
 	 * Number of ports in the cell
@@ -278,12 +308,14 @@ public class Cell {
 		Cell cand = new Cell();
 		cand.add(new BitVector(0));
 		
+		Cell nCell = null;
 		boolean r = true;
+		int i = 0; 
+		ArrayList<Cell> array = new ArrayList<Cell>();
 		
 		for(int x = 1; r && x < ulim - 1; x++){
 			//TODO cand.size == 1
 			int y = x;
-			int i = 0; 
 			while( y > 0 ){
 				if( y % 2 == 1){
 					cand.add( this.getPA()[i+1] );
@@ -291,18 +323,74 @@ public class Cell {
 				y /= 2;
 				i++;
 			}
-			if( Coherence.isCoherent(cand) ){
-				Cell nCell = this.hasFactor(cand);
+			if( Coherence.isCoherent(cand) && this.hasFactor(cand, nCell)){
+				array.add(new Cell(cand));
+				int fract = ( this.size() - 1 ) / cand.size();
+				i = array.size();
 				
+				while(r && (i > 0) ){
+					i--;
+					if( array.get(i).size() > fract ){
+						if( array.get(i).isSubSetOf(nCell) ){
+							if( toPlus(cand, array.get(i) ) == xx ){
+								r = false;
+							}
+						}
+					}
+				}
 			}
 		}
+		if(!r){
+			part1 = new Cell(cand);
+			part2 = new Cell(array.get(i));
+			nCell = Cell.oDot(cand,  part2);
+		}
+		return r;
 	}
 	
-	private boolean hasFactor(Cell cand){
-		//return klad
-		//cell is this
-		//a is cand
-		Cell klad = this.oFactor(cand);
+	private boolean hasFactor(Cell cand, Cell klad){
+		klad = this.oFactor(cand);
+		return (this.toBits() & toPlus(cand, klad)) == 0;
+	}
+	
+	// k//l = {x in K | all y in L: x&y = 0 => x|y in K};
+	//answer is the greatest M sub K with (M odot L) sub K
+	//pre: 0 in L=b sub K=a
+	//post result = a//b
+	private Cell oFactor(Cell cand){
+		//a = this
+		//b = cand
+		
+		Set<BitVector> kladSet = new HashSet<BitVector>();
+		kladSet.add(new BitVector(0));
+		for(int i = 1; i < this.size(); i++){
+			BitVector x = this.getPA()[i];
+			boolean acc = true;
+			int j = 1;
+			int k = i + 1;
+			while(acc && j < cand.size()){
+				BitVector candJ = cand.getPA()[j];
+				if( ! BitVector.intersection(x, candJ).isEmpty() ){
+					j++;
+				}
+				else if( k == this.size() || 
+						x.getNumber() + candJ.getNumber() < this.getPA()[k].getNumber()){
+					//x is not acceptable
+					acc = false;
+				}
+				else if( this.getPA()[k].getNumber() < x.getNumber() + candJ.getNumber()){
+					k++;
+				}
+				else{
+					j++; k++;
+				}
+			}
+			if(acc){
+				kladSet.add(x);
+			}
+		}
+		
+		return new Cell(kladSet, cand.getNumPorts());
 	}
 	
 	private long toBits(){

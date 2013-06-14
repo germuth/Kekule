@@ -191,6 +191,7 @@ Graph findGraphEG(int rank, int internal, Intstack cell) {
 }
 
 Graph findGraphBEG(int rank, int internal, Intstack cell) {
+	printar(cell);
 	int x = bestBorderGraph(rank, cell);
 	Intstack nc = newIntstack(0, cell);
 	Graph g;
@@ -223,7 +224,7 @@ Graph findGraphORI(int rank, int internal, Intstack cell) {
 	freestack(nc);
 	return g;
 }
-
+// [  1: 12  3  3  3  3]  0 ab ac ad ae.
 Graph findGraph(int rank, int internal, Intstack cell) {
 	/* Tries only the best border graph, and then decompositions */
 	Graph g1 = findGraphBEG(rank, internal, cell);
@@ -257,7 +258,7 @@ Graph findGraph(int rank, int internal, Intstack cell) {
 	}
 	return g1;
 }
-
+// [  1: 12  3  3  3  3]  0 ab ac ad ae.
 int main(int argc, char *argv[]) {
 	Intstack cell, ce;
 	Graph g;

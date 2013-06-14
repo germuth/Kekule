@@ -122,9 +122,9 @@ unsigned long long int toplus(Intstack a, Intstack b) {
 		for (j = 0; j < b->size; j++) {
 			if ((a->it[i] & b->it[j]) == 0)
 				xx = xx | (1ULL<< (a->it[i] ^ b->it[j]));
-			}
-			return xx;
 		}
+			return xx;
+	}
 
 int hasFactor(Intstack cell, Intstack a, Intstack klad) {
 	ofactor(cell, a, klad);
