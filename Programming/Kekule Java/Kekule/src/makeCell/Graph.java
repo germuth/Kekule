@@ -3,6 +3,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import shared.BitVector;
+import shared.Cell;
 
 /**
  * Graph
@@ -45,6 +46,52 @@ public class Graph {
 	 * Adjacency matrix holding all the edges in this graph.
 	 */
 	private AdjacencyMatrix adjMatrix;
+	
+	
+	private Cell edgeCell;
+	
+	public Graph(int nP, int nC, Cell edges){
+		this.numPorts = nP;
+		this.numNodes = nC;
+		this.edgeCell = edges;
+	}
+	
+	
+	
+	public void addEdge(BitVector bv){
+		this.edgeCell.add(bv);
+	}
+	
+	public void translate(BitVector bv){
+		Cell edges = new Cell(this.edgeCell);
+
+		while( !bv.isEmpty() ){
+			int k = bv.firstNode();
+			bv = new BitVector(bv.getNumber() - k);
+			BitVector p = new BitVector(1 << this.numNodes);
+			
+			for(int i = 0; i < edges.size(); i++){
+				BitVector current = edges.getPA()[i];
+				if(current.contains(k)){
+					int x = current.getNumber() + p.getNumber() - k;
+					edges.getPA()[i] = new BitVector(x);
+				}
+			}
+			edges.add(new BitVector( p.getNumber() + k ));
+			this.numNodes++;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Constructor with default ports {0,1,2,3...}
@@ -114,11 +161,100 @@ public class Graph {
 	public String getName() {
 		return name;
 	}
+	
+	public void addTwoNodes(){
+		this.numNodes += 2;
+	}
+
+	public Cell getEdgeCell() {
+		return edgeCell;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setEdgeCell(Cell edgeCell) {
+		this.edgeCell = edgeCell;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	public int getNumPorts() {
 		return numPorts;
 	}
 	
+	
+	public int getNumNodes() {
+		return numNodes;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setNumNodes(int numNodes) {
+		this.numNodes = numNodes;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public AdjacencyMatrix getAdjMatrix() {
 		return adjMatrix;
 	}

@@ -46,7 +46,8 @@ public class Classify {
 			Permutations.freePerm();
 			System.out.println("the end:" + classifications.size());
 			for(int i= 0; i < classifications.size(); i++){
-				System.out.println(classifications.get(i).printNumbers());
+				System.out.println("[5]  " + classifications.get(i));
+				System.out.println("\t" + classifications.get(i).printNumbers());
 			}
 		}
 	}
@@ -134,8 +135,6 @@ public class Classify {
 			}
 			else{
 				variants = Permutations.allVariants(rank, array.get(i) );
-				System.out.println("Variants");
-				Utils.printArrayList(variants);
 				int k = 1;
 				while( k < variants.size() && j < array.size() ){
 					if( array.get(j) != null && Histogram.compareL(array.get(j), variants.get(k) ) == 0){
@@ -152,5 +151,53 @@ public class Classify {
 		}
 		array = Utils.removeNulls(array);
 		return array;
+	}
+	
+	public static ArrayList<Cell> sortAndWeedGraphs(int rank, ArrayList<Cell> raw){
+		Cell[] tobeSorted = Utils.listToArCell(raw);
+		Arrays.sort(tobeSorted, new Comparator<Cell>(){
+
+			@Override
+			public int compare(Cell cell1, Cell cell2) {
+				int r = Histogram.compareW(cell1, cell2);
+				if(r != 0){
+					return r;
+				}
+				return Histogram.compareL(cell1, cell2);
+			}
+			
+		});
+		
+		raw = Utils.arToList(tobeSorted);
+		ArrayList<Cell> variants = null;
+		
+		int i = 0;
+		while( i < raw.size() ){
+			int j = i + 1;
+			while( j < raw.size() && raw.get(j) == null ){
+				j++;
+			}
+			if( j == raw.size() || ( Histogram.compareW( raw.get(i), raw.get(j) ) != 0 ) ){
+				i = j;
+			}
+			else{
+				variants = Permutations.allVariants(rank, raw.get(i) );
+				int k = 1;
+				while( k < variants.size() && j < raw.size() ){
+					if( raw.get(j) != null && 
+							Histogram.compareL(raw.get(j), variants.get(k) ) == 0){
+						raw.set(j, null);
+						k++;
+					}
+					j++;
+				}
+				i++;
+				while( i < raw.size() && raw.get(i) == null){
+					i++;
+				}
+			}
+		}
+		raw = Utils.removeNulls(raw);
+		return raw;
 	}
 }

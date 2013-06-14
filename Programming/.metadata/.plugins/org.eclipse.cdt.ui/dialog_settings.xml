@@ -6,6 +6,8 @@
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="toplus"/>
+			<item value="printArrayList"/>
 			<item value="permuteCell"/>
 		</list>
 	</section>

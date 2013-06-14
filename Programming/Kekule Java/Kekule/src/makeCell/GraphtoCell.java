@@ -101,7 +101,7 @@ public class GraphtoCell {
 	 * @param g, graph we want a Kekule cell for
 	 * @return Set of Bit Vectors representing the port assignments of the graph
 	 */
-	private static Set<BitVector> makeCell(BitVector bvNodes, Graph g){
+	public static Set<BitVector> makeCell(BitVector bvNodes, Graph g){
 		
 		Set<BitVector> kekuleCell = new HashSet<BitVector>();
 		Set<BitVector> addend = new HashSet<BitVector>();

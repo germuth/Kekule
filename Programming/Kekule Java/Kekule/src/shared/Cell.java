@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import classify.Coherence;
+
 import makeCell.Histogram;
 
 /**
@@ -44,6 +46,16 @@ public class Cell {
 		Cell both = new Cell(intersection, 0);
 		both.sortBySize();
 		return both;
+	}
+	/**
+	 * Returns the union of two cells
+	 */
+	public static Cell union(Cell a, Cell b){
+		Set<BitVector> set1 = Utils.arToSet(a.getPA());
+		Set<BitVector> set2 = Utils.arToSet(b.getPA());
+		Set<BitVector> together = new HashSet<BitVector>(set1);
+		together.addAll(set2);
+		return new Cell(together, a.getNumPorts());
 	}
 	/**
 	 * Return a Cell with all even port assignments, as in all possible 
@@ -260,6 +272,47 @@ public class Cell {
 		return portAssignment;
 	}
 	
+	public boolean indecomposable(Cell part1, Cell part2){
+		long ulim = 1 << (this.size() - 1);
+		long xx = toBits();
+		Cell cand = new Cell();
+		cand.add(new BitVector(0));
+		
+		boolean r = true;
+		
+		for(int x = 1; r && x < ulim - 1; x++){
+			//TODO cand.size == 1
+			int y = x;
+			int i = 0; 
+			while( y > 0 ){
+				if( y % 2 == 1){
+					cand.add( this.getPA()[i+1] );
+				}
+				y /= 2;
+				i++;
+			}
+			if( Coherence.isCoherent(cand) ){
+				Cell nCell = this.hasFactor(cand);
+				
+			}
+		}
+	}
+	
+	private boolean hasFactor(Cell cand){
+		//return klad
+		//cell is this
+		//a is cand
+		Cell klad = this.oFactor(cand);
+	}
+	
+	private long toBits(){
+		long xx = 0;
+		for(int i = 0; i < this.size(); i++){
+			xx = xx | 1 << this.getPA()[i].getNumber();
+		}
+		return xx;
+	}
+	
 	/**
 	 * isFlexible
 	 * 0 must be in cell
@@ -278,6 +331,32 @@ public class Cell {
 			upb |= this.getPA()[i].getNumber();
 		}
 		return (upb == ports);
+	}
+	
+	/**
+	 * Returns whether the given bitvector is in this cell
+	 */
+	public boolean contains(BitVector bv){
+		for(int i = 0; i < this.size(); i++){
+			if(this.portAssignments[i].equals(bv)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Returns whether this set is a subset of the parameter set
+	 * @param bigger
+	 * @return
+	 */
+	public boolean isSubSetOf(Cell bigger){
+		Set<BitVector> thisOne = Utils.arToSet(this.portAssignments);
+		Set<BitVector> biggerOne = Utils.arToSet(bigger.portAssignments);
+		if(biggerOne.containsAll(thisOne)){
+			return true;
+		}
+		return false;
 	}
 	
 	/**
