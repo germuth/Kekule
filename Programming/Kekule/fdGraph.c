@@ -213,28 +213,6 @@ Graph findGraphBEG(int rank, int internal, Intstack cell) {
 	freestack(nc);
 	return g;
 }
-
-Graph findGraphORI(int rank, int internal, Intstack cell) {
-	/* Tries all translated versions; does not try decompositions. */
-	Intstack nc = newIntstack(0, cell);
-	int x, i = 0;
-	Graph g= NULL;
-	while (!g && i < cell->size) {
-		printf(":");
-		fflush(stdout);
-		x = cell->it[i];
-		i++;
-		translate(x, nc);
-		g = findGraphEG(rank, internal, nc);
-		if (g) {
-			translateGraph(x, g);
-		} else {
-			translate(x, nc);
-		}
-	}
-	freestack(nc);
-	return g;
-}
 // [  1: 12  3  3  3  3]  0 ab ac ad ae.
 Graph findGraph(int rank, int internal, Intstack cell) {
 	/* Tries only the best border graph, and then decompositions */

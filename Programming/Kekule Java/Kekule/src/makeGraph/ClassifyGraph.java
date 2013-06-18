@@ -33,7 +33,11 @@ public class ClassifyGraph {
 		}
 		ClassifyGraph.aMGisMade = true;
 	}
-	
+	/**
+	 * get ALL Matched Graphs
+	 * @param k
+	 * @return
+	 */
 	public static ArrayList<Cell> getAMG(int k){
 		return aMG[k];
 	}
@@ -62,7 +66,7 @@ public class ClassifyGraph {
 			return false;
 		}
 		BitVector ed = gr.removeLast();
-		int size = gr.size();
+		//int size = gr.size();
 		if( matchedR( cover, gr) ){
 			return true;
 		}

@@ -54,7 +54,7 @@ because if it, then ports should be restricted to 2 bonds
 			- bending and transforming
 			- can we make a program which does this for us, by hand is quite difficult?
 			- perhaps it is easier, to find the not - allowed solution, and alter it to a carbon chemistry approved structure?
-
+			- border channel edges can be added without changing the Kekule cell
 
 Possibly make java version of Hesselink's software
 

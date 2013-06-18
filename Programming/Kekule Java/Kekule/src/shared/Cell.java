@@ -417,6 +417,15 @@ public class Cell {
 	 * one port assignment which contains any of the possible ports. In other
 	 * words all ports must have at least one port assignment where they have 
 	 * a double bond, in order for this cell to be deemed 'flexible'
+	 * 
+	 * Representing in Hesselinks Paper with
+	 * 
+	 * 			P = U K
+	 * 
+	 * where P = set of ports
+	 * 		 U = union operator
+	 * 		 K = a flexible Kekule cell
+	 * 
 	 * @param ports, Bit Vector, of the number of ports
 	 * @return, whether this cell is flexible
 	 */
@@ -489,7 +498,7 @@ public class Cell {
 	
 	/**
 	 * Sorts the port assignments of this cell by the size of the corresponding
-	 * BitVectors
+	 * BitVectors, from smaller to higher.
 	 */
 	public void sortBySize(){
 		Arrays.sort(this.portAssignments, new Comparator<BitVector>(){

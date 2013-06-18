@@ -1,8 +1,14 @@
+GnuWin32
+-----------
 Get GnuWin32
 Move source into GnuWin32's bin folder
 Get MinGW
 Change makefile compiler tag from something like "cc99" to "gcc"
 right click on run in accessories, and run as administrator
-navitage to GnuWin32 bin cd "C:\\ .......\bin"
+navitage to GnuWin32 bin using   cd "C:\\ .......\bin"
 May have to add bin directory paths to environment variables
-now you can use commands in README
+now you can use commands in README in cmd
+
+Eclipse CDT
+-----------
+Good Luck!

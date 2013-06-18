@@ -130,6 +130,11 @@ public class Graph {
 		edges.sortBySize();
 	}
 	
+	//TODO not
+	//TODO even
+	//TODO close
+	//TODO to
+	//TODO finished
 	public void minimizeGraph(){
 		Cell edges = this.edgeCell;
 		if(edges.size() == 0){

@@ -1,0 +1,15 @@
+Testing with 6 Ports
+General Comments
+Add First Restrictions:
+	thouroughly comment cellToGraph
+	work through example on paper
+	understand what to do
+	plan how
+	re-do Graph.class
+	go!
+	test
+Discuss GUI
+	show results, draw sweet graphs
+	integrated into browser would be nice
+		how execution work?
+	integrate all packages, make then executable from within

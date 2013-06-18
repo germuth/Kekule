@@ -15,10 +15,10 @@ import shared.Graph;
 import shared.Permutations;
 
 /**
- * This class reads a classification of all Kekule cells of a port number and attempts to find graphs for them.
+ * This class reads a classification of all Kekule cells of a port number and attempts
+ * to find graphs for them.
  * 
  * @author Aaron
- *
  */
 public class CellToGraph {
 	private static File f = new File("myraw.txt");
@@ -42,7 +42,7 @@ public class CellToGraph {
 		}
 		
 		//construct matched graphs
-		//I think this is how many internal verticies are allowed
+		//how many internal vertices are allowed
 		int internal = 4;
 		ClassifyGraph.setAMG(internal);
 		Histogram.rank = rank;
@@ -70,11 +70,39 @@ public class CellToGraph {
 		}
 
 	}
-	
+	/**
+	 * Assume P = U K, as in K is flexible (K contains every port in P)
+	 * 
+	 * Monotonic means preserves order. for example, if x < y, then f(x) < f(y)
+	 * 
+	 * K is monotonic in the sense that if E0 subset E, then K(V, E0) subset K(V, E)
+	 * 
+	 * Therefore, given a K, we can begin searching for a graph with K(V, E0) and then add
+	 * edges to E0.
+	 * 
+	 * The growth of K(V, E) when E grows is:
+	 * 
+	 * K(G) = K(V, E0) U ( (e U P) symDif K(U, E1) )
+	 * 
+	 * e is edge of E. 
+	 * E0 = E \ e
+	 * U = V \ e
+	 * E1 = E intersection U(2)
+	 * 
+	 * 
+	 * choose a port assignment where bc(k symDif K) is largest. K' = k symDif K is regular.
+	 * If we can find graph G' for K', we can then use backwards translation 
+	 * (k symDif G') == G
+	 * 
+	 * @param rank
+	 * @param internal
+	 * @param cell
+	 * @return
+	 */
 	private static Graph findGraph(int rank, int internal, Cell cell){
-		//tries only the best border graph, and then decompositions
+		//tries the best border graph
 		Graph g1 = findGraphBEG(rank, internal, cell);
-		
+		//if failed to find best border, search for graph using decomposition
 		if(g1 == null){
 			System.out.println("Trying Decompositions");
 			int i = 0;
@@ -82,7 +110,7 @@ public class CellToGraph {
 			Cell p1 = null;
 			Cell p2 = null;
 			
-			//i think this is not finished
+			//nf = not Finished
 			boolean nf = true;
 			while(nf && i < cell.size()){
 				BitVector pa = cell.getPA()[i];
@@ -106,16 +134,32 @@ public class CellToGraph {
 		return g1;
 	}
 	
+	/**
+	 * Finds the Best Border Graph and then uses to find the actual graph for cell. First 
+	 * translates cell to discover the best border graph and then once the graph is found
+	 * for translation, the graph is re-translated back to the original. 
+	 * @param rank, the number of ports involved
+	 * @param internal, the maximum number of internal vertices allowed
+	 * @param cell, the cell we are trying to find a graph for
+	 * @return a graph for the given cell
+	 */
 	private static Graph findGraphBEG(int rank, int internal, Cell cell){
 		cell.sortBySize();
-		//i think this is border edges
+		//Translates cell by port assignments and looks at border channel created
+		//translation which caused the largest border graph is returned
 		BitVector x = bestBorderGraph(rank, cell);
 		Cell nc = new Cell(cell);
-		Graph g; 
+		//translate to get the largest border graph
 		nc.translate(x);
-		g = findGraphEG(rank, internal, nc);
+		//forms a graph where the only vertices are the ports
+		//and the only edges are edges from every port to every other port
+		
+		//Finds graph for nc
+		Graph g = findGraphEG(rank, internal, nc);
+		//sort
 		g.getEdgeCell().sortBySize();
 		
+		//Translate graph back over x, to get original
 		if(g != null){
 			g.translate(x);
 		}
@@ -124,67 +168,104 @@ public class CellToGraph {
 		
 	}
 	
-	//cell is regular
-	//therefore the subgraph of internal nodes has a matching
-	//use classification of matched graphs of rank cN-cP
+	/**
+	 * TODO finish
+	 * Cell must be regular, ie contain 0 as port assignment. 
+	 * Therefore the subgraph of the internal nodes has a matching, we can
+	 * use the classification of the matched graphs of rank (nodes - ports)
+	 * 
+	 * @param rank, the number of ports in cell
+	 * @param internal, the number of internal vertices allowed
+	 * @param cell, the cell we want a graph for
+	 * @return Graph for cell
+	 */
 	private static Graph findGraphEG(int rank, int internal, Cell cell){
+		//get the best Border Graph
 		Graph g0 = borderGraph(rank, cell);	
+		//determine cell of border graph
+		//used to compare to full graph cell
+		//as c0 becomes cell
+		//g0 becomes g
+		//and we have found the graph
 		Cell c0 = GraphtoCell.makeCell(g0);
 		
+		//cells have equal size, we have found applicable graph
 		if( c0.size() == cell.size()){
 			return g0;
 		}
+		//limit the amount of internal nodes allowed
+		//TODO ??
 		if( internal < 2 ){
 			return null;
 		}
-		
+		//if we are here, g0 was not enough
 		Graph g1 = new Graph(rank, rank, null);
 		Graph answer = null;
-		while(answer == null && g1.getNumNodes() + 2 <= rank+internal ){
-			
+		//while we haven't found a graph AND we are still allowed to 
+		//add more nodes and keep searching
+		while(answer == null && g1.getNumNodes() + 2 <= rank + internal ){
 			g1.addTwoNodes();
 			System.out.println("...trying " + g1.getNumNodes() + " nodes...");
 			
-			ArrayList<Cell> grs = ClassifyGraph.getAMG(g1.getNumNodes() - rank);
+			//When we add internal vertices, we need to add internal edges so that the total
+			//graph has a perfect matching or else Kekule state is lost
+			//Get List of Isomorphism classes with perfect matchings and try recursive algorithm
+			//on each
+			//get classification for all matched graphs with rank (nodes - our rank)
+			ArrayList<Cell> allMatchedGraphs = ClassifyGraph.getAMG(g1.getNumNodes() - rank);
+			
+			//Edge Set L
 			Cell lEdges = potEdges(rank, g1.getNumNodes());
-			for(int i = 0; i < grs.size(); i++){
-				Cell gri = grs.get(i);
-				//transfer edges from gri to g1
+			lEdges.sortBySize();
+			
+			//for each classification
+			for(int i = 0; i < allMatchedGraphs.size(); i++){
+				//get current classification
+				Cell current = allMatchedGraphs.get(i);
+				//transfer edges from current classification to g1
 				Cell edgeSet =  g0.getEdgeCell();
-				
-				for(int j = 0; j < gri.size(); j++){
-					int x = gri.getPA()[j].getNumber();
+				for(int j = 0; j < current.size(); j++){
+					int x = current.getPA()[j].getNumber();
 					edgeSet.add( new BitVector( x << rank ) );
 				}
 				g1.setEdgeCell(edgeSet);
-				lEdges.sortBySize();
 				
+				
+				//add edges to g1 until final graph found
+				//using recursive procedure of 4.2 (Hesselink)
 				answer = findGraphR(g1, c0, cell, lEdges, 0);
 				
+				//if answer found
 				if(answer != null){
 					break;
 				}
+				//retry with more nodes
 				else{
 					g1.setEdgeCell(null);
 				}
 			}
 		}
 		
-		
 		return answer;
 	}
 	
 	/**
-	 * findGraph fo figure 1
-	 * g0 = (v, E0) assume c0 sub cell, and c0 = Kp(g0)
-	 * if possible return graph g with Kp = cell
-	 * from g0 and edges from ledges[lptr...] else null
-	 * preserves the arguments but modifes g0
+	 * Main Recursive Algorithm of Hesselink's Paper, Section 4.2
+	 * 
+	 * Adds Edges from lEdges to g0 in order to get g0's cell to match argument cell.
+	 * c0 is g0's current cell. It slowly approximates cell. When this has happened,
+	 * g0 now equals a graph for cell. lptr holds the current edge we are adding.
+	 * 
+	 * Preserves all arguments other than g0, which will be the answer at the end.
+	 * Assumes c0 is a subset of cell, and c0 is a Kekule cell for g0.
+	 * Returns null if no such graph is found
 	 */
 	private static Graph findGraphR(Graph g0, Cell c0, Cell cell, Cell lEdges, int lptr){
+		//if cell size matches, we have found graph
 		if( c0.size() == cell.size() ){
 			return g0;
 		}
+		//if we got to the last edge, we failed to find graph
 		if( lptr == lEdges.size()){
 			return null;
 		}
@@ -194,33 +275,51 @@ public class CellToGraph {
 			return result;
 		}
 		
-		//undo pushing of edges
+		//re set g0's edges to what they used to be 
+		//as they were edited in recursion
 		g0.setEdgeCell(edgeCell);
+		//get current edge we are going to add
 		BitVector edge = lEdges.getPA()[lptr];
 
+		//BitVector for the nodes
 		BitVector nodeV = g0.getNodeVector();
+		//all nodes other than edge
 		BitVector uu = BitVector.symmetricDifference(nodeV, edge);
-		
+		//get cell for uu
 		Set<BitVector> kekCell = GraphtoCell.makeCell(uu, g0);
 		Cell kk = new Cell(kekCell, g0.getNumPorts() );
 		
+		//BitVector for the ports
 		BitVector portV = g0.getPortVector();
+		//BitVector of all ports plus nodes in edge that aren't ports
+		//minus nodes in edge which are ports
 		BitVector translation = BitVector.intersection(portV, edge);
+		//translate above cell
 		kk.translate(translation);
 		
 		if(kk.isSubSetOf(cell)){
 			g0.addEdge(edge);
 			Cell c1 = new Cell(c0);
 			c1 = Cell.union(c1, kk);
+			//try to add next edge
 			result = findGraphR(g0, c1, cell, lEdges, lptr + 1);
 			return result;
 		}
 		return null;
 	}
 	
+	/**
+	 * Constructs a list of all possible edges between all ports and the interval 
+	 * Vertices which may be added. This is used to ensure when we add vertices to the
+	 * graph it still has a perfect matching.
+	 * No new internal edges are added. 
+	 * @param rank, the number of ports
+	 * @param cn, the number of nodes currently in the graph
+	 * @return a Cell, holding the above list of edges
+	 */
 	private static Cell potEdges(int rank, int cn){
 		Set<BitVector> answerSet = new HashSet<BitVector>();
-		int size = rank * (cn - rank); 
+		//int size = rank * (cn - rank); 
 		int pEnd = 1 << rank;
 		int qEnd = 1 << cn;
 		for(int q = pEnd; q < qEnd; q <<= 1){
@@ -231,11 +330,27 @@ public class CellToGraph {
 		return new Cell(answerSet, rank);
 	}
 	
+	/**
+	 * Returns the best Border Graph. What translation to do to the cell
+	 * in order to get the best border graph has been previously figured out.
+	 * @param rank, the number of ports involved
+	 * @param cell, the cell which we are searching for a graph for
+	 * @return the best Border Graph for cell
+	 */
 	private static Graph borderGraph(int rank, Cell cell){
 		Cell borderEdges = borderEdges(rank, cell);
 		return new Graph(rank, rank, borderEdges);
 	}
 	
+	/**
+	 * Translates this cell over all port assignments with it. Compares the
+	 * border channels set and remembers the largest one out of all tried. This 
+	 * is determined the best Border Graph. The BitVector used to translate 
+	 * to the best Border Graph is returned
+	 * @param rank, the number of ports being considered
+	 * @param cell, the cell we are testing
+	 * @return BitVector used to translate cell to best border graph
+	 */
 	private static BitVector bestBorderGraph(int rank, Cell cell){
 		int xSize = -1;
 		BitVector x = new BitVector(0);
@@ -254,6 +369,18 @@ public class CellToGraph {
 		return x;
 	}
 	
+	/**
+	 * Returns a border graph. Not guaranteed to be the best (optimal) one.
+	 * Returns A cell of BitVector Edges Consisting of edges from every port
+	 * to every other port. 
+	 * V = P
+	 * E = every element of the power set of P with two elements (every possible
+	 * 		doublet of ports)
+	 * 
+	 * @param rank, number of ports involved
+	 * @param cell we are getting from
+	 * @return set of border channel (bitVector) edges in a cell
+	 */
 	private static Cell borderEdges(int rank, Cell cell){
 		Set<BitVector> answerSet = new HashSet<BitVector>();
 		
@@ -297,6 +424,7 @@ public class CellToGraph {
 		
 		String bitVectors = fileScanner.nextLine();
 		
+		lineScanner.close();
 		lineScanner = new Scanner(bitVectors);
 		
 		Set<BitVector> allBVs = new HashSet<BitVector>();
