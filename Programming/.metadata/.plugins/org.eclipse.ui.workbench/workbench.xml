@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="23" version="2.0">
+<workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
 <window height="1024" maximized="true" width="1192" x="337" y="494">
 <fastViewData fastViewLocation="1024"/>
@@ -41,7 +41,7 @@
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" partName="fdGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/fdGraph.c" title="fdGraph.c" tooltip="Kekule/fdGraph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/fdGraph.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="6736"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="7719"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="classGraph.c" partName="classGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classGraph.c" title="classGraph.c" tooltip="Kekule/classGraph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classGraph.c"/>
@@ -53,19 +53,19 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCell.c" partName="mkCell.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCell.c" title="mkCell.c" tooltip="Kekule/mkCell.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCell.c"/>
-<editorState selectionHPixel="0" selectionLength="3" selectionOffset="1518"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2050"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="graph.c" partName="graph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/graph.c" title="graph.c" tooltip="Kekule/graph.c" workbook="DefaultEditorWorkbook">
+<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="graph.c" partName="graph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/graph.c" title="graph.c" tooltip="Kekule/graph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/graph.c"/>
-<editorState selectionHPixel="0" selectionLength="14" selectionOffset="671"/>
+<editorState selectionHPixel="0" selectionLength="26" selectionOffset="1122"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.c" partName="auxil.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/auxil.c" title="auxil.c" tooltip="Kekule/auxil.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/auxil.c"/>
-<editorState selectionHPixel="0" selectionLength="1" selectionOffset="446"/>
+<editorState selectionHPixel="0" selectionLength="8" selectionOffset="5245"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" partName="cells.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/cells.c" title="cells.c" tooltip="Kekule/cells.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" partName="cells.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/cells.c" title="cells.c" tooltip="Kekule/cells.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/cells.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="2708"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="3174"/>
 </editor>
 </editors>
 <views>
@@ -73,13 +73,12 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" CommonNavigator.LINKING_ENABLED.delayed="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
+<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Targets"/>
 <view id="org.eclipse.search.ui.views.SearchView" partName="Search">
 <viewState isPinned="false">
-<view IMemento.internal.id="org.eclipse.cdt.ui.pdomSearchViewPage" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2"/>
 <view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
 </viewState>
 </view>
-<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Targets"/>
 <view id="org.eclipse.debug.ui.DebugView" partName="Debug">
 <viewState/>
 </view>
@@ -118,7 +117,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
+<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.cdt.ui.CPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -197,9 +196,9 @@
 <presentation id="org.eclipse.ui.internal.presentations.r33.WorkbenchPresentationFactory_33"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.16469662" ratioLeft="209" ratioRight="1060" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.8057395" ratioLeft="730" ratioRight="176" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.search.ui.views.SearchView" appearance="2" expanded="2">
+<info part="org.eclipse.ui.editorss" ratio="0.121030554" ratioLeft="202" ratioRight="1467" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.53642386" ratioLeft="486" ratioRight="420" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
@@ -316,166 +315,162 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/fdGraph.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classGraph.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classify.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/histogram.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/readKekule.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/graph.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/graph.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/auxil.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/cells.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/coherence.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/auxil.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/fdGraph.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/graph.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCell.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/auxil.h"/>
 </editors>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="7242" y="0"/>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="2686" y="0"/>
 </item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="2159" y="6"/>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="1691" y="7"/>
 </item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="2324" y="0"/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="1623" y="16"/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="1671" y="0"/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="1120" y="0"/>
-</item>
-<item historyLabel="classify.c" index="2">
-<position info="not_deleted" x="2568" y="0"/>
-</item>
-<item historyLabel="histogram.c" index="3">
-<position info="not_deleted" x="2215" y="11"/>
-</item>
-<item historyLabel="classify.c" index="2">
-<position info="not_deleted" x="2039" y="0"/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="1120" y="0"/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="1738" y="0"/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="2159" y="6"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="7362" y="0"/>
-</item>
-<item historyLabel="readKekule.c" index="4">
-<position info="not_deleted" x="261" y="6"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="7641" y="0"/>
-</item>
-<item historyLabel="graph.c" index="5">
-<position/>
-</item>
-<item historyLabel="graph.h" index="6">
-<position/>
-</item>
-<item historyLabel="graph.c" index="5">
-<position/>
-</item>
-<item historyLabel="classGraph.c" index="1">
-<position info="not_deleted" x="2159" y="6"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="7641" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="7410" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="6248" y="9"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5607" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="2347" y="15"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="2622" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="2088" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="4918" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5229" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5288" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="4006" y="0"/>
-</item>
-<item historyLabel="auxil.c" index="7">
-<position/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="4006" y="0"/>
-</item>
-<item historyLabel="auxil.c" index="7">
-<position/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="4081" y="0"/>
-</item>
-<item historyLabel="auxil.c" index="7">
-<position info="not_deleted" x="2639" y="8"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5485" y="0"/>
-</item>
-<item historyLabel="graph.c" index="5">
-<position info="not_deleted" x="495" y="9"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="6736" y="0"/>
-</item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="2764" y="14"/>
-</item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="3080" y="0"/>
-</item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="3291" y="0"/>
-</item>
-<item historyLabel="coherence.c" index="9">
-<position info="not_deleted" x="2533" y="10"/>
-</item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="3291" y="0"/>
-</item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="3309" y="0"/>
-</item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="2630" y="9"/>
-</item>
-<item historyLabel="cells.c" index="8">
+<item historyLabel="cells.c" index="0">
 <position info="not_deleted" x="2688" y="0"/>
 </item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="2741" y="0"/>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="1691" y="7"/>
 </item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="2664" y="1"/>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="2685" y="0"/>
 </item>
-<item historyLabel="cells.c" index="8">
-<position info="not_deleted" x="2668" y="0"/>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="2687" y="0"/>
 </item>
-<item active="true" historyLabel="cells.c" index="8">
-<position info="not_deleted" x="2377" y="6"/>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="1691" y="7"/>
+</item>
+<item historyLabel="auxil.c" index="1">
+<position info="not_deleted" x="446" y="1"/>
+</item>
+<item historyLabel="auxil.c" index="1">
+<position info="not_deleted" x="3683" y="12"/>
+</item>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="3664" y="0"/>
+</item>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="3720" y="0"/>
+</item>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="1264" y="4"/>
+</item>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="3721" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6791" y="0"/>
+</item>
+<item historyLabel="cells.c" index="0">
+<position info="not_deleted" x="3174" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6791" y="0"/>
+</item>
+<item historyLabel="graph.c" index="3">
+<position info="not_deleted" x="671" y="14"/>
+</item>
+<item historyLabel="graph.c" index="3">
+<position info="not_deleted" x="1691" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6945" y="0"/>
+</item>
+<item historyLabel="mkCell.c" index="4">
+<position info="not_deleted" x="1518" y="3"/>
+</item>
+<item historyLabel="mkCell.c" index="4">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="7722" y="0"/>
+</item>
+<item historyLabel="graph.c" index="3">
+<position info="not_deleted" x="1241" y="0"/>
+</item>
+<item historyLabel="auxil.c" index="1">
+<position info="not_deleted" x="5245" y="8"/>
+</item>
+<item historyLabel="graph.c" index="3">
+<position info="not_deleted" x="1241" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="7648" y="0"/>
+</item>
+<item historyLabel="mkCell.c" index="4">
+<position info="not_deleted" x="1582" y="13"/>
+</item>
+<item historyLabel="mkCell.c" index="4">
+<position/>
+</item>
+<item historyLabel="mkCell.c" index="4">
+<position info="not_deleted" x="1801" y="0"/>
+</item>
+<item historyLabel="auxil.h" index="5">
+<position info="not_deleted" x="147" y="2"/>
+</item>
+<item historyLabel="mkCell.c" index="4">
+<position info="not_deleted" x="2050" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="7648" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="7504" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6304" y="9"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6467" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6467" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="6420" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="5534" y="12"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="5745" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="5601" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="7504" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="2">
+<position info="not_deleted" x="7719" y="0"/>
+</item>
+<item active="true" historyLabel="graph.c" index="3">
+<position info="not_deleted" x="1001" y="10"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -494,6 +489,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="auxil.h" tooltip="Kekule/auxil.h">
+<persistable path="/Kekule/auxil.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="coherence.c" tooltip="Kekule/coherence.c">
 <persistable path="/Kekule/coherence.c"/>
 </file>
@@ -535,9 +533,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.h" tooltip="Kekule/histogram.h">
 <persistable path="/Kekule/histogram.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="classify.h" tooltip="Kekule/classify.h">
-<persistable path="/Kekule/classify.h"/>
 </file>
 </mruList>
 </workbench>
