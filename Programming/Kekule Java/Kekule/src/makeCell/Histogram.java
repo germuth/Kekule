@@ -14,6 +14,16 @@ import shared.Permutations;
 public class Histogram {
 	public static int rank;
 
+	/**
+	 * Compares the length of Cell one and Cell two's 
+	 * weighted Sort. In the case of equality, they
+	 * are compared based on their regular, unweighted length.
+	 * @param one, the first Cell to compare
+	 * @param two, the second Cell to compare
+	 * @return, + if one >  two
+	 * 		    - if one <  two
+	 * 		    0 if one == two
+	 */
 	public static int compareW(Cell one, Cell two){
 		Cell h1 = new Cell(one);
 		Cell h2 = new Cell(two);
@@ -22,6 +32,16 @@ public class Histogram {
 		return compareL(h1, h2);
 	}
 	
+	/**
+	 * Compares two cells based on their length, as in the amount
+	 * of port assignments either of them have. If they have the same
+	 * amount of port assignments they are compared lexigraphically.
+	 * @param one
+	 * @param two
+	 * @return  + if one >  two
+	 * 		    - if one <  two
+	 * 		    0 if one == two
+	 */
 	public static int compareL(Cell one, Cell two) {
 
 		int diff = one.getPA().length - two.getPA().length;
@@ -32,17 +52,29 @@ public class Histogram {
 		return compareLex(one.getPA().length, one, two);
 	}
 
-	public static int compareLex(int diff, Cell one, Cell two) {
-		diff--;
-		while (diff >= 0
-				&& one.getPA()[diff].equals(two.getPA()[diff])) {
-			diff--;
+	/**
+	 * Compares two cells lexigraphically. Cycles through both cells and compares
+	 * each port assignment to one another. If it gets to the end and all port assignments
+	 * where the same, 0 is returned. Otherwise, the cell with the larger port assignments
+	 * (in terms of it's integer bit Vector form) is disgnated larger
+	 * @param length, the length of cell one and two
+	 * @param one, Cell one
+	 * @param two, Cell two
+	 * @return  + if one >  two
+	 * 		    - if one <  two
+	 * 		    0 if one == two
+	 */
+	public static int compareLex(int length, Cell one, Cell two) {
+		length--;
+		while (length >= 0
+				&& one.getPA()[length].equals(two.getPA()[length])) {
+			length--;
 		}
-		if (diff < 0) {
+		if (length < 0) {
 			return 0;
 		}
-		return one.getPA()[diff].getNumber()
-				- two.getPA()[diff].getNumber();
+		return one.getPA()[length].getNumber()
+				- two.getPA()[length].getNumber();
 	}
 
 	// i think hist is always intialized as 0

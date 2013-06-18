@@ -7,10 +7,27 @@ import java.util.Set;
 import shared.BitVector;
 import shared.Cell;
 
+/**
+ * Coherence
+ * 
+ * This class holds many utility functions involved with Cell coherence and
+ * Channels. It also holds a static variable, chFrom which holds 
+ * some discovered channels so they don't have to be recalculated.
+ * 
+ * @author Aaron
+ *
+ */
+
 public class Coherence {
 	
 	private static Cell[] chFrom = new Cell[32];
 
+	/**
+	 *  //TODO make sure this is right
+	 * Returns whether all nodes of the cell contain a channel to one another
+	 * @param cell
+	 * @return
+	 */
 	public static boolean isCoherent(Cell cell){
 		
 		if(cell.size() < 2){
@@ -33,6 +50,15 @@ public class Coherence {
 	}
 	
 	//pre p < q < cell.size() and distance > 2
+	/**
+	 * Returns whether there exists a channel between node p and node q
+	 * within Cell cell. 
+	 * @param p, the first node (integer form)
+	 * @param q, the second node (integer form)
+	 * @param cell, the cell we are checking whether it contains a channel from
+	 * p to q
+	 * @return, whether a channel from p to q exists within cell
+	 */
 	private static int channelConnect(int p, int q, Cell cell){
 		BitVector pp = cell.getPA()[p];
 		BitVector symDiff = BitVector.symmetricDifference(
@@ -67,8 +93,17 @@ public class Coherence {
 		return 0;
 	}
 	
-	//pre: p in cell. Preserves both cell and fan
-	//for every subset D of fan, verify that p^(^D) in cell
+	/**
+	 *pre: p in cell. Preserves both cell and fan
+	 * for every subset D of fan, verify that p^(^D) in cell
+	 * Determines for every subset of the cell fan, that the intersection of
+	 * a bit vector p and above subset is within cell. This means that fan
+	 * is a fan of cell
+	 * @param p, Bit Vector p
+	 * @param fan, possible fan cell
+	 * @param cell, cell we are checking to see if has fan
+	 * @return, whether fan is a fan of cell
+	 */
 	private static boolean isfan(BitVector p, Cell fan, Cell cell){
 		if(fan.size() == 0){
 			return true;
@@ -82,6 +117,14 @@ public class Coherence {
 		return b;
 	}
 	
+	/**
+	 * Returns whether given BitVector is a channel. It is a channel
+	 * if there are only two nodes in the bitvector, and one of them
+	 * is 1
+	 * TODO check correctness
+	 * @param bv
+	 * @return
+	 */
 	private static boolean isChan(BitVector bv){
 		int count = 0;
 		int x = bv.getNumber();
@@ -96,6 +139,7 @@ public class Coherence {
 	 * All elements of set are subsets of bit string k
 	 * give all wasy to write bit string k as a disjoint union of difference elements of set
 	 * destroys the set
+	 * TODO what do?
 	 * @param difference
 	 * @param cell
 	 * @return
@@ -131,9 +175,18 @@ public class Coherence {
 		return answer;
 	}
 	
-	//yields the storted listof channels c with cell[p] ^c in cell
+	/**
+	 * Returns a cell containing the sorted list of channels c where 
+	 * cell[p] ^ c is in the cell. 
+	 * 
+	 * cell[p] = cell.getPA()[p]
+	 * ^ = intersection of cell[p] and channel
+	 * @param p, integer representing index of cell we are trying to find channels for
+	 * @param cell, the cell we are looking for channels in
+	 * @return, list of channels which satisfy above conidition
+	 */
 	private static Cell chansFrom(int p, Cell cell){
-		
+		//if already found
 		if( chFrom[p] != null ){
 			return chFrom[p];
 		}

@@ -14,7 +14,13 @@ import shared.Cell;
 import shared.Graph;
 import shared.Permutations;
 
-public class cellToGraph {
+/**
+ * This class reads a classification of all Kekule cells of a port number and attempts to find graphs for them.
+ * 
+ * @author Aaron
+ *
+ */
+public class CellToGraph {
 	private static File f = new File("myraw.txt");
 	private static Scanner fileScanner;
 	private static int rank;

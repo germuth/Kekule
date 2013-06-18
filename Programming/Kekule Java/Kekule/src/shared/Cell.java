@@ -412,6 +412,14 @@ public class Cell {
 		return (all.equals(ports));
 	}
 	
+	/**
+	 * Searches through the cell and returns whether this cell has at least 
+	 * one port assignment which contains any of the possible ports. In other
+	 * words all ports must have at least one port assignment where they have 
+	 * a double bond, in order for this cell to be deemed 'flexible'
+	 * @param ports, Bit Vector, of the number of ports
+	 * @return, whether this cell is flexible
+	 */
 	public boolean isFlexible(int ports){
 		int i, upb = 0;
 		for(i = 0; i < this.size(); i++){
