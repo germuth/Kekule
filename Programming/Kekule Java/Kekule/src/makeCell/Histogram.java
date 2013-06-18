@@ -48,6 +48,9 @@ public class Histogram {
 	// i think hist is always intialized as 0
 	// and then it fills it out based on cell
 	public static void portHisto(Cell cell, Integer[] hist) {
+		if(rank == 0){
+			hist[0] = 0;
+		}
 		for (int i = 0; i < rank; i++) {
 			// WOAH this array might be too big
 			hist[i] = 0;

@@ -757,3 +757,12 @@ org.eclipse.cdt.internal.formatter.AbortFormatting: [124/32] unexpected token ty
 
 !ENTRY org.eclipse.core.resources 2 1 2013-06-14 08:52:47.941
 !MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.
+!SESSION 2013-06-18 09:00:55.544 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 1 2013-06-18 09:01:23.905
+!MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.

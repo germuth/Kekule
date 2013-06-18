@@ -32,7 +32,7 @@ public class cellToGraph {
 			System.exit(0);
 		}
 		
-		int rank = 5;
+		int rank = 0;
 		//construct matched graphs
 		//I think this is how many internal verticies are allowed
 		int internal = 4;
@@ -65,6 +65,7 @@ public class cellToGraph {
 	private static Graph findGraph(int rank, int internal, Cell cell){
 		//tries only the best border graph, and then decompositions
 		Graph g1 = findGraphBEG(rank, internal, cell);
+		
 		if(g1 == null){
 			System.out.println("Trying Decompositions");
 			int i = 0;
@@ -105,9 +106,11 @@ public class cellToGraph {
 		nc.translate(x);
 		g = findGraphEG(rank, internal, nc);
 		g.getEdgeCell().sortBySize();
+		
 		if(g != null){
 			g.translate(x);
 		}
+		
 		return g;
 		
 	}
@@ -117,6 +120,11 @@ public class cellToGraph {
 	//use classification fo matched graphs of rank cN-cP
 	private static Graph findGraphEG(int rank, int internal, Cell cell){
 		Graph g0 = borderGraph(rank, cell);
+		
+		
+		
+		
+		
 		Cell c0 = GraphtoCell.makeCell(g0);
 		if( c0.size() == cell.size()){
 			return g0;
@@ -144,8 +152,10 @@ public class cellToGraph {
 					edgeSet.add( new BitVector( x << rank ) );
 				}
 				g1.setEdgeCell(edgeSet);
+				lEdges.sortBySize();
 				
 				answer = findGraphR(g1, c0, cell, lEdges, 0);
+				
 				if(answer != null){
 					break;
 				}
@@ -154,6 +164,8 @@ public class cellToGraph {
 				}
 			}
 		}
+		
+		
 		return answer;
 	}
 	
@@ -180,13 +192,14 @@ public class cellToGraph {
 		//undo pushing of edges
 		g0.setEdgeCell(edgeCell);
 		BitVector edge = lEdges.getPA()[lptr];
-		
-		BitVector portV = g0.getPortVector();
-		BitVector uu = BitVector.symmetricDifference(portV, edge);
+
+		BitVector nodeV = g0.getNodeVector();
+		BitVector uu = BitVector.symmetricDifference(nodeV, edge);
 		
 		Set<BitVector> kekCell = GraphtoCell.makeCell(uu, g0);
 		Cell kk = new Cell(kekCell, g0.getNumPorts() );
 		
+		BitVector portV = g0.getPortVector();
 		BitVector translation = BitVector.intersection(portV, edge);
 		kk.translate(translation);
 		

@@ -109,7 +109,7 @@ public class Graph {
 	}
 	
 	public void translate(BitVector bv){
-		Cell edges = new Cell(this.edgeCell);
+		Cell edges = this.edgeCell;
 
 		while( !bv.isEmpty() ){
 			int k = bv.firstNode();
@@ -126,6 +126,8 @@ public class Graph {
 			edges.add(new BitVector( p.getNumber() + k ));
 			this.numNodes++;
 		}
+		
+		edges.sortBySize();
 	}
 	
 	public void minimizeGraph(){
@@ -162,7 +164,9 @@ public class Graph {
 	}
 	
 	public void writeGraph(){
-		System.out.println(this.name);
+		if(this.name != null){
+			System.out.println(this.name);
+		}
 		System.out.println(this.numNodes + " " + this.numPorts);
 		System.out.println("ports 0 1 2 3 4");
 		String edges = "";

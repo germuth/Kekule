@@ -117,6 +117,7 @@ Graph findGraphR(Graph g0, Intstack c0, Intstack cell, Intstack ledges, int lptr
 	result = findGraphR(g0, c0, cell, ledges, lptr+1);
 	if (result)
 		return result;
+
 	g0->edges->size = edsize; /* undo pushing of edges */
 	ed = ledges->it[lptr];
 	uu = ((1 << g0->cN) - 1) ^ ed;
@@ -140,7 +141,10 @@ Graph findGraphR(Graph g0, Intstack c0, Intstack cell, Intstack ledges, int lptr
  * Use the classification of the matched graphs of rank cN-cP */
 Graph findGraphEG(int rank, int internal, Intstack cell) {
 	Graph g0 = borderGraph(rank, cell), g1, result= NULL;
+
+
 	Intstack c0, gri, edl;
+
 	c0 = kpa(g0);
 	assert(subset(c0, cell));
 	if (c0->size == cell->size) {
@@ -160,6 +164,8 @@ Graph findGraphEG(int rank, int internal, Intstack cell) {
 #if 1
 		printf("Trying with %d nodes.\n", g1->cN);
 #endif
+		
+		
 		grs = getAMG(g1->cN - rank);
 		edl = potEdges(rank, g1->cN);
 		for (i = 0; i < grs->size; i++) {
@@ -172,10 +178,12 @@ Graph findGraphEG(int rank, int internal, Intstack cell) {
 			for (j = 0; j < gri->size; j++) {
 				putint(gri->it[j] << rank, g1->edges);
 			}
+			
 			result = findGraphR(g1, c0, cell, edl, 0);
-			if (result)
+
+			if (result) {
 				break;
-			else {
+			} else {
 				freestack(g1->edges);
 				g1->edges = NULL;
 			}
@@ -187,18 +195,21 @@ Graph findGraphEG(int rank, int internal, Intstack cell) {
 	if (!result)
 		freeGraph(g1);
 	printf("\n");
+	
+	
 	return result;
 }
 
 Graph findGraphBEG(int rank, int internal, Intstack cell) {
-	printar(cell);
 	int x = bestBorderGraph(rank, cell);
 	Intstack nc = newIntstack(0, cell);
 	Graph g;
 	translate(x, nc);
 	g = findGraphEG(rank, internal, nc);
+	
 	if (g)
 		translateGraph(x, g);
+
 	freestack(nc);
 	return g;
 }
@@ -258,8 +269,8 @@ Graph findGraph(int rank, int internal, Intstack cell) {
 	}
 	return g1;
 }
-// [  1: 12  3  3  3  3]  0 ab ac ad ae.
 int main(int argc, char *argv[]) {
+// [ 18: 26 24 24 24 24]  0 bc ad bd cd abcd ae be ce abce abde acde.
 	Intstack cell, ce;
 	Graph g;
 	int rank = 0, internal = 4, nr = 0;

@@ -31,7 +31,7 @@ public class Classify {
 		
 		ArrayList<Cell> classifications = null;
 		//PARAMETERS
-		int rank = 5;
+		int rank = 0;
 		int option = 0;
 		
 		if(option == 2){
