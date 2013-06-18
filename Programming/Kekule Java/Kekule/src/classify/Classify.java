@@ -31,7 +31,7 @@ public class Classify {
 		
 		ArrayList<Cell> classifications = null;
 		//PARAMETERS
-		int rank = 0;
+		int rank = 5;
 		int option = 0;
 		
 		if(option == 2){
@@ -44,9 +44,11 @@ public class Classify {
 		if(option != 1){
 			classifications = sortAndWeed(rank, classifications);
 			Permutations.freePerm();
-			System.out.println("the end:" + classifications.size());
+			System.out.println("Classification of Rank " + rank + ":");
+			System.out.println(classifications.size() + " classes in Total");
+			System.out.println("");
 			for(int i= 0; i < classifications.size(); i++){
-				System.out.println("[5]  " + classifications.get(i));
+				System.out.println("K" + (i + 1) + " " + classifications.get(i));
 				System.out.println("\t" + classifications.get(i).printNumbers());
 			}
 		}

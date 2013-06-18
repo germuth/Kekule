@@ -269,7 +269,7 @@ Graph findGraph(int rank, int internal, Intstack cell) {
 	}
 	return g1;
 }
-int main(int argc, char *argv[]) {
+int main4(int argc, char *argv[]) {
 // [ 18: 26 24 24 24 24]  0 bc ad bd cd abcd ae be ce abce abde acde.
 	Intstack cell, ce;
 	Graph g;

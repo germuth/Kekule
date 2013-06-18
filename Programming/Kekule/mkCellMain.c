@@ -33,7 +33,7 @@ void normalize(int rank, int nr, Intstack cell) {
 	freestack(nc) ;
 }
 
-int main4(int argc, char *argv[]) {
+int main7(int argc, char *argv[]) {
 	
 #ifdef _DEBUG
 	setbuf(stdout,NULL);

@@ -16,7 +16,9 @@ import shared.Permutations;
 
 public class cellToGraph {
 	private static File f = new File("myraw.txt");
-	private static Scanner fileScanner;;
+	private static Scanner fileScanner;
+	private static int rank;
+	private static String name;
 	/**
 	 * @param args
 	 * @throws FileNotFoundException 
@@ -26,13 +28,13 @@ public class cellToGraph {
 		Cell input = null;
 		try{
 			fileScanner = new Scanner(f);
+			readTitle();
 			input = readCell();
 		} catch(Exception e){
 			System.out.println("error reading from file");
 			System.exit(0);
 		}
 		
-		int rank = 0;
 		//construct matched graphs
 		//I think this is how many internal verticies are allowed
 		int internal = 4;
@@ -43,6 +45,7 @@ public class cellToGraph {
 		while(input != null){
 			
 			Graph g = findGraph(rank, internal, input);
+			g.setName(name);
 			
 			if(g != null){
 				g.minimizeGraph();
@@ -117,15 +120,11 @@ public class cellToGraph {
 	
 	//cell is regular
 	//therefore the subgraph of internal nodes has a matching
-	//use classification fo matched graphs of rank cN-cP
+	//use classification of matched graphs of rank cN-cP
 	private static Graph findGraphEG(int rank, int internal, Cell cell){
-		Graph g0 = borderGraph(rank, cell);
-		
-		
-		
-		
-		
+		Graph g0 = borderGraph(rank, cell);	
 		Cell c0 = GraphtoCell.makeCell(g0);
+		
 		if( c0.size() == cell.size()){
 			return g0;
 		}
@@ -138,7 +137,7 @@ public class cellToGraph {
 		while(answer == null && g1.getNumNodes() + 2 <= rank+internal ){
 			
 			g1.addTwoNodes();
-			System.out.println("Trying " + g1.getNumNodes() + " Nodes");
+			System.out.println("...trying " + g1.getNumNodes() + " nodes...");
 			
 			ArrayList<Cell> grs = ClassifyGraph.getAMG(g1.getNumNodes() - rank);
 			Cell lEdges = potEdges(rank, g1.getNumNodes());
@@ -271,16 +270,24 @@ public class cellToGraph {
 		return new Cell(answerSet, rank);
 	}
 	
+	private static void readTitle() throws Exception{
+		String title = fileScanner.nextLine();
+		String[] words = title.split(" ");
+		String ranks = words[words.length - 1];
+		ranks = ranks.substring(0, ranks.length() - 1);
+		rank = Integer.parseInt(ranks);
+	}
+	
 	private static Cell readCell() throws Exception{
 		
 		String cell  = fileScanner.nextLine();
+		//skip over title
+		while( ! cell.contains("K") ){
+			cell = fileScanner.nextLine();
+		}
 		
 		Scanner lineScanner = new Scanner(cell);
-		String ports = lineScanner.next();
-		lineScanner.close();
-		
-		ports = ports.substring(1, ports.length() - 1);
-		int portNum = Integer.parseInt(ports);
+		name = lineScanner.next();
 		
 		String bitVectors = fileScanner.nextLine();
 		
@@ -296,7 +303,9 @@ public class cellToGraph {
 			allBVs.add(bV);
 		}
 		
-		Cell input = new Cell(allBVs, portNum);
+		Cell input = new Cell(allBVs, rank);
+		lineScanner.close();
+		
 		return input;
 	}
 

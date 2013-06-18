@@ -164,25 +164,53 @@ public class Graph {
 	}
 	
 	public void writeGraph(){
+		String title = "";
 		if(this.name != null){
-			System.out.println(this.name);
+			title += this.name + ": ";
 		}
-		System.out.println(this.numNodes + " " + this.numPorts);
-		System.out.println("ports 0 1 2 3 4");
-		String edges = "";
+		title += this.numNodes +" Nodes, " + " " + this.numPorts + " Ports";
+		System.out.println(title);
+		String edges = "Edges: ";
 		for(int i = 0; i < this.edgeCell.size(); i++){
 			BitVector edge = this.edgeCell.getPA()[i];
 			int p = edge.firstBit();
 			edge = new BitVector( edge.getNumber() - ( 1 << p ) );
 			int q = edge.firstBit();
-			edges += ( p ) + "-" + ( q ) + ", ";
+			edges += ( p ) + "-" + ( q );
+			
+			if(i != this.edgeCell.size() - 1){
+				edges += ", ";
+			}
 		}
 		System.out.println(edges);
+		System.out.println("");
 	}
 	
+	public void writeEdges(){
+		String edges = "Edges: ";
+		for(int i = 0; i < this.edgeCell.size(); i++){
+			BitVector edge = this.edgeCell.getPA()[i];
+			int p = edge.firstBit();
+			edge = new BitVector( edge.getNumber() - ( 1 << p ) );
+			int q = edge.firstBit();
+			edges += ( p ) + "-" + ( q );
+			
+			if(i != this.edgeCell.size() - 1){
+				edges += ", ";
+			}
+		}
+		System.out.println(edges);
+		System.out.println("");
+	}
 	
-	
-	
+	public void writeTitle(){
+		String title = "";
+		if(this.name != null){
+			title += this.name + ": ";
+		}
+		title += this.numNodes +" Nodes, " + " " + this.numPorts + " Ports";
+		System.out.println(title);
+	}
 	
 	
 	
@@ -214,7 +242,7 @@ public class Graph {
 	 * @param ports
 	 */
 	public Graph(String name, int numPorts, int numNodes, Set<String> edges, Set<Integer> ports){
-		this.name = name;
+		this.name = name.trim();
 		this.numPorts = numPorts;
 		this.numNodes = numNodes;
 		this.adjMatrix = new AdjacencyMatrix(numNodes, edges);
@@ -351,5 +379,10 @@ public class Graph {
 
 	public AdjacencyMatrix getAdjMatrix() {
 		return adjMatrix;
+	}
+
+	public void setName(String name2) {
+		this.name = name2;
+		
 	}
 }
