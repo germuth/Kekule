@@ -108,14 +108,22 @@ public class Graph {
 		this.edgeCell.add(bv);
 	}
 	
+	/**
+	 * Translates a graph over a Bit Vector
+	 * @param bv
+	 */
 	public void translate(BitVector bv){
 		Cell edges = this.edgeCell;
 
 		while( !bv.isEmpty() ){
 			int k = bv.firstNode();
 			bv = new BitVector(bv.getNumber() - k);
+			
+			//new node we are adding
 			BitVector p = new BitVector(1 << this.numNodes);
 			
+			//if any existing edges touch translation,
+			//add edge from new node to what current and bv don't share
 			for(int i = 0; i < edges.size(); i++){
 				BitVector current = edges.getPA()[i];
 				if(current.contains(k)){

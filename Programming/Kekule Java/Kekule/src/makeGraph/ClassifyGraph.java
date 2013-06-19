@@ -45,7 +45,7 @@ public class ClassifyGraph {
 	public static ArrayList<Cell> allMatchedGraphs(int rank){
 		ArrayList<Cell> array = allGraphs(rank);
 		for(int i = 0; i < array.size(); i++){
-			if( !matched(rank, array.get(i)) ){
+			if( !matched( rank, array.get(i) ) ){
 				array.set(i, null);
 			}
 		}
@@ -67,7 +67,7 @@ public class ClassifyGraph {
 		}
 		BitVector ed = gr.removeLast();
 		//int size = gr.size();
-		if( matchedR( cover, gr) ){
+		if( matchedR( cover, gr ) ){
 			return true;
 		}
 		if( ( ed.getNumber() | cover ) != cover){

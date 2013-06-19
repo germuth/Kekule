@@ -193,8 +193,7 @@ public class CellToGraph {
 		if( c0.size() == cell.size()){
 			return g0;
 		}
-		//limit the amount of internal nodes allowed
-		//TODO ??
+		//if were not allowed to add more nodes, we must return null
 		if( internal < 2 ){
 			return null;
 		}
@@ -212,6 +211,8 @@ public class CellToGraph {
 			//Get List of Isomorphism classes with perfect matchings and try recursive algorithm
 			//on each
 			//get classification for all matched graphs with rank (nodes - our rank)
+			// nodes - rank = number of internal nodes
+			//must add internal nodes which have perfect matching
 			ArrayList<Cell> allMatchedGraphs = ClassifyGraph.getAMG(g1.getNumNodes() - rank);
 			
 			//Edge Set L
@@ -261,6 +262,7 @@ public class CellToGraph {
 	 * Returns null if no such graph is found
 	 */
 	private static Graph findGraphR(Graph g0, Cell c0, Cell cell, Cell lEdges, int lptr){
+		
 		//if cell size matches, we have found graph
 		if( c0.size() == cell.size() ){
 			return g0;
@@ -356,7 +358,7 @@ public class CellToGraph {
 		BitVector x = new BitVector(0);
 		
 		for(int i= 0; i < cell.size(); i++){
-			BitVector y =cell.getPA()[i];
+			BitVector y = cell.getPA()[i];
 			Cell copy = new Cell(cell);
 			copy.translate(y);
 			Cell borderEdges = borderEdges(rank, copy);
@@ -372,7 +374,7 @@ public class CellToGraph {
 	/**
 	 * Returns a border graph. Not guaranteed to be the best (optimal) one.
 	 * Returns A cell of BitVector Edges Consisting of edges from every port
-	 * to every other port. 
+	 * to every other port, as long as cell has it
 	 * V = P
 	 * E = every element of the power set of P with two elements (every possible
 	 * 		doublet of ports)
@@ -388,7 +390,10 @@ public class CellToGraph {
 		for(int p = 1; p < limit; p = p << 1){
 			for(int q = p << 1; q < limit; q = q << 1){
 				BitVector ch = new BitVector(p + q);
+				//nf = not finished
 				boolean nf = true;
+				//iterate through cell
+				//try every port assignment as long as the last one worked
 				for(int i = 0; nf && i < cell.size(); i++){
 					BitVector current = cell.getPA()[i];
 					nf = (  BitVector.intersection(ch, current).getNumber() > 0  ||

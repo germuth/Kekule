@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="shared.BitVector"/>
 <fullyQualifiedTypeName name="classify.Classify"/>
-<fullyQualifiedTypeName name="shared.Utils"/>
 <fullyQualifiedTypeName name="makeCell.Histogram"/>
 <fullyQualifiedTypeName name="shared.Permutations"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
@@ -25,4 +24,5 @@
 <fullyQualifiedTypeName name="makeCell.Graph"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="makeCell.GraphtoCell"/>
+<fullyQualifiedTypeName name="shared.Utils"/>
 </qualifiedTypeNameHistroy>
