@@ -13,6 +13,7 @@ import shared.BitVector;
 import shared.Cell;
 import shared.Graph;
 import shared.Permutations;
+import shared.Utils;
 
 /**
  * This class reads a classification of all Kekule cells of a port number and attempts
@@ -43,23 +44,27 @@ public class CellToGraph {
 		
 		//construct matched graphs
 		//how many internal vertices are allowed
-		int internal = 4;
+		int internal = 6;
 		ClassifyGraph.setAMG(internal);
 		Histogram.rank = rank;
 		Permutations.freePerm();
 		
 		while(input != null){
 			
-			Graph g = findGraph(rank, internal, input);
-			g.setName(name);
-			
-			if(g != null){
-				g.minimizeGraph();
-				g.writeGraph();
+			ArrayList<Graph> allGraphs = findGraph(rank, internal, input);
+			//allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
+			for(int i = 0; i < allGraphs.size(); i++){
+				Graph g = allGraphs.get(i);
 				
-				//try to find cell from graph
-				//and make sure they match up
-				//with compareL
+				if(g != null){
+					g.setName(name);
+					g.minimizeGraph();
+					g.writeGraph();
+					
+					//try to find cell from graph
+					//and make sure they match up
+					//with compareL
+				}
 			}
 			
 			try{
@@ -99,9 +104,14 @@ public class CellToGraph {
 	 * @param cell
 	 * @return
 	 */
-	private static Graph findGraph(int rank, int internal, Cell cell){
+	private static ArrayList<Graph> findGraph(int rank, int internal, Cell cell){
+		
+		ArrayList<Graph> answer;// = new ArrayList<Graph>();
+		
 		//tries the best border graph
-		Graph g1 = findGraphBEG(rank, internal, cell);
+		answer =  findGraphBEG(rank, internal, cell);
+				
+		/*
 		//if failed to find best border, search for graph using decomposition
 		if(g1 == null){
 			System.out.println("Trying Decompositions");
@@ -132,6 +142,8 @@ public class CellToGraph {
 			}
 		}
 		return g1;
+		*/
+		return answer;
 	}
 	
 	/**
@@ -143,28 +155,41 @@ public class CellToGraph {
 	 * @param cell, the cell we are trying to find a graph for
 	 * @return a graph for the given cell
 	 */
-	private static Graph findGraphBEG(int rank, int internal, Cell cell){
+	private static ArrayList<Graph> findGraphBEG(int rank, int internal, Cell cell) {
+		
+		ArrayList<Graph> answer = new ArrayList<Graph>();
+		
 		cell.sortBySize();
-		//Translates cell by port assignments and looks at border channel created
-		//translation which caused the largest border graph is returned
-		BitVector x = bestBorderGraph(rank, cell);
-		Cell nc = new Cell(cell);
-		//translate to get the largest border graph
-		nc.translate(x);
-		//forms a graph where the only vertices are the ports
-		//and the only edges are edges from every port to every other port
-		
-		//Finds graph for nc
-		Graph g = findGraphEG(rank, internal, nc);
-		//sort
-		g.getEdgeCell().sortBySize();
-		
-		//Translate graph back over x, to get original
-		if(g != null){
-			g.translate(x);
+
+		for (int i = 0; i < cell.size(); i++) {
+			BitVector y = cell.getPA()[i];
+			Cell copy = new Cell(cell);
+			copy.translate(y);
+
+			ArrayList<Graph> temp = findGraphEG(rank, internal, copy);
+			
+			if(!temp.isEmpty()){
+				temp = Utils.deleteDuplicatesGraph(temp);
+			}
+			
+			for (int j = 0; j < temp.size(); j++) {
+				Graph g = temp.get(j);
+				// sort
+				g.getEdgeCell().sortBySize();
+				
+				//Translate graph back over x, to get original
+				if(g != null){
+					g.translate(y);
+				}
+				answer.add(g);
+			}
+			
+			
 		}
+		// Finds graph for nc
+
 		
-		return g;
+		return answer;
 		
 	}
 	
@@ -179,7 +204,9 @@ public class CellToGraph {
 	 * @param cell, the cell we want a graph for
 	 * @return Graph for cell
 	 */
-	private static Graph findGraphEG(int rank, int internal, Cell cell){
+	private static ArrayList<Graph> findGraphEG(int rank, int internal, Cell cell){
+		ArrayList<Graph> answers = new ArrayList<Graph>();
+		
 		//get the best Border Graph
 		Graph g0 = borderGraph(rank, cell);	
 		//determine cell of border graph
@@ -191,7 +218,7 @@ public class CellToGraph {
 		
 		//cells have equal size, we have found applicable graph
 		if( c0.size() == cell.size()){
-			return g0;
+			answers.add(g0);
 		}
 		//if were not allowed to add more nodes, we must return null
 		if( internal < 2 ){
@@ -202,7 +229,7 @@ public class CellToGraph {
 		Graph answer = null;
 		//while we haven't found a graph AND we are still allowed to 
 		//add more nodes and keep searching
-		while(answer == null && g1.getNumNodes() + 2 <= rank + internal ){
+		while( g1.getNumNodes() + 2 <= rank + internal ){
 			g1.addTwoNodes();
 			System.out.println("...trying " + g1.getNumNodes() + " nodes...");
 			
@@ -238,16 +265,14 @@ public class CellToGraph {
 				
 				//if answer found
 				if(answer != null){
-					break;
-				}
-				//retry with more nodes
-				else{
-					g1.setEdgeCell(null);
+					Graph ans = new Graph(g1);
+					answers.add(ans);
 				}
 			}
+			
 		}
 		
-		return answer;
+		return answers;
 	}
 	
 	/**

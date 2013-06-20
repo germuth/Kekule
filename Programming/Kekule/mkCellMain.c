@@ -15,6 +15,9 @@
 /*
 Pyracylene5a16a {2 4 5  7 8} 14; 0-1-2-9-3-4-10-5-6-11-7-8-0-13-12-11, \
 	  9-13, 10-12.
+MeeeeeeeGraphaa {0 1 2 3} 8; 0-6-7-5, \
+	  0-1,  2-4,  3-4,  1-5,  4-5.
+	  
 */
 void normalize(int rank, int nr, Intstack cell) {	
 	int pa;
@@ -33,7 +36,7 @@ void normalize(int rank, int nr, Intstack cell) {
 	freestack(nc) ;
 }
 
-int main7(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	
 #ifdef _DEBUG
 	setbuf(stdout,NULL);

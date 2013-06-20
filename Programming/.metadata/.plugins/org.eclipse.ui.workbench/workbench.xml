@@ -37,31 +37,21 @@
 <part id="6"/>
 <part id="7"/>
 <part id="8"/>
-<part id="9"/>
-<part id="10"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" partName="fdGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/fdGraph.c" title="fdGraph.c" tooltip="Kekule/fdGraph.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" partName="fdGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/fdGraph.c" title="fdGraph.c" tooltip="Kekule/fdGraph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/fdGraph.c"/>
-<editorState selectionHPixel="0" selectionLength="21" selectionOffset="3715"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="5904"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="classGraph.c" partName="classGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classGraph.c" title="classGraph.c" tooltip="Kekule/classGraph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classGraph.c"/>
 <editorState selectionHPixel="0" selectionLength="6" selectionOffset="2464"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="classify.c" partName="classify.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classify.c" title="classify.c" tooltip="Kekule/classify.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classify.c"/>
-<editorState selectionHPixel="0" selectionLength="13" selectionOffset="2764"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCell.c" partName="mkCell.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCell.c" title="mkCell.c" tooltip="Kekule/mkCell.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCell.c"/>
 <editorState selectionHPixel="0" selectionLength="0" selectionOffset="2050"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="graph.c" partName="graph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/graph.c" title="graph.c" tooltip="Kekule/graph.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/graph.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="731"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="cells.c" partName="cells.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/cells.c" title="cells.c" tooltip="Kekule/cells.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/cells.c"/>
@@ -73,15 +63,15 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="clfmain.c" partName="clfmain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/clfmain.c" title="clfmain.c" tooltip="Kekule/clfmain.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/clfmain.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="290"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="291"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="histogram.c" partName="histogram.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/histogram.c" title="histogram.c" tooltip="Kekule/histogram.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/histogram.c"/>
 <editorState selectionHPixel="0" selectionLength="0" selectionOffset="555"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" partName="mkCellMain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCellMain.c" title="mkCellMain.c" tooltip="Kekule/mkCellMain.c" workbook="DefaultEditorWorkbook">
+<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" partName="mkCellMain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCellMain.c" title="mkCellMain.c" tooltip="Kekule/mkCellMain.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCellMain.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="820"/>
+<editorState selectionHPixel="0" selectionLength="163" selectionOffset="321"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="classify.h" partName="classify.h" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classify.h" title="classify.h" tooltip="Kekule/classify.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classify.h"/>
@@ -138,7 +128,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
+<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.cdt.ui.CPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -218,7 +208,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.121030554" ratioLeft="202" ratioRight="1467" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.5043478" ratioLeft="464" ratioRight="456" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.5184783" ratioLeft="477" ratioRight="443" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -343,43 +333,13 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/histogram.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCellMain.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classify.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCellMain.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classify.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classGraph.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/graph.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCell.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/clfmain.c"/>
 </editors>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="4042" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="3589" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5351" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5303" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="3498" y="10"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="1775" y="0"/>
-</item>
-<item historyLabel="clfmain.c" index="2">
-<position/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="6719" y="0"/>
-</item>
-<item historyLabel="clfmain.c" index="2">
-<position info="not_deleted" x="290" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="6719" y="0"/>
-</item>
-<item historyLabel="clfmain.c" index="2">
-<position info="not_deleted" x="290" y="0"/>
-</item>
 <item historyLabel="fdGraph.c" index="0">
 <position info="not_deleted" x="6719" y="0"/>
 </item>
@@ -491,8 +451,44 @@
 <item historyLabel="fdGraph.c" index="0">
 <position info="not_deleted" x="5726" y="0"/>
 </item>
-<item active="true" historyLabel="fdGraph.c" index="0">
+<item historyLabel="fdGraph.c" index="0">
 <position info="not_deleted" x="4397" y="11"/>
+</item>
+<item historyLabel="mkCellMain.c" index="7">
+<position info="not_deleted" x="898" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="0">
+<position info="not_deleted" x="5904" y="0"/>
+</item>
+<item historyLabel="classify.c" index="8">
+<position info="not_deleted" x="2764" y="13"/>
+</item>
+<item historyLabel="classGraph.c" index="9">
+<position info="not_deleted" x="2464" y="6"/>
+</item>
+<item historyLabel="graph.c" index="10">
+<position info="not_deleted" x="731" y="0"/>
+</item>
+<item historyLabel="classGraph.c" index="9">
+<position info="not_deleted" x="2464" y="6"/>
+</item>
+<item historyLabel="classify.c" index="8">
+<position info="not_deleted" x="2764" y="13"/>
+</item>
+<item historyLabel="classGraph.c" index="9">
+<position info="not_deleted" x="2464" y="6"/>
+</item>
+<item historyLabel="mkCell.c" index="11">
+<position info="not_deleted" x="2050" y="0"/>
+</item>
+<item historyLabel="mkCellMain.c" index="7">
+<position info="not_deleted" x="898" y="0"/>
+</item>
+<item historyLabel="clfmain.c" index="12">
+<position info="not_deleted" x="291" y="0"/>
+</item>
+<item active="true" historyLabel="mkCellMain.c" index="7">
+<position info="not_deleted" x="898" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

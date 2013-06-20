@@ -86,6 +86,7 @@ public class ClassifyGraph {
 		long ulim = 1 << fg.size();
 		Histogram.rank = rank;
 		for(int x = 0; x < ulim; x++){
+
 			Cell cand = new Cell();
 			cand.setNumPorts(rank);
 			

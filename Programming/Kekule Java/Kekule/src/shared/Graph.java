@@ -102,8 +102,26 @@ public class Graph {
 		this.edgeCell = edges;
 	}
 	
+	public Graph(Graph g){
+		this.name = g.name;
+		this.numNodes = g.numNodes;
+		this.numPorts = g.numPorts;
+		this.edgeCell = new Cell(g.edgeCell);
+	}
 	
 	
+	
+	@Override
+	public boolean equals(Object obj) {
+		Graph another = (Graph) obj;
+		this.edgeCell.sortBySize();
+		another.edgeCell.sortBySize();
+		if(this.edgeCell.equalsNoPorts(another.edgeCell)){
+			return true;
+		}
+		return false;
+	}
+
 	public void addEdge(BitVector bv){
 		this.edgeCell.add(bv);
 	}

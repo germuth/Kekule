@@ -152,6 +152,29 @@ public class Utils {
 		return newList;
 	}
 	
+	public static ArrayList<Graph> deleteDuplicatesGraph(ArrayList<Graph> graphs){
+		ArrayList<Graph> newList = new ArrayList<Graph>();
+		newList.add(graphs.get(0));
+		for(int i = 0; i < graphs.size(); i++){
+			
+			boolean found = false;
+			
+			inner:
+			for(int j = 0; j < newList.size(); j++){
+				if(newList.get(j).equals(graphs.get(i))){
+					found = true;
+					break inner;
+				}
+			}
+			if(!found){
+				newList.add(graphs.get(i));
+			}
+		}
+	
+		return newList;
+	}
+	
+	
 	/**
 	 * Removes all null entries from array list by creating a new arraylist and only 
 	 * adding elements which are non-null. Returns this new arraylist
