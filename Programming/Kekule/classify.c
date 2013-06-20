@@ -19,6 +19,7 @@
 Arraylist classify(int r, int raw) {
 	int i, ports = (1 << r) - 1;
 	Intstack ev = even(r);
+	printf("%d",ev->size);
 	Arraylist result= NULL;
 	int *a = ev->it;
 	unsigned long int ulim = (1UL << (ev->size - 1)), x, y;

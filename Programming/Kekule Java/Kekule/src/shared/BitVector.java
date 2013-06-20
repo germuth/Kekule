@@ -17,7 +17,7 @@ package shared;
  * @author Aaron
  *
  */
-public class BitVector {
+public class BitVector implements Comparable{
 	
 	//STATIC
 	
@@ -248,5 +248,10 @@ public class BitVector {
 
 	public int getNumber() {
 		return number;
+	}
+	@Override
+	public int compareTo(Object arg0) {
+		BitVector another = (BitVector) arg0;
+		return Integer.compare(this.number, another.number);
 	}
 }

@@ -209,6 +209,21 @@ public class Cell {
 		
 	}
 	
+	public void removeDuplicates(){
+		Set<BitVector> aSet = Utils.arToSet(this.portAssignments);
+		BitVector[] newList = new BitVector[aSet.size()];
+		
+		int index = 0;
+		Iterator<BitVector> i = aSet.iterator();
+		while(i.hasNext()){
+			BitVector next = (BitVector)i.next();
+			newList[index] = next;
+			index++;
+		}
+		this.portAssignments = newList;
+		this.sortBySize();
+	}
+	
 	/**
 	 * Retain all bit strings of this contained in bitvector
 	 * keep all port assignments of this cell whose bitvector is entirely contained
@@ -303,11 +318,11 @@ public class Cell {
 	
 	public boolean indecomposable(Cell part1, Cell part2){
 		long ulim = 1 << (this.size() - 1);
-		long xx = toBits();
+		long xx = this.toBits();
 		Cell cand = new Cell();
 		cand.add(new BitVector(0));
 		
-		Cell nCell = null;
+		Cell nCell = new Cell();
 		boolean r = true;
 		int i = 0; 
 		ArrayList<Cell> array = new ArrayList<Cell>();
@@ -316,12 +331,13 @@ public class Cell {
 			//TODO cand.size == 1
 			int y = x;
 			while( y > 0 ){
-				if( y % 2 == 1){
+				if( y % 2 == 1 && i+1 < this.size()){
 					cand.add( this.getPA()[i+1] );
 				}
 				y /= 2;
 				i++;
 			}
+			nCell = this.oFactor(cand);
 			if( Coherence.isCoherent(cand) && this.hasFactor(cand, nCell)){
 				array.add(new Cell(cand));
 				int fract = ( this.size() - 1 ) / cand.size();
@@ -348,7 +364,6 @@ public class Cell {
 	}
 	
 	private boolean hasFactor(Cell cand, Cell klad){
-		klad = this.oFactor(cand);
 		return (this.toBits() & toPlus(cand, klad)) == 0;
 	}
 	

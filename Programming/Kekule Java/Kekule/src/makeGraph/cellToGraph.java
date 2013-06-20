@@ -52,7 +52,20 @@ public class CellToGraph {
 		while(input != null){
 			
 			ArrayList<Graph> allGraphs = findGraph(rank, internal, input);
-			//allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
+			for(int i = 0; i < allGraphs.size(); i++){
+				Graph g = allGraphs.get(i);
+				g.getEdgeCell().removeDuplicates();
+				if(g.getHighestDegree() > 4){
+					allGraphs.set(i, null);
+				}
+			}
+			
+			allGraphs = Utils.removeNulls(allGraphs);
+			
+			if( !allGraphs.isEmpty() ){
+				allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
+			}
+			
 			for(int i = 0; i < allGraphs.size(); i++){
 				Graph g = allGraphs.get(i);
 				
@@ -75,74 +88,80 @@ public class CellToGraph {
 		}
 
 	}
+	
 	/**
-	 * Assume P = U K, as in K is flexible (K contains every port in P)
+	 * TODO these comments Assume P = U K, as in K is flexible (K contains every
+	 * port in P)
 	 * 
 	 * Monotonic means preserves order. for example, if x < y, then f(x) < f(y)
 	 * 
-	 * K is monotonic in the sense that if E0 subset E, then K(V, E0) subset K(V, E)
+	 * K is monotonic in the sense that if E0 subset E, then K(V, E0) subset
+	 * K(V, E)
 	 * 
-	 * Therefore, given a K, we can begin searching for a graph with K(V, E0) and then add
-	 * edges to E0.
+	 * Therefore, given a K, we can begin searching for a graph with K(V, E0)
+	 * and then add edges to E0.
 	 * 
 	 * The growth of K(V, E) when E grows is:
 	 * 
 	 * K(G) = K(V, E0) U ( (e U P) symDif K(U, E1) )
 	 * 
-	 * e is edge of E. 
-	 * E0 = E \ e
-	 * U = V \ e
-	 * E1 = E intersection U(2)
+	 * e is edge of E. E0 = E \ e U = V \ e E1 = E intersection U(2)
 	 * 
 	 * 
-	 * choose a port assignment where bc(k symDif K) is largest. K' = k symDif K is regular.
-	 * If we can find graph G' for K', we can then use backwards translation 
-	 * (k symDif G') == G
+	 * choose a port assignment where bc(k symDif K) is largest. K' = k symDif K
+	 * is regular. If we can find graph G' for K', we can then use backwards
+	 * translation (k symDif G') == G
 	 * 
 	 * @param rank
 	 * @param internal
 	 * @param cell
 	 * @return
 	 */
-	private static ArrayList<Graph> findGraph(int rank, int internal, Cell cell){
-		
+	private static ArrayList<Graph> findGraph(int rank, int internal, Cell cell) {
+
 		ArrayList<Graph> answer;// = new ArrayList<Graph>();
-		
-		//tries the best border graph
-		answer =  findGraphBEG(rank, internal, cell);
-				
-		/*
-		//if failed to find best border, search for graph using decomposition
-		if(g1 == null){
-			System.out.println("Trying Decompositions");
-			int i = 0;
-			
-			Cell p1 = null;
-			Cell p2 = null;
-			
-			//nf = not Finished
-			boolean nf = true;
-			while(nf && i < cell.size()){
-				BitVector pa = cell.getPA()[i];
-				Cell other = new Cell(cell);
-				other.translate(pa);
-				if( ! other.indecomposable(p1, p2) ){
-					g1 = findGraphBEG(rank, internal, p1);
-					Graph g2 = findGraphBEG(rank, internal, p2);
-					if(g1 != null && g2 != null){
-						nf = false;
-						g1 = Graph.oDot(g1, g2);
-						g1.translate(pa);
-					} else{
-						g1 = null;
+
+		// tries the best border graph
+		answer = findGraphBEG(rank, internal, cell);
+
+		// if failed to find best border, search for graph using decomposition
+		int i = 0;
+
+		Cell p1 = null;
+		Cell p2 = null;
+
+		// nf = not Finished
+		boolean nf = true;
+		while (nf && i < cell.size()) {
+			BitVector pa = cell.getPA()[i];
+			Cell other = new Cell(cell);
+			other.translate(pa);
+			try{
+				if ( !other.indecomposable(p1, p2) ) {
+					ArrayList<Graph> l1 = findGraphBEG(rank, internal, p1);
+					ArrayList<Graph> l2 = findGraphBEG(rank, internal, p2);
+
+					for (int j = 0; j < l1.size(); j++) {
+						Graph g1 = l1.get(j);
+						for (int k = 0; k < l2.size(); k++) {
+							Graph g2 = l2.get(k);
+							if (g1 != null && g2 != null) {
+								nf = false;
+								g1 = Graph.oDot(g1, g2);
+								g1.translate(pa);
+								System.out.println("AOEAOEAOEAOEOAEAOEOAEOAE");
+								answer.add(g1);
+							}
+						}
+
 					}
-					g2 = null;
 				}
-				i++;
+			} catch(Exception e){
+				
 			}
+			i++;
 		}
-		return g1;
-		*/
+
 		return answer;
 	}
 	
@@ -167,10 +186,6 @@ public class CellToGraph {
 			copy.translate(y);
 
 			ArrayList<Graph> temp = findGraphEG(rank, internal, copy);
-			
-			if(!temp.isEmpty()){
-				temp = Utils.deleteDuplicatesGraph(temp);
-			}
 			
 			for (int j = 0; j < temp.size(); j++) {
 				Graph g = temp.get(j);
@@ -222,7 +237,7 @@ public class CellToGraph {
 		}
 		//if were not allowed to add more nodes, we must return null
 		if( internal < 2 ){
-			return null;
+			return answers;
 		}
 		//if we are here, g0 was not enough
 		Graph g1 = new Graph(rank, rank, null);
@@ -433,7 +448,7 @@ public class CellToGraph {
 		return new Cell(answerSet, rank);
 	}
 	
-	private static void readTitle() throws Exception{
+	public static void readTitle() throws Exception{
 		String title = fileScanner.nextLine();
 		String[] words = title.split(" ");
 		String ranks = words[words.length - 1];
@@ -441,7 +456,7 @@ public class CellToGraph {
 		rank = Integer.parseInt(ranks);
 	}
 	
-	private static Cell readCell() throws Exception{
+	public static Cell readCell() throws Exception{
 		
 		String cell  = fileScanner.nextLine();
 		//skip over title

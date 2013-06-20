@@ -89,10 +89,11 @@ public class Classify {
 		//bit vector = 1 1 1 1 or 15
 		//if  subset = 0 ac
 		//bit vector = 1 0 1 0 or 10 
-		int ulimit = (1 << ( even.size() - 1)); 
-		
+		long ulimit = (long)Math.pow(2, even.size() - 1);
+
+		int number = 1;
 		//loop through once for every possible subset of even
-		for(int x = 0; x < ulimit; x++){
+		for(long x = 0; x < ulimit; x++){
 			Set<BitVector> tempSet = new HashSet<BitVector>();
 			tempSet.add(cand.getPA()[0]);
 			cand = new Cell(tempSet, rank);
@@ -104,10 +105,10 @@ public class Classify {
 			//this means all subsets which contain the first element
 			//first element corresponds to 0
 			//which makes sense because all normalized cells must be centered
-            int y = x, i = 1;
+            long y = x, i = 1;
 			while( y > 0 ){
 				if (y % 2 == 1) {
-					cand.add(even.getPA()[i]);
+					cand.add(even.getPA()[(int) i]);
 				}
 				y /= 2;
 				i++;

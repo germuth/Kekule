@@ -178,9 +178,10 @@ public class Utils {
 	/**
 	 * Removes all null entries from array list by creating a new arraylist and only 
 	 * adding elements which are non-null. Returns this new arraylist
+	 * @param <T>
 	 */
-	public static ArrayList<Cell> removeNulls(ArrayList<Cell> array){
-		ArrayList<Cell> newList = new ArrayList<Cell>();
+	public static <T> ArrayList<T> removeNulls(ArrayList<T> array){
+		ArrayList<T> newList = new ArrayList<T>();
 		for(int i = 0; i < array.size(); i++){
 			if(array.get(i) != null){
 				newList.add(array.get(i));

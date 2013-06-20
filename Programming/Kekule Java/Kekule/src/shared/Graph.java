@@ -126,6 +126,54 @@ public class Graph {
 		this.edgeCell.add(bv);
 	}
 	
+	public int getHighestDegree(){
+		int max = -1;
+		int lastNode = 1 << ( this.numNodes - 1 );
+		//cycle through all nodes
+		for(int node = 1; node <= lastNode; node *= 2 ){
+			
+			int degree = 0;
+			Cell edges = this.getEdgeCell();
+			//cycle through edges and count occurences of that node
+			for(int i = 0; i < edges.size(); i++){
+				BitVector edge = edges.getPA()[i];
+				if(edge.contains(node)){
+					degree++;
+				}
+			}
+			
+			if(degree > max){
+				max = degree;
+			}
+		}
+		
+		return max;
+	}
+	
+	public int getHighestPortDegree(){
+		int max = -1;
+		int lastNode = 1 << ( this.numPorts - 1 );
+		//cycle through all nodes
+		for(int node = 1; node <= lastNode; node *= 2 ){
+			
+			int degree = 0;
+			Cell edges = this.getEdgeCell();
+			//cycle through edges and count occurences of that node
+			for(int i = 0; i < edges.size(); i++){
+				BitVector edge = edges.getPA()[i];
+				if(edge.contains(node)){
+					degree++;
+				}
+			}
+			
+			if(degree > max){
+				max = degree;
+			}
+		}
+		
+		return max;
+	}
+	
 	/**
 	 * Translates a graph over a Bit Vector
 	 * @param bv

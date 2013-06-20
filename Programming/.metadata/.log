@@ -775,3 +775,37 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY org.eclipse.core.resources 2 1 2013-06-19 16:33:28.907
 !MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.
+!SESSION 2013-06-20 08:53:19.662 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 1 2013-06-20 09:49:09.103
+!MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.
+
+!ENTRY org.eclipse.cdt.launch 4 104 2013-06-20 13:02:28.486
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Aaron\Documents\GitHub\Kekule\Programming\Kekule\MinGW GCC\Kekule.exe not found
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate.verifyProgramPath(AbstractCLaunchDelegate.java:376)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:78)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:64)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:759)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:608)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:899)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$7.run(DebugUIPlugin.java:1102)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 104 2013-06-20 13:02:28.487
+!MESSAGE C:\Users\Aaron\Documents\GitHub\Kekule\Programming\Kekule\MinGW GCC\Kekule.exe not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Aaron\Documents\GitHub\Kekule\Programming\Kekule\MinGW GCC\Kekule.exe not found
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate.verifyProgramPath(AbstractCLaunchDelegate.java:376)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.runLocalApplication(LocalCDILaunchDelegate.java:78)
+	at org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate.launch(LocalCDILaunchDelegate.java:64)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:759)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:608)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:899)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$7.run(DebugUIPlugin.java:1102)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
