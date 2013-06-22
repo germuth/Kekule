@@ -1,6 +1,22 @@
 Classification of Rank 5:
-16 classes in Total
+24 classes in Total
 
+K1 Cell: 0 ab ac ad ae 
+	0 3 5 9 17 
+K2 Cell: 0 bc ad abcd ae abce 
+	0 6 9 15 17 23 
+K3 Cell: 0 ac bc ad bd ae be 
+	0 5 6 9 10 17 18 
+K4 Cell: 0 ab ac bc ad bd ae be 
+	0 3 5 6 9 10 17 18 
+K5 Cell: 0 ac ad bd abcd ae be abce 
+	0 5 9 10 15 17 18 23 
+K6 Cell: 0 ab cd abcd ce abce de abde 
+	0 3 12 15 20 23 24 27 
+K7 Cell: 0 ab ac ad bd cd ae be ce 
+	0 3 5 9 10 12 17 18 20 
+K8 Cell: 0 ac bc ad bd abcd ae be abce 
+	0 5 6 9 10 15 17 18 23 
 K9 Cell: 0 ab ac bc ad bd cd ae be ce 
 	0 3 5 6 9 10 12 17 18 20 
 K10 Cell: 0 ab ad bd cd abcd ae be ce abce 

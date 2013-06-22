@@ -27,7 +27,7 @@ public class TryAll {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		
 		Cell input = null;
 		try {
 			fileScanner = new Scanner(f);
@@ -46,7 +46,7 @@ public class TryAll {
 				Set<BitVector> allPossibleEdges = allEdges(numNodes);
 
 				PowerSet<BitVector> powerset = new PowerSet<BitVector>(
-						allPossibleEdges);
+						allPossibleEdges, 13,14);
 
 				Iterator<Set<BitVector>> graphsI = powerset.iterator();
 				while( graphsI.hasNext() ){
@@ -55,12 +55,19 @@ public class TryAll {
 					if(set == null){
 						continue;
 					}
-					
+
 					Graph g = new Graph(rank, numNodes, new Cell(set, rank));
 					Cell c = GraphtoCell.makeCell(g);
-					if ( c.equalsNoPorts(input) && g.getHighestDegree() < 4 && g.getHighestPortDegree() < 3) {
+					if (c.equalsNoPorts(input)) {
 						g.setName(name);
 						g.writeGraph();
+						
+						if (g.getHighestDegree() < 4) { // &&
+														// g.getHighestPortDegree()
+														// < 3) {
+							g.setName(name + "PROPER");
+							g.writeGraph();
+						}
 					}
 				}
 				numNodes++;
@@ -137,49 +144,81 @@ public class TryAll {
 class PowerSet<E> implements Iterator<Set<E>>, Iterable<Set<E>> {
 	private E[] arr = null;
 	private BitSet bset = null;
+	private int minSize;
+	private int maxSize;
 
 	@SuppressWarnings("unchecked")
-	public PowerSet(Set<E> set) {
+	public PowerSet(Set<E> set, int min, int max) {
 		arr = (E[]) set.toArray();
 		bset = new BitSet(arr.length + 1);
+		this.minSize = min;
+		this.maxSize = max;
 	}
 
 	@Override
-	public boolean hasNext() {
-		return !bset.get(arr.length);
-	}
+    public boolean hasNext() {
+        return !bset.get(arr.length);
+    }
 
-	@Override
-	public Set<E> next() {
-		Set<E> returnSet = new TreeSet<E>();
-		for (int i = 0; i < arr.length; i++) {
-			if (bset.get(i))
-				returnSet.add(arr[i]);
-		}
-		// increment bset
-		for (int i = 0; i < bset.size(); i++) {
-			if (!bset.get(i)) {
-				bset.set(i);
-				break;
-			} else
-				bset.clear(i);
-		}
-		
-		int size = returnSet.size();
-		if(size != 7){//if( size > 8 || size < 7){//if( size < 4 || size > 8){
-			return null;
-		}
+    @Override
+    public Set<E> next() {
+        Set<E> returnSet = new TreeSet<E>();
+        // System.out.println(printBitSet());
+        for (int i = 0; i < arr.length; i++) {
+            if (bset.get(i)) {
+                returnSet.add(arr[i]);
+            }
+        }
 
-		return returnSet;
-	}
+        int count;
+        do {
+            incrementBitSet();
+            count = countBitSet();
+        } while ((count < minSize) || (count > maxSize));
 
-	@Override
-	public void remove() {
-		throw new UnsupportedOperationException("Not Supported!");
-	}
+        return returnSet;
+    }
 
-	@Override
-	public Iterator<Set<E>> iterator() {
-		return this;
-	}
+    protected void incrementBitSet() {
+        for (int i = 0; i < bset.size(); i++) {
+            if (!bset.get(i)) {
+                bset.set(i);
+                break;
+            } else
+                bset.clear(i);
+        }
+    }
+
+    protected int countBitSet() {
+        int count = 0;
+        for (int i = 0; i < bset.size(); i++) {
+            if (bset.get(i)) {
+                count++;
+            }
+        }
+        return count;
+
+    }
+
+    protected String printBitSet() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < bset.size(); i++) {
+            if (bset.get(i)) {
+                builder.append('1');
+            } else {
+                builder.append('0');
+            }
+        }
+        return builder.toString();
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("Not Supported!");
+    }
+
+    @Override
+    public Iterator<Set<E>> iterator() {
+        return this;
+    }
 }

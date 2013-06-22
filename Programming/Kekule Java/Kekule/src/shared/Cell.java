@@ -278,7 +278,7 @@ public class Cell {
 		//create a new bit Vector holding the port assignment that is the center
 		//of this cell, along with translate across center
 		BitVector pa = new BitVector(this.center());
-		System.out.println("Translated over \"" +pa.getPA(this.numPorts) + "\" And normalized gets:");
+		//TODO uncomment System.out.println("Translated over \"" +pa.getPA(this.numPorts) + "\" And normalized gets:");
 		//normalize
 		Cell newKekule = Permutations.firstVariant(this);
 		this.portAssignments = newKekule.portAssignments;

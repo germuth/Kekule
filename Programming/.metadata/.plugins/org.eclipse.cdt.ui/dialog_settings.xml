@@ -6,6 +6,7 @@
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="pyra"/>
 			<item value="printar"/>
 			<item value="toplus"/>
 			<item value="printArrayList"/>

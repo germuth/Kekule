@@ -809,3 +809,48 @@ java.io.FileNotFoundException: C:\Users\Aaron\Documents\GitHub\Kekule\Programmin
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:899)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$7.run(DebugUIPlugin.java:1102)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2013-06-20 17:47:11.055 -----------------------------------------------
+eclipse.buildId=M20080221-1800
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 1 2013-06-20 17:48:41.257
+!MESSAGE Skipping builder 'org.eclipse.jdt.core.javabuilder' for project 'Kekule Java'. Either the builder is missing from the install, or it belongs to a project nature that is missing or disabled.
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-21 15:53:48.959
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: T
+	at org.eclipse.cdt.utils.spawner.SpawnerOutputStream.write0(Native Method)
+	at org.eclipse.cdt.utils.spawner.SpawnerOutputStream.write(SpawnerOutputStream.java:46)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-21 15:53:48.960
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: T
+	at org.eclipse.cdt.utils.spawner.SpawnerOutputStream.write0(Native Method)
+	at org.eclipse.cdt.utils.spawner.SpawnerOutputStream.write(SpawnerOutputStream.java:46)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.debug.core 4 120 2013-06-21 15:53:48.960
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: T
+	at org.eclipse.cdt.utils.spawner.SpawnerOutputStream.write0(Native Method)
+	at org.eclipse.cdt.utils.spawner.SpawnerOutputStream.write(SpawnerOutputStream.java:46)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.writeNext(InputStreamMonitor.java:128)
+	at org.eclipse.debug.internal.core.InputStreamMonitor.write(InputStreamMonitor.java:109)
+	at org.eclipse.debug.internal.core.InputStreamMonitor$1.run(InputStreamMonitor.java:84)
+	at java.lang.Thread.run(Unknown Source)
