@@ -352,7 +352,7 @@ public class GraphtoCell {
 	public static void printClass(Cell kekule, String gn, String un){
 		for(int i = 0; i < GraphtoCell.classification.length; i++){
 			if(kekule.equalsNoPorts(classification[i])){
-				if(i + 1 >= 21){
+				if(i + 1 >= 22){
 					// print graph name
 					System.out.println(gn);
 					System.out.println(un);

@@ -14,14 +14,44 @@ import java.util.TreeSet;
 
 import shared.Cell;
 public class Test {
+	
+	public static void main(String[] args){
+		
+		Set<Integer> allPossiblePortSelections = new HashSet<Integer>();
+		for(int i = 1; i <=5 ; i++){
+			allPossiblePortSelections.add(i);
+		}
 
-	public static void main(String[] args) throws IOException{
+		PowerSet<Integer> powerset = new PowerSet<Integer>(
+				allPossiblePortSelections, 2,2);
+		Iterator<Set<Integer>> graphsI = powerset.iterator();
+		int index = 0;
+		while( graphsI.hasNext() ){
+			
+			Set<Integer> set = graphsI.next();
+			if(set.isEmpty()){
+				continue;
+			}
+			Iterator<Integer> inSet = set.iterator();
+			int first = inSet.next();
+			int second = inSet.next();
+			
+			System.out.println("triple 5s11");
+			System.out.println("16 5");
+			System.out.println("1 2 3 4 5");
+			System.out.println("0-6-7-8-9-10-11-12-13-14-15-0-9");
+			System.out.println("10-14, 1-7, 2-8, 3-11, 4-12, 5-15, " + first + "-" + second);
+			System.out.println("");
+		}
+	}
+
+	public static void main7(String[] args) throws IOException{
 		File f = new File("them.txt");
 		f.createNewFile();
 		PrintWriter pw = new PrintWriter(f);
 		
 		Set<Integer> allPossiblePortSelections = new HashSet<Integer>();
-		for(int i = 1; i <= 6; i++){
+		for(int i = 1; i <= 7; i++){
 			allPossiblePortSelections.add(i);
 		}
 
@@ -38,16 +68,16 @@ public class Test {
 				continue;
 			}
 			//System.out.println(set);
-			pw.println("double 5s" + index);
-			pw.println("10 5");
+			pw.println("triple 5s" + index);
+			pw.println("11 5");
 			Iterator<Integer> setI = set.iterator();
 			while( setI.hasNext()){
 				pw.print( (setI.next()) + " ");
 			}
 			pw.println("");
 			
-			pw.println("0-1-9-3-7-4-8-6-0-7");
-			pw.println("2-9, 5-8");
+			pw.println("0-1-2-3-8-9-4-5-6-10-7-0-8");
+			pw.println("9-10");
 			pw.println("");
 			
 			pw.flush();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
-<window height="1024" width="1192" x="-1269" y="35">
+<window height="1024" width="1192" x="-1280" y="54">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="183"/>
@@ -42,9 +42,9 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" partName="fdGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/fdGraph.c" title="fdGraph.c" tooltip="Kekule/fdGraph.c" workbook="DefaultEditorWorkbook">
+<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="fdGraph.c" partName="fdGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/fdGraph.c" title="fdGraph.c" tooltip="Kekule/fdGraph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/fdGraph.c"/>
-<editorState selectionHPixel="0" selectionLength="0" selectionOffset="6723"/>
+<editorState selectionHPixel="0" selectionLength="9" selectionOffset="673"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="classGraph.c" partName="classGraph.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classGraph.c" title="classGraph.c" tooltip="Kekule/classGraph.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classGraph.c"/>
@@ -70,9 +70,9 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/histogram.c"/>
 <editorState selectionHPixel="0" selectionLength="0" selectionOffset="555"/>
 </editor>
-<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" partName="mkCellMain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCellMain.c" title="mkCellMain.c" tooltip="Kekule/mkCellMain.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="mkCellMain.c" partName="mkCellMain.c" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/mkCellMain.c" title="mkCellMain.c" tooltip="Kekule/mkCellMain.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/mkCellMain.c"/>
-<editorState selectionHPixel="0" selectionLength="177" selectionOffset="321"/>
+<editorState selectionHPixel="0" selectionLength="0" selectionOffset="240"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="classify.h" partName="classify.h" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule/classify.h" title="classify.h" tooltip="Kekule/classify.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Kekule/classify.h"/>
@@ -335,22 +335,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/clfmain.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/mkCell.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/classify.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Kekule/fdGraph.c"/>
 </editors>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="6001" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5557" y="12"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5996" y="0"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5557" y="12"/>
-</item>
-<item historyLabel="fdGraph.c" index="0">
-<position info="not_deleted" x="5630" y="0"/>
-</item>
 <item historyLabel="fdGraph.c" index="0">
 <position info="not_deleted" x="2347" y="15"/>
 </item>
@@ -483,8 +469,23 @@
 <item historyLabel="clfmain.c" index="9">
 <position info="not_deleted" x="292" y="0"/>
 </item>
-<item active="true" historyLabel="mkCellMain.c" index="1">
+<item historyLabel="mkCellMain.c" index="1">
 <position info="not_deleted" x="547" y="0"/>
+</item>
+<item historyLabel="fdGraph.c" index="12">
+<position/>
+</item>
+<item historyLabel="mkCellMain.c" index="1">
+<position/>
+</item>
+<item historyLabel="fdGraph.c" index="12">
+<position/>
+</item>
+<item historyLabel="mkCellMain.c" index="1">
+<position info="not_deleted" x="240" y="0"/>
+</item>
+<item active="true" historyLabel="fdGraph.c" index="12">
+<position info="not_deleted" x="1180" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
