@@ -1,5 +1,9 @@
 package makeGraph;
 
+import graphs.ClassifyGraph;
+import graphs.Graph;
+import graphs.TemplateMolecule;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -8,11 +12,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 import makeCell.GraphtoCell;
-import makeCell.Histogram;
 import shared.BitVector;
 import shared.Cell;
-import shared.Graph;
-import shared.Permutations;
+import shared.InputParser;
 import shared.Utils;
 
 /**
@@ -26,10 +28,13 @@ public class CellToGraph {
 	private static Scanner fileScanner;
 	private static int rank;
 	private static String name;
+	
+	
 	/**
 	 * @param args
 	 * @throws FileNotFoundException 
 	 */
+	/*
 	public static void main(String[] args) {
 		
 		Cell input = null;
@@ -88,6 +93,70 @@ public class CellToGraph {
 		}
 
 	}
+	*/
+	public static ArrayList<Graph> tryTemplateMolecules(Cell cell){
+		ArrayList<Graph> allGraphs = new ArrayList<Graph>();
+		
+		try {		
+			//read templates from txt
+			File f = new File("TemplateMolecules.txt");
+			Scanner fScanner = new Scanner(f);
+			
+			TemplateMolecule input = InputParser.readTemplateMolecule(fScanner, cell.getNumPorts());
+			//get all graphs
+			while(input != null){
+				allGraphs.addAll( input.getAllGraphs( cell.getNumPorts() ) );
+				
+				input = InputParser.readTemplateMolecule(fScanner,  cell.getNumPorts() );
+			}
+			
+			//test all graps
+			for(int i = 0; i < allGraphs.size(); i++){
+				Graph current = allGraphs.get(i);
+				
+				Cell c = GraphtoCell.makeCell(current);
+				if( !c.equalsNoPorts(cell) ){
+					allGraphs.set(i, null);
+				}
+			}
+			
+			allGraphs = Utils.removeNulls(allGraphs);
+			
+		} catch (FileNotFoundException e) {
+			return allGraphs;
+		}
+		
+		return allGraphs;
+	}
+	
+	private static ArrayList<Graph> getPreloadedGraphs(){
+		ArrayList<Graph> preloaded = new ArrayList<Graph>();
+	
+		//Benzene
+		
+		//Napthalene
+		
+		//
+		
+		return preloaded;
+	}
+	
+	public static void removeHighDegree(ArrayList<Graph> allGraphs){
+		for(int i = 0; i < allGraphs.size(); i++){
+			Graph g = allGraphs.get(i);
+			g.getEdgeCell().removeDuplicates();
+			if(g.getHighestDegree() > 4 || g.getHighestPortDegree() > 3){
+				allGraphs.set(i, null);
+			}
+		}
+		
+		allGraphs = Utils.removeNulls(allGraphs);
+		
+		if( !allGraphs.isEmpty() ){
+			allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
+		}
+		
+	}
 	
 	/**
 	 * TODO these comments Assume P = U K, as in K is flexible (K contains every
@@ -117,7 +186,7 @@ public class CellToGraph {
 	 * @param cell
 	 * @return
 	 */
-	private static ArrayList<Graph> findGraph(int rank, int internal, Cell cell) {
+	public static ArrayList<Graph> findGraph(int rank, int internal, Cell cell) {
 
 		ArrayList<Graph> answer;// = new ArrayList<Graph>();
 

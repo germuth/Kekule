@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="bitvectors.BitVector"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
@@ -14,18 +13,20 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="shared.BitVector"/>
 <fullyQualifiedTypeName name="classify.Classify"/>
-<fullyQualifiedTypeName name="makeCell.Histogram"/>
 <fullyQualifiedTypeName name="shared.Permutations"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="classify.Coherence"/>
 <fullyQualifiedTypeName name="makeCell.Graph"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
-<fullyQualifiedTypeName name="shared.Utils"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="shared.Graph"/>
 <fullyQualifiedTypeName name="shared.Cell"/>
 <fullyQualifiedTypeName name="makeGraph.CellToGraph"/>
-<fullyQualifiedTypeName name="makeCell.GraphtoCell"/>
 <fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="makeCell.GraphtoCell"/>
+<fullyQualifiedTypeName name="makeCell.Histogram"/>
+<fullyQualifiedTypeName name="shared.Graph"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="shared.InputParser"/>
+<fullyQualifiedTypeName name="shared.Utils"/>
 </qualifiedTypeNameHistroy>

@@ -3,28 +3,29 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="318" key="DIALOG_Y_ORIGIN"/>
-		<item value="974" key="DIALOG_X_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="974" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="System.out" key="selection"/>
+		<item value="input" key="selection"/>
 		<list key="findhistory">
+			<item value="fileScanner"/>
+			<item value="s"/>
 			<item value="System.out"/>
 			<item value="22"/>
 			<item value="0 ab ac bc"/>
 			<item value="0 ab ac bc ad bd cd ae be ce"/>
 			<item value="0 ab ac bc ad bd cd ae"/>
 			<item value="0 ab ac bc ad bd cd"/>
-			<item value="0 ab ac bc ad bd"/>
-			<item value="0 ab ac bc ad"/>
 		</list>
 		<list key="replacehistory">
+			<item value="input"/>
 			<item value="pw"/>
 			<item value=""/>
 			<item value="BitVector"/>
@@ -32,7 +33,6 @@
 			<item value="getPA()"/>
 			<item value="getPA"/>
 			<item value="this.portAssignments"/>
-			<item value="this."/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

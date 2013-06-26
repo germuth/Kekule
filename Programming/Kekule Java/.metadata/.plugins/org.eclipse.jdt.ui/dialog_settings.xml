@@ -25,39 +25,39 @@
 	<section name="JavaSearchPage">
 		<item value="true" key="CASE_SENSITIVE"/>
 		<item value="11" key="INCLUDE_MASK"/>
-		<item value="5" key="HISTORY_SIZE"/>
+		<item value="7" key="HISTORY_SIZE"/>
 		<section name="HISTORY2">
 			<item value="11" key="includeMask"/>
-			<item value="3" key="limitTo"/>
+			<item value="2048" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="toArray" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="System.out.print" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
 		</section>
 		<section name="HISTORY3">
 			<item value="11" key="includeMask"/>
-			<item value="3" key="limitTo"/>
+			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="remove" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="println(" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
 		</section>
 		<section name="HISTORY0">
 			<item value="11" key="includeMask"/>
-			<item value="2048" key="limitTo"/>
+			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="System.out.print" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="PowerSet" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -66,22 +66,46 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="println(" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="Power" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
+			<item value="true" key="isCaseSensitive"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY5">
+			<item value="11" key="includeMask"/>
+			<item value="3" key="limitTo"/>
+			<item value="0" key="scope"/>
+			<item value="" key="javaElement"/>
+			<item value="remove" key="pattern"/>
+			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
 		</section>
 		<section name="HISTORY4">
 			<item value="11" key="includeMask"/>
+			<item value="3" key="limitTo"/>
+			<item value="0" key="scope"/>
+			<item value="" key="javaElement"/>
+			<item value="toArray" key="pattern"/>
+			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
+			<item value="true" key="isCaseSensitive"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY6">
+			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value=".remove()" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="0" key="searchFor"/>
+			<item value=".remove()" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -98,6 +122,18 @@
 		<item value="false" key="Comments"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="180" key="DIALOG_Y_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="548" key="DIALOG_X_ORIGIN"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		</section>
 	</section>
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>
@@ -138,7 +174,7 @@
 	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
-		<item value="true" key="create_main"/>
+		<item value="false" key="create_main"/>
 		<item value="true" key="create_unimplemented"/>
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">

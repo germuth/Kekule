@@ -1,5 +1,7 @@
 package makeCell;
 
+import graphs.Graph;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
@@ -10,7 +12,6 @@ import java.util.Set;
 
 import shared.BitVector;
 import shared.Cell;
-import shared.Graph;
 import shared.Utils;
 
 /**
@@ -48,6 +49,7 @@ public class GraphtoCell {
 	 * @throws FileNotFoundException
 	 *             , if file not found, program will exit
 	 */
+	/*
 	public static void main(String[] args) throws FileNotFoundException {
 		// f = new File("graphs.txt");
 		// s = new Scanner(f);
@@ -94,6 +96,7 @@ public class GraphtoCell {
 		}
 
 	}
+	*/
 
 	public static Cell makeCell(Graph g) {
 		return new Cell(makeCell(g.getNodeVector(), g), g.getNumPorts());
@@ -120,12 +123,7 @@ public class GraphtoCell {
 
 		BitVector ports = g.getPortVector();
 
-		Set<BitVector> edges = null;
-		try {
-			edges = g.getEdges();
-		} catch (Exception e) {
-			edges = Utils.arToSet(g.getEdgeCell().getPA());
-		}
+		Set<BitVector> edges = Utils.arToSet(g.getEdgeCell().getPA());
 
 		// Base case
 		if (bvNodes.isEmpty()) {
@@ -183,170 +181,6 @@ public class GraphtoCell {
 		}
 
 		return kekuleCell;
-	}
-
-	/**
-	 * Reads a single graph from graphs.txt and returns it as Graph object.
-	 * Graphs are kept in the following format
-	 * 
-	 * Name #Nodes #Ports Ports Edges Extra Edges
-	 * 
-	 * For example:
-	 * 
-	 * aMoleculeName 7 3 0 1 2 0-1-2-3-4-6 4-5, 5-6
-	 * 
-	 * @return Graph object read from text file
-	 * @throws FileNotFoundException
-	 *             , if file not found
-	 */
-	private static Graph readGraph() throws NoSuchElementException {
-
-		String name = s.nextLine();
-		int numNodes = s.nextInt();
-		int numPorts = s.nextInt();
-
-		s.nextLine();
-
-		String ports = s.nextLine();
-
-		// parses close edge format "0-1-2-3"
-		int[] portRemapping = getPortPermutation(numNodes, numPorts, ports);
-
-		String inputEdges = s.nextLine();
-		String inputExtraEdges = s.nextLine();
-
-		// parses extra edge format "0-1, 1-2"
-		Set<String> edges = parseForEdgesCompact(inputEdges, portRemapping);
-
-		if (!inputExtraEdges.isEmpty()) {
-			Set<String> extraEdges = parseForEdges(inputExtraEdges,
-					portRemapping);
-			edges.addAll(extraEdges);
-			s.nextLine();
-		}
-
-		return new Graph(name, numPorts, numNodes, edges);
-	}
-
-	/**
-	 * Remaps the nodes so the ports are the first 0 - numPorts nodes. This
-	 * allows the edge numbers to be changed based off of the new node
-	 * permutation. This is what makes the difference between what nodes your
-	 * ports are on. In stead of moving the algorithm to our ports, we move
-	 * every other node around so the ports are first.
-	 * 
-	 * @param nodeNum
-	 *            , the number of nodes
-	 * @param portNum
-	 *            , the number of ports
-	 * @param ports
-	 *            , a string of ports
-	 * @return port remapping array
-	 */
-	private static int[] getPortPermutation(int nodeNum, int portNum,
-			String ports) {
-		int[] remapping = new int[nodeNum];
-
-		// fill with below zero
-		for (int i = 0; i < remapping.length; i++) {
-			remapping[i] = -1;
-		}
-
-		Scanner s = new Scanner(ports);
-		// keep track of current node
-		int currentNode = 0;
-
-		while (s.hasNext()) {
-			String num = s.next();
-			int number = Integer.parseInt(num);
-			remapping[number] = currentNode++;
-		}
-
-		for (int i = 0; i < remapping.length; i++) {
-			if (remapping[i] < 0) {
-				remapping[i] = currentNode++;
-			}
-		}
-		s.close();
-
-		return remapping;
-	}
-
-	/**
-	 * Parses long string of form 0-1-2-3-4-5-6-7-8-9 and returns string array
-	 * of format {0 1, 1 2, 2 3, 3 4, 4 5, etc}
-	 * 
-	 * @param inputEdges
-	 * @return
-	 */
-	private static Set<String> parseForEdgesCompact(String inputEdges,
-			int[] remapping) {
-		Set<String> edges = new HashSet<String>();
-
-		// should get
-		// { "1", "2", "3", "4" } etc
-		// numbers are at every even index of array
-		String[] edgeArray = inputEdges.split("-");
-
-		int index = 0;
-		String first = edgeArray[index];
-		index++;
-		first = first.trim();
-		String second = edgeArray[index];
-		index++;
-		second = second.trim();
-
-		// convert first and second to ints
-		int fir = Integer.parseInt(first);
-		int sec = Integer.parseInt(second);
-
-		// use remapping
-		edges.add(remapping[fir] + " " + remapping[sec]);
-
-		while (index < edgeArray.length) {
-			first = second;
-			second = edgeArray[index];
-			second = second.trim();
-			index++;
-
-			// convert first and second to ints
-			fir = Integer.parseInt(first);
-			sec = Integer.parseInt(second);
-
-			// use remapping
-			edges.add(remapping[fir] + " " + remapping[sec]);
-		}
-
-		return edges;
-	}
-
-	/**
-	 * Parses long string of form 0-1, 5-6, 8-9 and returns string array of
-	 * format {0 1, 1 2, 2 3, 3 4, 4 5, etc}
-	 * 
-	 * @param inputEdges
-	 * @return
-	 */
-	private static Set<String> parseForEdges(String inputEdges, int[] remapping) {
-		Set<String> extraEdges = new HashSet<String>();
-
-		// should get
-		// { "0-1", "5-6", "8-9"} etc
-		// ranges are at every even index of array
-		String[] edgeArray = inputEdges.split(",");
-
-		int index = 0;
-		while (index < edgeArray.length) {
-			// grab every second element
-			String edge = edgeArray[index];
-			index++;
-			// use other method to parse 0-1, and return "0 1"
-			Set<String> singleEdge = parseForEdgesCompact(edge, remapping);
-			// add to set of extra edges
-			extraEdges.addAll(singleEdge);
-		}
-
-		return extraEdges;
 	}
 	
 	public static void printClass(Cell kekule, String gn, String un){
