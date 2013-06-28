@@ -29,7 +29,7 @@ public class Classify {
 		
 		//TODO USER ACCESSIBLE
 		//PARAMETERS
-		int rank = 5;
+		int rank = 4;
 		int option = 0;
 		
 		ArrayList<Cell> classifications = null;

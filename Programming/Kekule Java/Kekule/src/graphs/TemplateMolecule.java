@@ -53,6 +53,9 @@ public class TemplateMolecule {
 		while(portGroups.hasNext()){
 			Set<Integer> portGroup = portGroups.next();
 			
+			if(portGroup.isEmpty()){
+				continue;
+			}
 			//convert set to string
 			String ports = "";
 			for(Integer a: portGroup){

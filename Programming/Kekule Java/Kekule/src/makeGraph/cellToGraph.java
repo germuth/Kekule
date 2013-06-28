@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -107,7 +108,11 @@ public class CellToGraph {
 			while(input != null){
 				allGraphs.addAll( input.getAllGraphs( cell.getNumPorts() ) );
 				
-				input = InputParser.readTemplateMolecule(fScanner,  cell.getNumPorts() );
+				try{
+					input = InputParser.readTemplateMolecule(fScanner,  cell.getNumPorts() );
+				} catch(NoSuchElementException e){
+					input = null;
+				}
 			}
 			
 			//test all graps
@@ -115,6 +120,8 @@ public class CellToGraph {
 				Graph current = allGraphs.get(i);
 				
 				Cell c = GraphtoCell.makeCell(current);
+				c.normalize();
+				current.getEdgeCell().sortBySize();
 				if( !c.equalsNoPorts(cell) ){
 					allGraphs.set(i, null);
 				}
@@ -141,11 +148,28 @@ public class CellToGraph {
 		return preloaded;
 	}
 	
+	//removes disjoint graphs and tries to add connected versions
+	public static void removeDisjoint(ArrayList<Graph> allGraphs, Cell cell){
+		
+		for(int i = 0; i < allGraphs.size(); i++){
+			Graph g = allGraphs.get(i);
+			if(g == null){
+				continue;
+			}
+			if( g.isDisjoint() ){
+				//if new graph found, it replaces old non-connected one
+				//if no new connected graph found, null is placed there
+				Graph connected = g.connect(cell);
+				allGraphs.set(i, connected);
+			}
+		}
+	}
+	
 	public static void removeHighDegree(ArrayList<Graph> allGraphs){
 		for(int i = 0; i < allGraphs.size(); i++){
 			Graph g = allGraphs.get(i);
 			g.getEdgeCell().removeDuplicates();
-			if(g.getHighestDegree() > 4 || g.getHighestPortDegree() > 3){
+			if(g.getHighestDegree() > 3 || g.getHighestPortDegree() > 2){
 				allGraphs.set(i, null);
 			}
 		}
@@ -155,7 +179,18 @@ public class CellToGraph {
 		if( !allGraphs.isEmpty() ){
 			allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
 		}
-		
+
+	}
+
+	public static void widenCycles(ArrayList<Graph> allGraphs, Cell cell) {
+		for (int i = 0; i < allGraphs.size(); i++) {
+			Graph g = allGraphs.get(i);
+			if(g == null){
+				continue;
+			}
+			allGraphs.set(i, g.triangleFree(cell) );
+		}
+
 	}
 	
 	/**

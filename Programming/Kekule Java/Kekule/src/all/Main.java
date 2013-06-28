@@ -51,12 +51,18 @@ public class Main {
 		
 		Cell cell = InputParser.readCell(input);
 		Histogram.rank = cell.getNumPorts();
-		Permutations.freePerm();
+		//Permutations.freePerm();
 		
 		while(cell != null){
 			//get hesselink's graphs
 			ArrayList<Graph> allGraphs = CellToGraph.findGraph(cell.getNumPorts(), internal, cell);
 			CellToGraph.removeHighDegree(allGraphs);
+			
+			//remove disjoint graphs
+			CellToGraph.removeDisjoint(allGraphs, cell);
+			
+			//removes cycles of length 3 and maybe 4
+			CellToGraph.widenCycles(allGraphs, cell);
 			
 			allGraphs.addAll( CellToGraph.tryTemplateMolecules(cell) );
 			
@@ -71,9 +77,17 @@ public class Main {
 					index = i;
 				}
 			}
-			
-			allGraphs.get(index).writeGraph();
-			
+			if(index == -1){
+				System.out.println("No Graph Found!");
+			}
+			else {
+				if (allGraphs.get(index).isDisjoint()) {
+					System.out.println("DisJoint");
+				}
+				allGraphs.get(index).getEdgeCell().sortBySize();
+				allGraphs.get(index).getEdgeCell().removeDuplicates();
+				allGraphs.get(index).writeGraph();
+			}
 			try{
 				cell = InputParser.readCell(input);
 			} catch(Exception e){

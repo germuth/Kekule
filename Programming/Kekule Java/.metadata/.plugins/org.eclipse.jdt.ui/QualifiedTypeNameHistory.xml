@@ -23,10 +23,11 @@
 <fullyQualifiedTypeName name="makeGraph.CellToGraph"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="makeCell.GraphtoCell"/>
 <fullyQualifiedTypeName name="makeCell.Histogram"/>
 <fullyQualifiedTypeName name="shared.Graph"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="shared.InputParser"/>
 <fullyQualifiedTypeName name="shared.Utils"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="makeCell.GraphtoCell"/>
+<fullyQualifiedTypeName name="javax.media.j3d.TriangleStripArray"/>
 </qualifiedTypeNameHistroy>

@@ -13,7 +13,7 @@ public class InputParser {
 
 	public static Cell readCell(Scanner input){
 
-		int rank = Integer.parseInt( input.nextLine() );
+		int rank = Integer.parseInt( input.nextLine().trim() );
 		String cell = input.nextLine();
 
 		Scanner lineScanner = new Scanner(cell);
@@ -112,6 +112,9 @@ public class InputParser {
 
 		String inputEdges = input.nextLine();
 		String inputExtraEdges = input.nextLine();
+		if( !inputExtraEdges.isEmpty() ){
+			input.nextLine();
+		}
 
 		return new TemplateMolecule(name, numNodes, possiblePorts, inputEdges, inputExtraEdges);
 	}
