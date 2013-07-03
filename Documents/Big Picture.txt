@@ -1,0 +1,6 @@
+Molecules might be able to be used is circuitry. 
+
+Circuits display switching behaviour, so do molecules
+switching behaviour has been mapped to cells
+from cells I can find stable graphs -> molecules
+

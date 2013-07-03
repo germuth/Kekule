@@ -1,4 +1,4 @@
-package makeCell;
+package shared;
 
 import graphs.Graph;
 
@@ -10,9 +10,6 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
 
-import shared.BitVector;
-import shared.Cell;
-import shared.Utils;
 
 /**
  * Graph to Cell

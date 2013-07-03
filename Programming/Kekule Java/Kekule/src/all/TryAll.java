@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-import makeCell.GraphtoCell;
 import shared.BitVector;
 import shared.Cell;
+import shared.GraphtoCell;
 import shared.PowerSet;
 
 /**
@@ -32,7 +32,7 @@ public class TryAll {
 		
 		Cell input = null;
 		try {
-			fileScanner = new Scanner(f);
+			fileScanner = new Scanner(System.in);
 			readTitle();
 			input = readCell();
 		} catch (Exception e) {

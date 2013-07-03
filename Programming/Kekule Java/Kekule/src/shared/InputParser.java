@@ -40,6 +40,36 @@ public class InputParser {
 
 		return in;
 	}
+	
+	public static Cell readCell2(Scanner input) throws Exception{
+
+		int rank = 6;//Integer.parseInt( input.nextLine().trim() );
+		String cell = input.nextLine();
+
+		Scanner lineScanner = new Scanner(cell);
+		//String name = lineScanner.next();
+
+		String bitVectors = input.nextLine();
+
+		//lineScanner.close();
+		lineScanner = new Scanner(bitVectors);
+
+		Set<BitVector> allBVs = new HashSet<BitVector>();
+
+		while (lineScanner.hasNext()) {
+			String bitvector = lineScanner.next();
+			bitvector = bitvector.trim();
+			int number = Integer.parseInt(bitvector);
+			BitVector bV = new BitVector(number);
+			allBVs.add(bV);
+		}
+
+		
+		Cell in = new Cell(allBVs, rank);
+		lineScanner.close();
+
+		return in;
+	}
 
 	public static void askForGraph() {
 		System.out.println("Please Input Graphs with Following Format:");

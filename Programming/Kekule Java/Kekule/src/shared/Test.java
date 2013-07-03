@@ -1,4 +1,4 @@
-package makeCell;
+package shared;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
-import shared.Cell;
 public class Test {
 	//adding edges
 	public static void main(String[] args){
@@ -206,6 +205,11 @@ public class Test {
 
 
 //System.out.println(set);
+Fluorene
+13 9
+0-1-10-2-3-4-5-12-11-6-7-8-9-0-11
+10-12
+
 			System.out.println("Fluorene" + index);
 			System.out.println("13 5");
 			Iterator<Integer> setI = set.iterator();

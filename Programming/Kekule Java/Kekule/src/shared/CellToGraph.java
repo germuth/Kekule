@@ -1,4 +1,4 @@
-package makeGraph;
+package shared;
 
 import graphs.ClassifyGraph;
 import graphs.Graph;
@@ -8,15 +8,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
 
-import makeCell.GraphtoCell;
-import shared.BitVector;
-import shared.Cell;
-import shared.InputParser;
-import shared.Utils;
 
 /**
  * This class reads a classification of all Kekule cells of a port number and attempts
@@ -95,7 +91,10 @@ public class CellToGraph {
 
 	}
 	*/
-	public static ArrayList<Graph> tryTemplateMolecules(Cell cell){
+	
+	//if cell == cell, finding graph for one cell
+	//if cell == null, finding graphs for whole rank
+	public static ArrayList<Graph> tryTemplateMolecules(Cell cell, int rank){
 		ArrayList<Graph> allGraphs = new ArrayList<Graph>();
 		
 		try {		
@@ -103,31 +102,36 @@ public class CellToGraph {
 			File f = new File("TemplateMolecules.txt");
 			Scanner fScanner = new Scanner(f);
 			
-			TemplateMolecule input = InputParser.readTemplateMolecule(fScanner, cell.getNumPorts());
+			TemplateMolecule input = InputParser.readTemplateMolecule(fScanner, rank);
 			//get all graphs
 			while(input != null){
-				allGraphs.addAll( input.getAllGraphs( cell.getNumPorts() ) );
+				allGraphs.addAll( input.getAllGraphs( rank ) );
 				
 				try{
-					input = InputParser.readTemplateMolecule(fScanner,  cell.getNumPorts() );
+					input = InputParser.readTemplateMolecule(fScanner,  rank );
 				} catch(NoSuchElementException e){
 					input = null;
 				}
 			}
-			
-			//test all graps
-			for(int i = 0; i < allGraphs.size(); i++){
-				Graph current = allGraphs.get(i);
-				
-				Cell c = GraphtoCell.makeCell(current);
-				c.normalize();
-				current.getEdgeCell().sortBySize();
-				if( !c.equalsNoPorts(cell) ){
-					allGraphs.set(i, null);
+
+			// if only searching for one graph
+			if (cell != null) {
+				for (int i = 0; i < allGraphs.size(); i++) {
+					Graph current = allGraphs.get(i);
+
+					Cell c = GraphtoCell.makeCell(current);
+					c.normalize();
+					current.getEdgeCell().sortBySize();
+
+					if (!c.equalsNoPorts(cell)) {
+						allGraphs.set(i, null);
+					}
+
 				}
+				allGraphs = Utils.removeNulls(allGraphs);
 			}
+			//else return all
 			
-			allGraphs = Utils.removeNulls(allGraphs);
 			
 		} catch (FileNotFoundException e) {
 			return allGraphs;
@@ -149,6 +153,7 @@ public class CellToGraph {
 	}
 	
 	//removes disjoint graphs and tries to add connected versions
+	//TODO only consider disjoint if ports on both sides, else we can just remove one of the sides
 	public static void removeDisjoint(ArrayList<Graph> allGraphs, Cell cell){
 		
 		for(int i = 0; i < allGraphs.size(); i++){
@@ -165,17 +170,20 @@ public class CellToGraph {
 		}
 	}
 	
+	//TODO ensure extending ports is useless in hesselink case
 	public static void removeHighDegree(ArrayList<Graph> allGraphs){
 		for(int i = 0; i < allGraphs.size(); i++){
 			Graph g = allGraphs.get(i);
 			g.getEdgeCell().removeDuplicates();
-			if(g.getHighestDegree() > 3 || g.getHighestPortDegree() > 2){
+			
+			//if internal vertices too bad
+			if( g.getHighestDegree() > 3 ||  g.getHighestPortDegree() > 2 ){
 				allGraphs.set(i, null);
 			}
 		}
 		
 		allGraphs = Utils.removeNulls(allGraphs);
-		
+			
 		if( !allGraphs.isEmpty() ){
 			allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
 		}
@@ -191,6 +199,78 @@ public class CellToGraph {
 			allGraphs.set(i, g.triangleFree(cell) );
 		}
 
+	}
+	//tries to add edges to each graph in start, to get a new graph with cell == goal
+	public static ArrayList<Graph> tryAdding(ArrayList<Graph> start, Cell goal){
+		ArrayList<Graph> newOnes = new ArrayList<Graph>();
+		
+		for(int i = 0; i < start.size(); i++){
+			Graph current = start.get(i);
+			
+			//get all nodes
+			//and use to get all possible edges
+			int[] allNodes = new int[current.getNumNodes()];
+			for(int j = 0; j < allNodes.length; j++){
+				allNodes[j] = (1 << j);
+			}
+			
+			ArrayList<BitVector> allEdges = new ArrayList<BitVector>();
+			//generate all possible edges
+			for(int j = 0; j < allNodes.length; j++){
+				if( current.getDegree( new BitVector( allNodes[j] ) ) > 2){
+					continue;
+				}
+				
+				for(int k = j + 1; k < allNodes.length; k++){
+					if( current.getDegree( new BitVector( allNodes[k] ) ) > 2){
+						continue;
+					}
+					allEdges.add( new BitVector( allNodes[j] + allNodes[k] ) );
+				}
+			}
+			
+			//for each edge create new graph and add
+			for(int j = 0; j < allEdges.size(); j++){
+				
+				BitVector Edge = allEdges.get(j);
+				
+				Graph newG = new Graph(current);
+				newG.addEdge(Edge);
+				newG.getEdgeCell().sortBySize();
+				
+				Cell newC = GraphtoCell.makeCell(newG);
+				newC.normalize();
+				//if have same cell
+				if( newC.equalsNoPorts(goal) ){
+					
+					//if internal vertices fine, but ports overloaded
+					if( newG.getHighestDegree() <= 3 && newG.getHighestPortDegree() > 2){
+						//if we add an edge between ports, which changes the cell to what we want
+						//but the ports now has too many connections
+						
+						//we can extend the ports
+						Graph extended = current.extendPortsNoCell();
+						//and then add that edge
+						extended.addEdge(Edge);
+						extended.getEdgeCell().sortBySize();
+						
+						Cell exCell = GraphtoCell.makeCell(extended);
+						exCell.normalize();
+						if( exCell.equalsNoPorts(goal) ){
+							newG = extended;
+							newG.setName( newG.getName() + "With" + Edge.toString());
+							newOnes.add(newG);
+						} 
+					}
+					else if(newG.getHighestDegree() <= 3 && newG.getHighestPortDegree() <=2 ){
+						newG.setName( newG.getName() + "With" + Edge.toString());
+						newOnes.add(newG);
+					}
+				}
+			}
+		}
+		
+		return newOnes;
 	}
 	
 	/**
@@ -350,7 +430,7 @@ public class CellToGraph {
 		//add more nodes and keep searching
 		while( g1.getNumNodes() + 2 <= rank + internal ){
 			g1.addTwoNodes();
-			System.out.println("...trying " + g1.getNumNodes() + " nodes...");
+			//TODO: maybe uncomment? System.out.println("...trying " + g1.getNumNodes() + " nodes...");
 			
 			//When we add internal vertices, we need to add internal edges so that the total
 			//graph has a perfect matching or else Kekule state is lost

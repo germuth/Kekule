@@ -17,6 +17,40 @@ import java.util.Set;
  */
 public class Utils {
 	
+	public static class Pair<F, S> {
+	    private F first; //first member of pair
+	    private S second; //second member of pair
+
+	    public Pair(F first, S second) {
+	        this.first = first;
+	        this.second = second;
+	    }
+
+	    public void setFirst(F first) {
+	        this.first = first;
+	    }
+
+	    public void setSecond(S second) {
+	        this.second = second;
+	    }
+
+	    public F getFirst() {
+	        return first;
+	    }
+
+	    public S getSecond() {
+	        return second;
+	    }
+	}
+	
+	public static int binomial(int n, int K) {
+	    int ret = 1;
+	    for (int k = 0; k < K; k++) {
+	    	ret = ret*(n-k)/(k+1);
+	    }
+	    return ret;
+	}
+	
 	/**
 	 * Sorts a string of characters
 	 * For example, 

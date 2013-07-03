@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import classify.Classify;
+import classification.Classify;
 
 
 import shared.BitVector;

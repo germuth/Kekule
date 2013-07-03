@@ -8,9 +8,9 @@ import java.util.Set;
 
 import javax.media.j3d.TriangleStripArray;
 
-import makeCell.GraphtoCell;
 import shared.BitVector;
 import shared.Cell;
+import shared.GraphtoCell;
 import shared.PowerSet;
 
 
@@ -179,7 +179,7 @@ public class Graph {
 			
 			int degree = 0;
 			Cell edges = this.getEdgeCell();
-			//cycle through edges and count occurences of that node
+			//cycle through edges and count occurrences of that node
 			for(int i = 0; i < edges.size(); i++){
 				BitVector edge = edges.getPA()[i];
 				if(edge.contains(node)){
@@ -235,6 +235,97 @@ public class Graph {
 		
 		return degree1List;
 	}
+	
+	//extends every port of the graph out one node, and replaces it with internal vertex
+	//only returns graph if new graph has the same cell as the old one
+	//else null
+	//every port must have at least degree 1
+	public Graph extendPorts(){
+		Cell cell = GraphtoCell.makeCell(this);
+		cell.normalize();
+		
+		//extended graph
+		Graph extended = new Graph(this);
+		
+		int lastNode = extended.getLastNode().getNumber();
+		//ports always 0 1 2 3 4
+		for(int port = 1; port <= (1 << ( extended.numPorts -1 ) ); port *=2){
+			
+			//add new node to replace port
+			int newNode = lastNode*2;
+			lastNode = newNode;
+			extended.numNodes++;
+			
+			//find all edges which connect to extended port
+			for(int i = 0; i < extended.edgeCell.size(); i++){
+				BitVector edge = extended.edgeCell.getPA()[i];
+				if( edge.contains(port) ){
+					
+					int otherNode = edge.getNumber() - port;
+					
+					//delete edges from port to other
+					extended.removeEdge(edge);
+					//add edge from port to other
+					extended.addEdge( new BitVector( otherNode + newNode ) );
+				}
+			}
+			
+			extended.addEdge( new BitVector( newNode + port) );
+		}
+		
+		extended.getEdgeCell().sortBySize();
+		Cell newCell = GraphtoCell.makeCell(extended);
+		if(newCell.size() != 0){
+			newCell.normalize();
+		}
+		if( !newCell.equalsNoPorts(cell) ){
+			//extended = new Graph(this);
+			return null;
+		}
+		extended.setName( extended.getName() + "Extended");
+		return extended;
+	}
+	
+	//extends every port of the graph out one node, and replaces it with internal vertex
+	//returns graph regardless of cell
+		public Graph extendPortsNoCell(){
+			//extended graph
+			Graph extended = new Graph(this);
+			
+			int lastNode = extended.getLastNode().getNumber();
+			//ports always 0 1 2 3 4
+			for(int port = 1; port <= (1 << ( extended.numPorts -1 ) ); port *=2){
+				
+				//add new node to replace port
+				int newNode = lastNode*2;
+				lastNode = newNode;
+				extended.numNodes++;
+				
+				//find all edges which connect to extended port
+				for(int i = 0; i < extended.edgeCell.size(); i++){
+					BitVector edge = extended.edgeCell.getPA()[i];
+					if( edge.contains(port) ){
+						
+						int otherNode = edge.getNumber() - port;
+						
+						//delete edges from port to other
+						extended.removeEdge(edge);
+						//add edge from port to other
+						extended.addEdge( new BitVector( otherNode + newNode ) );
+					}
+				}
+				
+				extended.addEdge( new BitVector( newNode + port) );
+			}
+			
+			extended.getEdgeCell().sortBySize();
+			Cell newCell = GraphtoCell.makeCell(extended);
+			if(newCell.size() != 0){
+				newCell.normalize();
+			}
+			extended.setName( extended.getName() + "Extended");
+			return extended;
+		}
 	
 	//takes this graph and adds some nodes/edges to connect it
 	//makes sure it has the same cell
@@ -525,6 +616,24 @@ public class Graph {
 		edgesSize++;
 	}
 	
+	public String toString(){
+		String name = this.name;
+		String edges = "Edges: ";
+		for(int i = 0; i < this.edgeCell.size(); i++){
+			BitVector edge = this.edgeCell.getPA()[i];
+			int p = edge.firstBit();
+			edge = new BitVector( edge.getNumber() - ( 1 << p ) );
+			int q = edge.firstBit();
+			edges += ( p ) + "-" + ( q );
+			
+			if(i != this.edgeCell.size() - 1){
+				edges += ", ";
+			}
+		}
+		return name + " " + edges;
+		
+	}
+	
 	public void writeGraph(){
 		String title = "";
 		if(this.name != null){
@@ -572,6 +681,11 @@ public class Graph {
 		}
 		title += this.numNodes +" Nodes, " + " " + this.numPorts + " Ports";
 		System.out.println(title);
+	}
+	
+	public BitVector getLastNode(){
+		int lastNode = 1 << ( this.numNodes - 1 );
+		return new BitVector( lastNode );
 	}
 	
 	/**
