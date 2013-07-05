@@ -21,6 +21,14 @@ public class BitVector implements Comparable{
 	
 	//STATIC
 	
+	public static BitVector smallerBitVector(BitVector a, BitVector b){
+		if(a.number > b.number){
+			return b;
+		} else{
+			return a;
+		}
+	}
+	
 	/**
 	 * Static method to take the symmetric difference between two bitvectors.
 	 * Doesn't edit either bitVector, returns a new one.

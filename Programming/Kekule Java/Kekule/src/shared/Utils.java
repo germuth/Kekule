@@ -17,6 +17,17 @@ import java.util.Set;
  */
 public class Utils {
 	
+	public static int getLastSender(String packet){
+		String[] nodes = packet.split(" ");
+		String last = nodes[nodes.length - 1];
+		int num = Integer.parseInt( last );
+		return num;
+	}
+	
+	public static int getPacketLength(String packet){
+		return packet.split(" ").length;
+	}
+	
 	public static class Pair<F, S> {
 	    private F first; //first member of pair
 	    private S second; //second member of pair

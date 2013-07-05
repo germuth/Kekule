@@ -2,9 +2,9 @@ package gui;
 
 import graphs.Graph;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -35,6 +35,9 @@ public class GraphViewer extends JComponent {
 	public void paintComponent(Graphics g){
 		Graphics2D g2 = (Graphics2D) g;
 		
+		boolean oneAdded = false;
+		boolean twoAdded = false;
+		
 		Cell edges = myGraph.getEdgeCell();
 		for(int i = 0; i < edges.size(); i++){
 			BitVector edge = edges.getPA()[i];
@@ -44,6 +47,7 @@ public class GraphViewer extends JComponent {
 			if( one == null ){
 				one = new Node(lastX, lastY, false, node1 );
 				this.nameToNode.put( one.getNumber(), one );
+				oneAdded = true;
 				
 				lastX += 20;
 				if(lastY == 70){
@@ -61,6 +65,7 @@ public class GraphViewer extends JComponent {
 			if( two == null ){
 				two = new Node(lastX, lastY, false, node2 );
 				this.nameToNode.put( two.getNumber(), two );
+				twoAdded = true;
 				
 				lastX += 20;
 				if(lastY == 70){
@@ -76,8 +81,30 @@ public class GraphViewer extends JComponent {
 			one.addNeighbour(two);
 			two.addNeighbour(one);
 			
-			int cycle = one.cycleLength( );
-			System.out.println(cycle);
+			ArrayList<Node> cycle = null;
+			if( oneAdded){
+				cycle = one.getCycle();
+			} else if( twoAdded ){
+				cycle = two.getCycle();
+			} else{
+				cycle = new ArrayList<Node>();
+			}
+			if( !cycle.isEmpty() ){
+				if( cycle.size() ==7){
+					Node start = cycle.get(0);
+					Node second = cycle.get(1);
+					second.translate(start.getX() + 20, start.getY() + 20);
+					Node three = cycle.get(2);
+					three.translate(second.getX(), second.getY() + 20);
+					Node four = cycle.get(3);
+					four.translate( three.getX() - 20, three.getY() + 20);
+					Node five = cycle.get(4);
+					five.translate( three.getX() - 40, three.getY() );
+					Node six = cycle.get(5);
+					six.translate( five.getX(), five.getY() - 20);
+				}
+				
+			}
 			
 		}
 		

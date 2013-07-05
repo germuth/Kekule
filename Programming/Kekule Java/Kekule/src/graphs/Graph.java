@@ -33,7 +33,7 @@ import shared.PowerSet;
  * @author Aaron
  *
  */
-public class Graph {
+public class Graph implements Comparable<Graph>{
 	
 	/**
 	 * assume g1 numPorts >= g2 numPorts 
@@ -92,9 +92,17 @@ public class Graph {
 	 * Includes the ports
 	 */
 	private int numNodes;
-	
+	/**
+	 * Cell containing all the edges of this graph in 
+	 * bitvector form
+	 */
 	private Cell edgeCell;
 
+	/*
+	 * rank given to this graph based on the Genetic algorithms fitness
+	 * function
+	 */
+	private int rank;
 	// take in graph from input
 	public Graph(String name, int nP, int nC, Set<String> edges) {
 		Set<BitVector> bvEdges = new HashSet<BitVector>();
@@ -117,6 +125,13 @@ public class Graph {
 		this.numNodes = nC;
 		this.numPorts = nP;
 		this.edgeCell = new Cell(bvEdges, numPorts);
+	}
+	
+	public Graph(String name, int nP, int nC, Cell edges){
+		this.numPorts = nP;
+		this.numNodes = nC;
+		this.edgeCell = edges;
+		this.name = name;
 	}
 	
 	public Graph(int nP, int nC, Cell edges){
@@ -740,5 +755,23 @@ public class Graph {
 	public void setName(String name2) {
 		this.name = name2;
 		
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	@Override
+	public int compareTo(Graph arg0) {
+		if(this.rank < arg0.rank){
+			return -1;
+		} else if(this.rank > arg0.rank){
+			return 1;
+		}
+		return 0;
 	}
 }

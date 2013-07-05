@@ -1,7 +1,6 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import shared.Utils;
@@ -26,41 +25,71 @@ public class Node {
 		this.neighbours.add(n);
 	}
 	
+	public void translate(int x, int y){
+		this.setX( x );
+		this.setY( y );
+	}
+	
+	public boolean equals(Object o){
+		Node another = (Node) o;
+		if(this.number == another.number){
+			return true;
+		}
+		return false;
+	}
+	
 	//breadth first searches the graph for the shortest cycle length if any from this node to node n
-	public int cycleLength(){
+	public ArrayList<Node> getCycle(){
 		
-		//holds whether we already visited this node
-		HashMap<Node, Boolean> reached = new HashMap<Node, Boolean>();
 		
 		//start searching at node 1
-		LinkedList<Pair<Node, Integer>> openList = new LinkedList<Pair<Node, Integer>>();
-		openList.add( new Pair<Node, Integer>(this, 0) );
+		LinkedList<Pair<Node, ArrayList<Node>>> openList = new LinkedList<Pair<Node, ArrayList<Node>>>();
+		ArrayList<Node> temp = new ArrayList<Node>();
+		temp.add(this);
+		openList.add( new Pair<Node, ArrayList<Node>>(this, temp) );
 		
 		while( !openList.isEmpty() ){
 			
 			
-			Pair<Node, Integer> p = openList.pop();
+			Pair<Node, ArrayList<Node>> p = openList.pop();
 			Node parent = p.getFirst();
-			//if we've already visited this node
-			if( reached.get(parent) != null ){
-				continue;
+			ArrayList<Node> packet = p.getSecond();
+			
+			if( parent.equals(this) && packet.size() > 1 ){
+				return packet;
 			}
-			reached.put( parent, true );
 			
 			//search all neighbors
 			for(Node y : parent.neighbours){
 				
-				if( y.equals(this) && p.getSecond() > 1){
-					return p.getSecond() + 1;
+				//don't send packet back to sending neighbor
+				if( packet.size() >= 2 && y.equals( packet.get( packet.size() - 2) ) ){
+					continue;
 				}
 				
-				if( !reached.containsKey(y) ){
-					openList.add( new Pair<Node, Integer>( y, p.getSecond() + 1) );
+				//send packet everywhere else
+				//as long as packet is below max length
+				if( packet.size() < 8){
+					ArrayList<Node> newT = new ArrayList<Node>(packet);
+					newT.add(y);
+					Pair<Node, ArrayList<Node>> newP = new Pair<Node, ArrayList<Node>>(y, newT);
+					openList.add(newP);
 				}
 				
 			}
 		}
-		return 0;
+		return new ArrayList<Node>();
+	}
+	
+	public String toString(){
+		String s = "";
+		s += this.number + "(";
+		for( Node n: this.neighbours){
+			s += n.number + ", ";
+		}
+		s += ")";
+		return s;
+		
 	}
 
 	public int getX() {
