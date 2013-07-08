@@ -156,11 +156,11 @@ Next, graphs which are disjoint are fixed. This procedure is outlined in section
 
 We then add to the long list of trimmed graphs based on all the template molecules. If one section has not found an applicable graph at this point, we attempt to add edges. We take every graph from every classification below the missing one, and try to add possible edges to the graph. Only edges which will exceed the maximum degree of the graph are considered. In the case of adding an edge between the ports, the ports can often be 'extended' first to prevent the degree from exceeding our limit. From this, we display the graph with the lowest amount of nodes to the user. (currently in text form).
 
-We want to put all these methods together into one application which can get you realistic graphs for every classification. I believe first it should run Hesselink's program and try to get graphs. If more than one graph is available, the first one found should be viewable, but ideally, all should be viewable somehow. Then, if some haven't been found, we try 10 or so built in molecules. Option should be there to add in your own custom molecule and see if it fits any classification. Finally, if some still aren't found, it should take classifications it already has and try adding/removing edges to get intermediate ones. Some editing will be done i imagine.
-
 \subsection{Current Questions}
 
-Can you get the rank of a cell from it's port assignments. Does every single possible cell with 5 ports have at least one port assignment with e? if not, you must tell the rank of your cell.
+Can you get the rank of a cell from it's port assignments. 
+Does every single possible cell with 5 ports have at least one port assignment with e? if not, you must tell the rank of your cell.
+How can a graph which only one internal node, which gets a cell like { a b abc } be normalized and centered and got a port assignment of 0 ab abcd. There is no way that 0 could ever be a valid Kekul\'e structure. I think the answer to this question, is that it can't  but it is equivalent somehow in terms of electrical switching behaviour. 
 
 
 \begin{thebibliography}{abrv}
