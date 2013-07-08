@@ -186,7 +186,7 @@ public class Utils {
 			
 			inner:
 			for(int j = 0; j < newList.size(); j++){
-				if(newList.get(j).equalsNoPorts(cell.get(i))){
+				if(newList.get(j).equals(cell.get(i))){
 					found = true;
 					break inner;
 				}

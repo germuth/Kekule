@@ -58,10 +58,14 @@ K15
 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce 
 	0 3 5 6 9 10 12 15 17 18 20 23
 	 
-K16 Cell: 0 ab ac bc bd cd abcd ae be ce abde acde 
+K16 
+5
+Cell: 0 ab ac bc bd cd abcd ae be ce abde acde 
 	0 3 5 6 10 12 15 17 18 20 27 29
 	      
-K17 Cell: 0 ab ac bc ad bd cd abcd ce abce de abde 
+K17 
+5
+Cell: 0 ab ac bc ad bd cd abcd ce abce de abde 
 	0 3 5 6 9 10 12 15 20 23 24 27
 	     
 K18 Cell: 0 bc ad bd cd abcd ae be ce abce abde acde 
@@ -74,7 +78,9 @@ K20 Cell: 0 ab ac bc ad bd cd abcd ae ce abce de abde
 	0 3 5 6 9 10 12 15 17 20 23 24 27
 	 
 	Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde 
-K21 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde 
+K21
+5
+Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde 
 	0 3 5 6 9 10 12 15 17 18 20 23 24 27 
 	
 K22 

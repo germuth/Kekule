@@ -21,6 +21,13 @@ public class BitVector implements Comparable{
 	
 	//STATIC
 	
+	/**
+	 * Returns the smaller BitVector out of a and b by comparing their 
+	 * integers directly
+	 * @param a, first BitVector
+	 * @param b, second BitVector
+	 * @return, the smaller bitVector
+	 */
 	public static BitVector smallerBitVector(BitVector a, BitVector b){
 		if(a.number > b.number){
 			return b;
@@ -32,7 +39,7 @@ public class BitVector implements Comparable{
 	/**
 	 * Static method to take the symmetric difference between two bitvectors.
 	 * Doesn't edit either bitVector, returns a new one.
-	 * @param a, first Bitvector
+	 * @param a, first BitVector
 	 * @param b, second BitVector
 	 * @return, their symmetric difference
 	 */
@@ -114,10 +121,14 @@ public class BitVector implements Comparable{
 	
 	/**
 	 * Returns the first 1 is this bitvector. Does not remove, only returns. 
-	 * For Example, 0010 1100 would return 0000 0100 or 4
+	 * For Example, 
+	 * 0010 1100 
+	 * would return 
+	 * 0000 0100 
+	 * or 4
 	 * @return first 1 in bitvector from least significant to most significant bit
 	 */
-	public int firstNode(){
+	public int firstBit(){
 		//no node to find
 		if(this.isEmpty()){
 			return 0;
@@ -131,7 +142,17 @@ public class BitVector implements Comparable{
 		return k;
 	}
 	
-	public int firstBit(){
+	/**
+	 * Returns the first bit in the BitVector. For example in: 
+	 * 0100 1010
+	 * first node is
+	 * 0000 0010
+	 * which is node number 1 ( node number 0 is first)
+	 * so the integer 1 is returned
+	 * 
+	 * @return the first bit in this BitVector
+	 */
+	public int firstNode(){
 		int k = 0;
 		int x = this.getNumber();
 		while( ( ( x>>k) & 1 ) == 0 ){

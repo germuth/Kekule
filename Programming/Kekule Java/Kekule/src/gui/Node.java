@@ -6,6 +6,15 @@ import java.util.LinkedList;
 import shared.Utils;
 import shared.Utils.Pair;
 
+/**
+ * Represents a node of a graph for the visual portion of the application.
+ * This will likely be replaced by 
+ * OpenEye Scientific Software
+ * OGHAM TK
+ * 
+ * @author Aaron
+ *
+ */
 public class Node {
 	private int x;
 	private int y;

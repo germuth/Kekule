@@ -14,6 +14,15 @@ import javax.swing.JComponent;
 import shared.BitVector;
 import shared.Cell;
 
+/**
+ * Views a Graph
+ * Likely won't be used once 
+ * OpenEye Scienctific Software
+ * OGHAM TK 
+ * is working
+ * @author Aaron
+ *
+ */
 public class GraphViewer extends JComponent {
 	private static final int X_FIRST = 50;
 	private static final int Y_FIRST = 50;
@@ -42,7 +51,7 @@ public class GraphViewer extends JComponent {
 		for(int i = 0; i < edges.size(); i++){
 			BitVector edge = edges.getPA()[i];
 			
-			int node1 = edge.firstBit();
+			int node1 = edge.firstNode();
 			Node one = this.nameToNode.get( node1 );
 			if( one == null ){
 				one = new Node(lastX, lastY, false, node1 );
@@ -59,7 +68,7 @@ public class GraphViewer extends JComponent {
 			}
 			
 			
-			int node2 = new BitVector( edge.getNumber() - ( 1 << node1 ) ).firstBit();
+			int node2 = new BitVector( edge.getNumber() - ( 1 << node1 ) ).firstNode();
 			//if node2 not exist
 			Node two = this.nameToNode.get( node2 );
 			if( two == null ){
@@ -120,8 +129,8 @@ public class GraphViewer extends JComponent {
 		for(int i = 0; i < edges.size(); i++){
 			BitVector edge = edges.getPA()[i];
 			
-			int node1 = edge.firstBit();
-			int node2 = new BitVector( edge.getNumber() - ( 1 << node1 ) ).firstBit();
+			int node1 = edge.firstNode();
+			int node2 = new BitVector( edge.getNumber() - ( 1 << node1 ) ).firstNode();
 			
 			Node one = this.nameToNode.get(node1);
 			Node two = this.nameToNode.get(node2);

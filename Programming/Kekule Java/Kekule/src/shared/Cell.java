@@ -123,6 +123,8 @@ public class Cell {
 	 * Creates a new bitvector based on a set (array) or port assignments.
 	 * Number of ports is initialized to 0. If you wish to visualize this
 	 * cell you must set the port number
+	 * 
+	 * TODO there could be duplicates introduced here
 	 * @param set, array of BitVectors
 	 */
 	public Cell(BitVector[] set){
@@ -206,6 +208,27 @@ public class Cell {
 			}
 		});
 		
+	}
+	
+	/**
+	 * Gets the highest node in this bit vector.
+	 * Assumes this bit vector represents an edge
+	 * @return
+	 */
+	public int getHighestNode(){
+		int maximum = 0;
+		
+		for(int i = 0; i< this.size(); i++){
+			BitVector bv = this.getPA()[i];
+			int node1 = bv.firstNode();
+			//new bit vector with first bit removed
+			//the first bit of new bit vector will be second bit of original
+			int node2 = new BitVector( bv.getNumber() - bv.firstBit() ).firstNode();
+			if( node2 > maximum){
+				maximum = node2;
+			}
+		}
+		return maximum;
 	}
 	
 	public void removeDuplicates(){
@@ -482,10 +505,12 @@ public class Cell {
 	 * Adds a BitVector to this cell. Warning, order is lost
 	 */
 	public void add(BitVector bv){
-		BitVector[] newSet = new BitVector[this.size()+1];
-		System.arraycopy(this.portAssignments, 0, newSet, 0, this.size());
-		newSet[newSet.length - 1] = bv;
-		this.portAssignments = newSet;
+		if (!this.contains(bv)) {
+			BitVector[] newSet = new BitVector[this.size() + 1];
+			System.arraycopy(this.portAssignments, 0, newSet, 0, this.size());
+			newSet[newSet.length - 1] = bv;
+			this.portAssignments = newSet;
+		}
 	}
 	
 	/**
@@ -531,40 +556,26 @@ public class Cell {
 	}
 	
 	/**
-	 * equals method
+	 * equals method, tests whether two cells are equivalent. Assumes both cells
+	 * have no duplicates. 
 	 */
-	@Override
 	public boolean equals(Object obj) {
 		Cell another = (Cell) obj;
 		this.sortBySize();
 		another.sortBySize();
 		
-		Set<BitVector> thisSet = Utils.arToSet(this.portAssignments);
-		Set<BitVector> anotherSet = Utils.arToSet(another.portAssignments);
-		
-		if(thisSet.equals(anotherSet)){
-			if(this.numPorts == another.numPorts){
-				return true;
+		if( this.size() != another.size() ){
+			return false;
+		}
+		for(int i = 0; i < this.size(); i++){
+			BitVector bv1 = this.getPA()[i];
+			BitVector bv2 = another.getPA()[i];
+			if( ! bv1.equals(bv2) ){
+				return false;
 			}
 		}
-		return false;
-	}
-	
-	/**
-	 * equals method
-	 */
-	public boolean equalsNoPorts(Object obj) {
-		Cell another = (Cell) obj;
-		this.sortBySize();
-		another.sortBySize();
 		
-		Set<BitVector> thisSet = Utils.arToSet(this.portAssignments);
-		Set<BitVector> anotherSet = Utils.arToSet(another.portAssignments);
-		
-		if(thisSet.equals(anotherSet)){
-			return true;
-		}
-		return false;
+		return true;
 	}
 	
 	/**

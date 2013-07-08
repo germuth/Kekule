@@ -8,6 +8,14 @@ import javax.swing.JFrame;
 
 import shared.InputParser;
 
+/**
+ * A test method for drawing.
+ * Likely replaced by 
+ * OpenEye Scientific Software
+ * OGHAM TK
+ * @author Aaron
+ *
+ */
 public class TestDraw {
 
 	public static void main(String[] args) { 

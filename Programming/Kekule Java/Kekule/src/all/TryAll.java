@@ -18,7 +18,11 @@ import shared.PowerSet;
 /**
  * @param args
  */
-// skip over title
+/**
+ * Old class which enumerates all possible graphs and tests their cell
+ * @author Aaron
+ *
+ */
 public class TryAll {
 	private static File f = new File("myraw.txt");
 	private static Scanner fileScanner;
@@ -60,7 +64,7 @@ public class TryAll {
 
 					Graph g = new Graph(rank, numNodes, new Cell(set, rank));
 					Cell c = GraphtoCell.makeCell(g);
-					if (c.equalsNoPorts(input)) {
+					if (c.equals(input)) {
 						g.setName(name);
 						g.writeGraph();
 						

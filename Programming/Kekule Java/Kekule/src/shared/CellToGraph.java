@@ -123,7 +123,7 @@ public class CellToGraph {
 					c.normalize();
 					current.getEdgeCell().sortBySize();
 
-					if (!c.equalsNoPorts(cell)) {
+					if (!c.equals(cell)) {
 						allGraphs.set(i, null);
 					}
 
@@ -178,6 +178,7 @@ public class CellToGraph {
 			
 			//if internal vertices too bad
 			if( g.getHighestDegree() > 3 ||  g.getHighestPortDegree() > 2 ){
+				System.out.println("TOO HIGH DEGREE");
 				allGraphs.set(i, null);
 			}
 		}
@@ -241,7 +242,7 @@ public class CellToGraph {
 				Cell newC = GraphtoCell.makeCell(newG);
 				newC.normalize();
 				//if have same cell
-				if( newC.equalsNoPorts(goal) ){
+				if( newC.equals(goal) ){
 					
 					//if internal vertices fine, but ports overloaded
 					if( newG.getHighestDegree() <= 3 && newG.getHighestPortDegree() > 2){
@@ -256,7 +257,7 @@ public class CellToGraph {
 						
 						Cell exCell = GraphtoCell.makeCell(extended);
 						exCell.normalize();
-						if( exCell.equalsNoPorts(goal) ){
+						if( exCell.equals(goal) ){
 							newG = extended;
 							newG.setName( newG.getName() + "With" + Edge.toString());
 							newOnes.add(newG);

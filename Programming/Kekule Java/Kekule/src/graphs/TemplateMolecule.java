@@ -8,6 +8,17 @@ import java.util.Set;
 import shared.InputParser;
 import shared.PowerSet;
 
+/**
+ * Template Molecule
+ * 
+ * This class represents a template Molecule. Template Molecules are molecules read in from a library (text file). 
+ * Based off the information there, a graph of the molecule is given along with every possible node that could be
+ * a port. We can then try every possible combination and see the resulting graph and therefore cell. 
+ * 
+ * This is a useful technique for finding realistic graphs for many cells.
+ * @author Aaron
+ *
+ */
 public class TemplateMolecule {
 	
 	//name of molecule
@@ -26,6 +37,7 @@ public class TemplateMolecule {
 	//extra edges 1-2,2-3
 	private String extraEdges;
 	
+	//constructor
 	public TemplateMolecule(String name, int nN, int possiblePorts, String edges, String extraEdges){
 		this.name = name;
 		this.numNodes = nN;

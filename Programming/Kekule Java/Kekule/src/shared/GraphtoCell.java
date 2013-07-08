@@ -120,6 +120,8 @@ public class GraphtoCell {
 
 		BitVector ports = g.getPortVector();
 
+		//TODO
+		//HERE IS WHERE IT IS SLOW
 		Set<BitVector> edges = Utils.arToSet(g.getEdgeCell().getPA());
 
 		// Base case
@@ -128,7 +130,7 @@ public class GraphtoCell {
 		} else {
 			// grab first Vertex from nodes
 			// does not remove it
-			int nodeU = bvNodes.firstNode();
+			int nodeU = bvNodes.firstBit();
 			// remove vertex from nodes
 			bvNodes = bvNodes.remove(nodeU);
 
@@ -151,7 +153,7 @@ public class GraphtoCell {
 					BitVector newEdge = new BitVector(edge);
 					newEdge = newEdge.remove(nodeU);
 					// grab other node from edge
-					int nodeV = newEdge.firstNode();
+					int nodeV = newEdge.firstBit();
 
 					// /if nodes has nodeV
 					if (bvNodes.contains(nodeV)) {
@@ -182,7 +184,7 @@ public class GraphtoCell {
 	
 	public static void printClass(Cell kekule, String gn, String un){
 		for(int i = 0; i < GraphtoCell.classification.length; i++){
-			if(kekule.equalsNoPorts(classification[i])){
+			if(kekule.equals(classification[i])){
 				if(i + 1 >= 22){
 					// print graph name
 					System.out.println(gn);
