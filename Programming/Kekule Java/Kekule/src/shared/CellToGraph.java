@@ -197,7 +197,7 @@ public class CellToGraph {
 			if(g == null){
 				continue;
 			}
-			allGraphs.set(i, g.triangleFree(cell) );
+			allGraphs.set(i, g.removeTriagles(cell) );
 		}
 
 	}

@@ -2,5 +2,125 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-annotation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-annotation-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-atomtype.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-atomtype-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-builder3d.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-builder3d-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-builder3dtools.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-builder3dtools-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-charges.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-charges-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-cip.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-cip-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-control.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-control-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-core-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-data.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-datadebug.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-datadebug-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-data-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-dict.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-dict-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-diff.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-diff-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-extra.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-extra-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-fingerprint.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-fingerprint-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-forcefield.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-forcefield-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-formula.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-formula-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-inchi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-inchi-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-interfaces.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-interfaces-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-io.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-ioformats.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-ioformats-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-ionpot.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-ionpot-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-iordf.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-iordf-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-io-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-isomorphism.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-isomorphism-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-libiocml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-libiocml-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-libiomd.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-libiomd-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-log4j-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-nonotify.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-nonotify-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-pcore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-pcore-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-pdb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-pdbcml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-pdbcml-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-pdb-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qm-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsar.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsaratomic.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsaratomic-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarbond.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarbond-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarcml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarcml-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarionpot.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarionpot-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarmolecular.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarmolecular-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarprotein.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsarprotein-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-qsar-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-reaction.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-reaction-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-render.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-renderawt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-renderawt-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-renderbasic.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-renderbasic-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-renderextra.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-renderextra-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-render-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-sdg.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-sdg-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-signature.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-signature-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-silent.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-silent-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-smarts.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-smarts-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-smiles.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-smiles-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-smsd.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-smsd-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-standard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-standard-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-structgen.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-structgen-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-tautomer.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-tautomer-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-valencycheck.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-valencycheck-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/antlr.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/cmlxom-2.5-b1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/commons-cli-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/jama-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/javacc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/jgrapht-0.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/jniinchi-0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/signatures-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/vecmath1.2-1.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/xercesImpl-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/xml-apis.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/xom-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Desktop/cdk-src+libs-1.4.18/jar/xpp3-1.1.4c.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,12 +1,11 @@
 package graphs;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Set;
-
-import javax.media.j3d.TriangleStripArray;
 
 import shared.BitVector;
 import shared.Cell;
@@ -227,6 +226,23 @@ public class Graph implements Comparable<Graph>{
 		}
 		this.edgeCell = new Cell( edges );
 		this.edgeCell.setNumPorts( ports );
+	}
+	
+	/**
+	 * Returns a list of BitVector nodes. Each node is a neighbour of the inputted node
+	 */
+	public ArrayList<BitVector> getAllNeighbours(BitVector bv){
+		ArrayList<BitVector> allNeighbours = new ArrayList<BitVector>();
+		
+		for(int i = 0; i < this.getEdgeCell().size(); i++){
+			BitVector current = this.getEdgeCell().getPA()[i];
+			
+			if( current.contains( bv.getNumber() )){
+				allNeighbours.add( new BitVector( current.getNumber() - bv.getNumber() ));
+			}
+		}
+		
+		return allNeighbours;
 	}
 	
 	/**
@@ -510,6 +526,7 @@ public class Graph implements Comparable<Graph>{
 			//then we did it!
 			if( !connected.isDisjoint() ){
 				if(GraphtoCell.makeCell(connected).equals(cell) ){
+					connected.name += "Connected";
 					return connected;
 				}
 			}
@@ -519,12 +536,9 @@ public class Graph implements Comparable<Graph>{
 	}
 	
 	/**
-	 * Checks whether this graph is triangle free (cycles of length 3). If a cycle 
-	 * is found, two internal vertices are added to extend the cycle to length 5. This 
-	 * is because the angles required for a triangle are much too acute to support carbon's 
-	 * steric needs. Pentagons are cool though. Ensures the new bigger graph has the same
-	 * cell as the original graph. I believe this is always the case but haven't looked 
-	 * too much into it.
+	 * Checks whether this graph is triangle free (cycles of length 3). This 
+	 * is needed because the angles required for a triangle are much too acute to support carbon's 
+	 * steric needs. 
 	 * 
 	 * Currently looks for cycles by trying all combinations of 3 nodes which degree > 1
 	 * and check if they are connected. This is not efficient at all. But I don't think 
@@ -532,12 +546,9 @@ public class Graph implements Comparable<Graph>{
 	 * application.
 	 * TODO Look into more efficient ways
 	 * 
-	 * The starting graph (this) is not edited, a new graph is returned
-	 * @param cell
-	 * @return a new Graph with 5 cycles instead of 3 cycles, or null if the procedure
-	 * was unsuccessful
+	 * @return whether this graph is triangle free or not
 	 */
-	public Graph triangleFree(Cell cell) {
+	public boolean isTriangleFree() {
 
 		//all triangles
 		Set<Set<BitVector>> allTriangles = new HashSet<Set<BitVector>>();
@@ -602,43 +613,170 @@ public class Graph implements Comparable<Graph>{
 		}
 		//no triangles found
 		if(allTriangles.isEmpty()){
-			return this;
+			return true;
 		}
 		
-		//now take list of triangles and add edges
+		return false;
+	}
+	
+	/**
+	 * Checks whether this graph is triangle free (cycles of length 3). If a
+	 * cycle is found, two internal vertices are added to extend the cycle to
+	 * length 5. This is because the angles required for a triangle are much too
+	 * acute to support carbon's steric needs. Pentagons are cool though.
+	 * Ensures the new bigger graph has the same cell as the original graph. I
+	 * believe this is always the case but haven't looked too much into it.
+	 * 
+	 * Currently looks for cycles by trying all combinations of 3 nodes which
+	 * degree > 1 and check if they are connected. This is not efficient at all.
+	 * But I don't think this procedure is any where close to the bottleneck of
+	 * performance in this application. TODO Look into more efficient ways
+	 * 
+	 * The starting graph (this) is not edited, a new graph is returned
+	 * 
+	 * @param cell
+	 * @return a new Graph with 5 cycles instead of 3 cycles, or null if the
+	 *         procedure was unsuccessful
+	 */
+	public Graph removeTriagles(Cell cell) {
+		// all triangles
+		Set<Set<BitVector>> allTriangles = new HashSet<Set<BitVector>>();
+
+		// get all nodes
+		Set<BitVector> nodes = new HashSet<BitVector>();
+		int lastNode = 1 << (this.numNodes - 1);
+
+		// cycle through all nodes
+		// if degree is 1, can't be in triangle
+		for (int node = 1; node <= lastNode; node *= 2) {
+			BitVector temp = new BitVector(node);
+			if (this.getDegree(temp) > 1) {
+				nodes.add(new BitVector(node));
+			}
+		}
+
+		// get all triples of nodes
+		PowerSet<BitVector> pairs = new PowerSet<BitVector>(nodes, 3, 3);
+		Iterator<Set<BitVector>> i = pairs.iterator();
+
+		// for every triplets, check if they are connected to each others
+		// if so triangle!
+		while (i.hasNext()) {
+			Set<BitVector> pair = i.next();
+			if (pair.isEmpty()) {
+				continue;
+			}
+			Iterator<BitVector> i2 = pair.iterator();
+
+			int node1 = i2.next().getNumber();
+			int node2 = i2.next().getNumber();
+			int node3 = i2.next().getNumber();
+
+			boolean edge12 = false;
+			boolean edge23 = false;
+			boolean edge13 = false;
+
+			Cell edges = this.getEdgeCell();
+			// cycle through edges and count occurences of that node
+			for (int k = 0; k < edges.size(); k++) {
+				BitVector edge = edges.getPA()[k];
+				if (edge.contains(node1) && edge.contains(node2)) {
+					edge12 = true;
+				}
+				if (edge.contains(node2) && edge.contains(node3)) {
+					edge23 = true;
+				}
+				if (edge.contains(node1) && edge.contains(node3)) {
+					edge13 = true;
+				}
+			}
+
+			if (edge12 && edge23 && edge13) {
+				Set<BitVector> triangle = new HashSet<BitVector>();
+				triangle.add(new BitVector(node1));
+				triangle.add(new BitVector(node2));
+				triangle.add(new BitVector(node3));
+				allTriangles.add(triangle);
+			}
+
+		}
+		// no triangles found
+		if (allTriangles.isEmpty()) {
+			return this;
+		}
+
+		// now take list of triangles and add edges
 		Iterator<Set<BitVector>> triangles = allTriangles.iterator();
-		while(triangles.hasNext()){
+		while (triangles.hasNext()) {
 			Set<BitVector> aTriangle = triangles.next();
 			Iterator<BitVector> trianglesNodes = aTriangle.iterator();
-			
+
 			int node1 = trianglesNodes.next().getNumber();
 			int node2 = trianglesNodes.next().getNumber();
 			int node3 = trianglesNodes.next().getNumber();
-			
-			//add two new nodes in between node 2 and 3
 
-			//add two new nodes
-			int newNode1 = lastNode*2;
-			int newNode2 = newNode1*2;
+			// add two new nodes in between node 2 and 3
+
+			// add two new nodes
+			int newNode1 = lastNode * 2;
+			int newNode2 = newNode1 * 2;
 			this.addTwoNodes();
-			
-			//remove edge from node2 -> node3
-			this.removeEdge(new BitVector(node2 + node3) );
-			
-			//add edge from new1 -> new2
-			this.addEdge(new BitVector( newNode1 + newNode2 ));
-			//add edges from port 1 to new1
-			this.addEdge(new BitVector( node2 + newNode1) );
-			//and edge from port 2 to new1
-			this.addEdge(new BitVector( node3 + newNode2) );
+
+			// remove edge from node2 -> node3
+			this.removeEdge(new BitVector(node2 + node3));
+
+			// add edge from new1 -> new2
+			this.addEdge(new BitVector(newNode1 + newNode2));
+			// add edges from port 1 to new1
+			this.addEdge(new BitVector(node2 + newNode1));
+			// and edge from port 2 to new1
+			this.addEdge(new BitVector(node3 + newNode2));
 
 		}
 		if (GraphtoCell.makeCell(this).equals(cell)) {
+			this.name += "CycFixed";
 			return this;
-		}
-		else{
+		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * Checks whether this graph is planar. Uses Euller statements below.
+	 * However, not all graphs in which that condition holds are necessarily
+	 * planar. Planarity test algorithms are needed for an absolute answer.
+	 * 
+	 * For a simple, connected, planar graph with v vertices and e edges, the
+	 * following simple planarity criteria hold: 
+	 * Theorem 1. If v >= 3 then e <= 3v - 6; 
+	 * Theorem 2. If v > 3 and there are no cycles of length 3, then e <= 2v - 4.
+	 * 
+	 * @return whether this graph is probably planar or not
+	 */
+	public boolean isPlanar(){
+		int numEdges = this.edgeCell.size();
+		
+		//first condition
+		if( numEdges <= 3*this.numNodes - 6 ){
+			
+			//more than three nodes
+			if( numNodes > 3){
+				//second condition
+				if( this.isTriangleFree() && numEdges <= 2*this.numNodes - 4){
+					return true;
+				}
+				//failed second condition
+				else{
+					return false;
+				}
+			} 
+			//meets first condition and has less than three nodes
+			else{
+				return true;
+			}
+		}
+		//failed first condition
+		return false;
 	}
 
 	/**
@@ -815,7 +953,12 @@ public class Graph implements Comparable<Graph>{
 	public void writeGraph(){
 		String title = "";
 		if(this.name != null){
-			title += this.name + ": ";
+			if(this.isPlanar()){
+				title += this.name + "_P: ";
+			}
+			else{
+				title += this.name + ": ";
+			}
 		}
 		title += this.numNodes +" Nodes, " + " " + this.numPorts + " Ports";
 		System.out.println(title);

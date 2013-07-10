@@ -1,14 +1,16 @@
 package geneticAlgorithm;
 
 import graphs.Graph;
+import gui.GraphToSMILES;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import cdk.ImageRenderer;
+
 import shared.BitVector;
 import shared.Cell;
-import shared.CellToGraph;
 import shared.GraphtoCell;
 import shared.Utils;
 
@@ -63,9 +65,9 @@ public class Population {
 	 * of the genetic algorithm. Currently top 20 graphs are printed minus
 	 * duplicates of eachother in the top 20
 	 */
-	public void printTop3Edited() {
+	public void printTop3Edited(ArrayList<Cell> classy) {
 		ArrayList<Graph> answer = new ArrayList<Graph>();
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 50; i++){
 			answer.add( this.population.get(i) );
 		}
 		
@@ -92,17 +94,40 @@ public class Population {
 		}
 		
 		answer = Utils.deleteDuplicatesGraph(answer);
+		ArrayList<String> smiles = new ArrayList<String>();
 		
 		for (int i = 0; i < answer.size(); i++) {
 			Graph current = answer.get(i);
 			current.trimDisjoint();
-			current.writeGraph();
 			Cell c = GraphtoCell.makeCell( current );
 			c.normalize();
-			System.out.println( c.toString() );
+			int index = 0;
+			for(int j = 0; j < classy.size(); j++){
+				if( c.equals(classy.get(j)) ){
+					index = j + 1;
+				}
+			}
+			Graph g = current.removeTriagles(c);
+			if( g != null){
+				current = g;
+			}
+			if( current.isDisjoint() ){
+				g = current.connect(c);
+				if( g != null){
+					current = g;
+				}
+			}
+			current.writeGraph();
+			System.out.println( "K" + index + " " + c.toString() );
+			if( !current.isDisjoint() ){
+				String smile = GraphToSMILES.convertSMILES(current) ;
+				smiles.add(smile);
+				System.out.println(smile);
+			}
 			System.out.println("");
 			
 		}
+		ImageRenderer.main(smiles);
 	}
 	
 	/**

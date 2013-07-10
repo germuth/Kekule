@@ -2,6 +2,8 @@ package geneticAlgorithm;
 
 import graphs.Graph;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -38,7 +40,7 @@ public class GeneticAlgorithm {
 	 * More Iterations move the entire population closer to the optimal result, but
 	 * again takes longer.
 	 */
-	private static final int ITERATIONS = 50;
+	private static final int ITERATIONS = 75;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * to the next population based only on health. Basically, this means
@@ -80,6 +82,11 @@ public class GeneticAlgorithm {
 	 * for
 	 */
 	private static Cell cell;
+	/**
+	 * List of Cell classifications of rank 5. Used to tell me what cell
+	 * the result was. Temporary TODO
+	 */
+	private static ArrayList<Cell> classifications;
 	
 	/**
 	 * The Main method
@@ -93,6 +100,7 @@ public class GeneticAlgorithm {
 	 */
 	public static void main(String[] args){
 		
+		readClassification();
 		//Take in cell from user
 		Scanner input = new Scanner(System.in);
 		
@@ -157,12 +165,47 @@ public class GeneticAlgorithm {
 			population = new Population( nextGen );
 		}
 		population.printAverage();
-		population.printTop3Edited();
+		population.printTop3Edited(classifications);
 		
 		long duration = System.currentTimeMillis() - startTime;
 		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
 	}
-	
+
+	public static void readClassification() {
+		// reading classification
+		File f = new File("FullClassificationRank5.txt");
+		Scanner s = null;
+		try {
+			s = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int rank = 6;
+		s.nextLine();
+		s.nextLine();
+		s.nextLine();
+
+		classifications = new ArrayList<Cell>();
+
+		Cell input = null;
+		try {
+			input = InputParser.readCell2(s);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		while (input != null) {
+			classifications.add(input);
+
+			try {
+				input = InputParser.readCell2(s);
+			} catch (Exception e) {
+				input = null;
+			}
+		}
+	}
 	/**
 	 * Calculates the fitness of a given Graph g. Fitness is calculated as follows.
 	 * The cell of Graph g is compared to the Cell we are looking for. For Every Port assignment
@@ -257,7 +300,7 @@ public class GeneticAlgorithm {
 		
 		//must set number of nodes at end of method, for now it's set to max of both parents
 		//fitness assigned to zero in constructor
-		Graph child = new Graph("Childof"+parent1.getName()+"and"+parent2.getName(), rank, 
+		Graph child = new Graph("C("+parent1.getName()+")("+parent2.getName()+")", rank, 
 				0, childCell);
 		child.setNumNodes( Math.max(parent1.getNumNodes(), parent2.getNumNodes()) );
 		
@@ -342,6 +385,9 @@ public class GeneticAlgorithm {
 	 * 40% chance to remove a random edge
 	 * 
 	 * It's possible a graph goes through this method and doesn't get mutated at all
+	 * 
+	 * Added 5% chance to extend out the ports. 
+	 * 
 	 * @param starting, The Graph we want to mutate
 	 * @return mutant, the mutated graph
 	 */
@@ -403,6 +449,11 @@ public class GeneticAlgorithm {
 			BitVector removedEdge = mutant.getEdgeCell().getPA()[ random.nextInt(mutant.getEdgeCell().size()) ];
 			mutant.removeEdge( removedEdge );
 		}
+		
+		//extend the ports out
+		if( random.nextDouble() < 0.05){
+			mutant = mutant.extendPortsNoCell();
+		}
 		return mutant;
 	}
 	
@@ -422,20 +473,20 @@ public class GeneticAlgorithm {
 		
 		//for each graph added
 		for(int i = 0; i < POPULATION_SIZE; i++){
-			String name = "graph" + (i+1);
+			String name = "G" + (i+1);
 			int nP = rank;
 			int nC = rank;
 			
 			//75 percent chance to add node
 			if(random.nextDouble() < 0.75){
 				//add 1 to 16 nodes
-				nC += random.nextInt(16) + 1;
+				nC += random.nextInt(25) + 1;
 			}
 			
 			//edges always added
 			//at least 4 edges, with less than 4 it is impossible to include
-			//4 - 20 edges
-			int edgesToAdd = random.nextInt(16) + 4;
+			//4 - 15 edges
+			int edgesToAdd = random.nextInt(11) + 4;
 			
 			Cell c = new Cell();
 			c.setNumPorts( rank );
