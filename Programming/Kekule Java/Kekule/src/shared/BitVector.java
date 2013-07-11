@@ -17,7 +17,7 @@ package shared;
  * @author Aaron
  *
  */
-public class BitVector implements Comparable{
+public class BitVector implements Comparable<BitVector>{
 	
 	//STATIC
 	
@@ -214,7 +214,8 @@ public class BitVector implements Comparable{
 	 * and binary form
 	 */
 	public String toString(){
-		return this.number + " " + "(" + Integer.toBinaryString(number) + ")";
+		//return this.number+ " " + "(" + Integer.toBinaryString(number) + ")";
+		return this.firstNode() + "";
 	}
 	
 	/**
@@ -278,9 +279,13 @@ public class BitVector implements Comparable{
 	public int getNumber() {
 		return number;
 	}
+
+	/**
+	 * Compares two BitVector by their numbers, by directly calling
+	 * the integer's compare method.
+	 */
 	@Override
-	public int compareTo(Object arg0) {
-		BitVector another = (BitVector) arg0;
-		return Integer.compare(this.number, another.number);
+	public int compareTo(BitVector o) {
+		return Integer.compare(this.number, o.number);
 	}
 }

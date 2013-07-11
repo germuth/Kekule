@@ -34,39 +34,39 @@ public class GeneticAlgorithm {
 	 * Genetic Algorithm. Higher is normally more accurate, however, takes
 	 * longer
 	 */
-	private static final int POPULATION_SIZE = 500;
-	/**
+	private static final int POPULATION_SIZE = 1000;
+	/*
 	 * The Amount of iterations the genetic algorithm will perform until stopping.
 	 * More Iterations move the entire population closer to the optimal result, but
 	 * again takes longer.
 	 */
-	private static final int ITERATIONS = 75;
+	private static final int ITERATIONS = 100;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * to the next population based only on health. Basically, this means
 	 * the top 90 of each generation are passed to the next generation. 
 	 */
-	public static final int ELITE_NUMBER = 90;
+	public static final int ELITE_NUMBER = 180;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * randomly to the next population. In this case, 90 are taken from
 	 * the best of last generation, and 10 are randomly taken for genetic
 	 * diversity.
 	 */
-	public static final int RANDOM_NUMBER = 10;
+	public static final int RANDOM_NUMBER = 20;
 	/**
 	 * The amount of graphs generated from a population by simple mutation. 
 	 * In our case, 100 graphs are initially taken in, and these graphs 
 	 * are mutated to give 200 additional graphs.
 	 */
-	private static final int MUTANT_NUMBER = 200;
+	private static final int MUTANT_NUMBER = 400;
 	/**
 	 * The amount of graphs generated from crossover. In our case, out of the 100
 	 * starting elites, two are chosen at random 200 to crossover and create a new
 	 * graph. The start elite + mutantNumber + crossOverNumber = 500, the 
 	 * entire population size.
 	 */
-	private static final int CROSSOVER_NUMBER = 200; 
+	private static final int CROSSOVER_NUMBER = 400; 
 	/**
 	 * Random Number Generator used for all randomness of the genetic algorithm.
 	 */
@@ -164,8 +164,16 @@ public class GeneticAlgorithm {
 
 			population = new Population( nextGen );
 		}
+		for(int i = 0; i < population.size(); i++){
+			Graph g = population.get(i);
+			int before = g.getFitness();
+			calculateFitness( g );
+			if( before != g.getFitness() ){
+				System.out.println("Not up to date");
+			}
+		}
 		population.printAverage();
-		population.printTop3Edited(classifications);
+		population.printTop3Edited( classifications );
 		
 		long duration = System.currentTimeMillis() - startTime;
 		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
@@ -221,9 +229,9 @@ public class GeneticAlgorithm {
 	 */
 	public static void calculateFitness( Graph g){
 		//fitness already calculated
-		if( g.getFitness() != 0){
-			return;
-		}
+		//if( g.getFitness() != 0){
+		//	return;
+		//}
 		
 		Cell answer = cell;
 
@@ -270,6 +278,14 @@ public class GeneticAlgorithm {
 			// only one of these terms should ever be non-zero
 			fitness -= ( ( answer.size() - answerIndex )
 					+ ( gsCell.size() - gsIndex ) );
+			
+			//if graph has two cycles which share more than one edge, this is infeasible
+			//in carbon chemistry
+			//must remove now
+			if( g.hasBadCycles() ){
+				fitness--;
+				g.appendName("-BadCycle-");
+			}
 			g.setFitness(fitness);
 
 		}
@@ -479,7 +495,7 @@ public class GeneticAlgorithm {
 			
 			//75 percent chance to add node
 			if(random.nextDouble() < 0.75){
-				//add 1 to 16 nodes
+				//add 1 to 25 nodes
 				nC += random.nextInt(25) + 1;
 			}
 			
@@ -492,7 +508,7 @@ public class GeneticAlgorithm {
 			c.setNumPorts( rank );
 			
 			//the graph
-			Graph newbie = new Graph("Graph" + i, nP, nC, c);	
+			Graph newbie = new Graph(name, nP, nC, c);	
 			
 			//loop adding all the edges
 			//care must be taken that

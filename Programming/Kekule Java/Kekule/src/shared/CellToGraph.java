@@ -186,7 +186,7 @@ public class CellToGraph {
 		allGraphs = Utils.removeNulls(allGraphs);
 			
 		if( !allGraphs.isEmpty() ){
-			allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
+			allGraphs = Utils.deleteDuplicates(allGraphs);
 		}
 
 	}

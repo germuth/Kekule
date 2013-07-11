@@ -8,7 +8,15 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+/*
 
+Pyracylene
+14 8
+0 1 2 3 4
+0-1-2-9-3-4-10-5-6-11-7-8-0-13-9
+12-13, 11-12, 10-12
+		
+ */
 public class InputParser {
 
 	public static Cell readCell(Scanner input){
@@ -85,18 +93,26 @@ public class InputParser {
 	 * Reads a single graph from graphs.txt and returns it as Graph object.
 	 * Graphs are kept in the following format
 	 * 
-	 * Name #Nodes #Ports Ports Edges Extra Edges
+	 * Name 
+	 * #Nodes #Ports 
+	 * Ports 
+	 * Edges 
+	 * Extra Edges
 	 * 
 	 * For example:
 	 * 
-	 * aMoleculeName 7 3 0 1 2 0-1-2-3-4-6 4-5, 5-6
+	 * aMoleculeName 
+	 * 7 3 
+	 * 0 1 2 
+	 * 0-1-2-3-4-6 
+	 * 4-5, 5-6
 	 * 
 	 * @return Graph object read from text file
 	 * @throws FileNotFoundException
 	 *             , if file not found
 	 */
 	public static Graph readGraph(Scanner input) {
-
+		
 		String name = input.nextLine();
 		if (name.isEmpty()) {
 			return null;

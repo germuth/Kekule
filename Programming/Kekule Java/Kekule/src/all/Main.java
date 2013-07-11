@@ -117,7 +117,7 @@ public class Main {
 			Cell current = classifications.get(i);
 			//hesselink approach
 			ArrayList<Graph> allGraphs = CellToGraph.findGraph(current.getNumPorts(), internal, current);
-			allGraphs = Utils.deleteDuplicatesGraph(allGraphs);
+			allGraphs = Utils.deleteDuplicates(allGraphs);
 	
 			CellToGraph.removeHighDegree(allGraphs);
 			

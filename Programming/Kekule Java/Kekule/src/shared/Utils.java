@@ -174,53 +174,33 @@ public class Utils {
 	}
 	
 	/**
-	 * Parses through ArrayList and adds element to newList everytime it encounters an element
-	 * it hasn't seen before. This is equilvalent to deleting all duplicates from the list.
+	 * Parses through an ArraylIst and adds every unique element to a new list. Returns
+	 * the new list to you, the original list is un edited. Works on the generic type
+	 * by calling .equals() method.
+	 * @param list to have duplicates removed from
+	 * @return a new list without duplicates ( as specified by object's .equals() method)
 	 */
-	public static ArrayList<Cell> deleteDuplicates(ArrayList<Cell> cell){
-		ArrayList<Cell> newList = new ArrayList<Cell>();
-		newList.add(cell.get(0));
-		for(int i = 0; i < cell.size(); i++){
+	public static <T> ArrayList<T> deleteDuplicates(ArrayList<T> list){
+		ArrayList<T> newList = new ArrayList<T>();
+		newList.add(list.get(0));
+		for(int i = 0; i < list.size(); i++){
 			
 			boolean found = false;
 			
 			inner:
 			for(int j = 0; j < newList.size(); j++){
-				if(newList.get(j).equals(cell.get(i))){
+				if(newList.get(j).equals(list.get(i))){
 					found = true;
 					break inner;
 				}
 			}
 			if(!found){
-				newList.add(cell.get(i));
+				newList.add(list.get(i));
 			}
 		}
 	
 		return newList;
 	}
-	
-	public static ArrayList<Graph> deleteDuplicatesGraph(ArrayList<Graph> graphs){
-		ArrayList<Graph> newList = new ArrayList<Graph>();
-		newList.add(graphs.get(0));
-		for(int i = 0; i < graphs.size(); i++){
-			
-			boolean found = false;
-			
-			inner:
-			for(int j = 0; j < newList.size(); j++){
-				if(newList.get(j).equals(graphs.get(i))){
-					found = true;
-					break inner;
-				}
-			}
-			if(!found){
-				newList.add(graphs.get(i));
-			}
-		}
-	
-		return newList;
-	}
-	
 	
 	/**
 	 * Removes all null entries from array list by creating a new arraylist and only 

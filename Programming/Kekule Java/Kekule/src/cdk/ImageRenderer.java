@@ -1,7 +1,5 @@
 package cdk;
 
-import graphs.Graph;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -26,8 +24,8 @@ import org.openscience.cdk.layout.StructureDiagramGenerator;
 import org.openscience.cdk.renderer.AtomContainerRenderer;
 import org.openscience.cdk.renderer.font.AWTFontManager;
 import org.openscience.cdk.renderer.generators.BasicAtomGenerator;
-import org.openscience.cdk.renderer.generators.BasicBondGenerator;
 import org.openscience.cdk.renderer.generators.BasicSceneGenerator;
+import org.openscience.cdk.renderer.generators.RingGenerator;
 import org.openscience.cdk.renderer.visitor.AWTDrawVisitor;
 import org.openscience.cdk.smiles.SmilesParser;
 import org.openscience.cdk.templates.MoleculeFactory;
@@ -169,7 +167,7 @@ public class ImageRenderer extends javax.swing.JFrame {
             // generators make the image elements
             List generators = new ArrayList();
             generators.add(new BasicSceneGenerator());
-            generators.add(new BasicBondGenerator());
+            generators.add(new RingGenerator());//BasicBondGenerator());
             generators.add(new BasicAtomGenerator());
             // the renderer needs to have a toolkit-specific font manager
             AtomContainerRenderer renderer = new AtomContainerRenderer(generators, new AWTFontManager());

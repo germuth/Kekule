@@ -41,7 +41,9 @@ K10
 Cell: 0 ab ad bd cd abcd ae be ce abce 
 	0 3 9 10 12 15 17 18 20 23
 	 
-K11 Cell: 0 ac bc ad bd abcd ae be abce abde 
+K11 
+5
+Cell: 0 ac bc ad bd abcd ae be abce abde 
 	0 5 6 9 10 15 17 18 23 27
 	 
 K12 

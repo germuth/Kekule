@@ -1,5 +1,8 @@
 package graphs;
+import gui.Node;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,6 +14,8 @@ import shared.BitVector;
 import shared.Cell;
 import shared.GraphtoCell;
 import shared.PowerSet;
+import shared.Utils;
+import shared.Utils.Pair;
 
 
 /**
@@ -203,6 +208,201 @@ public class Graph implements Comparable<Graph>{
 		return false;
 	}
 	
+	/**
+	 * Checks the graph for a bad cycles. 
+	 * Bad cycles are defined as when a graph has 2 cycles which
+	 * share more than one edge (or more than two nodes). This is 
+	 * Infeasible in carbon chemistry and so is used to decrement
+	 * the fitness of the graph
+	 */
+	public boolean hasBadCycles(){
+		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
+		//iterate through all pairs of cycles
+		//if any two have intersection greater than 2
+		//this graph indeed has bad cycles
+		for(int i = 0; i < allCycles.size(); i++){
+			ArrayList<BitVector> cycle1 = allCycles.get(i);
+			
+			for(int j = i + 1; j < allCycles.size(); j++){
+				ArrayList<BitVector> cycle2 = new ArrayList<BitVector>( allCycles.get(j) );
+				
+				//cycle 2 becomes intersection
+				cycle2.retainAll( cycle1 );
+				
+				if( cycle2.size() > 2){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Uses the 'flooding' algorithm to find all cycles in a graph. Excludes 
+	 * so called 'super cycles' which contain all the nodes of two smaller
+	 * cycles. 
+	 * 
+	 * start with packet at every node
+	 * at every opportunity, send packet to all your neighbors
+	 * except pipe you already sent it down
+	 * if at any point you reach node you started at, add to cycles
+	 * if at any point, packet length exceeds maximum, remove packet
+	 * should find all cycles below max length
+	 * then parse through and eliminate super cycles
+	 * if union of two cycles equals any other cycles, remove that cycle
+	 * return list if cycles
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList<ArrayList<BitVector>> getAllCycles(){
+		ArrayList<ArrayList<BitVector>> allCycles = new ArrayList<ArrayList<BitVector>>();
+		if( allCycles.size() > 1){
+			int i = 0;
+			if( i == 1){
+				
+			}
+		}
+		
+		LinkedList<ArrayList<BitVector>> openList = new LinkedList<ArrayList<BitVector>>();
+		
+		//add a packet at each node
+		for(int i = 1; i <= this.getLastNode().getNumber(); i *= 2){
+			BitVector currentNode = new BitVector(i);
+			ArrayList<BitVector> packet = new ArrayList<BitVector>();
+			packet.add(currentNode);
+			openList.add( packet );
+		}
+		
+		while( !openList.isEmpty() ){
+			
+			ArrayList<BitVector> packet = openList.pop();
+			BitVector parent = packet.get( packet.size() - 1);
+			
+			//if packet.end == packet.front
+			//we have a cycle
+			//ensure cycle is at least length 3
+			if( packet.get(0) .equals( packet.get( packet.size() - 1) ) && packet.size() > 2){
+				packet.remove( packet.size() - 1 );
+				allCycles.add( packet );
+				continue;
+			}
+			
+			//search all neighbors
+			ArrayList<BitVector> neighbours = this.getAllNeighbours( parent );
+			for(BitVector buddy : neighbours){
+				
+				//don't send packet back to the neighbor that sent it to you
+				if( packet.size() >= 2 && buddy.equals( packet.get( packet.size() - 2) ) ){
+					continue;
+				}
+				
+				//prevents cycles within cycles
+				//5 -> 6 -> 7 -> 8 -> 6 -> 5 is not valid cycle
+				//shouldn't be allowed to add node we already have in list,
+				//unless that node is the starting node and we have found a legitimate cycle
+				//if we already contain that node, and that node isn't the starting point, 
+				//don't go this way
+				if( packet.contains( buddy ) && !packet.get(0).equals( buddy )){
+					continue;
+				}
+				
+				//send packet everywhere else
+				//as long as packet is below max length
+				if( packet.size() < 11){
+					ArrayList<BitVector> newPacket = new ArrayList<BitVector>(packet);
+					newPacket.add( buddy );
+					openList.add( newPacket );
+				}
+				
+			}
+		}
+		
+		//if list empty
+		if( allCycles.isEmpty() ){
+			return allCycles;
+		}
+		//sort all cycles, so identical ones can be identified
+		for(int i = 0; i < allCycles.size(); i++){
+			Collections.sort( allCycles.get(i) );
+		}
+		//remove identical cycles
+		allCycles = Utils.deleteDuplicates(allCycles);
+		
+		//remove super cycles
+		allCycles = removeSuperCycles( allCycles );
+		
+		return allCycles;
+	}
+	
+	/**
+	 * Parses through a list of cycles, and removes super cycles.
+	 * Super cycles are larger cycles that are made up of two combined cycles
+	 */
+	public ArrayList<ArrayList<BitVector>> removeSuperCycles( ArrayList<ArrayList<BitVector>> allCycles ){
+		//for each cycle
+		//iterate backwards to get the larger cycles first
+		for(int i = allCycles.size() - 1; i >= 0; i--){
+			ArrayList<BitVector> currentCycle = allCycles.get(i);
+			
+			//try to compose this cycle of every other cycle
+			//so if another cycle has a subset of the nodes we have
+			//add it 
+			//if multiple cycles end up equaling this cycle
+			//then this cycle is a super cycle and should be removed
+			ArrayList<BitVector> newCycle = new ArrayList<BitVector>();
+			
+			for(int j = 0; j < allCycles.size(); j++){
+				//don't try yourself, or removed cycle
+				if( i == j || allCycles.get(j) == null){
+					continue;
+				}
+				ArrayList<BitVector> nextCycle = allCycles.get(j);
+				
+				newCycle.addAll(nextCycle);
+			}
+			
+			if (newCycle.size() > 0) {
+				//if new cycle is equal to currentCycle
+				//(it must be sorted and have duplicates removed first)
+				//then current cycle is a super cycle
+				newCycle = Utils.deleteDuplicates(newCycle);
+				Collections.sort(newCycle);
+
+				if ( isSubSet( currentCycle, newCycle ) ){//newCycle.equals(currentCycle)) {
+					allCycles.set(i, null);
+				}
+			}
+		}
+
+		allCycles = Utils.removeNulls( allCycles );
+	
+		return allCycles;
+	}
+	
+	//TODO make a lot of methods private
+	/**
+	 * Tests whether nextCycle is a subset of currentCycle. If Current cycle is a sub
+	 * set of next cycle, unless equal.
+	 * 
+	 * @param nextCycle
+	 * @param currentCycle
+	 * @return
+	 */
+	private boolean isSubSet(ArrayList<BitVector> nextCycle, ArrayList<BitVector> currentCycle){
+		
+		if( nextCycle.size() > currentCycle.size() ){
+			return false;
+		}
+		
+		//iterate through nextCycle
+		//if currentCycle doesn't contain all return false
+		for(int i = 0; i < nextCycle.size(); i++){
+			if( !currentCycle.contains( nextCycle.get(i)) ){
+				return false;
+			}
+		}
+		
+		return true;
+	}
 	/**
 	 * Removes an edge from this graph. 
 	 * @param bv, BitVector representation of the edge you wist to remove
@@ -700,6 +900,7 @@ public class Graph implements Comparable<Graph>{
 			}
 
 		}
+		
 		// no triangles found
 		if (allTriangles.isEmpty()) {
 			return this;
@@ -734,7 +935,138 @@ public class Graph implements Comparable<Graph>{
 
 		}
 		if (GraphtoCell.makeCell(this).equals(cell)) {
-			this.name += "CycFixed";
+			this.name += "TriFixed";
+			return this;
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Removes squares from the graph
+	 * very inefficient
+	 * TODO terrible optimized
+	 */
+	public Graph removeSquares(Cell cell) {
+		// all triangles
+		Set<Set<BitVector>> allSquares = new HashSet<Set<BitVector>>();
+
+		// get all nodes
+		Set<BitVector> nodes = new HashSet<BitVector>();
+		int lastNode = 1 << (this.numNodes - 1);
+
+		// cycle through all nodes
+		// if degree is 1, can't be in square
+		for (int node = 1; node <= lastNode; node *= 2) {
+			BitVector temp = new BitVector(node);
+			if (this.getDegree(temp) > 1) {
+				nodes.add(new BitVector(node));
+			}
+		}
+
+		// get all quartets of nodes
+		PowerSet<BitVector> pairs = new PowerSet<BitVector>(nodes, 4, 4);
+		Iterator<Set<BitVector>> i = pairs.iterator();
+
+		// for every quartet, check if they are connected to each other 
+		// 1->2, 2->3, 3->4, 4->1
+		// if so square!
+		while (i.hasNext()) {
+			Set<BitVector> pair = i.next();
+			if (pair.isEmpty()) {
+				continue;
+			}
+			Iterator<BitVector> i2 = pair.iterator();
+
+			int node1 = i2.next().getNumber();
+			int node2 = i2.next().getNumber();
+			int node3 = i2.next().getNumber();
+			int node4 = i2.next().getNumber();
+
+			boolean edge12 = false;
+			boolean edge13 = false;
+			boolean edge14 = false;
+			boolean edge23 = false;
+			boolean edge24 = false;
+			boolean edge34 = false;
+
+			Cell edges = this.getEdgeCell();
+			// cycle through edges and count occurrences of that node
+			for (int k = 0; k < edges.size(); k++) {
+				BitVector edge = edges.getPA()[k];
+				if (edge.contains(node1) && edge.contains(node2)) {
+					edge12 = true;
+				}
+				if (edge.contains(node1) && edge.contains(node3)) {
+					edge13 = true;
+				}
+				if (edge.contains(node1) && edge.contains(node4)) {
+					edge14 = true;
+				}
+				if (edge.contains(node2) && edge.contains(node3)) {
+					edge23 = true;
+				}
+				if (edge.contains(node2) && edge.contains(node4)) {
+					edge24 = true;
+				}
+				if (edge.contains(node3) && edge.contains(node4)) {
+					edge34 = true;
+				}
+			}
+			
+			//3 possible square configurations out of 4 nodes
+			//square || sand time || sideways sand time
+			if( ( edge12 && edge23 && edge34 && edge14 ) 
+					|| ( edge12 && edge24 && edge34 && edge13) 
+					|| ( edge14  && edge24 && edge23 && edge13)){
+				Set<BitVector> square = new HashSet<BitVector>();
+				square.add( new BitVector( node1 ));
+				square.add( new BitVector( node2 ));
+				square.add( new BitVector( node3 ));
+				square.add( new BitVector( node4 ));
+				allSquares.add( square );
+			} 
+			
+		}
+		
+		// no triangles found
+		if (allSquares.isEmpty()) {
+			return this;
+		}
+
+		// now take list of triangles and add edges
+		Iterator<Set<BitVector>> squares = allSquares.iterator();
+		while (squares.hasNext()) {
+			Set<BitVector> aSquare = squares.next();
+			Iterator<BitVector> squareNodes = aSquare.iterator();
+
+			int node1 = squareNodes.next().getNumber();
+			int node2 = squareNodes.next().getNumber();
+			int node3 = squareNodes.next().getNumber();
+			int node4 = squareNodes.next().getNumber();
+
+			// add two new nodes in between node 2 and 3
+			//picked randomly, could screw things up
+			//TODO
+
+			// add two new nodes
+			int newNode1 = lastNode * 2;
+			int newNode2 = newNode1 * 2;
+			this.addTwoNodes();
+
+			// remove edge from node2 -> node3
+			this.removeEdge(new BitVector(node2 + node3));
+
+			// add edge from new1 -> new2
+			this.addEdge(new BitVector(newNode1 + newNode2));
+			// add edges from node 1 to new1
+			this.addEdge(new BitVector(node2 + newNode1));
+			// and edge from node 2 to new1
+			this.addEdge(new BitVector(node3 + newNode2));
+
+		}
+		if (GraphtoCell.makeCell(this).equals(cell)) {
+			this.name += "SqrFixed";
 			return this;
 		} else {
 			return null;
@@ -1047,10 +1379,18 @@ public class Graph implements Comparable<Graph>{
 	}
 	
 	public void setName(String name2) {
-		this.name = name2;
-		
+		this.name = name2;	
 	}
-
+	
+	/**
+	 * Appends inputted string to this graphs name
+	 * 
+	 * this.name = this.name + input;
+	 * @return
+	 */
+	public void appendName(String suffix){
+		this.name += suffix;
+	}
 	public int getFitness() {
 		return fitness;
 	}
