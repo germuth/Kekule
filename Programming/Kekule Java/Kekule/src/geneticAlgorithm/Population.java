@@ -64,7 +64,7 @@ public class Population {
 	/**
 	 * Outputs the best graphs of the population. Usually used at the end
 	 * of the genetic algorithm. Currently top 20 graphs are printed minus
-	 * duplicates of eachother in the top 20
+	 * duplicates of each other in the top 20
 	 */
 	public void printTop3Edited(ArrayList<Cell> classy) {
 		ArrayList<Graph> answer = new ArrayList<Graph>();
@@ -72,6 +72,9 @@ public class Population {
 		for(int i = 0; i < this.size(); i++){
 			if( this.population.get(i).getFitness() == bestFitness){
 				answer.add( this.population.get(i) );
+				if( this.population.get(i).hasBadCycles()){
+					System.out.println("I don't think this should ever happen");
+				}
 			} else{
 				break;
 			}
@@ -84,8 +87,17 @@ public class Population {
 		for (int i = 0; i < answer.size(); i++) {
 			Graph current = answer.get(i);
 			
+			if( current.hasBadCycles() ){
+				System.out.println("Before");
+			}
 			current.widenCycles();	
+			if( current.hasBadCycles() ){
+				System.out.println("Middle");
+			}
 			current.trimDisjoint();
+			if( current.hasBadCycles() ){
+				System.out.println("After");
+			}
 			
 			Cell c = GraphtoCell.makeCell( current );
 			c.normalize();
@@ -97,27 +109,33 @@ public class Population {
 					index = j + 1;
 				}
 			}
-	
-			if( !current.isDisjoint() ){
-				String smile = GraphToSMILES.convertSMILES(current) ;
-				
-				if( !smiles.contains(smile)){
+
+			if (!current.isDisjoint()) {
+				String smile = GraphToSMILES.convertSMILES(current);
+
+				if (!smiles.contains(smile)) {
 					current.writeGraph();
-					System.out.println( "K" + index + " " + c.toString() );
+					System.out.println("K" + index + " " + c.toString());
 					smiles.add(smile);
 					System.out.println("SMILES: " + smile);
 					if( current.hasBadCycles() ){
-						System.out.println("Baddy Cycles: " + current.getFitness());
+						System.out.print("Baddy ");
 					}
-					System.out.println("Cycles: " + current.getAllCycles() );
+					System.out.println( current.getFitness() );
+					System.out.println("Cycles: " + current.getAllCycles());
 					System.out.println("");
+
 				}
-			} 
+			}
 			else{
 				System.err.println("THIS GRAPH WAS DISJOINT");
 			}
 		}
-		ImageRenderer.main(smiles);
+		if( !smiles.isEmpty() ){
+			ImageRenderer.main(smiles);
+		} else{
+			System.out.println("No Graphs Found!");
+		}
 	}
 	
 	/**

@@ -9,7 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,11 +21,14 @@ import javax.swing.JButton;
 import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.Molecule;
 import org.openscience.cdk.exception.InvalidSmilesException;
+import org.openscience.cdk.interfaces.IAtom;
 import org.openscience.cdk.interfaces.IMolecule;
 import org.openscience.cdk.layout.StructureDiagramGenerator;
 import org.openscience.cdk.renderer.AtomContainerRenderer;
+import org.openscience.cdk.renderer.RendererModel;
 import org.openscience.cdk.renderer.font.AWTFontManager;
 import org.openscience.cdk.renderer.generators.BasicAtomGenerator;
+import org.openscience.cdk.renderer.generators.BasicBondGenerator;
 import org.openscience.cdk.renderer.generators.BasicSceneGenerator;
 import org.openscience.cdk.renderer.generators.RingGenerator;
 import org.openscience.cdk.renderer.visitor.AWTDrawVisitor;
@@ -146,12 +151,12 @@ public class ImageRenderer extends javax.swing.JFrame {
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         try {
-            // TODO add your handling code here:
             int WIDTH = 400;
             int HEIGHT = 400;
             // the draw area and the image should be the same size
             Rectangle drawArea = new Rectangle(WIDTH, HEIGHT);
             Image image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+            
             IMolecule triazole = MoleculeFactory.makeCyclobutane();
  
             Molecule molecule = (Molecule) new SmilesParser(DefaultChemObjectBuilder.getInstance()).parseSmiles(jTextField1.getText());
@@ -167,10 +172,36 @@ public class ImageRenderer extends javax.swing.JFrame {
             // generators make the image elements
             List generators = new ArrayList();
             generators.add(new BasicSceneGenerator());
-            generators.add(new RingGenerator());//BasicBondGenerator());
+            generators.add(new RingGenerator());
+            //generators.add(new BasicBondGenerator());
             generators.add(new BasicAtomGenerator());
+            
             // the renderer needs to have a toolkit-specific font manager
             AtomContainerRenderer renderer = new AtomContainerRenderer(generators, new AWTFontManager());
+            
+            IAtom one = molecule.getAtom(0);
+            IAtom two = molecule.getAtom(1);
+            IAtom three = molecule.getAtom(2);
+            
+            RendererModel model = renderer.getRenderer2DModel();
+            ((RendererModel.ExternalHighlightColor)
+            		model.getParameter(RendererModel.ExternalHighlightColor.class)).setValue(Color.green);
+            
+            Map colorHash = new HashMap();
+            colorHash.put(one, (Color)((RendererModel.ExternalHighlightColor)
+            		model.getParameter(RendererModel.ExternalHighlightColor.class)).getValue());
+            colorHash.put(two, (Color)((RendererModel.ExternalHighlightColor)
+            		model.getParameter(RendererModel.ExternalHighlightColor.class)).getValue());
+            colorHash.put(three, (Color)((RendererModel.ExternalHighlightColor)
+            		model.getParameter(RendererModel.ExternalHighlightColor.class)).getValue());
+            
+            //Iterator bonds = highlight.bonds().iterator();
+            //while (bonds.hasNext()) {
+            //  colorHash.put((IChemObject)bonds.next(), (Color)((RendererModel.ExternalHighlightColor)model.getParameter(RendererModel.ExternalHighlightColor.class)).getValue());
+            //}
+            
+            ((RendererModel.ColorHash)model.getParameter(RendererModel.ColorHash.class)).setValue(colorHash);
+            
             // the call to 'setup' only needs to be done on the first paint
             renderer.setup(triazole, drawArea);
             // paint the background

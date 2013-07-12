@@ -493,12 +493,12 @@ public class Cell {
 	 * @return
 	 */
 	public boolean isSubSetOf(Cell bigger){
-		Set<BitVector> thisOne = Utils.arToSet(this.portAssignments);
-		Set<BitVector> biggerOne = Utils.arToSet(bigger.portAssignments);
-		if(biggerOne.containsAll(thisOne)){
-			return true;
+		for(int i = 0; i < this.size(); i++){
+			if( ! bigger.contains( this.getPA()[i])){
+				return false;
+			}
 		}
-		return false;
+		return true;
 	}
 	
 	/**

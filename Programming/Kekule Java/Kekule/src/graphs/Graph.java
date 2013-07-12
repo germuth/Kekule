@@ -1,5 +1,7 @@
 package graphs;
+
 import geneticAlgorithm.GeneticAlgorithm;
+import gui.GraphToSMILES;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +32,7 @@ import shared.Utils;
  * The Number of Nodes must never exceed 32 since the set of nodes is represented in BitVectors, and the BitVector
  * for a set of 32 size would overflow the integer.
  * cP <= cN <= 32
+ * Above is CORRECT
  * 
  * TODO this classed could be re-worked to conform with the rest of the program better
  * 
@@ -108,6 +111,11 @@ public class Graph implements Comparable<Graph>{
 	
 	// take in graph from input
 	public Graph(String name, int nP, int nC, Set<String> edges) {
+		
+		if( nC >= 31){
+			System.err.println("31 Nodes Reached");
+			return;
+		}
 		Set<BitVector> bvEdges = new HashSet<BitVector>();
 
 		for (String x : edges) {
@@ -135,6 +143,9 @@ public class Graph implements Comparable<Graph>{
 	public Graph(String name, int nP, int nC, Cell edges){
 		this.numPorts = nP;
 		this.numNodes = nC;
+		if( this.numNodes >= 31){
+			System.err.println("31 Nodes Reached");
+		}
 		this.edgeCell = edges;
 		this.name = name;
 		this.fitness = 0;
@@ -143,6 +154,9 @@ public class Graph implements Comparable<Graph>{
 	public Graph(int nP, int nC, Cell edges){
 		this.numPorts = nP;
 		this.numNodes = nC;
+		if( this.numNodes >= 31){
+			System.err.println("31 Nodes Reached");
+		}
 		this.edgeCell = edges;
 		this.name = "";
 		this.fitness = 0;
@@ -151,6 +165,9 @@ public class Graph implements Comparable<Graph>{
 	public Graph(Graph g){
 		this.name = g.name;
 		this.numNodes = g.numNodes;
+		if( this.numNodes >= 31){
+			System.err.println("31 Nodes Reached");
+		}
 		this.numPorts = g.numPorts;
 		this.edgeCell = new Cell(g.edgeCell);
 		this.fitness = g.fitness;
@@ -237,6 +254,18 @@ public class Graph implements Comparable<Graph>{
 	}
 	
 	/**
+	 * Returns the number of cycles in this graph. Does this by obtaining a spanning tree
+	 * and counting the number of edges that we're removed
+	 */
+	public int getNumCycles() {
+		// find spanning tree by DFS-ing the nodes
+		Graph spanningTree = GraphToSMILES.getSpanningTree( this );
+
+		return ( this.edgeCell.size() - spanningTree.edgeCell.size() );
+		
+	}
+
+	/**
 	 * Uses the 'flooding' algorithm to find all cycles in a graph. Excludes 
 	 * so called 'super cycles' which contain all the nodes of two smaller
 	 * cycles. 
@@ -257,17 +286,23 @@ public class Graph implements Comparable<Graph>{
 		
 		LinkedList<ArrayList<BitVector>> openList = new LinkedList<ArrayList<BitVector>>();
 		
-		//add a packet at each node
-		//ONLY ADD AT NODES WHICH HAVE DEGREE 3
-		//UNLESS THEY ALL HAVE 3
-		//THEN ADD AT 2
+		//can detect all cycles by only starting packets at nodes with degree 3
 		for(int i = 1; i <= this.getLastNode().getNumber(); i *= 2){
 			BitVector currentNode = new BitVector(i);
+			if( this.getDegree( currentNode) == 3){
+				ArrayList<BitVector> packet = new ArrayList<BitVector>();
+				packet.add(currentNode);
+				openList.add( packet );
+			}
+		}
+		//if no nodes with degree of 3, then either the graph contains no cycles, or 
+		//the graph is one giant cycle, so we add random node
+		if( openList.isEmpty() ){
+			BitVector currentNode = new BitVector( 1 );
 			ArrayList<BitVector> packet = new ArrayList<BitVector>();
 			packet.add(currentNode);
 			openList.add( packet );
 		}
-		
 		while( !openList.isEmpty() ){
 			
 			ArrayList<BitVector> packet = openList.pop();
@@ -303,7 +338,7 @@ public class Graph implements Comparable<Graph>{
 				
 				//send packet everywhere else
 				//as long as packet is below max length
-				if( packet.size() < 7){
+				if( packet.size() < 10){
 					ArrayList<BitVector> newPacket = new ArrayList<BitVector>(packet);
 					newPacket.add( buddy );
 					openList.add( newPacket );
@@ -630,6 +665,9 @@ public class Graph implements Comparable<Graph>{
 	 * to have this situation occur
 	 */
 	public void trimDisjoint(){
+		GeneticAlgorithm.calculateFitness( this );
+		double beginFitness = this.getFitness();
+	
 		BitVector lastNode = this.getLastNode();
 		BitVector secondLast = new BitVector( lastNode.getNumber() / 2 );
 		
@@ -646,6 +684,11 @@ public class Graph implements Comparable<Graph>{
 				this.removeEdge( edge );
 				this.setNumNodes( this.numNodes - 2 );
 			}
+		}
+		
+		GeneticAlgorithm.calculateFitness( this );
+		if( this.getFitness() != beginFitness){
+			System.err.println("Trim Disjoint is broken yo");
 		}
 	}
 
@@ -723,7 +766,7 @@ public class Graph implements Comparable<Graph>{
 	 * any 3 cycles into 5 cycles. This fits carbon chemistry much better. Checks to see if 
 	 * the cell or fitness changed, if it did, it writes errors to console.
 	 */
-	public void widenCycles() {
+	public void widenCycles() {	
 		//get cell and fitness before hand
 		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
 		
@@ -766,11 +809,14 @@ public class Graph implements Comparable<Graph>{
 			// and edge from node2 to new1
 			this.addEdge(new BitVector(node2 + newNode2));
 		}
+		
 	}
 	
 	/**
 	 * Given all cycles, and one specific one, it finds two nodes of that cycle which are both
 	 * not located in any other cycle. If this is impossible, an empty list is returned 
+	 * 
+	 * TODO use methods here rather than like 20 break statements
 	 */
 	private ArrayList<BitVector> getTwoNodesFromCycle(ArrayList<BitVector> theCycle, ArrayList<ArrayList<BitVector>> allCycles){
 		ArrayList<BitVector> currentCycle = theCycle; 
@@ -778,45 +824,69 @@ public class Graph implements Comparable<Graph>{
 		BitVector finalNode1 = null;
 		BitVector finalNode2 = null;
 		
-		//find any two adjacent nodes of square which aren't both in the same cycle
-		//try all till one works
-		nodeSelectionOuter:
-		for(int j = 0; j < currentCycle.size(); j++){
-			BitVector node1 = currentCycle.get(j);
+		//if theCycle is the only cycle in the graph
+		//than any two adjacent nodes will work
+		if( allCycles.size() == 1){
 			
-			//label 
-			nodeSelectionInner:
-			for(int k = j + 1; k < currentCycle.size(); k++){
-				BitVector node2 = currentCycle.get(k);
-				
-				//make sure node1 and node2 connected (square has that edge)
-				if( this.edgeCell.contains( new BitVector( node1.getNumber() + node2.getNumber() ) ) ){
-					//for each other cycle
-					for(int l = 0; l < allCycles.size(); l++){
-						
-						//exclude current Cycle
-						if( allCycles.get(l) .equals( currentCycle) ){
-							continue;
-						}
-						//search for cycle which has both, if found,
-						//try new coordinates
-						if( allCycles.get(l).contains( node1 ) &&
-							allCycles.get(l).contains( node2 ) ){
-							
-							//if they do, try two new nodes
-							continue nodeSelectionInner;
-						} else{
-							//if they don't use these two
-							finalNode1 = node1;
-							finalNode2 = node2;
-							break nodeSelectionOuter;
-						}
+			loop:
+			//grab first two from cycle who are connected
+			for(int i = 0; i < theCycle.size(); i++){
+				BitVector node1 = theCycle.get(i);
+				for(int j = i + 1; j < theCycle.size(); j++){
+					BitVector node2 = theCycle.get(j);
 					
+					BitVector edge = new BitVector( node1.getNumber() +
+							node2.getNumber() );
+					if( this.getEdgeCell().contains( edge )){
+						finalNode1 = node1;
+						finalNode2 = node2;
+						break loop;
 					}
-						
 				}
-			}	
+			}
 		} 
+		//more than one cycle in graph
+		else{
+			//find any two adjacent nodes of cycle which aren't both in the same cycle
+			//try all till one works
+			nodeSelectionOuter:
+				for(int j = 0; j < currentCycle.size(); j++){
+					BitVector node1 = currentCycle.get(j);
+					
+					//label 
+					nodeSelectionInner:
+						for(int k = j + 1; k < currentCycle.size(); k++){
+							BitVector node2 = currentCycle.get(k);
+							
+							//make sure node1 and node2 connected (square has that edge)
+							if( this.edgeCell.contains( new BitVector( node1.getNumber() + node2.getNumber() ) ) ){
+								//for each other cycle
+								for(int l = 0; l < allCycles.size(); l++){
+									
+									//exclude current Cycle
+									if( allCycles.get(l) .equals( currentCycle) ){
+										continue;
+									}
+									//search for cycle which has both, if found,
+									//try new coordinates
+									if( allCycles.get(l).contains( node1 ) &&
+											allCycles.get(l).contains( node2 ) ){
+										
+										//if they do, try two new nodes
+										continue nodeSelectionInner;
+									} else{
+										//if they don't use these two
+										finalNode1 = node1;
+										finalNode2 = node2;
+										break nodeSelectionOuter;
+									}
+									
+								}
+								
+							}
+						}	
+				} 	
+		}
 		
 		ArrayList<BitVector> spot = new ArrayList<BitVector>();
 		//if two nodes were found
@@ -1055,6 +1125,9 @@ public class Graph implements Comparable<Graph>{
 	
 	public void addTwoNodes(){
 		this.numNodes += 2;
+		if(this.numNodes >= 31){
+			System.err.println("31 Nodes Reached");
+		}
 	}
 
 	public Cell getEdgeCell() {
@@ -1075,6 +1148,9 @@ public class Graph implements Comparable<Graph>{
 
 	public void setNumNodes(int numNodes) {
 		this.numNodes = numNodes;
+		if( this.numNodes >= 31){
+			System.err.println("31 Nodes Reached");
+		}
 	}
 	
 	public void setName(String name2) {
@@ -1094,7 +1170,7 @@ public class Graph implements Comparable<Graph>{
 		return fitness;
 	}
 
-	public void setFitness(int fitness) {
+	public void setFitness(double fitness) {
 		this.fitness = fitness;
 	}
 

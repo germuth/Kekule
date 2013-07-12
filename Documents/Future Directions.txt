@@ -1,5 +1,36 @@
 Directions: 
 
+Thing to do as of 7/12/2013
+
+IMPORTANT:
+- discover why results have bad cycle graphs with the same fitness as good cycle graphs
+	- they have not had they fitness calculated since they've been changed
+	- widenCycles() is somehow introducing bad cycles
+		- or, can't detect bad cycles with small ones for some stupid reason
+
+- optimize flooding algorithm
+	- could count number of cycles perhaps
+		- do it one at a time until you have all the cycles
+		- could break if it had really big cycle
+- how to highlight shit
+- get openeye scientific software
+
+NOT IMPORTANT: 
+-Fix error when image rendered gets an empty list
+-Make a method to have a bitvector edge remove one of it's nodes
+- makea method for bitvector addition and subtraction ^^
+-Turn cell into an arraylist instead of an array
+- make an edge cell and a kekule cell
+- use appendName() method
+- still getting overflow errors
+- remove 8 / 10 cycles?
+- extendPOrts/extendPotrsNoCell should be one method, along with other
+- trim disjoint() is useful?
+- planar, is useful?
+- thousands and thousands of TODOs
+
+
+
 
 We would start with confirming his findings first, and then explore further to study
  chemically relevant properties in the simpler model when restricted up to 4 degrees.

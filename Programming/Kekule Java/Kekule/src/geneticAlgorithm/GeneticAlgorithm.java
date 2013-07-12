@@ -34,8 +34,8 @@ public class GeneticAlgorithm {
 	 * Genetic Algorithm. Higher is normally more accurate, however, takes
 	 * longer
 	 */
-	private static final int POPULATION_SIZE = 1000;
-	/*
+	private static final int POPULATION_SIZE = 500;
+	/**
 	 * The Amount of iterations the genetic algorithm will perform until stopping.
 	 * More Iterations move the entire population closer to the optimal result, but
 	 * again takes longer.
@@ -46,27 +46,27 @@ public class GeneticAlgorithm {
 	 * to the next population based only on health. Basically, this means
 	 * the top 90 of each generation are passed to the next generation. 
 	 */
-	public static final int ELITE_NUMBER = 180;
+	public static final int ELITE_NUMBER = 90;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * randomly to the next population. In this case, 90 are taken from
 	 * the best of last generation, and 10 are randomly taken for genetic
 	 * diversity.
 	 */
-	public static final int RANDOM_NUMBER = 20;
+	public static final int RANDOM_NUMBER = 10;
 	/**
 	 * The amount of graphs generated from a population by simple mutation. 
 	 * In our case, 100 graphs are initially taken in, and these graphs 
 	 * are mutated to give 200 additional graphs.
 	 */
-	private static final int MUTANT_NUMBER = 400;
+	private static final int MUTANT_NUMBER = 200;
 	/**
 	 * The amount of graphs generated from crossover. In our case, out of the 100
 	 * starting elites, two are chosen at random 200 to crossover and create a new
 	 * graph. The start elite + mutantNumber + crossOverNumber = 500, the 
 	 * entire population size.
 	 */
-	private static final int CROSSOVER_NUMBER = 400; 
+	private static final int CROSSOVER_NUMBER = 200; 
 	/**
 	 * Random Number Generator used for all randomness of the genetic algorithm.
 	 */
@@ -91,8 +91,6 @@ public class GeneticAlgorithm {
 	/**
 	 * The Main method
 	 * 
-	 * 33 - makeCell
-	 * 17 - .equals
 	 * 
 	 * TODO population should be used throughout iteration
 	 * not just at beginning and end
@@ -100,7 +98,6 @@ public class GeneticAlgorithm {
 	 */
 	public static void main(String[] args){
 		
-		readClassification();
 		//Take in cell from user
 		Scanner input = new Scanner(System.in);
 		
@@ -109,7 +106,10 @@ public class GeneticAlgorithm {
 		
 		rank = cell.getNumPorts();
 		
+		readClassification(rank);
+		
 		//Generate the initial population randomly
+		System.out.println("Starting Pop");
 		Population population = generateInitialPopulation();
 		ArrayList<Graph> nextGen = null;
 		
@@ -132,7 +132,7 @@ public class GeneticAlgorithm {
 			//since we're picking from 100 elites
 			//likely to get each graph twice
 			//must add mutants to separate list to ensure they are not crossover-ed this iteration
-			//System.out.println("Mutating");
+			System.out.println("Mutating");
 			ArrayList<Graph> mutants = new ArrayList<Graph>();
 			for(int j = 0; j < MUTANT_NUMBER; j++){
 				Graph mutant = nextGen.get( random.nextInt( nextGen.size()) );
@@ -140,9 +140,9 @@ public class GeneticAlgorithm {
 				mutants.add( mutateGraph(mutant) );
 			}
 			
-			//preform crossover
+			//Perform crossover
 			//two random graphs from elite are chosen and combined
-			//System.out.println("Crossover");
+			System.out.println("Crossover");
 			for(int j = 0; j < CROSSOVER_NUMBER; j++){
 				//TODO use 4 parents
 				//get two random parents
@@ -156,7 +156,7 @@ public class GeneticAlgorithm {
 			
 			nextGen.addAll(mutants);
 			
-			//System.out.println("Fitness Function");
+			System.out.println("Fitness Function");
 			//fitness function on every graph
 			for(int j = 0; j < nextGen.size(); j++){
 				Graph current = nextGen.get(j);
@@ -165,6 +165,7 @@ public class GeneticAlgorithm {
 
 			population = new Population( nextGen );
 		}
+		
 		population.printAverage();
 		population.printTop3Edited( classifications );
 		
@@ -172,9 +173,9 @@ public class GeneticAlgorithm {
 		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
 	}
 
-	public static void readClassification() {
+	public static void readClassification(int rank) {
 		// reading classification
-		File f = new File("FullClassificationRank5.txt");
+		File f = new File("FullClassificationRank" + rank + ".txt");
 		Scanner s = null;
 		try {
 			s = new Scanner(f);
@@ -182,7 +183,6 @@ public class GeneticAlgorithm {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int rank = 6;
 		s.nextLine();
 		s.nextLine();
 		s.nextLine();
@@ -240,7 +240,7 @@ public class GeneticAlgorithm {
 			int answerIndex = 0;
 			int gsIndex = 0;
 
-			int fitness = 0;
+			double fitness = 0;
 
 			while (answerIndex != answer.size() && gsIndex != gsCell.size()) {
 				BitVector correct = answer.getPA()[answerIndex];
@@ -405,7 +405,7 @@ public class GeneticAlgorithm {
 		mutant.setFitness( 0 );
 		
 		//add vertex
-		if( random.nextDouble() < 0.20 ){
+		if( random.nextDouble() < 0.20 && mutant.getNumNodes() < 30){
 			mutant.setNumNodes( mutant.getNumNodes() + 1 );
 		}
 		//remove vertex
@@ -459,7 +459,7 @@ public class GeneticAlgorithm {
 		}
 		
 		//extend the ports out
-		if( random.nextDouble() < 0.05){
+		if( random.nextDouble() < 0.05 && mutant.getNumNodes() < (30 - mutant.getNumPorts())){
 			mutant = mutant.extendPortsNoCell();
 		}
 		return mutant;
@@ -486,15 +486,15 @@ public class GeneticAlgorithm {
 			int nC = rank;
 			
 			//75 percent chance to add node
-			if(random.nextDouble() < 0.75){
+			//if(random.nextDouble() < 0.75){
 				//add 1 to 25 nodes
-				nC += random.nextInt(25) + 1;
-			}
+				nC += random.nextInt(20);
+			//}
 			
 			//edges always added
-			//at least 4 edges, with less than 4 it is impossible to include
-			//4 - 15 edges
-			int edgesToAdd = random.nextInt(11) + 4;
+			//add atleast enough to connect all your nodes
+			//num nodes - 1
+			int edgesToAdd = nC-1 + random.nextInt(10);
 			
 			Cell c = new Cell();
 			c.setNumPorts( rank );
@@ -529,10 +529,19 @@ public class GeneticAlgorithm {
 				}
 			}
 			
+			boolean b = newbie.hasBadCycles();
 			//calculate the fitness of all new graphs
 			calculateFitness(newbie);
-			
-			population.add(newbie);
+			if( newbie.getFitness() < 0){
+				i--;
+			} else{
+				//System.out.println( "nodes " + newbie.getNumNodes() );
+				//System.out.println( "edges " + newbie.getEdgeCell().size() );
+				//System.out.println( "fitness " + newbie.getFitness() );
+				//System.out.println( newbie.hasBadCycles() );
+				//System.out.println("");
+				population.add(newbie);
+			}
 			
 		}
 		

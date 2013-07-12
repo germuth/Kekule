@@ -1,12 +1,13 @@
 package shared;
 
+import graphs.Graph;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -14,10 +15,15 @@ public class Test {
 	//adding edges
 	public static void main(String[] args){
 		
-		Set<Integer> allPossiblePortSelections = new HashSet<Integer>();
-		for(int i = 1; i <=5 ; i++){
-			allPossiblePortSelections.add(i);
-		}
+		Graph g = InputParser.readGraph(new Scanner(System.in));
+		System.out.println("getting cycles");
+		g.getAllCycles();
+		
+		
+		//Set<Integer> allPossiblePortSelections = new HashSet<Integer>();
+		//for(int i = 1; i <=5 ; i++){
+		//	allPossiblePortSelections.add(i);
+		//}
 		/*
 		Powerseta<Integer> powerset = new Powerseta<Integer>(
 				allPossiblePortSelections, 2,2);
