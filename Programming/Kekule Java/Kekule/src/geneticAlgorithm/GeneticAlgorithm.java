@@ -40,7 +40,7 @@ public class GeneticAlgorithm {
 	 * More Iterations move the entire population closer to the optimal result, but
 	 * again takes longer.
 	 */
-	private static final int ITERATIONS = 100;
+	private static final int ITERATIONS = 50;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * to the next population based only on health. Basically, this means
@@ -119,7 +119,7 @@ public class GeneticAlgorithm {
 			
 			//print out progress report every 10 percent
 			double progress = (double)i/(double)ITERATIONS;
-			if((progress*100) % 10 == 0){
+			if((progress*100) % 5 == 0){
 				System.out.println(progress);
 			}
 			
@@ -136,7 +136,7 @@ public class GeneticAlgorithm {
 			ArrayList<Graph> mutants = new ArrayList<Graph>();
 			for(int j = 0; j < MUTANT_NUMBER; j++){
 				Graph mutant = nextGen.get( random.nextInt( nextGen.size()) );
-				
+				mutant.setFitness( 0 );
 				mutants.add( mutateGraph(mutant) );
 			}
 			
@@ -150,6 +150,7 @@ public class GeneticAlgorithm {
 				Graph parent2 = nextGen.get( random.nextInt( nextGen.size()) );
 				
 				Graph child = crossover(parent1, parent2);
+				child.setFitness( 0 );
 				nextGen.add(child);
 			}
 			
@@ -163,14 +164,6 @@ public class GeneticAlgorithm {
 			}
 
 			population = new Population( nextGen );
-		}
-		for(int i = 0; i < population.size(); i++){
-			Graph g = population.get(i);
-			int before = g.getFitness();
-			calculateFitness( g );
-			if( before != g.getFitness() ){
-				System.out.println("Not up to date");
-			}
 		}
 		population.printAverage();
 		population.printTop3Edited( classifications );
@@ -229,9 +222,9 @@ public class GeneticAlgorithm {
 	 */
 	public static void calculateFitness( Graph g){
 		//fitness already calculated
-		//if( g.getFitness() != 0){
-		//	return;
-		//}
+		if( g.getFitness() != 0){
+			return;
+		}
 		
 		Cell answer = cell;
 
@@ -283,8 +276,7 @@ public class GeneticAlgorithm {
 			//in carbon chemistry
 			//must remove now
 			if( g.hasBadCycles() ){
-				fitness--;
-				g.appendName("-BadCycle-");
+				fitness -= 0.5;
 			}
 			g.setFitness(fitness);
 
@@ -513,8 +505,8 @@ public class GeneticAlgorithm {
 			//loop adding all the edges
 			//care must be taken that
 			// we don't add an edge we already have
-			// the bitvector generated is a valid edge
-			// the edge doesn't ovelflow the max degree allocated
+			// the bit Vector generated is a valid edge
+			// the edge doesn't overflow the max degree allocated
 			innerloop:
 			for(int j = 0; j < edgesToAdd; j++){
 				int node1 = 1 << random.nextInt(nC);

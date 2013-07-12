@@ -46,9 +46,9 @@ public class ImageRenderer extends javax.swing.JFrame {
 	}
     /** Creates new form ImageRenderer */
     public ImageRenderer(ArrayList<String> graphs) {
+    	this.graphs = graphs;
         initComponents();
         
-        this.graphs = graphs;
         this.index = 0;
         
         //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -76,7 +76,7 @@ public class ImageRenderer extends javax.swing.JFrame {
  
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
  
-        jTextField1.setText("C(CCCC(CC1)CC1)CCC");
+        jTextField1.setText(this.graphs.get(0));
  
         jLabel1.setText("Smiles String");
  

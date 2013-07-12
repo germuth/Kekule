@@ -68,7 +68,7 @@ public class Population {
 	 */
 	public void printTop3Edited(ArrayList<Cell> classy) {
 		ArrayList<Graph> answer = new ArrayList<Graph>();
-		int bestFitness = this.population.get(0).getFitness();
+		double bestFitness = this.population.get(0).getFitness();
 		for(int i = 0; i < this.size(); i++){
 			if( this.population.get(i).getFitness() == bestFitness){
 				answer.add( this.population.get(i) );
@@ -78,77 +78,26 @@ public class Population {
 		}
 		
 		//cleaner output
-		answer = Utils.deleteDuplicates(answer);
-		
-		for(int i = 0; i < answer.size(); i++){
-			GeneticAlgorithm.calculateFitness( answer.get(i) );
-			if( answer.get(i).getFitness() != 10){
-				System.out.println("before edge");
-			}
-		}
-		/*
-		for (int i = 0; i < answer.size(); i++) {
-			Graph current = answer.get(i);
-			for(int j = 0; j < current.getEdgeCell().size(); j++){
-				BitVector edge = current.getEdgeCell().getPA()[j];
-				
-				Graph meow = new Graph(current);
-				meow.removeEdge(edge);
-				
-				Cell original = GraphtoCell.makeCell( current );
-				Cell remo = GraphtoCell.makeCell( meow );
-				
-				if( original.equals( remo ) ){
-					//System.out.println("Edge Removed");
-					current = meow;
-					answer.set(i, meow);
-				}
-			}
-		}
-		*/
-		for(int i = 0; i < answer.size(); i++){
-			GeneticAlgorithm.calculateFitness( answer.get(i) );
-			if( answer.get(i).getFitness() != 10){
-				System.out.println("after edge changed");
-			}
-		}
-		
-		answer = Utils.deleteDuplicates(answer);
+		answer = Utils.deleteDuplicates(answer);	
 		ArrayList<String> smiles = new ArrayList<String>();
-		
-		//TODO temporary
-		//answer.add( InputParser.readGraph( new Scanner(System.in)));
 		
 		for (int i = 0; i < answer.size(); i++) {
 			Graph current = answer.get(i);
 			
+			current.widenCycles();	
 			current.trimDisjoint();
+			
 			Cell c = GraphtoCell.makeCell( current );
 			c.normalize();
+			
 			int index = 0;
+			//identify which classification each graph is
 			for(int j = 0; j < classy.size(); j++){
 				if( c.equals(classy.get(j)) ){
 					index = j + 1;
 				}
 			}
-			/*
-			Graph g = current.removeTriagles(c);
-			if( g != null && !g.equals(current)){
-				System.out.println("Triangles Removed");
-				answer.add(g);
-			}
-			if( current.isDisjoint() ){
-				g = current.connect(c);
-				if( g != null && !g.equals(current)){
-					answer.add(g);
-				}
-			}
-			g = current.removeSquares(c);
-			if( g != null && !g.equals(current) ){
-				System.out.println("Squares Removed");
-				answer.add(g);
-			}
-			*/
+	
 			if( !current.isDisjoint() ){
 				String smile = GraphToSMILES.convertSMILES(current) ;
 				
@@ -165,9 +114,8 @@ public class Population {
 				}
 			} 
 			else{
-				System.out.println("THIS GRAPH WAS DISJOINT");
+				System.err.println("THIS GRAPH WAS DISJOINT");
 			}
-			
 		}
 		ImageRenderer.main(smiles);
 	}

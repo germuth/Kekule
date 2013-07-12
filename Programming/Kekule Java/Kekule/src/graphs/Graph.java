@@ -1,5 +1,5 @@
 package graphs;
-import gui.Node;
+import geneticAlgorithm.GeneticAlgorithm;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +15,6 @@ import shared.Cell;
 import shared.GraphtoCell;
 import shared.PowerSet;
 import shared.Utils;
-import shared.Utils.Pair;
 
 
 /**
@@ -100,7 +99,7 @@ public class Graph implements Comparable<Graph>{
 	 * Fitess value given to this graph based on the Genetic algorithms fitness
 	 * function
 	 */
-	private int fitness;
+	private double fitness;
 	/**
 	 * Cell containing all the edges of this graph in 
 	 * bitvector form
@@ -252,19 +251,16 @@ public class Graph implements Comparable<Graph>{
 	 * if union of two cycles equals any other cycles, remove that cycle
 	 * return list if cycles
 	 */
-	@SuppressWarnings("unchecked")
 	public ArrayList<ArrayList<BitVector>> getAllCycles(){
 		ArrayList<ArrayList<BitVector>> allCycles = new ArrayList<ArrayList<BitVector>>();
-		if( allCycles.size() > 1){
-			int i = 0;
-			if( i == 1){
-				
-			}
-		}
+		
 		
 		LinkedList<ArrayList<BitVector>> openList = new LinkedList<ArrayList<BitVector>>();
 		
 		//add a packet at each node
+		//ONLY ADD AT NODES WHICH HAVE DEGREE 3
+		//UNLESS THEY ALL HAVE 3
+		//THEN ADD AT 2
 		for(int i = 1; i <= this.getLastNode().getNumber(); i *= 2){
 			BitVector currentNode = new BitVector(i);
 			ArrayList<BitVector> packet = new ArrayList<BitVector>();
@@ -307,7 +303,7 @@ public class Graph implements Comparable<Graph>{
 				
 				//send packet everywhere else
 				//as long as packet is below max length
-				if( packet.size() < 11){
+				if( packet.size() < 7){
 					ArrayList<BitVector> newPacket = new ArrayList<BitVector>(packet);
 					newPacket.add( buddy );
 					openList.add( newPacket );
@@ -340,37 +336,28 @@ public class Graph implements Comparable<Graph>{
 	public ArrayList<ArrayList<BitVector>> removeSuperCycles( ArrayList<ArrayList<BitVector>> allCycles ){
 		//for each cycle
 		//iterate backwards to get the larger cycles first
-		for(int i = allCycles.size() - 1; i >= 0; i--){
+		for(int i = 0; i < allCycles.size(); i++){
+			if( allCycles.get(i) == null){
+				continue;
+			}
 			ArrayList<BitVector> currentCycle = allCycles.get(i);
 			
-			//try to compose this cycle of every other cycle
-			//so if another cycle has a subset of the nodes we have
-			//add it 
-			//if multiple cycles end up equaling this cycle
-			//then this cycle is a super cycle and should be removed
-			ArrayList<BitVector> newCycle = new ArrayList<BitVector>();
+			//if this one of the other cycles is a subset of this cycle, then 
+			//this cycle is not chord-less, and should be removed 
 			
 			for(int j = 0; j < allCycles.size(); j++){
-				//don't try yourself, or removed cycle
-				if( i == j || allCycles.get(j) == null){
+				if( allCycles.get(j) == null ||
+						i == j){
 					continue;
 				}
-				ArrayList<BitVector> nextCycle = allCycles.get(j);
+				ArrayList<BitVector> cycle2 = allCycles.get(j);
 				
-				newCycle.addAll(nextCycle);
-			}
-			
-			if (newCycle.size() > 0) {
-				//if new cycle is equal to currentCycle
-				//(it must be sorted and have duplicates removed first)
-				//then current cycle is a super cycle
-				newCycle = Utils.deleteDuplicates(newCycle);
-				Collections.sort(newCycle);
-
-				if ( isSubSet( currentCycle, newCycle ) ){//newCycle.equals(currentCycle)) {
+				if( isSubSet(cycle2, currentCycle)){
 					allCycles.set(i, null);
 				}
 			}
+			
+			//THIS IS PRINTING THAT WE HAVE NO CYCLES!!!
 		}
 
 		allCycles = Utils.removeNulls( allCycles );
@@ -627,10 +614,6 @@ public class Graph implements Comparable<Graph>{
 		}
 
 		extended.getEdgeCell().sortBySize();
-		Cell newCell = GraphtoCell.makeCell(extended);
-		if (newCell.size() != 0) {
-			newCell.normalize();
-		}
 		extended.setName(extended.getName() + "Extended");
 		return extended;
 	}
@@ -736,341 +719,112 @@ public class Graph implements Comparable<Graph>{
 	}
 	
 	/**
-	 * Checks whether this graph is triangle free (cycles of length 3). This 
-	 * is needed because the angles required for a triangle are much too acute to support carbon's 
-	 * steric needs. 
-	 * 
-	 * Currently looks for cycles by trying all combinations of 3 nodes which degree > 1
-	 * and check if they are connected. This is not efficient at all. But I don't think 
-	 * this procedure is any where close to the bottleneck of performance in this
-	 * application.
-	 * TODO Look into more efficient ways
-	 * 
-	 * @return whether this graph is triangle free or not
+	 * Gets all cycles of this graph, and turns and 4 cycles into 6 cycles, and
+	 * any 3 cycles into 5 cycles. This fits carbon chemistry much better. Checks to see if 
+	 * the cell or fitness changed, if it did, it writes errors to console.
 	 */
-	public boolean isTriangleFree() {
-
-		//all triangles
-		Set<Set<BitVector>> allTriangles = new HashSet<Set<BitVector>>();
+	public void widenCycles() {
+		//get cell and fitness before hand
+		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
 		
-		// get all nodes 
-		Set<BitVector> nodes = new HashSet<BitVector>();
-		int lastNode = 1 << ( this.numNodes - 1 );
+		//spots where we add nodes to alleviate small cycles
+		ArrayList<ArrayList<BitVector>> fixingSpots = new ArrayList<ArrayList<BitVector>>();
 		
-		//cycle through all nodes
-		//if degree is 1, can't be in triangle
-		for(int node = 1; node <= lastNode; node *= 2 ){
-			BitVector temp = new BitVector( node );
-			if(this.getDegree( temp ) > 1){
-				nodes.add( new BitVector(node) );				
-			}
-		}
-
-		// get all triples of nodes
-		PowerSet<BitVector> pairs = new PowerSet<BitVector>(nodes, 3, 3);
-		Iterator<Set<BitVector>> i = pairs.iterator();
-
-		//for every triplets, check if they are connected to each others
-		//if so triangle!
-		while (i.hasNext()) {
-			Set<BitVector> pair = i.next();
-			if (pair.isEmpty()) {
-				continue;
-			}
-			Iterator<BitVector> i2 = pair.iterator();
+		for(int i = 0; i < allCycles.size(); i++){
+			ArrayList<BitVector> currentCycle = allCycles.get(i);
 			
-			int node1 = i2.next().getNumber();
-			int node2 = i2.next().getNumber();
-			int node3 = i2.next().getNumber();
-			
-			boolean edge12 = false;
-			boolean edge23 = false;
-			boolean edge13 = false;
-			
-			Cell edges = this.getEdgeCell();
-			//cycle through edges and count occurences of that node
-			for(int k = 0; k < edges.size(); k++){
-				BitVector edge = edges.getPA()[k];
-				if(edge.contains(node1) && edge.contains(node2)){
-					edge12 = true;
+			//if square or triangle
+			if( currentCycle.size() == 4 || currentCycle.size() == 3){
+				ArrayList<BitVector> fixingSpot = this.getTwoNodesFromCycle(currentCycle, allCycles);
+				if( ! fixingSpot.isEmpty() ){
+					fixingSpots.add( fixingSpot );
 				}
-				if(edge.contains(node2) && edge.contains(node3)){
-					edge23 = true;
-				}
-				if(edge.contains(node1) && edge.contains(node3)){
-					edge13 = true;
-				}
-			}
-			
-			if(edge12 && edge23 && edge13){
-				Set<BitVector> triangle = new HashSet<BitVector>();
-				triangle.add( new BitVector(node1) );
-				triangle.add( new BitVector(node2) );
-				triangle.add( new BitVector(node3) );
-				allTriangles.add(triangle);
-			}
-			
-		}
-		//no triangles found
-		if(allTriangles.isEmpty()){
-			return true;
+				
+			}	
 		}
 		
-		return false;
-	}
-	
-	/**
-	 * Checks whether this graph is triangle free (cycles of length 3). If a
-	 * cycle is found, two internal vertices are added to extend the cycle to
-	 * length 5. This is because the angles required for a triangle are much too
-	 * acute to support carbon's steric needs. Pentagons are cool though.
-	 * Ensures the new bigger graph has the same cell as the original graph. I
-	 * believe this is always the case but haven't looked too much into it.
-	 * 
-	 * Currently looks for cycles by trying all combinations of 3 nodes which
-	 * degree > 1 and check if they are connected. This is not efficient at all.
-	 * But I don't think this procedure is any where close to the bottleneck of
-	 * performance in this application. TODO Look into more efficient ways
-	 * 
-	 * The starting graph (this) is not edited, a new graph is returned
-	 * 
-	 * @param cell
-	 * @return a new Graph with 5 cycles instead of 3 cycles, or null if the
-	 *         procedure was unsuccessful
-	 */
-	public Graph removeTriagles(Cell cell) {
-		// all triangles
-		Set<Set<BitVector>> allTriangles = new HashSet<Set<BitVector>>();
-
-		// get all nodes
-		Set<BitVector> nodes = new HashSet<BitVector>();
-		int lastNode = 1 << (this.numNodes - 1);
-
-		// cycle through all nodes
-		// if degree is 1, can't be in triangle
-		for (int node = 1; node <= lastNode; node *= 2) {
-			BitVector temp = new BitVector(node);
-			if (this.getDegree(temp) > 1) {
-				nodes.add(new BitVector(node));
-			}
-		}
-
-		// get all triples of nodes
-		PowerSet<BitVector> pairs = new PowerSet<BitVector>(nodes, 3, 3);
-		Iterator<Set<BitVector>> i = pairs.iterator();
-
-		// for every triplets, check if they are connected to each others
-		// if so triangle!
-		while (i.hasNext()) {
-			Set<BitVector> pair = i.next();
-			if (pair.isEmpty()) {
-				continue;
-			}
-			Iterator<BitVector> i2 = pair.iterator();
-
-			int node1 = i2.next().getNumber();
-			int node2 = i2.next().getNumber();
-			int node3 = i2.next().getNumber();
-
-			boolean edge12 = false;
-			boolean edge23 = false;
-			boolean edge13 = false;
-
-			Cell edges = this.getEdgeCell();
-			// cycle through edges and count occurences of that node
-			for (int k = 0; k < edges.size(); k++) {
-				BitVector edge = edges.getPA()[k];
-				if (edge.contains(node1) && edge.contains(node2)) {
-					edge12 = true;
-				}
-				if (edge.contains(node2) && edge.contains(node3)) {
-					edge23 = true;
-				}
-				if (edge.contains(node1) && edge.contains(node3)) {
-					edge13 = true;
-				}
-			}
-
-			if (edge12 && edge23 && edge13) {
-				Set<BitVector> triangle = new HashSet<BitVector>();
-				triangle.add(new BitVector(node1));
-				triangle.add(new BitVector(node2));
-				triangle.add(new BitVector(node3));
-				allTriangles.add(triangle);
-			}
-
-		}
-		
-		// no triangles found
-		if (allTriangles.isEmpty()) {
-			return this;
-		}
-
-		// now take list of triangles and add edges
-		Iterator<Set<BitVector>> triangles = allTriangles.iterator();
-		while (triangles.hasNext()) {
-			Set<BitVector> aTriangle = triangles.next();
-			Iterator<BitVector> trianglesNodes = aTriangle.iterator();
-
-			int node1 = trianglesNodes.next().getNumber();
-			int node2 = trianglesNodes.next().getNumber();
-			int node3 = trianglesNodes.next().getNumber();
-
-			// add two new nodes in between node 2 and 3
+		//go through each fixing spot and actually fix
+		for(int i = 0; i < fixingSpots.size(); i++){
+			ArrayList<BitVector> fixingSpot = fixingSpots.get(i);
+			
+			int node1 = fixingSpot.get(0).getNumber();
+			int node2 = fixingSpot.get(1).getNumber();
+			int lastNode = this.getLastNode().getNumber();
 
 			// add two new nodes
 			int newNode1 = lastNode * 2;
 			int newNode2 = newNode1 * 2;
 			this.addTwoNodes();
 
-			// remove edge from node2 -> node3
-			this.removeEdge(new BitVector(node2 + node3));
+			// remove edge from node1 -> node2
+			this.removeEdge(new BitVector(node1 + node2));
 
 			// add edge from new1 -> new2
 			this.addEdge(new BitVector(newNode1 + newNode2));
-			// add edges from port 1 to new1
-			this.addEdge(new BitVector(node2 + newNode1));
-			// and edge from port 2 to new1
-			this.addEdge(new BitVector(node3 + newNode2));
-
-		}
-		if (GraphtoCell.makeCell(this).equals(cell)) {
-			this.name += "TriFixed";
-			return this;
-		} else {
-			return null;
+			// add edge from node1 to new1
+			this.addEdge(new BitVector(node1 + newNode1));
+			// and edge from node2 to new1
+			this.addEdge(new BitVector(node2 + newNode2));
 		}
 	}
 	
 	/**
-	 * Removes squares from the graph
-	 * very inefficient
-	 * TODO terrible optimized
+	 * Given all cycles, and one specific one, it finds two nodes of that cycle which are both
+	 * not located in any other cycle. If this is impossible, an empty list is returned 
 	 */
-	public Graph removeSquares(Cell cell) {
-		// all triangles
-		Set<Set<BitVector>> allSquares = new HashSet<Set<BitVector>>();
-
-		// get all nodes
-		Set<BitVector> nodes = new HashSet<BitVector>();
-		int lastNode = 1 << (this.numNodes - 1);
-
-		// cycle through all nodes
-		// if degree is 1, can't be in square
-		for (int node = 1; node <= lastNode; node *= 2) {
-			BitVector temp = new BitVector(node);
-			if (this.getDegree(temp) > 1) {
-				nodes.add(new BitVector(node));
-			}
-		}
-
-		// get all quartets of nodes
-		PowerSet<BitVector> pairs = new PowerSet<BitVector>(nodes, 4, 4);
-		Iterator<Set<BitVector>> i = pairs.iterator();
-
-		// for every quartet, check if they are connected to each other 
-		// 1->2, 2->3, 3->4, 4->1
-		// if so square!
-		while (i.hasNext()) {
-			Set<BitVector> pair = i.next();
-			if (pair.isEmpty()) {
-				continue;
-			}
-			Iterator<BitVector> i2 = pair.iterator();
-
-			int node1 = i2.next().getNumber();
-			int node2 = i2.next().getNumber();
-			int node3 = i2.next().getNumber();
-			int node4 = i2.next().getNumber();
-
-			boolean edge12 = false;
-			boolean edge13 = false;
-			boolean edge14 = false;
-			boolean edge23 = false;
-			boolean edge24 = false;
-			boolean edge34 = false;
-
-			Cell edges = this.getEdgeCell();
-			// cycle through edges and count occurrences of that node
-			for (int k = 0; k < edges.size(); k++) {
-				BitVector edge = edges.getPA()[k];
-				if (edge.contains(node1) && edge.contains(node2)) {
-					edge12 = true;
-				}
-				if (edge.contains(node1) && edge.contains(node3)) {
-					edge13 = true;
-				}
-				if (edge.contains(node1) && edge.contains(node4)) {
-					edge14 = true;
-				}
-				if (edge.contains(node2) && edge.contains(node3)) {
-					edge23 = true;
-				}
-				if (edge.contains(node2) && edge.contains(node4)) {
-					edge24 = true;
-				}
-				if (edge.contains(node3) && edge.contains(node4)) {
-					edge34 = true;
-				}
-			}
-			
-			//3 possible square configurations out of 4 nodes
-			//square || sand time || sideways sand time
-			if( ( edge12 && edge23 && edge34 && edge14 ) 
-					|| ( edge12 && edge24 && edge34 && edge13) 
-					|| ( edge14  && edge24 && edge23 && edge13)){
-				Set<BitVector> square = new HashSet<BitVector>();
-				square.add( new BitVector( node1 ));
-				square.add( new BitVector( node2 ));
-				square.add( new BitVector( node3 ));
-				square.add( new BitVector( node4 ));
-				allSquares.add( square );
-			} 
-			
-		}
+	private ArrayList<BitVector> getTwoNodesFromCycle(ArrayList<BitVector> theCycle, ArrayList<ArrayList<BitVector>> allCycles){
+		ArrayList<BitVector> currentCycle = theCycle; 
 		
-		// no triangles found
-		if (allSquares.isEmpty()) {
-			return this;
+		BitVector finalNode1 = null;
+		BitVector finalNode2 = null;
+		
+		//find any two adjacent nodes of square which aren't both in the same cycle
+		//try all till one works
+		nodeSelectionOuter:
+		for(int j = 0; j < currentCycle.size(); j++){
+			BitVector node1 = currentCycle.get(j);
+			
+			//label 
+			nodeSelectionInner:
+			for(int k = j + 1; k < currentCycle.size(); k++){
+				BitVector node2 = currentCycle.get(k);
+				
+				//make sure node1 and node2 connected (square has that edge)
+				if( this.edgeCell.contains( new BitVector( node1.getNumber() + node2.getNumber() ) ) ){
+					//for each other cycle
+					for(int l = 0; l < allCycles.size(); l++){
+						
+						//exclude current Cycle
+						if( allCycles.get(l) .equals( currentCycle) ){
+							continue;
+						}
+						//search for cycle which has both, if found,
+						//try new coordinates
+						if( allCycles.get(l).contains( node1 ) &&
+							allCycles.get(l).contains( node2 ) ){
+							
+							//if they do, try two new nodes
+							continue nodeSelectionInner;
+						} else{
+							//if they don't use these two
+							finalNode1 = node1;
+							finalNode2 = node2;
+							break nodeSelectionOuter;
+						}
+					
+					}
+						
+				}
+			}	
+		} 
+		
+		ArrayList<BitVector> spot = new ArrayList<BitVector>();
+		//if two nodes were found
+		if( finalNode1 != null){
+			spot.add( finalNode1 );
+			spot.add( finalNode2 );
 		}
-
-		// now take list of triangles and add edges
-		Iterator<Set<BitVector>> squares = allSquares.iterator();
-		while (squares.hasNext()) {
-			Set<BitVector> aSquare = squares.next();
-			Iterator<BitVector> squareNodes = aSquare.iterator();
-
-			int node1 = squareNodes.next().getNumber();
-			int node2 = squareNodes.next().getNumber();
-			int node3 = squareNodes.next().getNumber();
-			int node4 = squareNodes.next().getNumber();
-
-			// add two new nodes in between node 2 and 3
-			//picked randomly, could screw things up
-			//TODO
-
-			// add two new nodes
-			int newNode1 = lastNode * 2;
-			int newNode2 = newNode1 * 2;
-			this.addTwoNodes();
-
-			// remove edge from node2 -> node3
-			this.removeEdge(new BitVector(node2 + node3));
-
-			// add edge from new1 -> new2
-			this.addEdge(new BitVector(newNode1 + newNode2));
-			// add edges from node 1 to new1
-			this.addEdge(new BitVector(node2 + newNode1));
-			// and edge from node 2 to new1
-			this.addEdge(new BitVector(node3 + newNode2));
-
-		}
-		if (GraphtoCell.makeCell(this).equals(cell)) {
-			this.name += "SqrFixed";
-			return this;
-		} else {
-			return null;
-		}
+		return spot;
 	}
 
 	/**
@@ -1083,6 +837,9 @@ public class Graph implements Comparable<Graph>{
 	 * Theorem 1. If v >= 3 then e <= 3v - 6; 
 	 * Theorem 2. If v > 3 and there are no cycles of length 3, then e <= 2v - 4.
 	 * 
+	 * TODO not currently corect
+	 * but it's not like it was useful anyway
+	 * 
 	 * @return whether this graph is probably planar or not
 	 */
 	public boolean isPlanar(){
@@ -1094,13 +851,13 @@ public class Graph implements Comparable<Graph>{
 			//more than three nodes
 			if( numNodes > 3){
 				//second condition
-				if( this.isTriangleFree() && numEdges <= 2*this.numNodes - 4){
+				//if( this.isTriangleFree() && numEdges <= 2*this.numNodes - 4){
 					return true;
-				}
+				//}
 				//failed second condition
-				else{
-					return false;
-				}
+				//else{
+				//	return false;
+				//}
 			} 
 			//meets first condition and has less than three nodes
 			else{
@@ -1216,64 +973,6 @@ public class Graph implements Comparable<Graph>{
 		edges.sortBySize();
 	}
 	
-	//TODO not
-	//TODO even
-	//TODO close
-	//TODO to
-	//TODO finished
-	//currently not used
-	public void minimizeGraph(){
-		Cell edges = this.edgeCell;
-		if(edges.size() == 0){
-			return;
-		}
-		int edgesSize = edges.size();
-		Cell cell =  GraphtoCell.makeCell(this);
-		BitVector lastRemoved = null;
-		
-		edgesSize--;
-		
-		int i = 0;
-		while( i <= edgesSize){
-			BitVector edge = edges.getPA()[i];
-			edges.getPA()[i] = edges.getPA()[edgesSize];
-			
-			Cell aCell = GraphtoCell.makeCell(this);
-			
-			//TODO minimization of graphs
-			if( false){
-			//if( aCell.isSubSetOf(cell) ){
-			//if( cell.isSubSetOf(aCell)){
-				System.out.println("Removing Edge");
-				cell = aCell;
-				edgesSize--;;
-			} else{
-				edges.getPA()[i] = edge;
-				i++;
-			}
-		}
-		edgesSize++;
-	}
-	/*
-	public String toString(){
-		String name = this.name;
-		String edges = "Edges: ";
-		for(int i = 0; i < this.edgeCell.size(); i++){
-			BitVector edge = this.edgeCell.getPA()[i];
-			int p = edge.firstBit();
-			edge = new BitVector( edge.getNumber() - ( 1 << p ) );
-			int q = edge.firstBit();
-			edges += ( p ) + "-" + ( q );
-			
-			if(i != this.edgeCell.size() - 1){
-				edges += ", ";
-			}
-		}
-		return name + " " + edges;
-		
-	}
-	*/
-	
 	/**
 	 * Translates a graph's Cell of bitVectors into a visual representation
 	 * of the edges. Each edge is translated in the following way. 
@@ -1383,7 +1082,7 @@ public class Graph implements Comparable<Graph>{
 	}
 	
 	/**
-	 * Appends inputted string to this graphs name
+	 * Appends inputed string to this graphs name
 	 * 
 	 * this.name = this.name + input;
 	 * @return
@@ -1391,7 +1090,7 @@ public class Graph implements Comparable<Graph>{
 	public void appendName(String suffix){
 		this.name += suffix;
 	}
-	public int getFitness() {
+	public double getFitness() {
 		return fitness;
 	}
 

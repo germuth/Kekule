@@ -32,13 +32,13 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="shared.BitVector"/>
-<fullyQualifiedTypeName name="shared.GraphtoCell"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="geneticAlgorithm.GeneticAlgorithm"/>
 <fullyQualifiedTypeName name="javax.swing.JProgressBar"/>
 <fullyQualifiedTypeName name="gui.ProgressBarDemo"/>
 <fullyQualifiedTypeName name="com.sun.jmx.snmp.tasks.Task"/>
 <fullyQualifiedTypeName name="gui.ProgressBarDemo.Task"/>
-<fullyQualifiedTypeName name="graphs.Graph"/>
 <fullyQualifiedTypeName name="shared.Utils"/>
+<fullyQualifiedTypeName name="shared.GraphtoCell"/>
+<fullyQualifiedTypeName name="graphs.Graph"/>
 </qualifiedTypeNameHistroy>

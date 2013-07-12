@@ -191,16 +191,6 @@ public class CellToGraph {
 
 	}
 
-	public static void widenCycles(ArrayList<Graph> allGraphs, Cell cell) {
-		for (int i = 0; i < allGraphs.size(); i++) {
-			Graph g = allGraphs.get(i);
-			if(g == null){
-				continue;
-			}
-			allGraphs.set(i, g.removeTriagles(cell) );
-		}
-
-	}
 	//tries to add edges to each graph in start, to get a new graph with cell == goal
 	public static ArrayList<Graph> tryAdding(ArrayList<Graph> start, Cell goal){
 		ArrayList<Graph> newOnes = new ArrayList<Graph>();

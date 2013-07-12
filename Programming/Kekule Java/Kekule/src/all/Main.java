@@ -124,8 +124,10 @@ public class Main {
 			//remove disjoint graphs
 			CellToGraph.removeDisjoint(allGraphs, current);
 			
-			//removes cycles of length 3 and maybe 4 TODO: 4
-			CellToGraph.widenCycles(allGraphs, current);
+			//removes cycles of length 3 and 4
+			for(int k = 0; k < allGraphs.size(); k++){
+				allGraphs.get(k).widenCycles();
+			}
 			
 			allGraphs = Utils.removeNulls(allGraphs);
 			
@@ -285,8 +287,10 @@ public class Main {
 			//remove disjoint graphs
 			CellToGraph.removeDisjoint(allGraphs, current);
 			
-			//removes cycles of length 3 and maybe 4
-			CellToGraph.widenCycles(allGraphs, current);
+			//removes cycles of length 3 and 4
+			for(int k = 0; k < allGraphs.size(); k++){
+				allGraphs.get(k).widenCycles();
+			}
 			
 			allGraphs = Utils.removeNulls(allGraphs);
 			
@@ -381,8 +385,10 @@ public class Main {
 			//remove disjoint graphs
 			CellToGraph.removeDisjoint(allGraphs, cell);
 			
-			//removes cycles of length 3 and maybe 4
-			CellToGraph.widenCycles(allGraphs, cell);
+			//removes cycles of length 3 and 4
+			for(int k = 0; k < allGraphs.size(); k++){
+				allGraphs.get(k).widenCycles();
+			}
 			
 			allGraphs.addAll( CellToGraph.tryTemplateMolecules( cell, cell.getNumPorts()) );
 			
