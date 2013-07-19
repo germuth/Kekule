@@ -29,7 +29,7 @@ E-mail: (germuth,csalex)@unbc.ca}
 
 \begin{abstract}
 
-Certain polycylic polyunsaturated hydrocarbons can preform Boolean operations. Alternating paths of single-double bonds within such molecules have been shown to conduct electricity. 
+Silicon transistors may be slowly reaching their minimum size. Possible alternatives to allow the continual decrease of circuitry size is desired. One possibility is the use of $\pi$ conjugated hydrocarbons as circuitry elements. Certain polycyclic polyunsaturated hydrocarbons have already shown promise in this area. Kekul\'e theory attempts to characterize the switching behavior of such hydrocarbons which allows them to act as circuitry elements. The Kekul\'e cell captures this switching behavior and all possible cells have been previously classified. We attempt to, given any cell, find a suitable molecule which has this cell, and therefore the required switching behavior. A genetic algorithm is used to evolve a population of graphs towards the required switching behavior. Most graphs obtained from the genetic algorithm resemble realistic graphs which in theory, could be used. The genetic algorithm is capable of quick producing results for all cells of rank 5 or lower, and most cells of rank 6.
 
 \end{abstract}
 
@@ -39,7 +39,7 @@ Moore's Law in 1965 \cite{Moore} (not positive about cite here) predicts that, o
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{MooresLaw.png}
+\includegraphics[width=110mm]{MooresLaw.png}
 \caption{Plot of CPU transistor counts against dates of introduction, on a logarithmic vertical scale.}
 \end{figure}
 
@@ -64,6 +64,7 @@ Kekul\'e theory was introduced \cite{HH13} to investigate and systematize this q
 \includegraphics[width=90mm]{KekuleCell.png}
 \caption{The Kekul\'e cell of a simple molecule. The 3 structures indicate the 3 possible arrangements of double bonds. The second row indicates the port assignment for each structure, and the third row is the Kekul\'e cell for that molecule. In Hesselink's notation, ports and labeled with letters rather than numbers, and the cell would be \{ 0, ac, bc \} }.
 \end{figure}
+
 The switching behavior of a molecule is completely determined by its Kekul\'e cell \cite{HH13, H13}. This allows us to search in the opposite direction from before. Rather than searching for any switching behavior a given molecule may exhibit, we can take a required switching behavior needed in some circuitry element, and then search for a molecule who has this behavior. Hesselink \cite{H13} has developed a method to classify all possible Kekul\'e cells, and has given classifications for all cells with ports \textless 7. Therefore, any switching behavior can be converted to a cell, and any cell can be converted to one of Hesselink's \cite{H13} classified cells.
 
 The next step is to then, given a Kekul\'e cell, find a corresponding molecule which has that cell. In Kekul\'e theory, molecules are abstracted as undirected graphs, where nodes represent atoms, and edges their chemical covalent bonds. These graphs are hydrogen-suppressed as hydrogen plays no role in conjugation. Hesselink \cite{H13} has shown a recursive method which has found graphs for any cell with rank \textless 6 and 210 out of 214 cells with rank 6. 
@@ -72,7 +73,7 @@ However, graphs obtained by Hesselink do not represent realistic molecules. In r
 
 \subsection{Overview}
 
-Section 2 consists of the restrictions used to obtain more realistic graphs, and the reasoning behind them. Section 3 explains the genetic algorithm, and how mutation and crossover are applied on graphs. Section 4 presents the results of the genetic algorithms and assesses its validity. This includes how realistic graphs obtained are, and whether these structures can be easily synthesized chemically. Conclusions are drawn in Section 5.
+Section 2 consists of the restrictions used to obtain more realistic graphs, and the reasoning behind them. Section 3 explains the genetic algorithm, and how mutation and crossover are applied on graphs. Section 4 presents the results of the genetic algorithms and assesses its validity. This includes how realistic graphs obtained are, and whether these structures can be easily synthesized chemically. %Conclusions are drawn in Section 5.
 
 \section{Restrictions}
 
@@ -93,14 +94,14 @@ Cycle extension is done by inserting two additional carbon atoms into the cycle 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=90mm]{cycleExtension.png}
-\caption{This shows the extension of the left 4 cycle into a proper 6 cycle. The top half shows a correct procedure when selecting to add two nodes in between A and B. The bottom half shown the incorrect procedure of adding two nodes in between B and D.}
+\caption{This shows the extension of the left 4 cycle into a proper 6 cycle. The top half shows a correct procedure when selecting to add two nodes in between A and B. The bottom half shows the incorrect procedure of adding two nodes in between B and D. Double bonds are excluded from this Figure for clarity.}
 \end{figure}
 
 Cycles are detected using an upper bounded implementation of the 'flooding' algorithm (need cite here). In the flooding algorithm, each node sends out a packet to all if it's neighbors. Any time a node receives a packet, it appends its name and sends the new packet to all of its neighbors. Packets are not sent back to the node who you just received it from. If at any time a packet has been appended by the same node twice, we have found a cycle. As soon as a packet finds a cycle, the packet is discontinued. This process continues to discover all cycles. Packets of length $>$ 12 are also discontinued. This introduces the error that a graph could contain a cycle of length 13. The amount of computation time saved is usually worth it, considering how unlikely a cycle of length 13 or greater is. 
 
-Some optimizations can be made considering the subset of all possible graphs we are dealing with. Packets only begin on nodes with degree of 3, as this is guaranteed to find all cycles (proof?..). If there are no nodes with degree of 3, the graph either contains no cycles, or the graph is one big cycle. Therefore, in this case, we only start a packet at one random node with degree 2. Despite the optimization, this process is still the bottleneck of each iteration for the genetic algorithm.
+Some optimizations can be made considering the subset of all possible graphs we are dealing with. Packets only begin on nodes with degree of 3, as this is guaranteed to find all cycles. Every point within a cycle has degree of 2, so if that cycle is connected to any other node, then at least one of that cycles nodes will have a degree of 3. If there are no nodes with degree of 3, the graph either contains no cycles, or the graph is one big cycle. Therefore, in this case, we only start a single packet at one random node with degree 2. Despite the optimization, this process is still the bottleneck of each iteration for the genetic algorithm.
 
-Not only must cycle size be restricted, but cycle connectivity. In realistic polycyclic polyunsaturated systems, any two rings of the system share at most two nodes. This is seen in naphthalene (see Figure 6), both hexagons share two common atoms. Even in complex polycyclic molecules such as pyracylene (see Figure 6), each cycle shares at most two nodes. Two cycles cannot share a single node (spiro-compound) as the shared node would have a degree of 4. This is why when extending cycles artificially, care must be taken to chose 2 appropriate nodes, as above.
+Not only must cycle size be restricted, but cycle connectivity. In realistic polycyclic polyunsaturated systems, any two rings of the system share at most two nodes. This is seen in naphthalene (see Figure 6), both hexagons share two common atoms. Even in complex polycyclic molecules such as pyracylene (see Figure 6), each cycle shares at most two nodes. Two cycles cannot share a single node (spiro-compound) as the shared node would have a degree of 4. Notice in figure 5, the unrealistic compound has two cycles which share 4 nodes.
 
 \begin{figure}[ht!]
 \centering
@@ -108,18 +109,19 @@ Not only must cycle size be restricted, but cycle connectivity. In realistic pol
 \caption{Napthalene shown two benzene rings with 2 carbon atoms is common. Even in complex polycylic hydrocarbons such as pyracylene, every ring shares only 2 carbon atoms.}
 \end{figure}
 
-Graphs must be planar. In order for a molecule to be considered aromatic, all of its contributing atoms must be coplanar. This is because aromatic systems are comprised of multiple conjugated bonds. Each $\pi$ conjugated bond results from the overlap in the nodal planes of each bonding atom. This causes a cloud of electron probability above and below the covalent bond. Each cloud generates a small electromagnetic field, which works to keep the ring flat (need cite here). A consequence of planarity is that any graph of the molecule should be able to visualized such that no edges are intersecting. (  currently we don't detect whether graphs are planar or not ) 
+Graphs must be planar. In order for a molecule to be considered aromatic, all of its contributing atoms must be coplanar. This is because aromatic systems are comprised of multiple conjugated bonds. Each $\pi$ conjugated bond results from the overlap in the nodal planes of each bonding atom. This causes a cloud of electron probability above and below the covalent bond. Each cloud generates a small electromagnetic field, which works to keep the ring flat (need cite here). A consequence of planarity is that any graph of the molecule should be able to visualized such that no edges are intersecting. (  currently we don't 100\% detect whether graphs are planar or not ) 
 
-Finally, graphs representing molecules must be connected. A disjoint graph represents two molecules rather than one. Two disjoint graphs can sometimes be connected using the following procedure. If we add internal vertices which must always conjugate ’within’ themselves, they will not interfere with the cell. For example, see Figure X (PICTURE).
+Finally, graphs representing molecules must be connected. A disjoint graph represents two molecules rather than one. Two disjoint graphs can sometimes be connected using the following procedure. If we add internal vertices which must always conjugate ’within’ themselves, they will not interfere with the cell. For example, see Figure 7.
 
-include figure X here
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{disjoint2.png}
+\caption{Process used to turn a disjoint graph to a connected graph with the same cell. Two new nodes E and F can be added which always conjugate to each other.}
+\end{figure}
 
-Figure 2: Transforming a disjoint graph into a connected one. Ports are represented by encircled nodes.
+In the right-hand graph of Figure 7, F is not a port and so must always contain a double bond. The only other node which is available to form a double bond with F is E, so in every resonance structure of this molecule E and F will contain a double bond with each other (as shown in right diagram). Therefore d or b can never form a double bond with their new edge (that would result in two adjacent double bonds), and the Kekul\'e cell has not been changed. This now resembles a stable connected molecule. This procedure is similar to Operation iii and Operation vi of [3].
 
-In the right-hand graph of Figure 2, y is not a port and so must always contain a double bond. The only other node which is available to form a double bond with y is x, so in every resonance structure of this molecule x and y will contain a double bond with each other. Therefore d or b can never form a double bond with their new edge, and the Kekul\'e cell has not been changed. This now resembles a stable connected molecule.
-This procedure is similar to Operation iii and Operation vi of [3].
-
-Although these restrictions do a good job of trimming out almost all unrealistic graphs, they are not absolute. Cycles of length 5 and 7 are seen in naturally occurring hydrocarbons, but it is difficult to determine what arrangement makes than stable (need more research here). Additionally, our procedure makes no attempt to ensure all bonding distances are realistic (PICTURE)(which can occur when cycles above the limit are perceived) and the molecules displayed can be synthesized. 
+Although these restrictions do a good job of trimming out almost all unrealistic graphs, they are not absolute. Cycles of length 5 and 7 are seen in naturally occurring hydrocarbons, but it is difficult to determine what arrangement makes than stable (need more research here). Additionally, our procedure makes no attempt to ensure all bonding distances are realistic and the molecules displayed can be synthesized (more on this in Section 4). 
 
 \section{Genetic Algorithm}
 
@@ -129,11 +131,11 @@ In each iteration, the survivors of last generation's population must be chosen.
 
 The genetic algorithm has two terminating conditions. Either the maximum number of iterations has been reached, or some threshold of graphs which satisfy the cell has been reached. In some smaller cases, the genetic algorithm terminates immediately after generating the initial population, as it contained at least x graphs which satisfy the cell ( where x is the threshold of graphs desired).
 
-If no graphs are found which satisfy the cell and the restrictions of Section 2, it is possible the genetic algorithm will display graphs who satisfy the cell, but do not satisfy all restrictions. Not sure if we want this. Need to explain why fitness decremented instead of removed for bad graphs. IS this even what we want.
+If no graphs are found which satisfy the cell and the restrictions of Section 2, it is possible the genetic algorithm will display graphs who satisfy the cell, but do not satisfy all restrictions. ( Not sure if we want this. If we do, need to explain why fitness decremented instead of removed for bad graphs. )
 
 Resulting graphs are converted to SMILES (small molecular input line entry system) in order to be visualized. Conversion first involves finding a spanning tree of the graph. All edges in the original graph which are not in the spanning tree must be edges which complete a cycle. Therefore each node on either side of the edge is labeled as a cycle point. We then preform depth first search over the spanning tree, and append each nodes label as we reach it.
 
-The ports are labeled by atoms with a P (normally reserved for phosphorous, but we can ignore this here). The open source Chemistry Development Kit (cite) is then used to parse the SMILES and generate a 2D structure. Other than the ports, the structure resembles the hydrogen-suppressed carbon skeleton of the structure.  
+The ports are labeled by atoms with a P (normally reserved for phosphorous, but we can ignore this here). We need not label each port individually since Kekul\'e cells are invariant across port translation \cite{H13}. The open source Chemistry Development Kit (citation) is used to parse the SMILES and generate a two-dimensional structure. Other than the ports, the structure resembles the hydrogen-suppressed carbon skeleton of the molecule.  
 
 \subsection{Mutation}
 
@@ -143,7 +145,16 @@ Mutation involves randomly perturbing graphs to obtain new ones. We normally  ge
 \item 20 \%  chance to remove a random node, and all edges to it
 \item 40 \% chance to add a random edge \footnote{ Edges are randomly chosen until an edge is found that can be added without breaking our restrictions on the degree of vertices.}
 \item 40 \% chance to remove a random edge
+\item 5 \% chance to extends the ports
 \end{enumerate}
+
+Port extension involves adding a new node in the position of every port, and then adding the port connected to that node. This will always be viable since any port can have at most degree 2, and after port extension, the new nodes will have at most degree 3. This is often useful for spreading the ports out and allowing new edges without breaking our degree restrictions. Since each port will always have a degree of 1 after extension, each port can facilitate a new bond. See Figure 8.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{portExtension.png}
+\caption{Napthalene (left) undergoing a port extension (center). Notice that after the port extension, it is now feasible to add an edge between B and D, which can then create Acenaphthene (right).}
+\end{figure}
 
 \subsection{Crossover}
 
@@ -159,9 +170,27 @@ It should be noted that rather than using the genetic algorithm to approximate a
 
 \section{Results}
 
-Ask Alex about blatantly copying citations.
+In most small cases (ports \textless 6), the genetic algorithm is able to obtain 10 different answers immediately. For some of the later classifications of rank 5, and cells of rank 6 or higher, it can take longer (up to ~5 minutes). Some cells of rank 6 it is unable to find a graph for (more testing needed here). As it is possible that no such realistic graph exists for some cells, it is difficult to determine a solution. The number of nodes is also currently maxed at 31 nodes, as the nodes are stored in a bit array, which would overflow the integer at 32. Removing this may yield more graphs.
 
-\section{Conclusion}
+Below is graphs for all cells of rank 4 and 5. As stated previously, the genetic algorithm is capable of coming to multiple solutions for each cell, and the ones shown below is simply one selected by us.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=130mm]{rank4Results.png}
+\caption{Realistic Graphs for each cell in Hesselink's classification of all cells with rank 4. K$_1$ resembles benzene, K$_5$ napthalene, and K$_6$ azulene.}
+\end{figure}
+
+Rank 5 picture here (much larger, 24 graphs to display).
+
+Paragraph about Rank 6, and perhaps a website which shows graphs for as many cells as possible. Then we can give a quote on how many graphs we found.
+
+Paragraph talking about whether these molecules can be synthesized.
+
+Paragraph about downside of genetic algorithm, perhaps a picture of the rare molecules which aren't very realistic.
+
+Paragraph about possible improvements. Increase number of nodes. More efficient cycle detection algorithm? Calculate fitness every 2nd iteration?
+
+%\section{Conclusion}
 
 
 \begin{thebibliography}{abrv}
