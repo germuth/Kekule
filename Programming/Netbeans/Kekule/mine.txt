@@ -1,0 +1,89 @@
+Pyracylene5a9 :
+Unweighted Cell: abd acd acd bcd abe ace ace bce ade bde bde cde cde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ab ac bc ad bd bd bd cd cd be be ce de 
+
+Pyracylene5a13a :
+Unweighted Cell: d abd acd bcd e abe ace bce ade ade cde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ac bc bc ad cd cd abcd be ce de bcde 
+
+Pyracylene5a13b :
+Unweighted Cell: d abd acd acd bcd e abe ace ace bce ade cde cde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ac ac bc ad ad ad cd abcd ae ae be de abde 
+
+Pyracylene5a15 :
+Unweighted Cell: a abc abc abd acd e abe ace bce bce ade ade bde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ac ac bc ad ad bd ae be be ce abce de abde 
+
+Pyracylene5a16a:
+Unweighted Cell: a b b c abc abc acd bcd bcd abe abe ace ade bde bde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ac ad bd bd cd cd abcd ae be be ce ce acde bcde bcde 
+
+Pyracylene5a16b:
+Unweighted Cell: c c abc abc d abd bcd e abe ace ace bce ade cde cde cde abcde abcde abcde abcde 
+Translated over "ace"
+And normalized gets:
+Cell: 0 0 ac ac bc ad ad bd cd be ce ce ce ce abce de de de abde acde 
+
+Pyracylene5a19a :
+Unweighted Cell: a a b c abc abc acd acd bcd e e abe abe bce ade ade bde cde cde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ab bc bc ad ad cd cd abcd abcd ae ae ae be ce abce de acde acde bcde 
+
+Pyracylene5a19b:
+Unweighted Cell: b c abc d abd bcd e abe abe ace ade bde bde cde cde cde abcde abcde abcde abcde 
+Translated over "bde"
+And normalized gets:
+Cell: 0 0 ab ac bc bc ad bd bd bd bd abcd ae be ce de de de acde bcde 
+
+Pyracylene5a20a:
+Unweighted Cell: b c c abc abc d abd bcd abe ace ace bce ade bde bde cde cde cde abcde abcde abcde abcde 
+Translated over "bce"
+And normalized gets:
+Cell: 0 ab ac bc bc ad ad bd bd bd abcd ae ae be be be be ce abce de de bcde 
+
+Pyracylene5a20b:
+Unweighted Cell: a b b c c c abc abc abc acd bcd bcd abe ace ace bce ade bde bde cde cde cde abcde abcde abcde abcde 
+Translated over "bce"
+And normalized gets:
+Cell: 0 ab ab ab ac ac bc bc bc bc bd bd cd abcd ae ae ae be be ce ce ce abce de de acde 
+
+Pyracylene5a21a:
+Unweighted Cell: a b c abc abc d abd acd bcd bcd abe ace ade ade bde cde abcde abcde abcde abcde 
+Translated over "abd"
+And normalized gets:
+Cell: 0 ab ab ac bc ad bd bd cd abcd ae be be be be ce ce abce de bcde 
+
+Pyracylene5a21b:
+Unweighted Cell: a c abc abc d abd acd bcd e abe ace bce ade ade cde cde abcde abcde abcde abcde 
+Translated over "acd"
+And normalized gets:
+Cell: 0 ab ac bc ad ad bd bd cd abcd ae be ce ce de de de de acde bcde 
+
+Pyracylene5a22a:
+Unweighted Cell: a b c abc abd acd acd bcd e abe abe ace ade bde bde cde cde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ac ac bc bc bc ad cd abcd ae be be ce de de abde acde bcde 
+
+Pyracylene5a22b:
+Unweighted Cell: a b c abc abd acd acd bcd e abe abe ace ade bde bde cde cde cde abcde abcde abcde abcde 
+Translated over "abcde"
+And normalized gets:
+Cell: 0 0 0 0 ab ac ac bc ad ad ad bd bd cd ae be be ce abce abde acde bcde 
+
+Exampleuuuuuuuu :
+Unweighted Cell: b c abc 
+Translated over "b"
+And normalized gets:
+Cell: 0 ab ac 

@@ -1,21 +1,18 @@
 package geneticAlgorithm;
 
 import graphs.Graph;
+import gui.MainWindow;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
 
 import shared.BitVector;
 import shared.Cell;
-import shared.CellToGraph;
 import shared.GraphtoCell;
 import shared.InputParser;
-import shared.Utils;
 /**
  * This class uses a genetic algorithm to attempt to find realistic graphs for a given cell. 
  * Realistic graphs have limited degree, must be connected, and have cycles greater than 4.
@@ -34,39 +31,39 @@ public class GeneticAlgorithm {
 	 * Genetic Algorithm. Higher is normally more accurate, however, takes
 	 * longer
 	 */
-	private static final int POPULATION_SIZE = 500;
+	private static final int POPULATION_SIZE = 1000;
 	/**
 	 * The Amount of iterations the genetic algorithm will perform until stopping.
 	 * More Iterations move the entire population closer to the optimal result, but
 	 * again takes longer.
 	 */
-	private static final int ITERATIONS = 50;
+	private static final int ITERATIONS = 100;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * to the next population based only on health. Basically, this means
 	 * the top 90 of each generation are passed to the next generation. 
 	 */
-	public static final int ELITE_NUMBER = 90;
+	public static final int ELITE_NUMBER = 140;
 	/**
 	 * The amount of graphs which are taken from the previous population
 	 * randomly to the next population. In this case, 90 are taken from
 	 * the best of last generation, and 10 are randomly taken for genetic
 	 * diversity.
 	 */
-	public static final int RANDOM_NUMBER = 10;
+	public static final int RANDOM_NUMBER = 60;
 	/**
 	 * The amount of graphs generated from a population by simple mutation. 
 	 * In our case, 100 graphs are initially taken in, and these graphs 
 	 * are mutated to give 200 additional graphs.
 	 */
-	private static final int MUTANT_NUMBER = 200;
+	private static final int MUTANT_NUMBER = 400;
 	/**
 	 * The amount of graphs generated from crossover. In our case, out of the 100
 	 * starting elites, two are chosen at random 200 to crossover and create a new
 	 * graph. The start elite + mutantNumber + crossOverNumber = 500, the 
 	 * entire population size.
 	 */
-	private static final int CROSSOVER_NUMBER = 200; 
+	private static final int CROSSOVER_NUMBER = 400; 
 	/**
 	 * Random Number Generator used for all randomness of the genetic algorithm.
 	 */
@@ -88,6 +85,8 @@ public class GeneticAlgorithm {
 	 */
 	private static ArrayList<Cell> classifications;
 	
+	private static MainWindow mainWindow;
+	
 	/**
 	 * The Main method
 	 * 
@@ -96,26 +95,33 @@ public class GeneticAlgorithm {
 	 * not just at beginning and end
 	 * @param args
 	 */
-	public static void main(String[] args){
+	public static void maine(Cell c, MainWindow aj){
 		
 		//Take in cell from user
-		Scanner input = new Scanner(System.in);
-		
-		cell = InputParser.readCell(input);
+		//Scanner input = new Scanner(System.in);
+		cell = c;
+		mainWindow = aj;
+		//cell = InputParser.readCell(input);
 		cell.normalize();
+		
+		int maxFitness = cell.size();
 		
 		rank = cell.getNumPorts();
 		
 		readClassification(rank);
 		
 		//Generate the initial population randomly
-		System.out.println("Starting Pop");
+		System.out.println("Generating Population");
 		Population population = generateInitialPopulation();
 		ArrayList<Graph> nextGen = null;
 		
 		long startTime = System.currentTimeMillis();
 		
 		for(int i = 0; i < ITERATIONS; i++){
+			//if we've found 10 graphs, quit
+			if( population.getBestLength(maxFitness) >= 10){
+				break;
+			}
 			
 			//print out progress report every 10 percent
 			double progress = (double)i/(double)ITERATIONS;
@@ -132,7 +138,6 @@ public class GeneticAlgorithm {
 			//since we're picking from 100 elites
 			//likely to get each graph twice
 			//must add mutants to separate list to ensure they are not crossover-ed this iteration
-			System.out.println("Mutating");
 			ArrayList<Graph> mutants = new ArrayList<Graph>();
 			for(int j = 0; j < MUTANT_NUMBER; j++){
 				Graph mutant = nextGen.get( random.nextInt( nextGen.size()) );
@@ -142,7 +147,6 @@ public class GeneticAlgorithm {
 			
 			//Perform crossover
 			//two random graphs from elite are chosen and combined
-			System.out.println("Crossover");
 			for(int j = 0; j < CROSSOVER_NUMBER; j++){
 				//TODO use 4 parents
 				//get two random parents
@@ -156,18 +160,22 @@ public class GeneticAlgorithm {
 			
 			nextGen.addAll(mutants);
 			
-			System.out.println("Fitness Function");
-			//fitness function on every graph
-			for(int j = 0; j < nextGen.size(); j++){
+			// fitness function on every graph
+			for (int j = 0; j < nextGen.size(); j++) {
 				Graph current = nextGen.get(j);
-				calculateFitness( current );
+				calculateFitness(current);
 			}
 
 			population = new Population( nextGen );
 		}
 		
 		population.printAverage();
-		population.printTop3Edited( classifications );
+		if( population.getBestLength( maxFitness) > 1){
+			mainWindow.giveSMILES( population.printTop3Edited( classifications ) );
+			
+		} else{
+			System.out.println("No Graphs Found.");
+		}
 		
 		long duration = System.currentTimeMillis() - startTime;
 		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
@@ -191,7 +199,7 @@ public class GeneticAlgorithm {
 
 		Cell input = null;
 		try {
-			input = InputParser.readCell2(s);
+			input = InputParser.readCell2(s, rank);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -201,7 +209,7 @@ public class GeneticAlgorithm {
 			classifications.add(input);
 
 			try {
-				input = InputParser.readCell2(s);
+				input = InputParser.readCell2(s, rank);
 			} catch (Exception e) {
 				input = null;
 			}
@@ -274,10 +282,9 @@ public class GeneticAlgorithm {
 			
 			//if graph has two cycles which share more than one edge, this is infeasible
 			//in carbon chemistry
-			//must remove now
-			if( g.hasBadCycles() ){
-				fitness -= 0.5;
-			}
+			//if( g.hasBadCycles() ){
+			//	fitness -= 0.5;
+			//}
 			g.setFitness(fitness);
 
 		}
@@ -529,17 +536,11 @@ public class GeneticAlgorithm {
 				}
 			}
 			
-			boolean b = newbie.hasBadCycles();
 			//calculate the fitness of all new graphs
 			calculateFitness(newbie);
 			if( newbie.getFitness() < 0){
 				i--;
 			} else{
-				//System.out.println( "nodes " + newbie.getNumNodes() );
-				//System.out.println( "edges " + newbie.getEdgeCell().size() );
-				//System.out.println( "fitness " + newbie.getFitness() );
-				//System.out.println( newbie.hasBadCycles() );
-				//System.out.println("");
 				population.add(newbie);
 			}
 			

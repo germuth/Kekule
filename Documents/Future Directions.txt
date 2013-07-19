@@ -1,18 +1,15 @@
 Directions: 
 
-Thing to do as of 7/12/2013
+Thing to do as of 7/15/2013
 
 IMPORTANT:
-- discover why results have bad cycle graphs with the same fitness as good cycle graphs
-	- they have not had they fitness calculated since they've been changed
-	- widenCycles() is somehow introducing bad cycles
-		- or, can't detect bad cycles with small ones for some stupid reason
-
+- write paper
+	- lot's of info
 - optimize flooding algorithm
 	- could count number of cycles perhaps
 		- do it one at a time until you have all the cycles
 		- could break if it had really big cycle
-- how to highlight shit
+- how to highlight
 - get openeye scientific software
 
 NOT IMPORTANT: 
@@ -28,8 +25,6 @@ NOT IMPORTANT:
 - trim disjoint() is useful?
 - planar, is useful?
 - thousands and thousands of TODOs
-
-
 
 
 We would start with confirming his findings first, and then explore further to study

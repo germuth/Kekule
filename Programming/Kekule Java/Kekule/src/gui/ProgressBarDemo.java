@@ -71,7 +71,7 @@ public class ProgressBarDemo extends JPanel
 
     		Cell input = null;
     		try {
-    			input = InputParser.readCell2(s);
+    			input = InputParser.readCell2(s, rank);
     		} catch (Exception e1) {
     			// TODO Auto-generated catch block
     			e1.printStackTrace();
@@ -81,7 +81,7 @@ public class ProgressBarDemo extends JPanel
     			classifications.add(input);
 
     			try {
-    				input = InputParser.readCell2(s);
+    				input = InputParser.readCell2(s, rank);
     			} catch (Exception e) {
     				input = null;
     			}

@@ -1,0 +1,131 @@
+Classification of Rank 5:
+24 classes in Total
+5
+Cell: 0 ab ac ad ae 
+	0 3 5 9 17 
+5
+Cell: 0 bc ad abcd ae abce 
+	0 6 9 15 17 23 
+	
+K3 
+5
+Cell: 0 ac bc ad bd ae be 
+	0 5 6 9 10 17 18 
+	
+K4 
+5
+Cell: 0 ab ac bc ad bd ae be 
+	0 3 5 6 9 10 17 18 
+	
+K5 Cell: 0 ac ad bd abcd ae be abce 
+	0 5 9 10 15 17 18 23 
+	
+
+K6 
+5
+Cell: 0 ab cd abcd ce abce de abde 
+	0 3 12 15 20 23 24 27 
+	
+5
+Cell: 0 ab ac ad bd cd ae be ce 
+	0 3 5 9 10 12 17 18 20 
+5
+Cell: 0 ac bc ad bd abcd ae be abce 
+	0 5 6 9 10 15 17 18 23 
+	
+K9 Cell: 0 ab ac bc ad bd cd ae be ce 
+	0 3 5 6 9 10 12 17 18 20
+	 
+K10
+5
+Cell: 0 ab ad bd cd abcd ae be ce abce 
+	0 3 9 10 12 15 17 18 20 23
+	 
+K11 
+5
+Cell: 0 ac bc ad bd abcd ae be abce abde 
+	0 5 6 9 10 15 17 18 23 27
+	 
+K12 
+5
+Cell: 0 ab ac bc ad bd cd ae be ce de 
+	0 3 5 6 9 10 12 17 18 20 24
+	 
+K13 Cell: 0 ab ac ad bd cd abcd ae be ce abce 
+	0 3 5 9 10 12 15 17 18 20 23
+	 
+K14 Cell: 0 ab ac ad cd abcd ae be abce de bcde 
+	0 3 5 9 12 15 17 18 23 24 30 
+	
+K15 
+5
+Cell: 0 ab ac bc ad bd cd abcd ae be ce abce 
+	0 3 5 6 9 10 12 15 17 18 20 23
+	 
+K16 
+5
+Cell: 0 ab ac bc bd cd abcd ae be ce abde acde 
+	0 3 5 6 10 12 15 17 18 20 27 29
+	      
+K17 
+5
+Cell: 0 ab ac bc ad bd cd abcd ce abce de abde 
+	0 3 5 6 9 10 12 15 20 23 24 27
+	     
+K18 Cell: 0 bc ad bd cd abcd ae be ce abce abde acde 
+	0 6 9 10 12 15 17 18 20 23 27 29
+	      
+K19 
+5
+Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde 
+	0 5 6 9 10 12 15 17 18 20 23 24 27
+	      
+K20 
+5
+Cell: 0 ab ac bc ad bd cd abcd ae ce abce de abde 
+	0 3 5 6 9 10 12 15 17 20 23 24 27
+	 
+	Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde 
+K21
+5
+Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 
+	
+K22 
+5
+Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde acde 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 29
+	 
+K23
+5 
+Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29
+	 
+K24
+5
+Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 
+	
+	
+Classification of Rank 4:
+7 classes in Total
+
+K1 Cell: 0 ab ac ad 
+	0 3 5 9 
+K2 Cell: 0 bc ad abcd 
+	0 6 9 15 
+K3 Cell: 0 ac bc ad bd 
+	0 5 6 9 10 
+K4 Cell: 0 ab ac bc ad bd 
+	0 3 5 6 9 10 
+K5 Cell: 0 ac bc ad bd abcd 
+	0 5 6 9 10 15 
+	
+K6 
+4
+Cell: 0 ab ac bc ad bd cd 
+	0 3 5 6 9 10 12 
+	
+K7 Cell: 0 ab ac bc ad bd cd abcd 
+	0 3 5 6 9 10 12 15 
+	

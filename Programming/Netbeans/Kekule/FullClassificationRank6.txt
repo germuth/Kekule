@@ -1,0 +1,431 @@
+Classification of Rank 6:
+214 classes in Total
+
+K1 Cell: 0 ab ac ad ae af 
+	0 3 5 9 17 33 
+K2 Cell: 0 bc ad abcd ae abce af abcf 
+	0 6 9 15 17 23 33 39 
+K3 Cell: 0 cd be bcde af acdf abef abcdef 
+	0 12 18 30 33 45 51 63 
+K4 Cell: 0 ac bc ad bd ae be af bf 
+	0 5 6 9 10 17 18 33 34 
+K5 Cell: 0 bc bd ae abce abde af abcf abdf 
+	0 6 10 17 23 27 33 39 43 
+K6 Cell: 0 ad bd cd ae be ce af bf cf 
+	0 9 10 12 17 18 20 33 34 36 
+K7 Cell: 0 ab ac bc ad bd ae be af bf 
+	0 3 5 6 9 10 17 18 33 34 
+K8 Cell: 0 ab ce abce de abde cf abcf df abdf 
+	0 3 20 23 24 27 36 39 40 43 
+K9 Cell: 0 ac ad bd abcd ae be abce af bf abcf 
+	0 5 9 10 15 17 18 23 33 34 39 
+K10 Cell: 0 ab ac ad bd cd ae be ce af bf cf 
+	0 3 5 9 10 12 17 18 20 33 34 36 
+K11 Cell: 0 ac bc ad bd abcd ae be abce af bf abcf 
+	0 5 6 9 10 15 17 18 23 33 34 39 
+K12 Cell: 0 ab ac ad ce abce de abde cf abcf df abdf 
+	0 3 5 9 20 23 24 27 36 39 40 43 
+K13 Cell: 0 ab cd abcd ce abce de abde cf abcf df abdf 
+	0 3 12 15 20 23 24 27 36 39 40 43 
+K14 Cell: 0 bc ad abcd ae be abce abde af bf abcf abdf 
+	0 6 9 15 17 18 23 27 33 34 39 43 
+K15 Cell: 0 bc bd cd ae abce abde acde af abcf abdf acdf 
+	0 6 10 12 17 23 27 29 33 39 43 45 
+K16 Cell: 0 ab ce abce de abde cf abcf df abdf cdef abcdef 
+	0 3 20 23 24 27 36 39 40 43 60 63 
+K17 Cell: 0 ac bc ad bd ae be ce de af bf cf df 
+	0 5 6 9 10 17 18 20 24 33 34 36 40 
+K18 Cell: 0 ab ac bc ad bd cd ae be ce af bf cf 
+	0 3 5 6 9 10 12 17 18 20 33 34 36 
+K19 Cell: 0 bc bd ae ce abce de abde af cf abcf df abdf 
+	0 6 10 17 20 23 24 27 33 36 39 40 43 
+K20 Cell: 0 ac bc ad bd ae be abce abde af bf abcf abdf 
+	0 5 6 9 10 17 18 23 27 33 34 39 43 
+K21 Cell: 0 ab ac bc ad bd ae be ce de af bf cf df 
+	0 3 5 6 9 10 17 18 20 24 33 34 36 40 
+K22 Cell: 0 ab ad bd cd abcd ae be ce abce af bf cf abcf 
+	0 3 9 10 12 15 17 18 20 23 33 34 36 39 
+K23 Cell: 0 ab bc bd ae ce abce de abde af cf abcf df abdf 
+	0 3 6 10 17 20 23 24 27 33 36 39 40 43 
+K24 Cell: 0 ab ac bc ad bd ce abce de abde cf abcf df abdf 
+	0 3 5 6 9 10 20 23 24 27 36 39 40 43 
+K25 Cell: 0 ab ac ad ae ce abce de abde af cf abcf df abdf 
+	0 3 5 9 17 20 23 24 27 33 36 39 40 43 
+K26 Cell: 0 ac bc ad bd abcd ae be abce abde af bf abcf abdf 
+	0 5 6 9 10 15 17 18 23 27 33 34 39 43 
+K27 Cell: 0 ab cd abcd ce abce de abde cf abcf df abdf ef abef 
+	0 3 12 15 20 23 24 27 36 39 40 43 48 51 
+K28 Cell: 0 ab ac bc ad bd cd ae be ce de af bf cf df 
+	0 3 5 6 9 10 12 17 18 20 24 33 34 36 40 
+K29 Cell: 0 ab ac ad bd cd abcd ae be ce abce af bf cf abcf 
+	0 3 5 9 10 12 15 17 18 20 23 33 34 36 39 
+K30 Cell: 0 ac bc ad bd ae ce abce de abde af cf abcf df abdf 
+	0 5 6 9 10 17 20 23 24 27 33 36 39 40 43 
+K31 Cell: 0 ab ac be ce abce de abde acde bf cf abcf df abdf acdf 
+	0 3 5 18 20 23 24 27 29 34 36 39 40 43 45 
+K32 Cell: 0 ac bc ad bd abcd ae be abce abde af bf abcf abdf abef 
+	0 5 6 9 10 15 17 18 23 27 33 34 39 43 51 
+K33 Cell: 0 ab ac bc ad bd cd ae be ce de af bf cf df ef 
+	0 3 5 6 9 10 12 17 18 20 24 33 34 36 40 48 
+K34 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce af bf cf abcf 
+	0 3 5 6 9 10 12 15 17 18 20 23 33 34 36 39 
+K35 Cell: 0 ab ac bc ad bd ae ce abce de abde af cf abcf df abdf 
+	0 3 5 6 9 10 17 20 23 24 27 33 36 39 40 43 
+K36 Cell: 0 ac bc bd cd abcd ae ce abce de abde af cf abcf df abdf 
+	0 5 6 10 12 15 17 20 23 24 27 33 36 39 40 43 
+K37 Cell: 0 ab ac ad be ce abce de abde acde bf cf abcf df abdf acdf 
+	0 3 5 9 18 20 23 24 27 29 34 36 39 40 43 45 
+K38 Cell: 0 ab ac bc ad bd cd abcd ce abce de abde cf abcf df abdf 
+	0 3 5 6 9 10 12 15 20 23 24 27 36 39 40 43 
+K39 Cell: 0 bc bd cd ae be ce abce abde acde af bf cf abcf abdf acdf 
+	0 6 10 12 17 18 20 23 27 29 33 34 36 39 43 45 
+K40 Cell: 0 bc ad abcd ae be ce abce abde acde af bf cf abcf abdf acdf 
+	0 6 9 15 17 18 20 23 27 29 33 34 36 39 43 45 
+K41 Cell: 0 ab ac bc de abde acde bcde df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 24 27 29 30 40 43 45 46 48 51 53 54 
+K42 Cell: 0 ab cd abcd ce abce de abde cf abcf df abdf ef abef cdef abcdef 
+	0 3 12 15 20 23 24 27 36 39 40 43 48 51 60 63 
+K43 Cell: 0 ac bc ad bd ae be ce abce de abde af bf cf abcf df abdf 
+	0 5 6 9 10 17 18 20 23 24 27 33 34 36 39 40 43 
+K44 Cell: 0 bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 6 9 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K45 Cell: 0 ac bc ad bd cd abcd ae ce abce de abde af cf abcf df abdf 
+	0 5 6 9 10 12 15 17 20 23 24 27 33 36 39 40 43 
+K46 Cell: 0 ab ac ad bd cd abcd ae be ce abce df abdf acdf ef abef acef 
+	0 3 5 9 10 12 15 17 18 20 23 40 43 45 48 51 53 
+K47 Cell: 0 ab bc bd ae abce de abde bcde af cf abcf abdf bcdf acef adef cdef 
+	0 3 6 10 17 23 24 27 30 33 36 39 43 46 53 57 60 
+K48 Cell: 0 ab ac bc ad bd ae be ce abce de abde af bf cf abcf df abdf 
+	0 3 5 6 9 10 17 18 20 23 24 27 33 34 36 39 40 43 
+K49 Cell: 0 ac bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 5 6 9 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K50 Cell: 0 ab bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 3 6 9 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K51 Cell: 0 ab ac bc cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 3 5 6 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K52 Cell: 0 bc bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 6 10 12 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K53 Cell: 0 ab ac bc ad bd cd abcd ae ce abce de abde af cf abcf df abdf 
+	0 3 5 6 9 10 12 15 17 20 23 24 27 33 36 39 40 43 
+K54 Cell: 0 ab ac bc bd cd be ce abce de abde acde bf cf abcf df abdf acdf 
+	0 3 5 6 10 12 18 20 23 24 27 29 34 36 39 40 43 45 
+K55 Cell: 0 ab ac ad ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 3 5 9 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K56 Cell: 0 ac bc ad bd cd ae be abce abde acde bcde af bf abcf abdf acdf bcdf 
+	0 5 6 9 10 12 17 18 23 27 29 30 33 34 39 43 45 46 
+K57 Cell: 0 ac bc ad bd abcd be ce abce de abde acde bf cf abcf df abdf acdf 
+	0 5 6 9 10 15 18 20 23 24 27 29 34 36 39 40 43 45 
+K58 Cell: 0 bc ad bd cd abcd ae be ce abce abde acde bf cf abdf acdf abef acef 
+	0 6 9 10 12 15 17 18 20 23 27 29 34 36 43 45 51 53 
+K59 Cell: 0 ac bc ad bd abcd ce de acde bcde af bf abcf abdf acef bcef adef bdef 
+	0 5 6 9 10 15 20 24 29 30 33 34 39 43 53 54 57 58 
+K60 Cell: 0 bc bd ae ce abce de abde bcde af cf abcf df abdf bcdf acef adef abcdef 
+	0 6 10 17 20 23 24 27 30 33 36 39 40 43 46 53 57 63 
+K61 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K62 Cell: 0 ab ac bc ad cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 3 5 6 9 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K63 Cell: 0 ab ac bc ad bd cd be ce abce de abde acde bf cf abcf df abdf acdf 
+	0 3 5 6 9 10 12 18 20 23 24 27 29 34 36 39 40 43 45 
+K64 Cell: 0 ac bc ad bd cd abcd be ce abce de abde af cf abcf df abdf ef abef 
+	0 5 6 9 10 12 15 18 20 23 24 27 33 36 39 40 43 48 51 
+K65 Cell: 0 ac bc bd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 5 6 10 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K66 Cell: 0 ad bd cd ae be ce abde acde bcde af bf cf abdf acdf bcdf abef acef bcef 
+	0 9 10 12 17 18 20 27 29 30 33 34 36 43 45 46 51 53 54 
+K67 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 33 34 36 39 40 43 
+K68 Cell: 0 ab ac bc bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 3 5 6 10 12 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K69 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde af cf abcf df abdf ef abef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 33 36 39 40 43 48 51 
+K70 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde af cf abcf df abdf ef abef 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 33 36 39 40 43 48 51 
+K71 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde cf abcf df abdf ef abef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 36 39 40 43 48 51 
+K72 Cell: 0 ab bc bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 3 6 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K73 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K74 Cell: 0 ab ac bc ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 3 5 6 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K75 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 29 34 36 39 40 43 45 
+K76 Cell: 0 ab ac bc bd cd abcd be abce de abde acde bf cf df abdf acdf ef abef acef 
+	0 3 5 6 10 12 15 18 23 24 27 29 34 36 40 43 45 48 51 53 
+K77 Cell: 0 ab ac bc ad bd cd abcd ae be acde bcde cf abcf df abdf acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 29 30 36 39 40 43 53 54 57 58 
+K78 Cell: 0 bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf abdf acdf abef acef 
+	0 6 9 10 12 15 17 18 20 23 27 29 33 34 36 39 43 45 51 53 
+K79 Cell: 0 bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 6 9 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K80 Cell: 0 ad bd cd ae be ce abde acde bcde af bf cf abdf acdf bcdf abef acef bcef abcdef 
+	0 9 10 12 17 18 20 27 29 30 33 34 36 43 45 46 51 53 54 63 
+K81 Cell: 0 ab ac bc ad bd cd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 3 5 6 9 10 12 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K82 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf ef abef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 33 34 36 39 40 43 48 51 
+K83 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde af cf abcf df abdf ef abef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 33 36 39 40 43 48 51 
+K84 Cell: 0 ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 5 6 9 10 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K85 Cell: 0 ab ac bc bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 3 5 6 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K86 Cell: 0 ac bc bd cd abcd ae be abce de abde acde af bf cf df abdf acdf ef abef acef 
+	0 5 6 10 12 15 17 18 23 24 27 29 33 34 36 40 43 45 48 51 53 
+K87 Cell: 0 ab bc ad bd cd abcd ae be ce abce de abde bf cf abcf abdf acdf ef acef adef 
+	0 3 6 9 10 12 15 17 18 20 23 24 27 34 36 39 43 45 48 53 57 
+K88 Cell: 0 ab ac bc bd cd abcd be ce abce de abde acde bf cf df abdf acdf ef abef acef 
+	0 3 5 6 10 12 15 18 20 23 24 27 29 34 36 40 43 45 48 51 53 
+K89 Cell: 0 ab ac bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef 
+	0 3 5 10 12 15 18 20 23 24 27 29 34 36 39 40 43 45 48 51 53 
+K90 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf cf abcf df abdf ef abef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 33 34 36 39 40 43 48 51 
+K91 Cell: 0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 3 5 6 9 10 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K92 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 
+K93 Cell: 0 ab ac bc bd cd abcd be ce abce de abde acde af bf cf abcf df acdf ef abef adef 
+	0 3 5 6 10 12 15 18 20 23 24 27 29 33 34 36 39 40 45 48 51 57 
+K94 Cell: 0 ab ac bc bd cd abcd ae be abce de abde acde af bf cf df abdf acdf ef abef acef 
+	0 3 5 6 10 12 15 17 18 23 24 27 29 33 34 36 40 43 45 48 51 53 
+K95 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de acde bf cf abcf abdf acdf ef abef adef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 29 34 36 39 43 45 48 51 57 
+K96 Cell: 0 ab ac bc ad bd cd ae be ce abde acde bcde af bf cf abdf acdf bcdf abef acef bcef 
+	0 3 5 6 9 10 12 17 18 20 27 29 30 33 34 36 43 45 46 51 53 54 
+K97 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde af bf acdf bcdf acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 33 34 45 46 53 54 57 58 
+K98 Cell: 0 ac bc ad bd cd abcd be ce abce de abde acde af bf cf abcf df abdf abef acef adef 
+	0 5 6 9 10 12 15 18 20 23 24 27 29 33 34 36 39 40 43 51 53 57 
+K99 Cell: 0 ab ac bc ad bd cd abcd ce abce de abde acde bf cf abcf df abdf ef abef acef adef 
+	0 3 5 6 9 10 12 15 20 23 24 27 29 34 36 39 40 43 48 51 53 57 
+K100 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde bf abcf df abdf acdf ef abef acef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 34 39 40 43 45 48 51 53 
+K101 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K102 Cell: 0 ab ac bc ad abcd ae abce de abde acde bcde af bf cf abcf abdf acdf ef bcef bdef cdef 
+	0 3 5 6 9 15 17 23 24 27 29 30 33 34 36 39 43 45 48 54 58 60 
+K103 Cell: 0 ac bc ad bd abcd ae ce abce abde acde bcde af bf cf abcf acdf bcdf ef abef adef bdef 
+	0 5 6 9 10 15 17 20 23 27 29 30 33 34 36 39 45 46 48 51 57 58 
+K104 Cell: 0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 3 5 6 9 10 12 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K105 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde acde af bf cf df abdf acdf ef abef acef 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 29 33 34 36 40 43 45 48 51 53 
+K106 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce abde acde af bf cf abcf df acdf ef abef adef 
+	0 3 5 6 9 10 12 15 17 18 20 23 27 29 33 34 36 39 40 45 48 51 57 
+K107 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf df abdf acdf ef abef acef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 34 36 40 43 45 48 51 53 
+K108 Cell: 0 ab ac bc ad bd cd ae be abce de abde bcde af bf cf abcf abdf bcdf ef acef adef cdef 
+	0 3 5 6 9 10 12 17 18 23 24 27 30 33 34 36 39 43 46 48 53 57 60 
+K109 Cell: 0 bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef 
+	0 6 9 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 48 51 53 
+K110 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde cf abcf df abdf acdf ef abef acef adef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 36 39 40 43 45 48 51 53 57 
+K111 Cell: 0 ab bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef 
+	0 3 6 9 10 12 15 17 18 20 23 24 27 29 34 36 39 40 43 45 48 51 53 
+K112 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde af bf abcf df abdf acdf ef abef acef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 33 34 39 40 43 45 48 51 53 
+K113 Cell: 0 ab ac bc ad bd abcd be abce de abde acde bcde af bf cf abcf df acdf abef bcef adef cdef 
+	0 3 5 6 9 10 15 18 23 24 27 29 30 33 34 36 39 40 45 51 54 57 60 
+K114 Cell: 0 ac bc ad bd cd abcd ae be abce abde acde bcde af bf cf abcf df abdf acef bcef adef bdef 
+	0 5 6 9 10 12 15 17 18 23 27 29 30 33 34 36 39 40 43 53 54 57 58 
+K115 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf df abdf acdf ef abef acef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 33 34 36 40 43 45 48 51 53 
+K116 Cell: 0 ab ac bc ad bd cd abcd ae be ce de acde bcde af bf cf abcf df abdf acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 24 29 30 33 34 36 39 40 43 53 54 57 58 
+K117 Cell: 0 ab bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef 
+	0 3 6 9 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 48 51 53 
+K118 Cell: 0 ab ac ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef 
+	0 3 5 9 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 48 51 53 
+K119 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 34 36 39 40 43 45 48 51 53 
+K120 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef adef 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 29 34 36 39 40 43 45 48 51 53 57 
+K121 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 
+K122 Cell: 0 ab bc ad cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 6 9 12 15 17 18 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K123 Cell: 0 ab ac ad cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 9 12 15 17 18 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K124 Cell: 0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf cf abcf df abdf acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 20 23 24 27 29 30 33 34 36 39 40 43 53 54 57 58 
+K125 Cell: 0 ab ac bc bd cd abcd ae be ce abce de acde bcde af cf abcf abdf acdf bcdf ef abef adef bdef 
+	0 3 5 6 10 12 15 17 18 20 23 24 29 30 33 36 39 43 45 46 48 51 57 58 
+K126 Cell: 0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 20 23 24 27 29 30 33 34 40 43 45 46 48 51 53 54 
+K127 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 40 43 45 46 48 51 53 54 
+K128 Cell: 0 ac bc ad bd cd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf acef bcef adef bdef 
+	0 5 6 9 10 12 17 18 20 23 24 27 29 30 33 34 39 43 45 46 53 54 57 58 
+K129 Cell: 0 bc ad bd cd abcd ae ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 6 9 10 12 15 17 20 23 24 27 29 30 33 34 39 40 43 45 46 48 51 53 54 
+K130 Cell: 0 ac bc ad bd abcd ae be abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 5 6 9 10 15 17 18 23 24 27 29 30 33 34 39 40 43 45 46 48 51 53 54 
+K131 Cell: 0 ab cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef 
+	0 3 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 
+K132 Cell: 0 bc ad cd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef 
+	0 6 9 12 15 17 18 23 24 27 29 30 33 34 36 39 43 45 46 48 53 54 57 58 
+K133 Cell: 0 ab bd cd abcd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 10 12 15 17 20 23 24 27 29 30 33 34 36 39 43 45 46 48 53 54 57 58 
+K134 Cell: 0 bc bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef adef abcdef 
+	0 6 10 12 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 57 63 
+K135 Cell: 0 bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef bcef adef abcdef 
+	0 6 9 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 54 57 63 
+K136 Cell: 0 ab ac bc ad bd cd ae be ce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 17 18 20 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K137 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 48 51 53 
+K138 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bf cf abcf df abdf acdf ef abef acef adef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 34 36 39 40 43 45 48 51 53 57 
+K139 Cell: 0 ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 5 6 9 10 12 15 17 18 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K140 Cell: 0 ab ac bc ad cd abcd ae be ce abce abde acde bcde af bf cf abcf df acdf bcdf ef abef adef bdef 
+	0 3 5 6 9 12 15 17 18 20 23 27 29 30 33 34 36 39 40 45 46 48 51 57 58 
+K141 Cell: 0 ab ac bc ad cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 12 15 17 18 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K142 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 40 43 45 46 48 51 53 54 
+K143 Cell: 0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af abcf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 17 18 20 24 27 29 30 33 39 40 43 45 46 48 51 53 54 
+K144 Cell: 0 ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef 
+	0 5 6 9 10 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 
+K145 Cell: 0 ab bc ad bd cd ae ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 6 9 10 12 17 20 23 24 27 29 30 33 34 36 39 43 45 46 48 53 54 57 58 
+K146 Cell: 0 ab ac bc ad cd abcd ae be ce abce de abde acde af bf df abdf acdf bcdf abef acef bcef bdef cdef 
+	0 3 5 6 9 12 15 17 18 20 23 24 27 29 33 34 40 43 45 46 51 53 54 58 60 
+K147 Cell: 0 ab ac bc ad bd cd abcd ae be abce de abde bcde af bf cf abcf abdf acdf acef bcef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 18 23 24 27 30 33 34 36 39 43 45 53 54 57 58 60 
+K148 Cell: 0 ac ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 5 9 10 12 15 17 18 20 23 24 27 29 30 33 34 39 40 43 45 46 48 51 53 54 
+K149 Cell: 0 ab ac bc ad bd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf acef bcef adef bdef cdef 
+	0 3 5 6 9 10 17 18 23 24 27 29 30 33 34 36 39 43 45 46 53 54 57 58 60 
+K150 Cell: 0 ab ac bc bd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf abef acef bcef adef cdef 
+	0 3 5 6 10 15 17 18 23 24 27 29 30 33 34 36 40 43 45 46 51 53 54 57 60 
+K151 Cell: 0 ab ac bc bd cd abcd ae be abce abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef adef cdef 
+	0 3 5 6 10 12 15 17 18 23 27 29 30 33 34 40 43 45 46 48 51 53 54 57 60 
+K152 Cell: 0 ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef 
+	0 5 6 9 10 15 17 18 23 24 27 29 30 33 34 36 39 43 45 46 48 51 54 57 60 
+K153 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af bf cf abcf df abdf acdf ef abef acef adef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 33 34 36 39 40 43 45 48 51 53 57 
+K154 Cell: 0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K155 Cell: 0 ab ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 17 18 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K156 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 40 43 45 46 48 51 53 54 
+K157 Cell: 0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef 
+	0 3 5 6 9 10 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 
+K158 Cell: 0 ab ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef 
+	0 3 5 6 9 10 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 54 57 60 
+K159 Cell: 0 ab ac bc ad bd cd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef 
+	0 3 5 6 9 10 12 17 18 23 24 27 29 30 33 34 36 39 43 45 46 48 51 54 57 60 
+K160 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af bf cf abcf abdf bcdf abef acef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 29 30 33 34 36 39 43 46 51 53 57 58 60 
+K161 Cell: 0 ab ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 3 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 
+K162 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 39 40 43 45 46 48 51 53 54 
+K163 Cell: 0 ab ac bc ad bd cd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 18 20 23 24 27 29 30 33 36 39 40 43 45 46 51 53 54 57 58 
+K164 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde bcde af cf abcf df abdf acdf abef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 30 33 36 39 40 43 45 51 53 54 57 58 60 
+K165 Cell: 0 ab ac bc ad bd cd abcd ae ce abce de abde bcde bf cf abcf df abdf acdf abef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 20 23 24 27 30 34 36 39 40 43 45 51 53 54 57 58 60 
+K166 Cell: 0 ab bc ad bd cd abcd ae ce abce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef 
+	0 3 6 9 10 12 15 17 20 23 24 27 29 30 33 34 36 39 40 45 46 51 53 54 57 58 
+K167 Cell: 0 ab ac bc ad bd cd abcd ce abce de abde acde bcde af bf abcf df acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 20 23 24 27 29 30 33 34 39 40 45 46 48 51 53 54 57 58 
+K168 Cell: 0 ab ac bc ad bd cd abcd be abce de abde acde bcde af cf abcf df acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 18 23 24 27 29 30 33 36 39 40 45 46 48 51 53 54 57 58 
+K169 Cell: 0 ab ac bc ad cd abcd ae be ce abce abde acde bcde af bf cf abcf df abdf bcdf abef acef adef bdef cdef 
+	0 3 5 6 9 12 15 17 18 20 23 27 29 30 33 34 36 39 40 43 46 51 53 57 58 60 
+K170 Cell: 0 ab ac bc ad bd cd abcd ae ce abce abde acde bcde af bf cf abcf abdf bcdf ef abef acef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 20 23 27 29 30 33 34 36 39 43 46 48 51 53 57 58 60 
+K171 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 
+K172 Cell: 0 ab ac bc ad abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bdef cdef 
+	0 3 5 6 9 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 58 60 
+K173 Cell: 0 ab bc ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 6 9 10 12 15 17 18 20 23 24 27 29 30 33 36 39 43 45 46 48 53 54 57 58 
+K174 Cell: 0 ab ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef abef bcef adef cdef 
+	0 3 5 6 9 10 15 17 18 23 24 27 29 30 33 34 36 39 43 45 46 48 51 54 57 60 
+K175 Cell: 0 bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef 
+	0 6 9 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 54 57 58 
+K176 Cell: 0 ab bc bd cd abcd ae ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 3 6 10 12 15 17 20 23 24 27 29 30 33 36 39 40 43 45 46 48 51 53 54 57 58 
+K177 Cell: 0 ac bc ad bd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef abcdef 
+	0 5 6 9 10 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 63 
+K178 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 40 43 45 46 48 51 53 54 
+K179 Cell: 0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef 
+	0 3 5 6 9 10 12 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 
+K180 Cell: 0 ab ac bc ad bd cd abcd ae be ce de abde acde bcde af bf cf abcf df acdf bcdf abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 24 27 29 30 33 34 36 39 40 45 46 51 53 54 57 58 
+K181 Cell: 0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 
+K182 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 53 54 57 58 
+K183 Cell: 0 ab bc ad cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 6 9 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 53 54 57 58 
+K184 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de acde bcde af abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 29 30 33 39 40 43 45 46 48 51 53 54 57 58 
+K185 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde af abcf df abdf acdf bcdf ef abef acef bcef bdef cdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 33 39 40 43 45 46 48 51 53 54 58 60 
+K186 Cell: 0 ab ac ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 5 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 43 45 46 48 53 54 57 58 
+K187 Cell: 0 ab ac bc ad bd cd abcd ae be abce de abde acde bcde af bf cf abcf df abdf bcdf abef acef bcef adef cdef 
+	0 3 5 6 9 10 12 15 17 18 23 24 27 29 30 33 34 36 39 40 43 46 51 53 54 57 60 
+K188 Cell: 0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef bcef adef cdef 
+	0 3 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 54 57 60 
+K189 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf abcf abdf acdf bcdf ef abef bcef adef cdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 39 43 45 46 48 51 54 57 60 
+K190 Cell: 0 ab ac bc ad bd abcd ae be abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 15 17 18 23 24 27 29 30 33 34 36 39 43 45 46 48 53 54 57 58 60 
+K191 Cell: 0 ab ac bc bd cd abcd ae be abce de abde acde bcde af bf abcf df abdf acdf bcdf ef abef acef bcef adef cdef 
+	0 3 5 6 10 12 15 17 18 23 24 27 29 30 33 34 39 40 43 45 46 48 51 53 54 57 60 
+K192 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 54 57 58 
+K193 Cell: 0 ab ac bc ad bd cd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 5 6 9 10 12 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 53 54 57 58 
+K194 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 
+K195 Cell: 0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 53 54 57 58 
+K196 Cell: 0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef bcef adef cdef 
+	0 3 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 54 57 60 
+K197 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 43 45 46 48 53 54 57 58 
+K198 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 53 54 57 58 
+K199 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde acde bcde af bf cf abcf df abdf acdf abef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 29 30 33 34 36 39 40 43 45 51 53 54 57 58 60 
+K200 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 54 57 58 
+K201 Cell: 0 ab ac bc ad bd cd abcd be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 18 20 23 24 27 29 30 33 36 39 40 43 45 46 48 51 53 54 57 58 
+K202 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce abde acde bcde af bf cf abcf abdf acdf bcdf ef abef acef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 27 29 30 33 34 36 39 43 45 46 48 51 53 57 58 60 
+K203 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 36 39 40 43 45 46 48 51 53 54 57 58 
+K204 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 54 57 58 60 
+K205 Cell: 0 ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef abcdef 
+	0 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 53 54 57 58 63 
+K206 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 53 54 57 58 
+K207 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+K208 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 36 39 40 43 45 46 48 51 53 54 57 58 
+K209 Cell: 0 ab ac bc ad bd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 54 57 58 60 
+K210 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+K211 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf abef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 51 53 54 57 58 60 
+K212 Cell: 0 ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef abcdef 
+	0 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 63 
+K213 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 60 
+K214 Cell: 0 ab ac bc ad bd cd abcd ae be ce abce de abde acde bcde af bf cf abcf df abdf acdf bcdf ef abef acef bcef adef bdef cdef abcdef 
+	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 60 63 

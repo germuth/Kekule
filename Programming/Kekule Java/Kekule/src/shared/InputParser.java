@@ -49,9 +49,9 @@ public class InputParser {
 		return in;
 	}
 	
-	public static Cell readCell2(Scanner input) throws Exception{
+	public static Cell readCell2(Scanner input, int rank) throws Exception{
 
-		int rank = 6;//Integer.parseInt( input.nextLine().trim() );
+		//Integer.parseInt( input.nextLine().trim() );
 		String cell = input.nextLine();
 
 		Scanner lineScanner = new Scanner(cell);

@@ -1,0 +1,229 @@
+
+K1: 4 Nodes,  4 Ports
+Edges: 0-1, 0-2, 0-3, 4-5
+
+K1: 6 Nodes,  4 Ports
+Edges: 0-4, 1-5, 2-5, 3-5, 4-5
+
+K1: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-7, 2-7, 3-7, 6-7
+
+
+
+
+
+K2: 4 Nodes,  4 Ports
+Edges: 1-2, 0-3, 4-5
+
+K2: 6 Nodes,  4 Ports
+Edges: 0-3, 1-4, 2-5, 4-5
+
+K2: 8 Nodes,  4 Ports
+Edges: 0-3, 4-5, 1-6, 2-7, 6-7
+
+K2: 6 Nodes,  4 Ports
+Edges: 1-2, 0-4, 3-5, 4-5
+
+K2: 8 Nodes,  4 Ports
+Edges: 1-2, 4-5, 0-6, 3-7, 6-7
+
+K2: 8 Nodes,  4 Ports
+Edges: 0-4, 1-5, 4-5, 2-6, 5-6, 3-7, 4-7
+
+K2: 10 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-7, 2-8, 7-8, 3-9, 6-9
+
+
+
+
+
+K3: 6 Nodes,  4 Ports
+Edges: 2-4, 3-4, 0-5, 1-5, 4-5
+
+K3: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 2-5, 3-5, 4-5
+
+K3: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 2-7, 3-7, 6-7
+
+
+
+
+
+
+
+K4: 6 Nodes,  4 Ports
+Edges: 0-1, 2-4, 3-4, 0-5, 1-5, 4-5
+
+K4: 8 Nodes,  4 Ports
+Edges: 2-4, 3-4, 4-5, 0-6, 5-6, 1-7, 5-7, 6-7
+
+K4: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 1-5, 2-5, 3-5, 4-5
+
+K4: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 1-7, 2-7, 3-7, 6-7
+
+K4: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 0-5, 2-5, 3-5, 4-5
+
+K4: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 0-7, 2-7, 3-7, 6-7
+
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+K5: 4 Nodes,  4 Ports
+Edges: 0-2, 1-2, 0-3, 1-3, 4-5
+
+K5: 6 Nodes,  4 Ports
+Edges: 1-3, 0-4, 1-4, 2-5, 3-5, 4-5
+
+K5: 8 Nodes,  4 Ports
+Edges: 1-3, 4-5, 0-6, 1-6, 2-7, 3-7, 6-7
+
+K5: 6 Nodes,  4 Ports
+Edges: 0-3, 0-4, 1-4, 2-5, 3-5, 4-5
+
+K5: 8 Nodes,  4 Ports
+Edges: 0-3, 4-5, 0-6, 1-6, 2-7, 3-7, 6-7
+
+K5: 6 Nodes,  4 Ports
+Edges: 1-2, 0-4, 1-4, 2-5, 3-5, 4-5
+
+K5: 8 Nodes,  4 Ports
+Edges: 1-2, 4-5, 0-6, 1-6, 2-7, 3-7, 6-7
+
+K5: 6 Nodes,  4 Ports
+Edges: 0-2, 0-4, 1-4, 2-5, 3-5, 4-5
+
+K5: 8 Nodes,  4 Ports
+Edges: 0-2, 4-5, 0-6, 1-6, 2-7, 3-7, 6-7
+
+K5: 8 Nodes,  4 Ports
+Edges: 0-4, 1-5, 4-5, 2-6, 4-6, 5-6, 3-7, 4-7, 5-7
+
+K5: 10 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-7, 2-8, 6-8, 7-8, 3-9, 6-9, 7-9
+
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+...trying 6 nodes...
+...trying 8 nodes...
+...trying 10 nodes...
+K6: 6 Nodes,  4 Ports
+Edges: 1-4, 2-4, 3-4, 0-5, 2-5, 3-5, 4-5
+
+K6: 6 Nodes,  4 Ports
+Edges: 0-4, 2-4, 3-4, 1-5, 2-5, 3-5, 4-5
+
+K6: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 2-6, 3-6, 1-7, 2-7, 3-7, 6-7
+
+K6: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 3-4, 1-5, 2-5, 3-5, 4-5
+
+K6: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 3-6, 1-7, 2-7, 3-7, 6-7
+
+K6: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 3-4, 0-5, 2-5, 3-5, 4-5
+
+K6: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 3-6, 0-7, 2-7, 3-7, 6-7
+
+K6: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 2-4, 1-5, 2-5, 3-5, 4-5
+
+K6: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 2-6, 1-7, 2-7, 3-7, 6-7
+
+K6: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 2-4, 0-5, 2-5, 3-5, 4-5
+
+K6: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 2-6, 0-7, 2-7, 3-7, 6-7
+
+K6: 6 Nodes,  4 Ports
+Edges: 0-4, 1-4, 2-4, 0-5, 1-5, 3-5, 4-5
+
+K6: 8 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-6, 2-6, 0-7, 1-7, 3-7, 6-7
+
+
+K7: 4 Nodes,  4 Ports
+Edges: 0-1, 0-2, 1-2, 0-3, 1-3, 2-3, 4-5
+
+K7: 6 Nodes,  4 Ports
+Edges: 2-3, 0-4, 2-4, 3-4, 1-5, 2-5, 3-5, 4-5
+
+K7: 8 Nodes,  4 Ports
+Edges: 2-3, 4-5, 0-6, 2-6, 3-6, 1-7, 2-7, 3-7, 6-7
+
+K7: 6 Nodes,  4 Ports
+Edges: 1-3, 0-4, 1-4, 3-4, 1-5, 2-5, 3-5, 4-5
+
+K7: 8 Nodes,  4 Ports
+Edges: 1-3, 4-5, 0-6, 1-6, 3-6, 1-7, 2-7, 3-7, 6-7
+
+K7: 6 Nodes,  4 Ports
+Edges: 0-3, 0-4, 1-4, 3-4, 0-5, 2-5, 3-5, 4-5
+
+K7: 8 Nodes,  4 Ports
+Edges: 0-3, 4-5, 0-6, 1-6, 3-6, 0-7, 2-7, 3-7, 6-7
+
+K7: 6 Nodes,  4 Ports
+Edges: 1-2, 0-4, 1-4, 2-4, 1-5, 2-5, 3-5, 4-5
+
+K7: 8 Nodes,  4 Ports
+Edges: 1-2, 4-5, 0-6, 1-6, 2-6, 1-7, 2-7, 3-7, 6-7
+
+K7: 6 Nodes,  4 Ports
+Edges: 0-2, 0-4, 1-4, 2-4, 0-5, 2-5, 3-5, 4-5
+
+K7: 8 Nodes,  4 Ports
+Edges: 0-2, 4-5, 0-6, 1-6, 2-6, 0-7, 2-7, 3-7, 6-7
+
+K7: 6 Nodes,  4 Ports
+Edges: 0-1, 0-4, 1-4, 2-4, 0-5, 1-5, 3-5, 4-5
+
+K7: 8 Nodes,  4 Ports
+Edges: 0-1, 4-5, 0-6, 1-6, 2-6, 0-7, 1-7, 3-7, 6-7
+
+K7: 8 Nodes,  4 Ports
+Edges: 0-4, 1-5, 4-5, 2-6, 4-6, 5-6, 3-7, 4-7, 5-7, 6-7
+
+K7: 10 Nodes,  4 Ports
+Edges: 4-5, 0-6, 1-7, 6-7, 2-8, 6-8, 7-8, 3-9, 6-9, 7-9, 8-9
+
