@@ -282,9 +282,9 @@ public class GeneticAlgorithm {
 			
 			//if graph has two cycles which share more than one edge, this is infeasible
 			//in carbon chemistry
-			//if( g.hasBadCycles() ){
-			//	fitness -= 0.5;
-			//}
+			if( g.hasBadCycles() ){
+				fitness -= 0.5;
+			}
 			g.setFitness(fitness);
 
 		}
