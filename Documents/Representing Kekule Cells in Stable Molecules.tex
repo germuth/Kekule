@@ -203,7 +203,7 @@ We choose to ignore Huckel's rule and any extensions. This is because even anti-
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=150mm]{pentalene.png}
-\caption{Pentalene can attach either the electron-donating Me or N(Me)$_2$ group to achieve aromatic structure.}
+\caption{Pentalene can attach either the electron-donating Me \cite{methylPentalene} or N(Me)$_2$ \cite{nitrogenPentalene} group to achieve aromatic structure.}
 \label{fig:pentalene}
 \end{figure}
 
@@ -227,13 +227,25 @@ Below is graphs for all cells of rank 4 and 5. As stated previously, the genetic
 \label{fig:rank4Results}
 \end{figure}
 
-Rank 5 picture here (much larger, 24 graphs to display).
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=160mm]{rank5Results1.png}
+\caption{Realistic Graphs for the first 12 cells in Hesselink's classification of all cells with rank 5. K$_1$ and K$_8$ resembles benzene, K$_{11}$ napthalene, and K$_9$ azulene.}
+\label{fig:rank5Results1}
+\end{figure}
 
-When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website). Discuss more about results.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=160mm]{rank5Results2.png}
+\caption{Realistic Graphs for the second half of cells in Hesselink's classification of all cells with rank 5. K$_{13}$, K$_{16}$ azulene both resemble azulene.}
+\label{fig:rank5Results2}
+\end{figure}
+
+When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website). Discuss more about results and problems encountered.
 
 Paragraph talking about whether these molecules can be synthesized.
 
-There are many possible improvements in this area. The number of nodes could be increased to allow larger graphs. Although this would increase the amount of computation required, perhaps it is possible to implement a more efficient cycle detection algorithm, or even calculate fitness on every 2nd iteration of the genetic algorithm. These changes may allow ever more results to be yielded from a heuristic genetic algorithm based approach.
+There are many possible improvements in this area. The number of nodes could be increased to allow larger graphs. Although this would increase the amount of computation required, perhaps it is possible to implement a more efficient cycle detection algorithm, or even calculate fitness on every 2nd iteration of the genetic algorithm. These changes may allow even more results to be yielded from a heuristic genetic algorithm based approach.
 
 %\section{Conclusion}
 
@@ -268,6 +280,11 @@ There are many possible improvements in this area. The number of nodes could be 
 \bibitem{HuckelBad} Roberts, J. D., Streitwieser Jr, A., and Regan, C. M. Small-Ring Compounds. X. Molecular Orbital Calculations of Properties of Some Small-Ring Hydrocarbons and Free Radicals. Journal of the American Chemical Society, 74(18), 4579-4582. 1952.
 
 \bibitem{HuckelExtension} Kruszewski, J., and Krygowski, T. M. An Extension of the Hückel 4N+ 2 Rule to Polycyclic Non-alternant Conjugated Hydrocarbons. Canadian Journal of Chemistry, 53(6), 945-951. 1975.
+
+\bibitem{methylPentalene} Hafner, K., Dönges, R., Goedecke, E. and Kaiser, R. Concerning Pentalene, 2-Methylpentalene, and 1,3-Dimethylpentalene. Angew. Chem. Int. Ed. Engl., 12: 337–339. 1973.
+
+\bibitem{nitrogenPentalene} Hafner, K., Bangert, K. F. and Orfanos, V. 1,3-Bis(dimethylamino)pentalene. Angew. Chem. Int. Ed. Engl., 6: 451–452. 1967.
+
 \end{thebibliography}
 
 \end{document}

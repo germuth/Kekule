@@ -119,7 +119,7 @@ public class GeneticAlgorithm {
 		
 		for(int i = 0; i < ITERATIONS; i++){
 			//if we've found 10 graphs, quit
-			if( population.getBestLength(maxFitness) >= 10){
+			if( population.getBestLength(maxFitness) >= 2){
 				break;
 			}
 			
