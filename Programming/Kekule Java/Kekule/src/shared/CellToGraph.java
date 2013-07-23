@@ -170,7 +170,6 @@ public class CellToGraph {
 		}
 	}
 	
-	//TODO ensure extending ports is useless in hesselink case
 	public static void removeHighDegree(ArrayList<Graph> allGraphs){
 		for(int i = 0; i < allGraphs.size(); i++){
 			Graph g = allGraphs.get(i);
@@ -384,7 +383,6 @@ public class CellToGraph {
 	}
 	
 	/**
-	 * TODO finish
 	 * Cell must be regular, ie contain 0 as port assignment. 
 	 * Therefore the subgraph of the internal nodes has a matching, we can
 	 * use the classification of the matched graphs of rank (nodes - ports)

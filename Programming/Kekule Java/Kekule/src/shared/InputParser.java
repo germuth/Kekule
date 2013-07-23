@@ -3,13 +3,18 @@ package shared;
 import graphs.Graph;
 import graphs.TemplateMolecule;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
 /*
-
+Can we assume inputed graphs are flexible?
+Probably not, but we can covert them
+and every actual classification is flexible
+so we don't need to take in the numebr of ports
 Pyracylene
 14 8
 0 1 2 3 4
@@ -77,6 +82,41 @@ public class InputParser {
 		lineScanner.close();
 
 		return in;
+	}
+	
+	public static ArrayList<Cell> readClassification(int rank) {
+		// reading classification
+		File f = new File("FullClassifications" + "\\" + "FullClassificationRank" + rank + ".txt");
+		Scanner s = null;
+		try {
+			s = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			System.err.println("File was unable to be found/used");
+			e.printStackTrace();
+		}
+		s.nextLine();
+		s.nextLine();
+		s.nextLine();
+		ArrayList<Cell> classifications = new ArrayList<Cell>();
+
+		Cell input = null;
+		try {
+			input = InputParser.readCell2(s, rank);
+		} catch (Exception e1) {
+			System.err.println("Cell was unable to be read from file");
+			e1.printStackTrace();
+		}
+
+		while (input != null) {
+			classifications.add(input);
+
+			try {
+				input = InputParser.readCell2(s, rank);
+			} catch (Exception e) {
+				input = null;
+			}
+		}
+		return classifications;
 	}
 
 	public static void askForGraph() {

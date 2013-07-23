@@ -117,7 +117,7 @@ public class Classify {
 			//If cell meets all requirements, add to raw classification
 			//Flexible: All ports are contained in at least one port assignment
 			//	ex. If there are 4 ports, you should be able to see a, b, c, and d
-			//	in atleast one port assignment
+			//	in at least one port assignment
 			//PortHistogramDescending: Is the weighted port histogram of this cell
 			//	descending. A descending weighted histogram represents that the 
 			//	most often occurring ports are concentrated at the beginning of the
@@ -125,8 +125,8 @@ public class Classify {
 			//Centered: The center of a cell K is deemed the set of elements with 
 			//	the smallest h values. A cell is said to be centered if the port
 			//	assignment '0' is within the center.
-			//Coherent: TODO
-			//	whether all ports of the cell are connected by channels
+			//Coherent: whether all ports of the cell are connected by 
+			//  channels
 			if (cand.isFlexible(ports.getNumber())
 					&& Histogram.isPortHistoDescending(cand)
 					&& Histogram.isCentered(cand) && Coherence.isCoherent(cand)) {

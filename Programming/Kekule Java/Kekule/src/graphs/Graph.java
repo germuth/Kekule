@@ -665,14 +665,14 @@ public class Graph implements Comparable<Graph>{
 	
 	/**
 	 * In the genetic algorithm, it's possible that it creates two new nodes, 
-	 * and connects them to eachother, but nothing else. This is disjoint, 
-	 * which is not allowed. If the two verticies are not ports, we can
+	 * and connects them to each other, but nothing else. This is disjoint, 
+	 * which is not allowed. If the two vertices are not ports, we can
 	 * simply remove them, which is done here. If they are ports, we must
 	 * connect them, which is done in connect()
 	 * 
-	 * TODO
-	 * Right now it only checks the last Two Nodes, which are most likely
-	 * to have this situation occur
+	 * This method is currently not used. In its current implementation,
+	 * only the last two nodes are checked for this condition, not every
+	 * possible pair.
 	 */
 	public void trimDisjoint(){
 		GeneticAlgorithm.calculateFitness( this );

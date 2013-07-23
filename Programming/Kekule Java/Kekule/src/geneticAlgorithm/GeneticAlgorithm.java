@@ -22,6 +22,8 @@ import shared.InputParser;
  * and crossover-ed to create the other 400, filling the population. This process is repeated and 
  * then the best couple graphs are displayed to the user.
  * 
+ * Numbers above are default and the actual values used are the static members variables of the class below.
+ * 
  * @author Aaron
  *
  */
@@ -65,6 +67,12 @@ public class GeneticAlgorithm {
 	 */
 	private static final int CROSSOVER_NUMBER = 400; 
 	/**
+	 * The amount of graphs with maximum fitness that are required before the
+	 * genetic algorithm will terminate. If this number is never reached, it
+	 * will terminate when the number of iterations is reached
+	 */
+	private static final int MINIMUM_GRAPHS_REQUIRED = 3;
+	/**
 	 * Random Number Generator used for all randomness of the genetic algorithm.
 	 */
 	private static final Random random = new Random();
@@ -80,22 +88,25 @@ public class GeneticAlgorithm {
 	 */
 	private static Cell cell;
 	/**
-	 * List of Cell classifications of rank 5. Used to tell me what cell
-	 * the result was. Temporary TODO
+	 * List of Cell classifications of given rank. Used to tell what classification
+	 * number inputed cells are
+	 * TODO generate text files for rank 1 2 3
 	 */
 	private static ArrayList<Cell> classifications;
-	
+	/**
+	 * A reference kept to the graphical interface which runs the genetic algorithm.
+	 * Used to communicate with it.
+	 */
 	private static MainWindow mainWindow;
 	
 	/**
-	 * The Main method
-	 * 
-	 * 
-	 * TODO population should be used throughout iteration
-	 * not just at beginning and end
-	 * @param args
+	 * Sets up the genetic algorithm, and then calls the
+	 * run() method of this class to actually perform
+	 * the genetic algorithm.
+	 * @param Cell c, the cell we are evolving towards
+	 * @param MainWindow aj, the graphical interface
 	 */
-	public static void maine(Cell c, MainWindow aj){
+	public static void setUpAndRun(Cell c, MainWindow aj){
 		
 		//Take in cell from user
 		//Scanner input = new Scanner(System.in);
@@ -108,18 +119,40 @@ public class GeneticAlgorithm {
 		
 		rank = cell.getNumPorts();
 		
-		readClassification(rank);
+		classifications = InputParser.readClassification(rank);
 		
 		//Generate the initial population randomly
 		System.out.println("Generating Population");
 		Population population = generateInitialPopulation();
-		ArrayList<Graph> nextGen = null;
 		
 		long startTime = System.currentTimeMillis();
 		
+		run(population, maxFitness);
+		
+		population.printAverage();
+		if( population.getBestLength( maxFitness) > 1){
+			mainWindow.giveSMILES( population.printTop3Edited( classifications ) );
+			
+		} else{
+			System.out.println("No Graphs Found.");
+		}
+		
+		long duration = System.currentTimeMillis() - startTime;
+		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
+	}
+	
+	/**
+	 * Runs the genetic algorithm. A population of graphs is evolved towards the required
+	 * cell. Numbers in comments below are simply default values, and the actual values currently
+	 * used are the static variables of this class. 
+	 * TODO However, once the graphical interface is working properly, all values will come from there.
+	 */
+	private static void run(Population population, int maxFitness){
+		
+		ArrayList<Graph> nextGen = null;
 		for(int i = 0; i < ITERATIONS; i++){
-			//if we've found 10 graphs, quit
-			if( population.getBestLength(maxFitness) >= 2){
+			//if we've found enough graphs, quit
+			if( population.getBestLength(maxFitness) >= GeneticAlgorithm.MINIMUM_GRAPHS_REQUIRED){
 				break;
 			}
 			
@@ -168,53 +201,8 @@ public class GeneticAlgorithm {
 
 			population = new Population( nextGen );
 		}
-		
-		population.printAverage();
-		if( population.getBestLength( maxFitness) > 1){
-			mainWindow.giveSMILES( population.printTop3Edited( classifications ) );
-			
-		} else{
-			System.out.println("No Graphs Found.");
-		}
-		
-		long duration = System.currentTimeMillis() - startTime;
-		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
 	}
 
-	public static void readClassification(int rank) {
-		// reading classification
-		File f = new File("FullClassificationRank" + rank + ".txt");
-		Scanner s = null;
-		try {
-			s = new Scanner(f);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		s.nextLine();
-		s.nextLine();
-		s.nextLine();
-
-		classifications = new ArrayList<Cell>();
-
-		Cell input = null;
-		try {
-			input = InputParser.readCell2(s, rank);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		while (input != null) {
-			classifications.add(input);
-
-			try {
-				input = InputParser.readCell2(s, rank);
-			} catch (Exception e) {
-				input = null;
-			}
-		}
-	}
 	/**
 	 * Calculates the fitness of a given Graph g. Fitness is calculated as follows.
 	 * The cell of Graph g is compared to the Cell we are looking for. For Every Port assignment
@@ -473,12 +461,11 @@ public class GeneticAlgorithm {
 	}
 	
 	/**
-	 * Generates an initial population randomly. For each graph added,
-	 * there is a 75 percent chance that nodes will be be added to it, the 
-	 * the amount of nodes ranges from 1 to 16
+	 * Generates an initial population randomly. For each graph, the 
+	 * the amount of nodes added ranges from 0 to 19
 	 * 
-	 * The amount of edges to add ranges from 4 - 20. Each edge must be ensured
-	 * to not overflow the max degree of the graph
+	 * The amount of edges added ranges from number of nodes minus 1 to number of nodes
+	 * plus 10.
 	 * 
 	 * @return Population object
 	 */
@@ -492,11 +479,8 @@ public class GeneticAlgorithm {
 			int nP = rank;
 			int nC = rank;
 			
-			//75 percent chance to add node
-			//if(random.nextDouble() < 0.75){
-				//add 1 to 25 nodes
-				nC += random.nextInt(20);
-			//}
+			//add anywhere from 0 - 19 nodes
+			nC += random.nextInt(20);
 			
 			//edges always added
 			//add atleast enough to connect all your nodes

@@ -59,12 +59,12 @@ In $\pi$-logic, molecules have terminals which consist of atoms where connection
 
 (Might exclude this paragraph) To begin the analysis using $\pi$-logic, all possible double bond patterns of the molecule are deduced. Two terminals are selected for an output, and whether the path between them is open or closed represents an output of '1' or '0' respectively. The other terminals are paired, and each pair represents an input of '1' or '0', again depending on the openness of the path. From this you can observe all the different Kekul\'e structures of the molecule and map the inputs to the outputs, resulting with a Boolean function. If the terminals are paired in a different orientation, you may redo the process and have the same molecule represent another Boolean function. 
 
-Kekul\'e theory \cite{HH13, H13} was introduced to investigate and systematize this qualitative switching behavior. In Kekul\'e theory, terminals are called ports, and pathways are called channels. A Kekul\'e state is a configuration of bonds such that every node (other than the ports) has precisely one double bond. Ports may or may not have a double bond. Each Kekul\'e state (or resonance structure) of the molecule has a so called port assignment, the set of ports which contain a double bond. A Kekul\'e cell then consists of the set of port assignments for every resonance structure of that molecule (see Figure ~\ref{fig:kekuleCell}). The rank of a cell or molecule is defined as its number of ports.
+Kekul\'e theory \cite{H13, HH13} was introduced to investigate and systematize this qualitative switching behavior. In Kekul\'e theory, terminals are called ports, and pathways are called channels. A Kekul\'e state is a configuration of bonds such that every node (other than the ports) has precisely one double bond. Ports may or may not have a double bond. Each Kekul\'e state (or resonance structure) of the molecule has a so called port assignment, the set of ports which contain a double bond. A Kekul\'e cell then consists of the set of port assignments for every resonance structure of that molecule (see Figure ~\ref{fig:kekuleCell}). The rank of a cell or molecule is defined as its number of ports.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=110mm]{KekuleCell.png}
-\caption{The Kekul\'e cell of a simple molecule. The 3 structures indicate the 3 possible arrangements of double bonds. The second row indicates the port assignment (which ports contain a double bond) for each structure, and the third row is the Kekul\'e cell for that entire molecule. }
+\caption{The Kekul\'e cell of a simple molecule (2-methylbutene). The 3 structures indicate the 3 possible arrangements of double bonds. The second row indicates the port assignment (which ports contain a double bond) for each structure, and the third row is the Kekul\'e cell for that entire molecule. }
 \label{fig:kekuleCell}
 \end{figure}
 
@@ -202,7 +202,7 @@ We choose to ignore Huckel's rule and any extensions. This is because even anti-
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=150mm]{pentalene.png}
+\includegraphics[width=160mm]{pentalene.png}
 \caption{Pentalene can attach either the electron-donating Me \cite{methylPentalene} or N(Me)$_2$ \cite{nitrogenPentalene} group to achieve aromatic structure.}
 \label{fig:pentalene}
 \end{figure}
@@ -218,7 +218,7 @@ The second condition is another current drawback. Since the cycle detection algo
  
 In most small cases (ports \textless 6), the genetic algorithm is able to obtain atleast 10 different graphs which satisfy the cell immediately. For some of the later classifications of rank 5, and cells of rank 6 or higher, it can take longer. Some cells of rank 6 it is unable to find a graph for (more testing needed here). As it is possible that no such realistic graph exists for some cells, it is difficult to determine whether a solution exists. The number of nodes is currently maxed at 31 nodes, as nodes are stored in a bit array, which would overflow the integer at 32.
 
-Below is graphs for all cells of rank 4 and 5. As stated previously, the genetic algorithm is capable of coming to multiple solutions for each cell, and the ones shown below are simply ones selected by us.
+Below is graphs for all cells of rank 4 and 5. Double bonds are excluded from the graphs shown below, as only one resonance structure could be seen at a time. As stated previously, the genetic algorithm is capable of coming to multiple solutions for each cell, and the ones shown below are simply ones selected by us. Notice the trend that as the Kekul\'e cell number increases, the Kekul\'e cell becomes longer. This means more resonance structures of each graph, and more connections between atoms. The higher amount of connectivity required in each cell makes it so the next graph is usually more difficult to find than the last one. Looking at Figures ~\ref{fig:rank5Results1} and ~\ref{fig:rank5Results2}, it is easy to see that the graphs get bigger and more complex as the cell number increases. 
 
 \begin{figure}[ht!]
 \centering
@@ -241,14 +241,13 @@ Below is graphs for all cells of rank 4 and 5. As stated previously, the genetic
 \label{fig:rank5Results2}
 \end{figure}
 
-When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website). Discuss more about results and problems encountered.
+Finding graphs for cells of higher ranks builds on this challenge. Not only is every graph larger, but there must be an additional atom with degree of 2. The number of combinations increases drastically, with 3 classes of rank 3, 7 classes of rank 4, 24 classes of rank 5, and 214 classes of rank 6. When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website). Discuss more about results and problems encountered.
 
 Paragraph talking about whether these molecules can be synthesized.
 
 There are many possible improvements in this area. The number of nodes could be increased to allow larger graphs. Although this would increase the amount of computation required, perhaps it is possible to implement a more efficient cycle detection algorithm, or even calculate fitness on every 2nd iteration of the genetic algorithm. These changes may allow even more results to be yielded from a heuristic genetic algorithm based approach.
 
 %\section{Conclusion}
-
 
 \begin{thebibliography}{abrv}
 

@@ -251,7 +251,7 @@ public class ImageRenderer extends javax.swing.JComponent {
 			jLabel2.setIcon(new ImageIcon(image));
 			this.validate();
 		} catch (InvalidSmilesException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Invalid SMILES String inputed");
 			e.printStackTrace();
 		}
 	}

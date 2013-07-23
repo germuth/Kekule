@@ -5,12 +5,9 @@ import geneticAlgorithm.GeneticAlgorithm;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -20,6 +17,7 @@ import shared.InputParser;
 public class RunPanel extends JPanel{
 	private JButton cellButton;
 	private JButton runButton;
+	private ArrayList<Cell> classifications;
 	private Cell selected;
 	
 	private MainWindow frame;
@@ -30,7 +28,7 @@ public class RunPanel extends JPanel{
 		this.frame = frame;
 		
 		this.setSize( new Dimension(200, 100));
-		selected = null;
+		this.selected = null;
 		
 		cellButton = new JButton("Select Cell");
 		cellButton.addActionListener( new ActionListener(){
@@ -43,7 +41,8 @@ public class RunPanel extends JPanel{
 				String number = JOptionPane.showInputDialog("Classification?");
 				int classification = Integer.parseInt( number );
 				
-				selected = readClassification(rank, classification);
+				RunPanel.this.classifications = InputParser.readClassification(rank);
+				selected = classifications.get(classification - 1);
 			}
 			
 		});
@@ -53,54 +52,12 @@ public class RunPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String[] args = new String[5];
-				GeneticAlgorithm.maine( RunPanel.this.selected, frame );
+				GeneticAlgorithm.setUpAndRun( RunPanel.this.selected, frame );
 			}
 			
 		});
 		
 		this.add( cellButton );
 		this.add( runButton );
-	}
-	
-	public static Cell readClassification(int rank, int classification) {
-		// reading classification
-		File f = new File("FullClassificationRank" + rank + ".txt");
-		Scanner s = null;
-		try {
-			s = new Scanner(f);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		s.nextLine();
-		s.nextLine();
-		s.nextLine();
-
-
-		int count = 1;
-		Cell input = null;
-		try {
-			input = InputParser.readCell2(s, rank);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		while (input != null) {
-			if( count == classification){
-				return input;
-			} else{
-				count++;
-			}
-
-			try {
-				input = InputParser.readCell2(s, rank);
-			} catch (Exception e) {
-				input = null;
-			}
-		}
-		
-		return null;
 	}
 }

@@ -101,8 +101,9 @@ public class GraphtoCell {
 
 	/**
 	 * Makes a cell from a graph. Uses a bitVector bvNodes, which is the set of
-	 * nodes we are currently considering 100101 would be 1st, 3rd, and 6th
-	 * node. Uses recursion by removing components of the graph and finding the
+	 * nodes we are currently considering.
+	 * 100101 would be 1st, 3rd, and 6th node. 
+	 * Uses recursion by removing components of the graph and finding the
 	 * Kekule cell of smaller graphs.
 	 * 
 	 * This all follows the Section 4.1 of Hesselink's Paper
@@ -120,8 +121,7 @@ public class GraphtoCell {
 
 		BitVector ports = g.getPortVector();
 
-		//TODO
-		//HERE IS WHERE IT IS SLOW
+		//TODO, slows everything down here
 		Set<BitVector> edges = Utils.arToSet(g.getEdgeCell().getPA());
 
 		// Base case

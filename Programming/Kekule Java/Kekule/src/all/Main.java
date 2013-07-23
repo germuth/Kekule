@@ -237,7 +237,7 @@ public class Main {
 		try {
 			s = new Scanner(f);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.err.println("File was unable to be found/read");
 			e.printStackTrace();
 		}
 		int rank = 6;
@@ -251,7 +251,7 @@ public class Main {
 		try {
 			input = InputParser.readCell2(s, rank);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			System.err.println("Cell was unable to be read from file");
 			e1.printStackTrace();
 		}
 		

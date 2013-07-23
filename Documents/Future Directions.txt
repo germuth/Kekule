@@ -1,10 +1,13 @@
 Directions: 
 
-Thing to do as of 7/15/2013
+Thing to do as of 7/22/2013
 
 IMPORTANT:
 - write paper
-	- lot's of info
+	- results / discussion
+		- rank 6 test
+		- talk to alida
+		- more editing
 - optimize flooding algorithm
 	- could count number of cycles perhaps
 		- do it one at a time until you have all the cycles
