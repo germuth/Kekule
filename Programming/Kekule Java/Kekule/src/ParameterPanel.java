@@ -1,4 +1,5 @@
-package gui;
+
+import gui.LabeledSlider;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,7 +25,8 @@ public class ParameterPanel extends JPanel{
 		super();
 		
 		this.setLayout( new GridLayout(7, 1));
-		this.setSize( new Dimension(450, 241));
+		this.setSize( new Dimension(380, 237));
+		this.setMinimumSize( new Dimension(460, 237));
 		Border lowered = BorderFactory.createLoweredBevelBorder();
 		this.setBorder( lowered );
 		

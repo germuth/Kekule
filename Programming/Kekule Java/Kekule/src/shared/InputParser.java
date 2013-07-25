@@ -11,10 +11,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 /*
+ * TODO
 Can we assume inputed graphs are flexible?
 Probably not, but we can covert them
 and every actual classification is flexible
 so we don't need to take in the numebr of ports
+
 Pyracylene
 14 8
 0 1 2 3 4

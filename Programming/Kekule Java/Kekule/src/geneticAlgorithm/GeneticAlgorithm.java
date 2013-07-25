@@ -27,7 +27,7 @@ import shared.InputParser;
  * @author Aaron
  *
  */
-public class GeneticAlgorithm {
+public class GeneticAlgorithm{
 	/**
 	 * The Amount of Graphs which are in the population each Iteration of the 
 	 * Genetic Algorithm. Higher is normally more accurate, however, takes
@@ -93,11 +93,6 @@ public class GeneticAlgorithm {
 	 * TODO generate text files for rank 1 2 3
 	 */
 	private static ArrayList<Cell> classifications;
-	/**
-	 * A reference kept to the graphical interface which runs the genetic algorithm.
-	 * Used to communicate with it.
-	 */
-	private static MainWindow mainWindow;
 	
 	/**
 	 * Sets up the genetic algorithm, and then calls the
@@ -106,12 +101,12 @@ public class GeneticAlgorithm {
 	 * @param Cell c, the cell we are evolving towards
 	 * @param MainWindow aj, the graphical interface
 	 */
-	public static void setUpAndRun(Cell c, MainWindow aj){
+	public static ArrayList<String> setUpAndRun(Cell c){
 		
 		//Take in cell from user
 		//Scanner input = new Scanner(System.in);
 		cell = c;
-		mainWindow = aj;
+		
 		//cell = InputParser.readCell(input);
 		cell.normalize();
 		
@@ -127,18 +122,17 @@ public class GeneticAlgorithm {
 		
 		long startTime = System.currentTimeMillis();
 		
-		run(population, maxFitness);
+		geneticAlgorithm(population, maxFitness);
 		
 		population.printAverage();
-		if( population.getBestLength( maxFitness) > 1){
-			mainWindow.giveSMILES( population.printTop3Edited( classifications ) );
-			
-		} else{
+		if( population.getBestLength( maxFitness) < 1){
 			System.out.println("No Graphs Found.");
 		}
 		
 		long duration = System.currentTimeMillis() - startTime;
 		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
+		
+		return population.getTopEdited(classifications);
 	}
 	
 	/**
@@ -147,7 +141,7 @@ public class GeneticAlgorithm {
 	 * used are the static variables of this class. 
 	 * TODO However, once the graphical interface is working properly, all values will come from there.
 	 */
-	private static void run(Population population, int maxFitness){
+	private static void geneticAlgorithm(Population population, int maxFitness){
 		
 		ArrayList<Graph> nextGen = null;
 		for(int i = 0; i < ITERATIONS; i++){

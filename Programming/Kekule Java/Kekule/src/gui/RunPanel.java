@@ -48,14 +48,14 @@ public class RunPanel extends JPanel{
 		});
 		
 		runButton = new JButton("Run");
-		runButton.addActionListener( new ActionListener(){
+		//runButton.addActionListener( new ActionListener(){
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				GeneticAlgorithm.setUpAndRun( RunPanel.this.selected, frame );
-			}
+			//@Override
+			//public void actionPerformed(ActionEvent e) {
+			//	GeneticAlgorithm.setUpAndRun( RunPanel.this.selected, frame );
+			//}
 			
-		});
+		//});
 		
 		this.add( cellButton );
 		this.add( runButton );

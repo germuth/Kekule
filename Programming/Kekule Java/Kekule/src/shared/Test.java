@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import cdk.ImageRenderer;
+import gui.ImageRenderer;
 
 public class Test {
 	//adding edges

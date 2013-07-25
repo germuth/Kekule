@@ -1,4 +1,5 @@
-package cdk;
+package gui;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -32,6 +33,9 @@ import org.openscience.cdk.renderer.generators.IGenerator;
 import org.openscience.cdk.renderer.generators.RingGenerator;
 import org.openscience.cdk.renderer.visitor.AWTDrawVisitor;
 import org.openscience.cdk.smiles.SmilesParser;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
 
 /**
  * 
@@ -69,6 +73,13 @@ public class ImageRenderer extends javax.swing.JComponent {
 
 		this.setVisible(true);
 		this.setMinimumSize(dim);
+		setLayout(null);
+		add(jPanel1);
+		add(previousButton);
+		add(jLabel1);
+		add(jTextField1);
+		add(jButton1);
+		add(nextButton);
 		this.validate();
 	}
 
@@ -83,12 +94,17 @@ public class ImageRenderer extends javax.swing.JComponent {
 	private void initComponents() {
 
 		jTextField1 = new javax.swing.JTextField();
+		jTextField1.setBounds(80, 4, 412, 30);
 		jLabel1 = new javax.swing.JLabel();
+		jLabel1.setBounds(10, 12, 60, 14);
 		jButton1 = new javax.swing.JButton();
+		jButton1.setBounds(198, 40, 105, 23);
 		nextButton = new javax.swing.JButton("Next");
+		nextButton.setBounds(385, 40, 99, 23);
 		previousButton = new JButton("Previous");
+		previousButton.setBounds(10, 40, 98, 23);
 		jPanel1 = new javax.swing.JPanel();
-		jLabel2 = new javax.swing.JLabel();
+		jPanel1.setBounds(18, 74, 466, 365);
 
 		jTextField1.setText(this.graphs.get(0));
 
@@ -118,68 +134,26 @@ public class ImageRenderer extends javax.swing.JComponent {
 		jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 		jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 		jPanel1.setForeground(new java.awt.Color(236, 233, 216));
+		
+		this.jLabel2 = new JLabel("");
 
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(
 				jPanel1);
+		jPanel1Layout.setHorizontalGroup(
+			jPanel1Layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+					.addContainerGap(33, Short.MAX_VALUE)
+					.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE)
+					.addGap(28))
+		);
+		jPanel1Layout.setVerticalGroup(
+			jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(jPanel1Layout.createSequentialGroup()
+					.addContainerGap(31, Short.MAX_VALUE)
+					.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE)
+					.addGap(28))
+		);
 		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 376,
-				Short.MAX_VALUE));
-		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-				jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 246,
-				Short.MAX_VALUE));
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				this );
-		this.setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(jPanel1,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE).addContainerGap())
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGap(18, 18, 18)
-								.addComponent(previousButton)
-								.addComponent(jLabel1)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addComponent(jTextField1,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										209, Short.MAX_VALUE)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(jButton1)
-								.addComponent(nextButton).addGap(20, 20, 20)));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.BASELINE)
-												.addComponent(previousButton)
-												.addComponent(jLabel1)
-												.addComponent(jButton1)
-												.addComponent(nextButton)
-												.addComponent(
-														jTextField1,
-														javax.swing.GroupLayout.PREFERRED_SIZE,
-														javax.swing.GroupLayout.DEFAULT_SIZE,
-														javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(jPanel1,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE).addContainerGap()));
 
 	}
 
@@ -274,9 +248,7 @@ public class ImageRenderer extends javax.swing.JComponent {
 	private JButton nextButton;
 	private JButton previousButton;
 	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JTextField jTextField1;
-	// End of variables declaration
-
+	private JLabel jLabel2;
 }

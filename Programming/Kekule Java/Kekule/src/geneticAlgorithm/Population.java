@@ -6,14 +6,10 @@ import gui.GraphToSMILES;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
 
-import shared.BitVector;
 import shared.Cell;
 import shared.GraphtoCell;
-import shared.InputParser;
 import shared.Utils;
-import cdk.ImageRenderer;
 
 /**
  * Population
@@ -82,7 +78,7 @@ public class Population {
 	 * of the genetic algorithm. Currently top 20 graphs are printed minus
 	 * duplicates of each other in the top 20
 	 */
-	public ArrayList<String> printTop3Edited(ArrayList<Cell> classy) {
+	public ArrayList<String> getTopEdited(ArrayList<Cell> classy) {
 		ArrayList<Graph> answer = new ArrayList<Graph>();
 		double bestFitness = this.population.get(0).getFitness();
 		for(int i = 0; i < this.size(); i++){
@@ -138,6 +134,7 @@ public class Population {
 		if( !smiles.isEmpty() ){
 		} else{
 			System.out.println("No Graphs Found!");
+			return new ArrayList<String>();
 		}
 		return smiles;
 	}
