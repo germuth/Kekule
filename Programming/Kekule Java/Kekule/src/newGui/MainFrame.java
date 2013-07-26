@@ -1,7 +1,6 @@
 package newGui;
 
 import geneticAlgorithm.GeneticAlgorithmTask;
-import gui.ProgressBarDemo.Task;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,13 +9,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -24,13 +19,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class MainFrame extends JFrame {
+import newGui.ParameterWindows.GAWindow;
+import newGui.ParameterWindows.MutationWindow;
+import newGui.ParameterWindows.PopulationWindow;
+
+public class MainFrame extends JFrame implements PropertyChangeListener{
 	private JPanel contentPane;
 	private StructureDisplayer structureDisplayer; 
 	
@@ -46,10 +46,20 @@ public class MainFrame extends JFrame {
 	private JCheckBox displayCell;
 	private JButton run;
 	
+	private LoadingBar loadBar;
+	
 	private JTextField SMILES;
+	
+	private JLabel cellLabel;
 	
 	private int index;
 	private ArrayList<String> graphs;
+	private String cell;
+	
+	private GAWindow gaParams;
+	private PopulationWindow popParams;
+	private MutationWindow mutaParams;
+	
 
 	/**
 	 * Launch the application.
@@ -81,17 +91,58 @@ public class MainFrame extends JFrame {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnFile.add(mntmExit);
+		
 		JMenu mnViewLibarary = new JMenu("View Libarary");
 		menuBar.add(mnViewLibarary);
 		
+		
 		JMenu mnGeneticAlgorithm = new JMenu("Genetic Algorithm");
+		this.gaParams = new GAWindow();
+		gaParams.setVisible(false);
+		
+		
 		menuBar.add(mnGeneticAlgorithm);
 		
+		JMenuItem mntmOpenParameterWindow = new JMenuItem("Open Parameter Window");
+		mnGeneticAlgorithm.add(mntmOpenParameterWindow);
+		mntmOpenParameterWindow.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.this.gaParams.setVisible(true);
+			}
+		});
+		
 		JMenu mnPopulation = new JMenu("Population");
+		this.popParams = new PopulationWindow();
+		this.popParams.setVisible(false);
+		
 		menuBar.add(mnPopulation);
 		
+		JMenuItem mntmOpenParameterWindow_1 = new JMenuItem("Open Parameter Window");
+		mnPopulation.add(mntmOpenParameterWindow_1);
+		mntmOpenParameterWindow_1.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.this.popParams.setVisible(true);
+			}
+		});
+		
 		JMenu mnMutation = new JMenu("Mutation");
+		this.mutaParams = new MutationWindow();
+		this.mutaParams.setVisible(false);
+		
 		menuBar.add(mnMutation);
+		
+		JMenuItem mntmOpenParameterWindow_2 = new JMenuItem("Open Parameter Window");
+		mnMutation.add(mntmOpenParameterWindow_2);
+		mntmOpenParameterWindow_2.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.this.mutaParams.setVisible(true);
+			}	
+		});
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -134,10 +185,13 @@ public class MainFrame extends JFrame {
 		
 		//COOL LOADING BAR GOES HERE
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(7, 299, 86, 94);
+		panel_1.setBounds(5, 299, 95, 94);
+		panel_1.setLayout(null);
 		leftBorder.add(panel_1);
-		JLabel lblCoolMiniLoading = new JLabel("cool mini loading bar");
-		panel_1.add(lblCoolMiniLoading);
+		
+		this.loadBar = new LoadingBar(100,1000);
+		this.loadBar.setBounds(0, 11, 97, 93);
+		panel_1.add( this.loadBar );
 		
 		JLabel lblSmiles = new JLabel("SMILES:");
 		lblSmiles.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -199,10 +253,6 @@ public class MainFrame extends JFrame {
 				"and classification in the upper left.");
 		txtWelcomeToInteractive.setColumns(10);
 		
-		this.displayCell = new JCheckBox("Display Cell?");
-		displayCell.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		this.displayCell.setBounds(0, 300, 99, 23);
-		rightBorder.add(this.displayCell);
 		
 		JLabel label = new JLabel("2013");
 		label.setForeground(Color.LIGHT_GRAY);
@@ -215,11 +265,34 @@ public class MainFrame extends JFrame {
 		
 		this.structureDisplayer = new StructureDisplayer("O=Cc1ccc(O)c(OC)c1");
 		structureDisplayer.setBounds(-5, -64, 500, 451);
-		panel.add(structureDisplayer);
 		
 		this.SMILES = new JTextField();
 		this.SMILES.setBounds(10, 390, 474, 34);
 		panel.add(this.SMILES);
+	
+		this.cellLabel = new JLabel("");
+		cellLabel.setForeground(Color.LIGHT_GRAY);
+		cellLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		this.cellLabel.setVisible(false);
+		this.cellLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		this.cellLabel.setBounds(20, 346, 451, 24);
+		panel.add(this.cellLabel);
+		panel.add(structureDisplayer);
+		
+		this.displayCell = new JCheckBox("Display Cell?");
+		this.displayCell.setSelected(true);
+		this.displayCell.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				if(MainFrame.this.displayCell.isSelected()){
+					MainFrame.this.cellLabel.setVisible(true);
+				} else{
+					MainFrame.this.cellLabel.setVisible(false);
+				}
+			}
+		});
+		displayCell.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		this.displayCell.setBounds(0, 300, 99, 23);
+		rightBorder.add(this.displayCell);
 	}
 
 	public void run(){
@@ -229,29 +302,44 @@ public class MainFrame extends JFrame {
 			
 			classification1 = Integer.parseInt( this.classification.getText() );
 			
-			ExecutorService executor = Executors.newCachedThreadPool();
-	        ArrayList<String> result = 
-	        		executor.invokeAny(Arrays.asList(
-	        				new GeneticAlgorithmTask(rank, classification1)));
+			//ExecutorService executor = Executors.newCachedThreadPool();
+	        //ArrayList<String> result = 
+	        //		executor.invokeAny(Arrays.asList(
+	        //				new GeneticAlgorithmTask(rank, classification1, this.loadBar)));
+			this.loadBar.setStage(1);
+			
+			GeneticAlgorithmTask task = new GeneticAlgorithmTask(rank, classification1, this );
+	        task.addPropertyChangeListener(this);
+	        task.execute();
+	        //GeneticAlgorithmTask task = new GeneticAlgorithmTask(rank, classification1, this.loadBar );
+	        //task.addPropertyChangeListener( this );
+	        //task.execute();
+			
+	        //this.graphs = task.get();
 	        
-	        this.graphs = result;
+	        //this.index = 0;
+	        //this.structureDisplayer.setGraph( );
+	        //this.structureDisplayer.drawCurrentSMILES();
 	        
-	        this.index = 0;
-	        this.structureDisplayer.setGraph(this.graphs.get(0));
-	        this.structureDisplayer.drawCurrentSMILES();
-	        
-	        executor.shutdown();
+	        //executor.shutdown();
 	        
 		} catch(NumberFormatException e){
 			System.err.println("The rank or classification you entered is invalid");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		
+	}
+	
+	public void collectAndShowResults(ArrayList<String> graphs, String cell){
+		this.index = 0;
+		if( graphs.size() > 0){
+			this.graphs = graphs;
+			this.cell = cell;
+			this.structureDisplayer.setGraph( this.graphs.get(0) );
+			this.structureDisplayer.drawCurrentSMILES();
+			this.SMILES.setText( this.graphs.get(0) );
+			this.cellLabel.setText(cell);
+		} else{
+			System.out.println("none of them graphs found yo");
+		}
 	}
 	
 	public String getNextGraph() {
@@ -260,6 +348,7 @@ public class MainFrame extends JFrame {
 		} else {
 			index++;
 		}
+		this.SMILES.setText( this.graphs.get(index) );
 		return graphs.get(index);
 	}
 
@@ -269,6 +358,19 @@ public class MainFrame extends JFrame {
 		} else{
 			index--;
 		}
+		this.SMILES.setText( this.graphs.get(index) );
 		return graphs.get(index);
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if ("progress" == evt.getPropertyName()) {
+            int progress = (Integer) evt.getNewValue();
+            MainFrame.this.loadBar.updateProgress(progress);
+            //taskOutput.append(String.format(
+            //        "Completed %d%% of task.\n", task.getProgress()));
+        } else{
+        	System.out.println("Not " + evt.getNewValue());
+        }
 	}
 }

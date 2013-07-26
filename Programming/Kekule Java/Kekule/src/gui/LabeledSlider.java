@@ -36,7 +36,7 @@ public class LabeledSlider extends JPanel{
 		//create label with name
 		myLabel = new JLabel(name);
 		myLabel.setBounds(0, 0, 108, 22);
-		myLabel.setFont(new Font("Serif", Font.PLAIN, 16));
+		myLabel.setFont(new Font("Serif", Font.PLAIN, 12));
 		this.add( myLabel );
 		this.add( mySlider );
 		

@@ -46,7 +46,7 @@ Moore's Law (see Figure ~\ref{fig:MooresLaw}) in 1965 \cite{Moore} predicted tha
 
 One alternative possibility to allow smaller circuitry is to use single molecules as computational elements. $\pi$-conjugated organic molecules have been the main focus, and there have been solutions to make them perform as wires \cite{9}, diodes \cite{10,11}, resistors \cite{12,13}, transistors \cite{14, 15, 16, 17}, and switches \cite{18, 19}. Following this it was shown that a single molecule can represent an entire Boolean function or logic gate (AND\cite{20} , OR\cite{21}, IF THEN (implication)\cite{22}, NAND\cite{23}, and NOR\cite{24}). M. H.  van der Veen \cite{v06} has shown that a single molecule can facilitate all 16 fundamental logic operations. These molecules can even be combined to achieve bi-functional logic with increased complexity (another cite).
 
-M. H. van der Veen \cite{v06} also describes $\pi$-logic, a way to determine which Boolean operations any $\pi$-conjugated system can preform. All of this allows for, in theory the design of highly compact and complex logic circuits. There still exists many technical problems in applying this potential.
+M. H. van der Veen \cite{v06} describes $\pi$-logic, a way to determine which Boolean operations any $\pi$-conjugated system can preform. All of this allows for, in theory the design of highly compact and complex logic circuits. There still exists many technical problems in applying this potential.
 
 In $\pi$-logic, molecules have terminals which consist of atoms where connections outside the molecule can be attached. $\pi$-conjugated wires \cite{9} or omniconjugated molecules \cite{OmniConj} have been suggested to interconnect separate molecules. A pair of terminals is called a pathway. If there exists an alternating single-double bond path from terminal to terminal, the path is deemed 'open'. Open paths have been shown to conduct electricity to a much higher extent than closed paths \cite{openPath}. A path can be toggled (all single bonds become double bonds and vice versa) by sending an electrical 'soliton' over the path \cite{HK88}. A molecule can contain multiple intersecting paths, and in this way, when one path is toggled, another path may be opened or closed (see Figure ~\ref{fig:acenaptheneHighlighted}).
 
@@ -57,14 +57,15 @@ In $\pi$-logic, molecules have terminals which consist of atoms where connection
 \label{fig:acenaptheneHighlighted}
 \end{figure}
 
-(Might exclude this paragraph) To begin the analysis using $\pi$-logic, all possible double bond patterns of the molecule are deduced. Two terminals are selected for an output, and whether the path between them is open or closed represents an output of '1' or '0' respectively. The other terminals are paired, and each pair represents an input of '1' or '0', again depending on the openness of the path. From this you can observe all the different Kekul\'e structures of the molecule and map the inputs to the outputs, resulting with a Boolean function. If the terminals are paired in a different orientation, you may redo the process and have the same molecule represent another Boolean function. 
+%(Might exclude this next paragraph) 
+To begin the analysis using $\pi$-logic, all possible double bond patterns of the molecule are deduced. Two terminals are selected for an output, and whether the path between them is open or closed represents an output of '1' or '0' respectively. The other terminals are paired, and each pair represents an input of '1' or '0', again depending on the openness of the path. From this you can observe all the different Kekul\'e structures of the molecule and map the inputs to the outputs, resulting with a Boolean function. If the terminals are paired in a different orientation, you may redo the process and have the same molecule represent another Boolean function. 
 
 Kekul\'e theory \cite{H13, HH13} was introduced to investigate and systematize this qualitative switching behavior. In Kekul\'e theory, terminals are called ports, and pathways are called channels. A Kekul\'e state is a configuration of bonds such that every node (other than the ports) has precisely one double bond. Ports may or may not have a double bond. Each Kekul\'e state (or resonance structure) of the molecule has a so called port assignment, the set of ports which contain a double bond. A Kekul\'e cell then consists of the set of port assignments for every resonance structure of that molecule (see Figure ~\ref{fig:kekuleCell}). The rank of a cell or molecule is defined as its number of ports.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=110mm]{KekuleCell.png}
-\caption{The Kekul\'e cell of a simple molecule (2-methylbutene). The 3 structures indicate the 3 possible arrangements of double bonds. The second row indicates the port assignment (which ports contain a double bond) for each structure, and the third row is the Kekul\'e cell for that entire molecule. }
+\caption{The Kekul\'e cell of a simple molecule (2-methylbutene). The 3 structures indicate the 3 possible arrangements of double bonds. The second row indicates the port assignment (which ports contain a double bond) for each structure, and the third row is the Kekul\'e cell for the entire molecule. }
 \label{fig:kekuleCell}
 \end{figure}
 
@@ -78,13 +79,14 @@ However, Hesselink made no attempt to achieve graphs which represent realistic m
 
 \subsection{Overview}
 
-Section 2 consists of the restrictions used to obtain more realistic graphs, and the reasoning behind them. Section 3 explains the genetic algorithm, and how certain genetic operations are applied on graphs. Section 4 presents the results of the genetic algorithms and assesses its validity. This includes how realistic the obtained graphs are, and whether these structures can be easily synthesized chemically. %Conclusions are drawn in Section 5.
+Section 2 consists of the restrictions used to obtain more realistic graphs, and the reasoning behind them. Section 3 explains the genetic algorithm, and how certain genetic operations are applied on graphs. Section 4 presents the results of the genetic algorithms and assesses its validity. This includes how realistic the obtained graphs are, and whether these structures can be synthesized chemically. %Conclusions are drawn in Section 5.
 
 \section{Restrictions}
 
 Carbon is tetravalent, meaning it has 4 valence electrons available to form covalent chemical bonds. This means (in most cases), carbon is only stable when bonded with 4 bonding electrons, in order to complete its octet. These 4 electrons may be provided from 4 distinct molecules, or there could be one or more molecules providing multiple electrons.
 
-In $\pi$ conjugated systems, every carbon atom contains precisely one double bond. Double bonds hold twice the amount of electrons and therefore each carbon can be at most connected to 3 distinct atoms. This is seen in all polycyclic polyunsaturated hydrocarbons. In this way, each node in our graphs has a maximum degree of 3. Ports however, must be able to interact with the outside world. If we assume this connection is through molecular wires, as in \cite{9}, or through an omniconjugated molecule \cite{v06}, then each port must hold back one of it's valence electrons to be able to connect to atoms outside the molecule. For this reason, we restrict ports to have a maximum degree of 2. Talk about if ports have double bonds like internal nodes do.
+In $\pi$ conjugated systems, every carbon atom contains precisely one double bond. Double bonds hold twice the amount of electrons and therefore each carbon can be at most connected to 3 distinct atoms. This is seen in all polycyclic polyunsaturated hydrocarbons. In this way, each node in our graphs has a maximum degree of 3. Ports however, must be able to interact with the outside world. If we assume this connection is through molecular wires, as in \cite{9}, or through an omniconjugated molecule \cite{v06}, then each port must hold back one of it's valence electrons to be able to connect to atoms outside the molecule. For this reason, we restrict ports to have a maximum degree of 2. 
+%Talk about if ports have double bonds like internal nodes do.
 
 Cycles must also be confined. Due to steric hinderance, cycles such as cyclopropane or cyclobutane are rarely stable in $\pi$ conjugated systems. Huckel's rule states that only cycles with 4n + 2 (2, 6, 10, etc.) delocalized electrons are considered aromatic and stable. However, Huckel's rule is mainly meant for monocyclic systems, meaning pentagons and heptagons can be stable in certain arrangements (see Azulene, Figure ~\ref{fig:azulene}). More on this in Section 4. For this reason, we currently only expand cycles of length 3 or 4. 
 

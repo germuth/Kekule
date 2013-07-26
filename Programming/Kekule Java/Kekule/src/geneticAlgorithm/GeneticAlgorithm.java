@@ -1,14 +1,11 @@
 package geneticAlgorithm;
 
 import graphs.Graph;
-import gui.MainWindow;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
+import newGui.LoadingBar;
 import shared.BitVector;
 import shared.Cell;
 import shared.GraphtoCell;
@@ -94,6 +91,8 @@ public class GeneticAlgorithm{
 	 */
 	private static ArrayList<Cell> classifications;
 	
+	private static GeneticAlgorithmTask gat;
+	
 	/**
 	 * Sets up the genetic algorithm, and then calls the
 	 * run() method of this class to actually perform
@@ -101,8 +100,9 @@ public class GeneticAlgorithm{
 	 * @param Cell c, the cell we are evolving towards
 	 * @param MainWindow aj, the graphical interface
 	 */
-	public static ArrayList<String> setUpAndRun(Cell c){
+	public static ArrayList<String> setUpAndRun(Cell c, GeneticAlgorithmTask gat){
 		
+		GeneticAlgorithm.gat = gat;
 		//Take in cell from user
 		//Scanner input = new Scanner(System.in);
 		cell = c;
@@ -116,11 +116,18 @@ public class GeneticAlgorithm{
 		
 		classifications = InputParser.readClassification(rank);
 		
+		gat.setProgressBar(71);
+		//lb.setStage(1);
+		
 		//Generate the initial population randomly
 		System.out.println("Generating Population");
 		Population population = generateInitialPopulation();
 		
+		//lb.setStage(2);
+		
 		long startTime = System.currentTimeMillis();
+		
+		gat.setProgressBar(0);
 		
 		geneticAlgorithm(population, maxFitness);
 		
@@ -132,7 +139,7 @@ public class GeneticAlgorithm{
 		long duration = System.currentTimeMillis() - startTime;
 		System.out.println("Time Taken: " + (double)duration/1000.0 + " seconds.");
 		
-		return population.getTopEdited(classifications);
+		return population.getTopEdited(classifications, maxFitness);
 	}
 	
 	/**
@@ -149,6 +156,9 @@ public class GeneticAlgorithm{
 			if( population.getBestLength(maxFitness) >= GeneticAlgorithm.MINIMUM_GRAPHS_REQUIRED){
 				break;
 			}
+			
+			gat.setProgressBar( (int) (((double)(population.getBestLength(maxFitness)) 
+					/ (double)GeneticAlgorithm.MINIMUM_GRAPHS_REQUIRED) * 100) );
 			
 			//print out progress report every 10 percent
 			double progress = (double)i/(double)ITERATIONS;
@@ -193,6 +203,8 @@ public class GeneticAlgorithm{
 				calculateFitness(current);
 			}
 
+			gat.setProgressBar(100);
+			
 			population = new Population( nextGen );
 		}
 	}
@@ -469,6 +481,9 @@ public class GeneticAlgorithm{
 		
 		//for each graph added
 		for(int i = 0; i < POPULATION_SIZE; i++){
+			
+			gat.setProgressBar( (int) (((double)(i+1) / (double)POPULATION_SIZE) * 100) );
+			
 			String name = "G" + (i+1);
 			int nP = rank;
 			int nC = rank;

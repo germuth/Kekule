@@ -78,9 +78,8 @@ public class Population {
 	 * of the genetic algorithm. Currently top 20 graphs are printed minus
 	 * duplicates of each other in the top 20
 	 */
-	public ArrayList<String> getTopEdited(ArrayList<Cell> classy) {
+	public ArrayList<String> getTopEdited(ArrayList<Cell> classy, int bestFitness) {
 		ArrayList<Graph> answer = new ArrayList<Graph>();
-		double bestFitness = this.population.get(0).getFitness();
 		for(int i = 0; i < this.size(); i++){
 			if( this.population.get(i).getFitness() == bestFitness){
 				answer.add( this.population.get(i) );
