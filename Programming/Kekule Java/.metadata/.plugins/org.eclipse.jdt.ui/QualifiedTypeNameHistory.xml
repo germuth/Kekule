@@ -13,7 +13,6 @@
 <fullyQualifiedTypeName name="shared.InputParser"/>
 <fullyQualifiedTypeName name="javax.media.j3d.TriangleStripArray"/>
 <fullyQualifiedTypeName name="classify.Classify"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="makeCell.GraphtoCell"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="shared.CellToGraph"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="newGui.ParameterWindows.PopulationWindow"/>
 <fullyQualifiedTypeName name="geneticAlgorithm.GAParameters"/>
 <fullyQualifiedTypeName name="shared.Utils"/>
+<fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>
