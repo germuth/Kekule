@@ -768,7 +768,7 @@ public class Graph implements Comparable<Graph>{
 			}
 		}
 		
-		return null;
+		return this;
 	}
 	
 	/**

@@ -369,7 +369,14 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 			this.structureDisplayer.setGraph( this.graphs.get(0) );
 			this.structureDisplayer.drawCurrentSMILES();
 			this.SMILES.setText( this.graphs.get(0) );
+			int count = 0;
+			int length = cell.length();
+			while( length > 60){
+				count++;
+				length -= 10;
+			}
 			this.cellLabel.setText(cell);
+			this.cellLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, (14 - count)));
 		} else{
 			System.out.println("none of them graphs found yo");
 		}

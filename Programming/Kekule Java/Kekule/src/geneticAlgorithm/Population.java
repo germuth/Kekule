@@ -96,10 +96,15 @@ public class Population {
 			Graph current = answer.get(i);
 			
 			//widen cycles in graph
+			//TODO returns itself rather than null?
 			current.widenCycles();
 			
 			if( current.isDisjoint() ){
-				answer.add( current.connect(null) );
+				Graph g = current.connect(null);
+				
+				if( !g.equals(current)){
+					answer.add(g);
+				}
 			}
 			
 			Cell c = GraphtoCell.makeCell( current );
