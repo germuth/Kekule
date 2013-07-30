@@ -1,5 +1,6 @@
 package newGui.ParameterWindows;
 
+import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
 
 import java.awt.Dimension;
@@ -19,7 +20,6 @@ import javax.swing.border.EmptyBorder;
 public class GAWindow extends JFrame {
 
 	private JPanel contentPane;
-	
 	private LabeledSlider iterations;
 	private LabeledSlider answers;
 	private JCheckBox fitness;
@@ -63,9 +63,17 @@ public class GAWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				GAWindow.this.setVisible(false);
+				GAWindow.this.giveParameters();
 			}	
 		});
 		btnNewButton.setBounds(283, 12, 78, 23);
 		panel.add(btnNewButton);	
+	}
+	
+	public void giveParameters(){
+		//set iteration number
+		GAParameters.setIterations( this.iterations.getValue() );
+		GAParameters.setMinimumGraphsRequired( this.answers.getValue() );
+		GAParameters.setCalculateFitnessEvery2nd( this.fitness.isSelected() );
 	}
 }

@@ -17,6 +17,11 @@ import java.util.Set;
  */
 public class Utils {
 	
+	public static double percent(int p){
+		double per = (double)p/(double)100.0;
+		return per;
+	}
+	
 	public static int getLastSender(String packet){
 		String[] nodes = packet.split(" ");
 		String last = nodes[nodes.length - 1];

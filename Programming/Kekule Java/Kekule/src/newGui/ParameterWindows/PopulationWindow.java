@@ -17,6 +17,8 @@ import newGui.ParameterWindows.PopulationPanel.PopParameterPanel;
 public class PopulationWindow extends JFrame {
 
 	private JPanel contentPane;
+	private InitPopParameterPanel initPop;
+	private PopParameterPanel pop;
 
 	/**
 	 * Launch the application.
@@ -44,22 +46,29 @@ public class PopulationWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		InitPopParameterPanel left = new InitPopParameterPanel();
-		left.setBounds(5, 5, 375, 262);
-		PopParameterPanel right = new PopParameterPanel();
-		right.setBounds(380, 5, 375, 228);
+		this.initPop = new InitPopParameterPanel();
+		this.initPop.setBounds(5, 5, 375, 262);
+		
+		this.pop = new PopParameterPanel();
+		this.pop.setBounds(380, 5, 375, 228);
 		contentPane.setLayout(null);
-		contentPane.add( left );
-		contentPane.add( right );
+		contentPane.add( this.initPop );
+		contentPane.add( this.pop );
 		
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				PopulationWindow.this.setVisible(false);
+				PopulationWindow.this.setParameters();
 			}	
 		});
 		btnClose.setBounds(666, 244, 89, 23);
 		contentPane.add(btnClose);
+	}
+	
+	public void setParameters(){
+		this.initPop.setParameters();
+		this.pop.setParameters();
 	}
 }

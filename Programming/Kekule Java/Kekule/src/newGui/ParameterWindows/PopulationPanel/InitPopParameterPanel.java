@@ -1,32 +1,26 @@
 package newGui.ParameterWindows.PopulationPanel;
 
+import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSeparator;
 
 public class InitPopParameterPanel extends JComponent {
 
 	private JPanel contentPane;
 	
-	private LabeledSlider popSize;
-	private LabeledSlider elite;
-	private LabeledSlider random;
-	private LabeledSlider mutant;
-	private LabeledSlider crossover;
-	private JPanel panel;
-	private JPanel panel_1;
-	private JButton btnNewButton;
+	private LabeledSlider numNodesFrom;
+	private LabeledSlider numNodesTo;
+	private LabeledSlider numEdgesFrom;
+	private LabeledSlider numEdgesTo;
+	private LabeledSlider fitnessThreshold;
 
 	/**
 	 * Create the frame.
@@ -44,23 +38,33 @@ public class InitPopParameterPanel extends JComponent {
 		lblGeneticAlgorithmParameter.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblGeneticAlgorithmParameter);
 		
-		this.popSize = new LabeledSlider("Number Nodes from", 0, 25, 0);
-		contentPane.add( this.popSize );
+		this.numNodesFrom = new LabeledSlider("Number Nodes from", 0, 25, 0);
+		contentPane.add( this.numNodesFrom );
 	
-		this.elite = new LabeledSlider("Number Nodes to", 1, 30, 20);
-		contentPane.add( this.elite );
+		this.numNodesTo = new LabeledSlider("Number Nodes to", 1, 30, 20);
+		contentPane.add( this.numNodesTo );
 		
-		this.random = new LabeledSlider("Number Edges from", 5, 20, 5);
-		contentPane.add( this.random );		
+		this.numEdgesFrom = new LabeledSlider("Number Edges from", 5, 20, 5);
+		contentPane.add( this.numEdgesFrom );		
 
-		this.mutant = new LabeledSlider("Number Edges to", 5, 30, 30);
-		contentPane.add( this.mutant );	
+		this.numEdgesTo = new LabeledSlider("Number Edges to", 5, 30, 30);
+		contentPane.add( this.numEdgesTo );	
 
-		this.crossover = new LabeledSlider("Fitness Threshold", -10, 10, 0);
-		contentPane.add( this.crossover );		
+		this.fitnessThreshold = new LabeledSlider("Fitness Threshold", -15, 15, 0);
+		contentPane.add( this.fitnessThreshold );		
 		
 		this.add(contentPane);
 		contentPane.setPreferredSize(new Dimension( 297, 200));
 	}
 	
+	public void setParameters(){
+		
+		GAParameters.setNumNodesFrom( this.numNodesFrom.getValue() );
+		GAParameters.setNumNodesTo( this.numNodesTo.getValue() );
+		
+		GAParameters.setNumEdgesFrom( this.numEdgesFrom.getValue() );
+		GAParameters.setNumEdgesTo( this.numEdgesTo.getValue() );
+		
+		GAParameters.setFitnessThreshold( this.fitnessThreshold.getValue() );
+	}
 }

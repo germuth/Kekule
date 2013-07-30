@@ -1,15 +1,13 @@
 package newGui.ParameterWindows.PopulationPanel;
 
+import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -23,9 +21,6 @@ public class PopParameterPanel extends JComponent {
 	private LabeledSlider random;
 	private LabeledSlider mutant;
 	private LabeledSlider crossover;
-	private JPanel panel;
-	private JPanel panel_1;
-	private JButton btnNewButton;
 
 	/**
 	 * Create the frame.
@@ -58,5 +53,16 @@ public class PopParameterPanel extends JComponent {
 		contentPane.add( this.crossover );		
 
 		this.add( contentPane );
+	}
+	
+	public void setParameters(){
+		
+		GAParameters.setPopulationSize( this.popSize.getValue() );
+		
+		GAParameters.setEliteNumber( this.elite.getValue() );
+		GAParameters.setRandomNumber( this.random.getValue() );
+		
+		GAParameters.setMutantNumber( this.mutant.getValue() );
+		GAParameters.setCrossoverNumber( this.crossover.getValue() );
 	}
 }

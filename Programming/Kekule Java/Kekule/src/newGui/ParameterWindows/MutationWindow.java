@@ -1,5 +1,6 @@
 package newGui.ParameterWindows;
 
+import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
 
 import java.awt.Dimension;
@@ -16,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
+
+import shared.Utils;
 
 public class MutationWindow extends JFrame {
 
@@ -74,11 +77,22 @@ public class MutationWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				MutationWindow.this.setVisible(false);
+				MutationWindow.this.setParameters();
 			}	
 		});
 		btnNewButton.setBounds(283, 12, 78, 23);
 		panel.add(btnNewButton);
 
+	}
+	
+	public void setParameters(){
 		
+		GAParameters.setAddNodeChance( Utils.percent( this.addN.getValue() ) );
+		GAParameters.setRemoveNodeChance( Utils.percent( this.removeN.getValue() ) );
+		
+		GAParameters.setAddEdgeChance( Utils.percent( this.addE.getValue() ) );
+		GAParameters.setRemoveEdgeChance( Utils.percent( this.removeE.getValue() ) );
+		
+		GAParameters.setExtendPortsChance( Utils.percent( this.extendP.getValue() ) );
 	}
 }

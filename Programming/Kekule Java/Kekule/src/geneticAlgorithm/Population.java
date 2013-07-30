@@ -151,11 +151,11 @@ public class Population {
 	public ArrayList<Graph> getNextGeneration(){
 		//for next generation the best 90 are picked
 		ArrayList<Graph> nextGen = new ArrayList<Graph>();
-		for(int i = 0; i < GeneticAlgorithm.ELITE_NUMBER; i++){
+		for(int i = 0; i < GAParameters.getEliteNumber(); i++){
 			nextGen.add(population.get(i));
 		}
 		//and 10 random ones
-		for(int i = 0; i < GeneticAlgorithm.RANDOM_NUMBER; i++){
+		for(int i = 0; i < GAParameters.getRandomNumber(); i++){
 			nextGen.add( this.getRandom() );
 		}
 		

@@ -21,54 +21,12 @@ import shared.InputParser;
  * 
  * Numbers above are default and the actual values used are the static members variables of the class below.
  * 
+ * TODO add check to make sure population numbers work out
+ * 
  * @author Aaron
  *
  */
 public class GeneticAlgorithm{
-	/**
-	 * The Amount of Graphs which are in the population each Iteration of the 
-	 * Genetic Algorithm. Higher is normally more accurate, however, takes
-	 * longer
-	 */
-	private static final int POPULATION_SIZE = 1000;
-	/**
-	 * The Amount of iterations the genetic algorithm will perform until stopping.
-	 * More Iterations move the entire population closer to the optimal result, but
-	 * again takes longer.
-	 */
-	private static final int ITERATIONS = 100;
-	/**
-	 * The amount of graphs which are taken from the previous population
-	 * to the next population based only on health. Basically, this means
-	 * the top 90 of each generation are passed to the next generation. 
-	 */
-	public static final int ELITE_NUMBER = 140;
-	/**
-	 * The amount of graphs which are taken from the previous population
-	 * randomly to the next population. In this case, 90 are taken from
-	 * the best of last generation, and 10 are randomly taken for genetic
-	 * diversity.
-	 */
-	public static final int RANDOM_NUMBER = 60;
-	/**
-	 * The amount of graphs generated from a population by simple mutation. 
-	 * In our case, 100 graphs are initially taken in, and these graphs 
-	 * are mutated to give 200 additional graphs.
-	 */
-	private static final int MUTANT_NUMBER = 400;
-	/**
-	 * The amount of graphs generated from crossover. In our case, out of the 100
-	 * starting elites, two are chosen at random 200 to crossover and create a new
-	 * graph. The start elite + mutantNumber + crossOverNumber = 500, the 
-	 * entire population size.
-	 */
-	private static final int CROSSOVER_NUMBER = 400; 
-	/**
-	 * The amount of graphs with maximum fitness that are required before the
-	 * genetic algorithm will terminate. If this number is never reached, it
-	 * will terminate when the number of iterations is reached
-	 */
-	private static final int MINIMUM_GRAPHS_REQUIRED = 3;
 	/**
 	 * Random Number Generator used for all randomness of the genetic algorithm.
 	 */
@@ -151,17 +109,17 @@ public class GeneticAlgorithm{
 	private static void geneticAlgorithm(Population population, int maxFitness){
 		
 		ArrayList<Graph> nextGen = null;
-		for(int i = 0; i < ITERATIONS; i++){
+		for(int i = 0; i < GAParameters.getIterations() ; i++){
 			//if we've found enough graphs, quit
-			if( population.getBestLength(maxFitness) >= GeneticAlgorithm.MINIMUM_GRAPHS_REQUIRED){
+			if( population.getBestLength(maxFitness) >= GAParameters.getMinimumGraphsRequired() ){
 				break;
 			}
 			
 			gat.setProgressBar( (int) (((double)(population.getBestLength(maxFitness)) 
-					/ (double)GeneticAlgorithm.MINIMUM_GRAPHS_REQUIRED) * 100) );
+					/ (double)GAParameters.getMinimumGraphsRequired()) * 100) );
 			
 			//print out progress report every 10 percent
-			double progress = (double)i/(double)ITERATIONS;
+			double progress = (double)i/(double)GAParameters.getIterations();
 			if((progress*100) % 5 == 0){
 				System.out.println(progress);
 			}
@@ -176,7 +134,7 @@ public class GeneticAlgorithm{
 			//likely to get each graph twice
 			//must add mutants to separate list to ensure they are not crossover-ed this iteration
 			ArrayList<Graph> mutants = new ArrayList<Graph>();
-			for(int j = 0; j < MUTANT_NUMBER; j++){
+			for(int j = 0; j < GAParameters.getMutantNumber(); j++){
 				Graph mutant = nextGen.get( random.nextInt( nextGen.size()) );
 				mutant.setFitness( 0 );
 				mutants.add( mutateGraph(mutant) );
@@ -184,7 +142,7 @@ public class GeneticAlgorithm{
 			
 			//Perform crossover
 			//two random graphs from elite are chosen and combined
-			for(int j = 0; j < CROSSOVER_NUMBER; j++){
+			for(int j = 0; j < GAParameters.getCrossoverNumber(); j++){
 				//TODO use 4 parents
 				//get two random parents
 				Graph parent1 = nextGen.get( random.nextInt( nextGen.size()) );
@@ -406,14 +364,14 @@ public class GeneticAlgorithm{
 		mutant.setFitness( 0 );
 		
 		//add vertex
-		if( random.nextDouble() < 0.20 && mutant.getNumNodes() < 30){
+		if( random.nextDouble() < GAParameters.getAddNodeChance() 
+				&& mutant.getNumNodes() < 30){
 			mutant.setNumNodes( mutant.getNumNodes() + 1 );
 		}
 		//remove vertex
-		//not precisely 20 percent chance to remove vertex
-		//technically 0.80 * 0.20 chance
 		//must ensure we can delete a node
-		else if( random.nextDouble() < 0.20 && mutant.getNumNodes() > rank){
+		if( random.nextDouble() < GAParameters.getRemoveNodeChance()
+				&& mutant.getNumNodes() > rank){
 			//get random node
 			//if port is deleted, node after that will be assigned new port automatically
 			int node = 1 << random.nextInt( mutant.getNumNodes() );
@@ -431,7 +389,7 @@ public class GeneticAlgorithm{
 		}
 		
 		//add edge
-		if( random.nextDouble() < 0.40 ){
+		if( random.nextDouble() < GAParameters.getAddEdgeChance() ){
 			int node1 = 1 << random.nextInt( mutant.getNumNodes() );
 			int node2 = 1 << random.nextInt( mutant.getNumNodes() );
 			BitVector newEdge = new BitVector( node1 + node2 );
@@ -454,13 +412,15 @@ public class GeneticAlgorithm{
 
 		
 		//remove edge
-		if( random.nextDouble() < 0.40 && mutant.getEdgeCell().size() > 0){
+		if( random.nextDouble() < GAParameters.getRemoveEdgeChance() 
+				&& mutant.getEdgeCell().size() > 0){
 			BitVector removedEdge = mutant.getEdgeCell().getPA()[ random.nextInt(mutant.getEdgeCell().size()) ];
 			mutant.removeEdge( removedEdge );
 		}
 		
 		//extend the ports out
-		if( random.nextDouble() < 0.05 && mutant.getNumNodes() < (30 - mutant.getNumPorts())){
+		if( random.nextDouble() < GAParameters.getExtendPortsChance() 
+				&& mutant.getNumNodes() < (30 - mutant.getNumPorts())){
 			mutant = mutant.extendPortsNoCell();
 		}
 		return mutant;
@@ -480,21 +440,28 @@ public class GeneticAlgorithm{
 		ArrayList<Graph> population = new ArrayList<Graph>();
 		
 		//for each graph added
-		for(int i = 0; i < POPULATION_SIZE; i++){
+		for(int i = 0; i < GAParameters.getPopulationSize(); i++){
 			
-			gat.setProgressBar( (int) (((double)(i+1) / (double)POPULATION_SIZE) * 100) );
+			gat.setProgressBar( (int) (((double)(i+1)   / 
+					(double)GAParameters.getPopulationSize()) * 100) );
 			
 			String name = "G" + (i+1);
 			int nP = rank;
 			int nC = rank;
 			
-			//add anywhere from 0 - 19 nodes
-			nC += random.nextInt(20);
+			//add anywhere from (to) -> (from) nodes
+			int from = GAParameters.getNumNodesFrom();
+			int to = GAParameters.getNumNodesTo();
+			nC += from + random.nextInt( to - from );
+			
 			
 			//edges always added
 			//add atleast enough to connect all your nodes
-			//num nodes - 1
-			int edgesToAdd = nC-1 + random.nextInt(10);
+			//which is num nodes - 1
+			// PLUS from -> to
+			from = GAParameters.getNumEdgesFrom();
+			to = GAParameters.getNumEdgesTo();	
+			int edgesToAdd = nC-1 + from + random.nextInt( to - from );
 			
 			Cell c = new Cell();
 			c.setNumPorts( rank );
