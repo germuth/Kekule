@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="makeCell.Utils"/>
-<fullyQualifiedTypeName name="java.util.TreeSet"/>
-<fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="shared.Permutations"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
@@ -27,7 +24,6 @@
 <fullyQualifiedTypeName name="gui.ProgressBarDemo"/>
 <fullyQualifiedTypeName name="com.sun.jmx.snmp.tasks.Task"/>
 <fullyQualifiedTypeName name="gui.ProgressBarDemo.Task"/>
-<fullyQualifiedTypeName name="shared.Utils"/>
 <fullyQualifiedTypeName name="org.openscience.cdk.renderer.generators.BasicAtomGenerator"/>
 <fullyQualifiedTypeName name="org.openscience.cdk.renderer.RendererModel"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
@@ -48,7 +44,6 @@
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="javax.swing.Box"/>
 <fullyQualifiedTypeName name="gui.LabeledSlider"/>
-<fullyQualifiedTypeName name="javax.swing.JComponent"/>
 <fullyQualifiedTypeName name="javax.swing.border.Border"/>
 <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Future"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="geneticAlgorithm.GeneticAlgorithmTask"/>
 <fullyQualifiedTypeName name="graphs.Graph"/>
 <fullyQualifiedTypeName name="newGui.MainFrame"/>
+<fullyQualifiedTypeName name="javax.swing.JComponent"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="newGui.ParameterWindows.PopulationWindow"/>
+<fullyQualifiedTypeName name="geneticAlgorithm.GAParameters"/>
+<fullyQualifiedTypeName name="shared.Utils"/>
 </qualifiedTypeNameHistroy>

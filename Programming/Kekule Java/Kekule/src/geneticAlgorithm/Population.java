@@ -98,6 +98,10 @@ public class Population {
 			//widen cycles in graph
 			current.widenCycles();
 			
+			if( current.isDisjoint() ){
+				answer.add( current.connect(null) );
+			}
+			
 			Cell c = GraphtoCell.makeCell( current );
 			c.normalize();
 			

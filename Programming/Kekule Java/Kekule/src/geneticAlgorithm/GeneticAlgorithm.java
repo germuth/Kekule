@@ -498,7 +498,7 @@ public class GeneticAlgorithm{
 			
 			//calculate the fitness of all new graphs
 			calculateFitness(newbie);
-			if( newbie.getFitness() < 0){
+			if( newbie.getFitness() < GAParameters.getFitnessThreshold()){
 				i--;
 			} else{
 				population.add(newbie);

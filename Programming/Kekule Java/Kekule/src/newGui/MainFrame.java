@@ -7,12 +7,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -59,7 +65,6 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 	private GAWindow gaParams;
 	private PopulationWindow popParams;
 	private MutationWindow mutaParams;
-	
 
 	/**
 	 * Launch the application.
@@ -91,12 +96,22 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		JMenuItem save = new JMenuItem("Save");
+		mnFile.add(save);
+		save.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				MainFrame.this.save( 
+						MainFrame.this.rank.getText() + " " + 
+						MainFrame.this.classification.getText() + ".png" );
+			}
+		});
+		
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnFile.add(mntmExit);
 		
 		JMenu mnViewLibarary = new JMenu("View Libarary");
 		menuBar.add(mnViewLibarary);
-		
 		
 		JMenu mnGeneticAlgorithm = new JMenu("Genetic Algorithm");
 		this.gaParams = new GAWindow();
@@ -327,6 +342,24 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 			System.err.println("The rank or classification you entered is invalid");
 		}
 	}
+	
+	public void save(String imageFile) {
+        Rectangle r = getBounds();
+
+        try {
+            BufferedImage i = new BufferedImage(r.width, r.height,
+                    BufferedImage.TYPE_INT_RGB);
+            Graphics g = i.getGraphics();
+            paint(g);
+            File f = new File("C:\\Users\\Aaron\\Documents\\GitHub\\Kekule\\Programming\\Kekule Java\\Kekule\\lib\\" 
+            	 + imageFile );
+            ImageIO.write(i, "png", f);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
 	
 	public void collectAndShowResults(ArrayList<String> graphs, String cell){
 		this.index = 0;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="filter_imports;" key="filters_last_used"/>
-	<item value="500" key="CallHierarchyViewPart.ratio3"/>
 	<item value="C:\Users\Aaron\Documents\GitHub\Kekule\Programming\Kekule Java\jars" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="500" key="CallHierarchyViewPart.ratio3"/>
 	<item value="500" key="CallHierarchyViewPart.ratio1"/>
 	<item value="3" key="CallHierarchyViewPart.orientation"/>
 	<item value="1" key="SearchScopeActionGroup.search_scope_type"/>
@@ -13,8 +13,8 @@
 	<section name="DialogBounds_OverrideMethodDialog">
 		<item value="527" key="DIALOG_WIDTH"/>
 		<item value="203" key="DIALOG_Y_ORIGIN"/>
-		<item value="585" key="DIALOG_X_ORIGIN"/>
 		<item value="466" key="DIALOG_HEIGHT"/>
+		<item value="585" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="OptionalMessageDialog.hide.">
@@ -34,10 +34,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="normalize" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="normalize" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -46,10 +46,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="PowerSet" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="0" key="searchFor"/>
+			<item value="PowerSet" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -58,10 +58,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="removeGraph" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="0" key="searchFor"/>
+			<item value="removeGraph" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -70,10 +70,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="removeDup" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="removeDup" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -82,10 +82,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value=".remove()" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="0" key="searchFor"/>
+			<item value=".remove()" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
 			<item value="false" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -94,10 +94,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="3" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="remove" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="remove" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -106,10 +106,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2048" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="System.out.print" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="System.out.print" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -118,10 +118,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="Power" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="0" key="searchFor"/>
+			<item value="Power" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="0" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -130,10 +130,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="3" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="toArray" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="toArray" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -142,10 +142,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="println(" key="pattern"/>
 			<item value="" key="javaElement"/>
-			<item value="1" key="searchFor"/>
+			<item value="println(" key="pattern"/>
 			<item value="0" key="matchLocations"/>
+			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -158,8 +158,8 @@
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="SourceActionDialog.methods">
-		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
 	</section>
@@ -170,8 +170,8 @@
 		<section name="DialogBoundsSettings">
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="180" key="DIALOG_Y_ORIGIN"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
 			<item value="548" key="DIALOG_X_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
 			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		</section>
 	</section>
@@ -180,8 +180,8 @@
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.typehierarchy.QuickHierarchy">
 		<item value="350" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_WIDTH"/>
-		<item value="false" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
 		<item value="306" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_HEIGHT"/>
+		<item value="false" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
 		<item value="true" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_SIZE"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
@@ -200,11 +200,22 @@
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item value="529" key="DIALOG_WIDTH"/>
 		<item value="50" key="DIALOG_Y_ORIGIN"/>
-		<item value="584" key="DIALOG_X_ORIGIN"/>
 		<item value="695" key="DIALOG_HEIGHT"/>
+		<item value="584" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
-	<section name="RenameInformationPopup">
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item value="*" key="patterns"/>
+		<item value="false" key="updateQualifiedNames"/>
+		<item value="true" key="renameSubpackages"/>
+		<item value="1" key="updateSimilarElementsMatchStrategy"/>
+		<item value="false" key="updateTextualMatches"/>
+		<item value="false" key="updateSimilarElements"/>
+	</section>
+	<section name="NewClassWizardPage">
+		<item value="false" key="create_constructor"/>
+		<item value="true" key="create_unimplemented"/>
+		<item value="false" key="create_main"/>
 	</section>
 	<section name="SearchInDialog">
 		<item value="true" key="SearchInJRE"/>
@@ -212,18 +223,7 @@
 		<item value="true" key="SearchInAppLibs"/>
 		<item value="true" key="SearchInSources"/>
 	</section>
-	<section name="NewClassWizardPage">
-		<item value="false" key="create_constructor"/>
-		<item value="false" key="create_main"/>
-		<item value="true" key="create_unimplemented"/>
-	</section>
-	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item value="false" key="renameSubpackages"/>
-		<item value="false" key="updateQualifiedNames"/>
-		<item value="*" key="patterns"/>
-		<item value="1" key="updateSimilarElementsMatchStrategy"/>
-		<item value="false" key="updateTextualMatches"/>
-		<item value="false" key="updateSimilarElements"/>
+	<section name="RenameInformationPopup">
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
 		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>

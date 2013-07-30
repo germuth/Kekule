@@ -761,10 +761,10 @@ public class Graph implements Comparable<Graph>{
 			//AND has the same cell
 			//then we did it!
 			if( !connected.isDisjoint() ){
-				if(GraphtoCell.makeCell(connected).equals(cell) ){
+				//if(GraphtoCell.makeCell(connected).equals(cell) ){
 					connected.name += "Connected";
 					return connected;
-				}
+				//}
 			}
 		}
 		

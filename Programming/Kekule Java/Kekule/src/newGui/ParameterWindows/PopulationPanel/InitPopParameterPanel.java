@@ -44,10 +44,10 @@ public class InitPopParameterPanel extends JComponent {
 		this.numNodesTo = new LabeledSlider("Number Nodes to", 1, 30, 20);
 		contentPane.add( this.numNodesTo );
 		
-		this.numEdgesFrom = new LabeledSlider("Number Edges from", 5, 20, 5);
+		this.numEdgesFrom = new LabeledSlider("Number Edges from", 0, 20, 0);
 		contentPane.add( this.numEdgesFrom );		
 
-		this.numEdgesTo = new LabeledSlider("Number Edges to", 5, 30, 30);
+		this.numEdgesTo = new LabeledSlider("Number Edges to", 1, 30, 25);
 		contentPane.add( this.numEdgesTo );	
 
 		this.fitnessThreshold = new LabeledSlider("Fitness Threshold", -15, 15, 0);

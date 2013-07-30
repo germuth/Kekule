@@ -2,19 +2,24 @@ package newGui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 import org.openscience.cdk.DefaultChemObjectBuilder;
 import org.openscience.cdk.Molecule;
@@ -33,10 +38,6 @@ import org.openscience.cdk.renderer.generators.IGenerator;
 import org.openscience.cdk.renderer.generators.RingGenerator;
 import org.openscience.cdk.renderer.visitor.AWTDrawVisitor;
 import org.openscience.cdk.smiles.SmilesParser;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 public class StructureDisplayer extends JComponent{
 	private String graph;
@@ -166,18 +167,5 @@ public class StructureDisplayer extends JComponent{
 			System.err.println("Invalid SMILES String inputed");
 			e.printStackTrace();
 		}
-	}
-	
-
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
-	public static void main(final String graph) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new StructureDisplayer(graph).setVisible(true);
-			}
-		});
 	}
 }

@@ -60,11 +60,11 @@ public class GAParameters {
 	/**
 	 * 
 	 */
-	private static int numEdgesFrom = 5;
+	private static int numEdgesFrom = 0;
 	/**
 	 * 
 	 */
-	private static int numEdgesTo = 30;
+	private static int numEdgesTo = 25;
 	/**
 	 * 
 	 */

@@ -3,17 +3,13 @@ Directions:
 Thing to do as of 7/22/2013
 
 IMPORTANT:
-- write paper
-	- results / discussion
-		- rank 6 test
-		- talk to alida
-		- more editing
 - optimize flooding algorithm
 	- could count number of cycles perhaps
 		- do it one at a time until you have all the cycles
 		- could break if it had really big cycle
 - how to highlight
 - get openeye scientific software
+- 6 3 is broken
 
 NOT IMPORTANT: 
 -Fix error when image rendered gets an empty list
