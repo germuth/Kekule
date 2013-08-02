@@ -200,13 +200,20 @@ All structures generated will meet the first condition. The third condition is n
 \label{fig:pyrene}
 \end{figure}
 
-We choose to ignore Huckel's rule and any extensions. This is because even anti-aromatic compounds such as pentalene can be stabilized by adding the appropriate substituent. Either electron-donating or electron-withdrawing groups can be attached to the ring to allow aromaticity (see Figure ~\ref{fig:pentalene}). 
+We choose to ignore Huckel's rule and any extensions. This is because even anti-aromatic compounds such as pentalene can be stabilized by adding the appropriate substituent. Either electron-donating or electron-withdrawing groups can be attached to the ring to allow aromaticity (see Figure ~\ref{fig:pentalene}). Additionally, it is possible to insert hereroatoms into the structure, such as nitrogen and sulphur. In addition to making the molecules easier to synthesize, the nitrogen may add electrons to conjugated system to meet Huckel's rule (see Figure ~\ref{fig:pyrrole}). Although such alterations are not always possible, most graphs can resemble realistic molecules. 
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=160mm]{pentalene.png}
 \caption{Pentalene can attach either the electron-donating Me \cite{methylPentalene} or N(Me)$_2$ \cite{nitrogenPentalene} group to achieve aromatic structure.}
 \label{fig:pentalene}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{pentalene.png}
+\caption{Pyrrole is a heterocyclic aromatic compound, containing a nitrogen. It is considered aromatic due to Huckels Rule (4n + 2, where n = 1}. 4 electrons come from the carbon atoms, two from each double bond, and two additional electrons from nitrogen's lone pair, making 6 total contributing electrons.}
+\label{fig:pyrrole}
 \end{figure}
 
 The second condition is another current drawback. Since the cycle detection algorithm needs an upper bound, in rare cases, cycles above this limit can appear. This can cause other smaller cycles which share more than two atoms with the large cycle to not be detected. Additionally, some bonding distances may be unrealistic. For examples of both, see Figure ~\ref{fig:unrealistic}.
@@ -218,7 +225,7 @@ The second condition is another current drawback. Since the cycle detection algo
 \label{fig:unrealistic}
 \end{figure}
  
-In most small cases (ports \textless 6), the genetic algorithm is able to obtain atleast 10 different graphs which satisfy the cell immediately. For some of the later classifications of rank 5, and cells of rank 6 or higher, it can take longer. Some cells of rank 6 it is unable to find a graph for (more testing needed here). As it is possible that no such realistic graph exists for some cells, it is difficult to determine whether a solution exists. The number of nodes is currently maxed at 31 nodes, as nodes are stored in a bit array, which would overflow the integer at 32.
+In most small cases (ports \textless 6), the genetic algorithm is able to obtain atleast 10 different graphs which satisfy the cell immediately. For some of the later classifications of rank 5, and cells of rank 6 or higher, it can take longer. Some cells of rank 6 it is unable to find a graph for. As it is possible that no such realistic graph exists for some cells, it is difficult to determine whether a solution exists. The number of nodes is currently maxed at 31 nodes, as nodes are stored in a bit array, which would overflow the integer at 32.
 
 Below is graphs for all cells of rank 4 and 5. Double bonds are excluded from the graphs shown below, as only one resonance structure could be seen at a time. As stated previously, the genetic algorithm is capable of coming to multiple solutions for each cell, and the ones shown below are simply ones selected by us. Notice the trend that as the Kekul\'e cell number increases, the Kekul\'e cell becomes longer. This means more resonance structures of each graph, and more connections between atoms. The higher amount of connectivity required in each cell makes it so the next graph is usually more difficult to find than the last one. Looking at Figures ~\ref{fig:rank5Results1} and ~\ref{fig:rank5Results2}, it is easy to see that the graphs get bigger and more complex as the cell number increases. 
 
@@ -243,9 +250,13 @@ Below is graphs for all cells of rank 4 and 5. Double bonds are excluded from th
 \label{fig:rank5Results2}
 \end{figure}
 
-Finding graphs for cells of higher ranks builds on this challenge. Not only is every graph larger, but there must be an additional atom with degree of 2. The number of combinations increases drastically, with 3 classes of rank 3, 7 classes of rank 4, 24 classes of rank 5, and 214 classes of rank 6. When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website). Discuss more about results and problems encountered.
+Finding graphs for cells of higher ranks builds on this challenge. Not only is every graph larger, but there must be an additional atom with degree of 2. The number of combinations increases drastically, with 3 classes of rank 3, 7 classes of rank 4, 24 classes of rank 5, and 214 classes of rank 6. When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website).
 
-Paragraph talking about whether these molecules can be synthesized.
+Increasing the number of nodes to above 32 will likely yield more results in some cases, however, it will lower performance. It is possible many graphs do not have a realistic graph which matches it's cell. Discuss more about results and problems encountered.
+
+Even if all graphs produced represent stable molecules, there are additional problems. Each hydrocarbon must be able to be easily synthesized. 
+
+Polycylic aromatic hydrocarbons are commonly produced as byproducts of fuel burning, and have been classified as carcinogenic, mutagenic, and teratogenic. This could pose a challenging problem if we wish to use large aromatic hydrocarbons in circuitry. 
 
 There are many possible improvements in this area. The number of nodes could be increased to allow larger graphs. Although this would increase the amount of computation required, perhaps it is possible to implement a more efficient cycle detection algorithm, or even calculate fitness on every 2nd iteration of the genetic algorithm. These changes may allow even more results to be yielded from a heuristic genetic algorithm based approach.
 

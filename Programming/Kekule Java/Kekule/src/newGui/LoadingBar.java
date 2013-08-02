@@ -6,26 +6,47 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * This class is meant to be a small JPanel which
+ * contains two JLabels which change depending on the current
+ * task being executed (Genetic Algorithm) and then a JProgressBar
+ * to display the actual precentage
+ * @author Aaron
+ *
+ */
 public class LoadingBar extends JPanel {
-
-	private JProgressBar progressBar;
-	
-	private JLabel currentTask;
-	
-	private JLabel currentProgress;
-	
-	private int stage;
-	
-	private int totalIterations;
-	
-	private int popSize;
 	/**
-	 * Create the panel.
+	 * The JProgress bar which shows the actual percentage at any give time
 	 */
-	public LoadingBar(int totalIterations, int popSize) {
+	private JProgressBar progressBar;
+	/**
+	 * The upper most JLable, displaying the current task
+	 */
+	private JLabel currentTask;
+	/**
+	 * A textual indication of the current progress through the current task
+	 * we are. For example
+	 * 7 out of 14 graphs
+	 */
+	private JLabel currentProgress;
+	/**
+	 * What stage the loading bar is currenting in
+	 */
+	private int stage;
+	/**
+	 * The total populaiton Size. This is used to deterimine
+	 * the percent through the inital pop geneartion we are 
+	 * at any point
+	 */
+	private int popSize;
+	
+	/**
+	 * Constructor,
+	 * Creates the panel.
+	 */
+	public LoadingBar(int popSize) {
 		setLayout(null);
 		
-		this.totalIterations = totalIterations;
 		this.popSize = popSize;
 		this.stage = 0;
 		
@@ -48,6 +69,11 @@ public class LoadingBar extends JPanel {
 		add( this.currentProgress );
 	}
 	
+	/**
+	 * Sets the currest stage we are not.
+	 * Not exactly working TODO
+	 * @param stage
+	 */
 	public void setStage(int stage){
 		if(stage == 1){
 			this.currentTask.setText("Generating Population...");
@@ -61,6 +87,11 @@ public class LoadingBar extends JPanel {
 		}
 	}
 	
+	/**
+	 * Updates the current progress on this loading bars 
+	 * JProgress bar
+	 * @param progress, current percetage complete
+	 */
 	public void updateProgress(int progress){
 		int currentStage = this.stage;
 		

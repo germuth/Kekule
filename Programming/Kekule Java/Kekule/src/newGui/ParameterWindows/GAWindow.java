@@ -17,6 +17,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * GAWindow
+ * 
+ * THis JFrame is a popup window containg parameters for the 
+ * genetic algorithm. The give parameters methods actually 
+ * sets the parameters
+ * 
+ * @author Aaron
+ */
 public class GAWindow extends JFrame {
 
 	private JPanel contentPane;
@@ -70,6 +79,9 @@ public class GAWindow extends JFrame {
 		panel.add(btnNewButton);	
 	}
 	
+	/**
+	 * Sets all parameters changed in this window
+	 */
 	public void giveParameters(){
 		//set iteration number
 		GAParameters.setIterations( this.iterations.getValue() );

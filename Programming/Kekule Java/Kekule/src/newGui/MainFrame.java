@@ -36,37 +36,98 @@ import newGui.ParameterWindows.GAWindow;
 import newGui.ParameterWindows.MutationWindow;
 import newGui.ParameterWindows.PopulationWindow;
 
+/**
+ * MainFrame
+ * 
+ * This class represents the JFrame which contains the entire 
+ * graphical user interface. Was made using an eclipse attachment.
+ * 
+ * @author Aaron
+ *
+ */
 public class MainFrame extends JFrame implements PropertyChangeListener{
+	/**
+	 * The main JPanel of which everything is added to
+	 */
 	private JPanel contentPane;
+	/**
+	 * The center piece of the grahpical user interface. It is the JPanel
+	 * which displays the molecular structure
+	 */
 	private StructureDisplayer structureDisplayer; 
-	
+	/**
+	 * The JTextField used to input the rank
+	 */
 	private JTextField rank;
+	/**
+	 * The JTextField used to input a classification
+	 */
 	private JTextField classification;
-	
+	/**
+	 * The AddToLibrary button, currently not used
+	 */
 	private JButton addToLib;
+	/**
+	 * The Previous button, to look through all results from the GA
+	 */
 	private JButton previous;
-	
-	//private LoadingBar loadingBar;
-	
+	/**
+	 * The Next button, to look through all results from the GA
+	 */
 	private JButton next;
+	/**
+	 * A checkbox which determines whether the textual representation
+	 * of the cell will be displayed on the structure generator. 
+	 */
 	private JCheckBox displayCell;
+	/**
+	 * A button to run the genetic algorithm, using the current rank
+	 * and classification from the JTextFields, and the parameters
+	 * from the menus
+	 */
 	private JButton run;
-	
+	/**
+	 * The loading bar for the genetic algorithm
+	 */
 	private LoadingBar loadBar;
-	
+	/**
+	 * THe textField which shows the SMILES representation of each graph
+	 * on the bottom of this frame
+	 */
 	private JTextField SMILES;
-	
+	/**
+	 * The label which displays the current cell textually. Is turned on or off
+	 * by the displayCell check box
+	 */
 	private JLabel cellLabel;
-	
+	/**
+	 * Holds the current index of a the list of graphs from the genetic algorithm
+	 * that we are currently on. Next button will increment, previous will decrement.
+	 */
 	private int index;
+	/**
+	 * The list of graphs in SMILES format, taken from the genetic algorithm.
+	 */
 	private ArrayList<String> graphs;
+	/**
+	 * The textual representation of the current cell
+	 */
 	private String cell;
-	
+	/**
+	 * The parameter window for the genetic algorithm. Accessed from the menu.
+	 */
 	private GAWindow gaParams;
+	/**
+	 * The parameter window for the population, accessed from the menu.
+	 */
 	private PopulationWindow popParams;
+	/**
+	 * The Mutation window for the genetic algorthm, accessed from the menu.
+	 */
 	private MutationWindow mutaParams;
 
 	/**
+	 * The main method to
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -83,7 +144,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 	}
 
 	/**
-	 * Create the frame.
+	 * THe main constructor to display all elements within this frame
 	 */
 	public MainFrame() {
 		setTitle("Interactive Kekule Theory");
@@ -96,6 +157,9 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		//the save button runs the save method, which saves a 
+		//png image of the current molecular structure. 
+		//the image is labeled "rank" + "classification"
 		JMenuItem save = new JMenuItem("Save");
 		mnFile.add(save);
 		save.addActionListener( new ActionListener(){
@@ -119,7 +183,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		
 		
 		menuBar.add(mnGeneticAlgorithm);
-		
+		//genetic algorithm parameter window
 		JMenuItem mntmOpenParameterWindow = new JMenuItem("Open Parameter Window");
 		mnGeneticAlgorithm.add(mntmOpenParameterWindow);
 		mntmOpenParameterWindow.addActionListener(new ActionListener(){
@@ -134,7 +198,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		this.popParams.setVisible(false);
 		
 		menuBar.add(mnPopulation);
-		
+		//population parameter window
 		JMenuItem mntmOpenParameterWindow_1 = new JMenuItem("Open Parameter Window");
 		mnPopulation.add(mntmOpenParameterWindow_1);
 		mntmOpenParameterWindow_1.addActionListener( new ActionListener(){
@@ -149,7 +213,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		this.mutaParams.setVisible(false);
 		
 		menuBar.add(mnMutation);
-		
+		//mutation parameter window
 		JMenuItem mntmOpenParameterWindow_2 = new JMenuItem("Open Parameter Window");
 		mnMutation.add(mntmOpenParameterWindow_2);
 		mntmOpenParameterWindow_2.addActionListener( new ActionListener(){
@@ -164,6 +228,9 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
+		//the left JPanel
+		//contains rank, classification, addToLib, Previous
+		//and loading bar
 		JPanel leftBorder = new JPanel();
 		contentPane.add(leftBorder, BorderLayout.WEST);
 		leftBorder.setPreferredSize(new Dimension(100, 500));
@@ -204,7 +271,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		panel_1.setLayout(null);
 		leftBorder.add(panel_1);
 		
-		this.loadBar = new LoadingBar(100,1000);
+		this.loadBar = new LoadingBar(100);
 		this.loadBar.setBounds(0, 11, 97, 93);
 		panel_1.add( this.loadBar );
 		
@@ -219,6 +286,9 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		this.addToLib.setBounds(4, 146, 91, 51);
 		leftBorder.add(this.addToLib);
 		
+		//the right JPanel of this frame
+		//contains textbox, next button, check box, 
+		//and small JLabels
 		JPanel rightBorder = new JPanel();
 		contentPane.add(rightBorder, BorderLayout.EAST);
 		rightBorder.setPreferredSize(new Dimension(100,500));
@@ -278,6 +348,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		//main window
 		this.structureDisplayer = new StructureDisplayer("O=Cc1ccc(O)c(OC)c1");
 		structureDisplayer.setBounds(-5, -64, 500, 451);
 		
@@ -310,39 +381,42 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		rightBorder.add(this.displayCell);
 	}
 
+	/**
+	 * This method is triggered by the action listener on the run method. 
+	 * It parses the current selected rank and classification, and feeds this
+	 * to the genetic algorithm.
+	 * 
+	 * The Genetic Algorithm is run on a different thread to reduce lag on the graphical
+	 * user interface, this thread is started by initiating a new GeneticAlgorithmTask
+	 */
 	public void run(){
 		int rank, classification1;
 		try{
+			//get rank and classification
 			rank = Integer.parseInt( this.rank.getText() );
-			
 			classification1 = Integer.parseInt( this.classification.getText() );
 			
-			//ExecutorService executor = Executors.newCachedThreadPool();
-	        //ArrayList<String> result = 
-	        //		executor.invokeAny(Arrays.asList(
-	        //				new GeneticAlgorithmTask(rank, classification1, this.loadBar)));
 			this.loadBar.setStage(1);
 			
+			//create and start genetic algorithm on different thread
 			GeneticAlgorithmTask task = new GeneticAlgorithmTask(rank, classification1, this );
 	        task.addPropertyChangeListener(this);
 	        task.execute();
-	        //GeneticAlgorithmTask task = new GeneticAlgorithmTask(rank, classification1, this.loadBar );
-	        //task.addPropertyChangeListener( this );
-	        //task.execute();
-			
-	        //this.graphs = task.get();
-	        
-	        //this.index = 0;
-	        //this.structureDisplayer.setGraph( );
-	        //this.structureDisplayer.drawCurrentSMILES();
-	        
-	        //executor.shutdown();
 	        
 		} catch(NumberFormatException e){
 			System.err.println("The rank or classification you entered is invalid");
 		}
 	}
 	
+	/**
+	 * Saves the current image of the content pane in png form. 
+	 * The image is currently saved to a non-relative address, 
+	 * so this method needs to be changed there TODO
+	 * 
+	 * The image name is saved as "rank" + " " + "classification"
+	 * and saved in the "lib" folder
+	 * @param imageFile
+	 */
 	public void save(String imageFile) {
         Rectangle r = getBounds();
 
@@ -361,6 +435,17 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
         
     }
 	
+	/**
+	 * This method is called when the genetic algorithm has finished. 
+	 * A list of graphs (in SMILES form) is passed, along with a 
+	 * textual representation of the cell we were searching for.
+	 * 
+	 * This method gives structure displayer the first graph, and sets up 
+	 * the next and previous buttons 
+	 * 
+	 * @param graphs, list of graphs in SMILES notation from GA
+	 * @param cell, textual representation of cell we were searching for
+	 */
 	public void collectAndShowResults(ArrayList<String> graphs, String cell){
 		this.index = 0;
 		if( graphs.size() > 0){
@@ -382,6 +467,12 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		}
 	}
 	
+	/**
+	 * Called by action listener on next button. 
+	 * Increases the index in order to prepare to display
+	 * the next graph
+	 * @return the next graph
+	 */
 	public String getNextGraph() {
 		if (index >= this.graphs.size() - 1) {
 			index = 0;
@@ -392,6 +483,12 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		return graphs.get(index);
 	}
 
+	/**
+	 * Called by action listener on previous button.
+	 * Decrements the index in order to prepare to display
+	 * the previous graph
+	 * @return the previous graph
+	 */
 	public String getPreviousGraph() {
 		if( index <= 0){
 			index = this.graphs.size() - 1;
@@ -402,6 +499,10 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		return graphs.get(index);
 	}
 
+	/**
+	 * The property change listener method used to update the 
+	 * loading bar
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ("progress" == evt.getPropertyName()) {
@@ -410,7 +511,7 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
             //taskOutput.append(String.format(
             //        "Completed %d%% of task.\n", task.getProgress()));
         } else{
-        	System.out.println("Not " + evt.getNewValue());
+        	System.out.println(evt.getNewValue());
         }
 	}
 }

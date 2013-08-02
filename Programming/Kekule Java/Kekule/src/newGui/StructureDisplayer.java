@@ -39,9 +39,26 @@ import org.openscience.cdk.renderer.generators.RingGenerator;
 import org.openscience.cdk.renderer.visitor.AWTDrawVisitor;
 import org.openscience.cdk.smiles.SmilesParser;
 
+/**
+ * Structure Displayer
+ * 
+ * This class takes a SMILES representation of a molecule and 
+ * displays it to the user. THe Open Source Chemistry Development
+ * Kit finds the actual atom coordinates. 
+ * @author Aaron
+ */
 public class StructureDisplayer extends JComponent{
+	/**
+	 * SMILES representation of current graph
+	 */
 	private String graph;
+	/**
+	 * The main panel for displaying structures
+	 */
 	private javax.swing.JPanel jPanel1;
+	/**
+	 * A Jlabel
+	 */
 	private JLabel jLabel2;
 
 	/** Creates new form ImageRenderer */
@@ -58,7 +75,11 @@ public class StructureDisplayer extends JComponent{
 		this.drawCurrentSMILES();
 		this.validate();
 	}
-
+	
+	/**
+	 * Sets the current graph of this strucutre displayer
+	 * @param graph
+	 */
 	public void setGraph(String graph) {
 		this.graph = graph;
 	}
@@ -98,6 +119,9 @@ public class StructureDisplayer extends JComponent{
 
 	}
 
+	/**
+	 * This method uses the chemistry development kit to draw the current SMILES graph
+	 */
 	public void drawCurrentSMILES() {
 		try {
 			int WIDTH = 400;
