@@ -32,9 +32,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import newGui.ParameterWindows.GAWindow;
-import newGui.ParameterWindows.MutationWindow;
-import newGui.ParameterWindows.PopulationWindow;
+import newGui.parameterWindow.GAWindow;
+import newGui.parameterWindow.MutationWindow;
+import newGui.parameterWindow.PopulationWindow;
 
 /**
  * MainFrame
@@ -45,7 +45,7 @@ import newGui.ParameterWindows.PopulationWindow;
  * @author Aaron
  *
  */
-public class MainFrame extends JFrame implements PropertyChangeListener{
+public class MainFrame extends JFrame{
 	/**
 	 * The main JPanel of which everything is added to
 	 */
@@ -400,7 +400,19 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 			
 			//create and start genetic algorithm on different thread
 			GeneticAlgorithmTask task = new GeneticAlgorithmTask(rank, classification1, this );
-	        task.addPropertyChangeListener(this);
+	        task.addPropertyChangeListener(new PropertyChangeListener(){
+	        	@Override
+	        	public void propertyChange(PropertyChangeEvent evt) {
+	        		if ("progress" == evt.getPropertyName()) {
+	                    int progress = (Integer) evt.getNewValue();
+	                    MainFrame.this.loadBar.updateProgress(progress);
+	                    //taskOutput.append(String.format(
+	                    //        "Completed %d%% of task.\n", task.getProgress()));
+	                } else{
+	                	System.out.println(evt.getNewValue());
+	                }
+	        	}
+	        });
 	        task.execute();
 	        
 		} catch(NumberFormatException e){
@@ -497,21 +509,5 @@ public class MainFrame extends JFrame implements PropertyChangeListener{
 		}
 		this.SMILES.setText( this.graphs.get(index) );
 		return graphs.get(index);
-	}
-
-	/**
-	 * The property change listener method used to update the 
-	 * loading bar
-	 */
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		if ("progress" == evt.getPropertyName()) {
-            int progress = (Integer) evt.getNewValue();
-            MainFrame.this.loadBar.updateProgress(progress);
-            //taskOutput.append(String.format(
-            //        "Completed %d%% of task.\n", task.getProgress()));
-        } else{
-        	System.out.println(evt.getNewValue());
-        }
 	}
 }

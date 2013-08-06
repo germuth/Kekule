@@ -16,10 +16,7 @@ import shared.GraphtoCell;
 import shared.PowerSet;
 
 /**
- * @param args
- */
-/**
- * Old class which enumerates all possible graphs and tests their cell
+ * Old, Unused class which enumerates all possible graphs and tests their cell
  * @author Aaron
  *
  */

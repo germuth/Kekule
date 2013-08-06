@@ -1,4 +1,4 @@
-package newGui.ParameterWindows.PopulationPanel;
+package newGui.parameterWindow.populationPanel;
 
 import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
@@ -11,15 +11,40 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * PopParameterPanel
+ * 
+ * This JPanel contains LabeledSlider's for each parameter of the population. More specifically,
+ * the size of the population, and what makes up each next generation population.
+ * @author Aaron
+ *
+ */
 public class PopParameterPanel extends JComponent {
-
+	/**
+	 * Everything is added to this internal JPanel
+	 */
 	private JPanel contentPane;
-	
+	/**
+	 * Holds the total size of a population
+	 */
 	private LabeledSlider popSize;
+	/**
+	 * The amount of graphs from last population who survive to the next population, 
+	 * based purely on the graphs with the most fitness
+	 */
 	private LabeledSlider elite;
+	/**
+	 * The amount of graphs from last population who are randomly selected to live on.
+	 * This is kept low, but still present to ensure genetic diversity
+	 */
 	private LabeledSlider random;
+	/**
+	 * The amount of new graphs generated from mutation each iteration
+	 */
 	private LabeledSlider mutant;
+	/**
+	 * The amount of new graphs generated from crossover each iteration
+	 */
 	private LabeledSlider crossover;
 
 	/**
@@ -55,6 +80,9 @@ public class PopParameterPanel extends JComponent {
 		this.add( contentPane );
 	}
 	
+	/**
+	 * Reads all parameters in this, and sets them in the genetic algorithm
+	 */
 	public void setParameters(){
 		
 		GAParameters.setPopulationSize( this.popSize.getValue() );

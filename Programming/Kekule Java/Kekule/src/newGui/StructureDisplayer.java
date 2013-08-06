@@ -77,7 +77,7 @@ public class StructureDisplayer extends JComponent{
 	}
 	
 	/**
-	 * Sets the current graph of this strucutre displayer
+	 * Sets the current graph of this structure displayer
 	 * @param graph
 	 */
 	public void setGraph(String graph) {

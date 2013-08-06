@@ -1,4 +1,4 @@
-package newGui.ParameterWindows;
+package newGui.parameterWindow;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -10,10 +10,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import newGui.ParameterWindows.PopulationPanel.InitPopParameterPanel;
-import newGui.ParameterWindows.PopulationPanel.PopParameterPanel;
+import newGui.parameterWindow.populationPanel.InitPopParameterPanel;
+import newGui.parameterWindow.populationPanel.PopParameterPanel;
 
-
+/**
+ * Population Window
+ * 
+ * This window holds all parameters for both:
+ * Initial population generation and each successive population. 
+ * This window merely adds to previous classes from the populationPanel 
+ * package and adds them here.
+ * 
+ * @author Aaron
+ *
+ */
 public class PopulationWindow extends JFrame {
 
 	private JPanel contentPane;
@@ -46,15 +56,18 @@ public class PopulationWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		//add all parameters for initial population
 		this.initPop = new InitPopParameterPanel();
 		this.initPop.setBounds(5, 5, 375, 262);
 		
+		//add all parameters for normal population
 		this.pop = new PopParameterPanel();
 		this.pop.setBounds(380, 5, 375, 228);
 		contentPane.setLayout(null);
 		contentPane.add( this.initPop );
 		contentPane.add( this.pop );
 		
+		//add close button
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener(){
 			@Override

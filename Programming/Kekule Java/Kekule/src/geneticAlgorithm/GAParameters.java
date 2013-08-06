@@ -1,5 +1,16 @@
 package geneticAlgorithm;
-
+/**
+ * GAParameters
+ * 
+ * This class holds all parameters of the genetic algorithm. When the genetic algorithm is running, 
+ * it grabs values from this class by the getter methods. 
+ * 
+ * The setter methods can be used with the code, or from the graphical user interface 
+ * (parameter panels) in the menu bar.
+ * 
+ * If the setter methods aren't used, standard defaults are assigned here
+ * @author Aaron
+ */
 public class GAParameters {
 	/**
 	 * The Amount of Graphs which are in the population each Iteration of the 
@@ -46,49 +57,60 @@ public class GAParameters {
 	 */
 	private static int minimumGraphsRequired = 3;
 	/**
-	 * 
+	 * A boolean flag deterimiing the amount of times fitness is calculated.
+	 * (TRUE) every 2nd iteration
+	 * (FALSE) every single iteration
 	 */
 	private static boolean calculateFitnessEvery2nd = false;
 	/**
-	 * 
+	 * The minimum amount of nodes a graph can have added in the initial population
+	 * generation
 	 */
 	private static int numNodesFrom = 0;
 	/**
-	 * 
+	 * The maximum amount of nodes a graph can have added in the initial population
+	 * generation
 	 */
 	private static int numNodesTo = 20;
 	/**
-	 * 
+	 * The minimum amount of edges a graph can have added in the initial population
+	 * generation
 	 */
 	private static int numEdgesFrom = 0;
 	/**
-	 * 
+	 * The maximum amount of edges a graph can have added in the initial population
+	 * generation
 	 */
 	private static int numEdgesTo = 25;
 	/**
-	 * 
+	 * All graphs generated in the inital population generation, must have a fitness
+	 * above or equal to this fitness. If a graph does not meet this requiremnet, it 
+	 * is throw away, and a new graph is generated in its place
 	 */
 	private static int fitnessThreshold = 0;
 	/**
-	 * 
+	 * THe mutation chance to add a node
 	 */
 	private static double addNodeChance = 0.20;
 	/**
-	 * 
+	 * The mutation chance to remove a random node
 	 */
 	private static double removeNodeChance = 0.20;
 	/**
-	 * 
+	 * The mutation chance to add a random edge
 	 */
 	private static double addEdgeChance = 0.20;
 	/**
-	 * 
+	 * The mutation chance to remove a random edge
 	 */
 	private static double removeEdgeChance = 0.20;
 	/**
-	 * 
+	 * The mutation chance to extend all ports within a graph
 	 */
 	private static double extendPortsChance = 0.05;
+	
+	
+	//		-----GETTERS AND SETTERS-----
 	
 	public static int getPopulationSize() {
 		return populationSize;

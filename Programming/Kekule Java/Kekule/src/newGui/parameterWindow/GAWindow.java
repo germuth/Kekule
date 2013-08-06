@@ -1,4 +1,4 @@
-package newGui.ParameterWindows;
+package newGui.parameterWindow;
 
 import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
@@ -20,17 +20,31 @@ import javax.swing.border.EmptyBorder;
 /**
  * GAWindow
  * 
- * THis JFrame is a popup window containg parameters for the 
+ * THis JFrame is a pop up window containing parameters for the 
  * genetic algorithm. The give parameters methods actually 
  * sets the parameters
  * 
  * @author Aaron
  */
 public class GAWindow extends JFrame {
-
+	/**
+	 * The main jpanel of this window
+	 */
 	private JPanel contentPane;
+	/**
+	 * The amount of maximum iterations the genetic algorithm will run
+	 */
 	private LabeledSlider iterations;
+	/**
+	 * The amount of graphs it needs to find before it will terminate, unless the 
+	 * maximum iterations is reached
+	 */
 	private LabeledSlider answers;
+	/**
+	 * A check box holding whether fitness is calculated:
+	 * (TRUE) On every 2nd iteration, or
+	 * (FALSE) on every single iteration
+	 */
 	private JCheckBox fitness;
 
 	/**

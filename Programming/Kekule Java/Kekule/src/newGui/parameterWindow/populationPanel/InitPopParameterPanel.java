@@ -1,4 +1,4 @@
-package newGui.ParameterWindows.PopulationPanel;
+package newGui.parameterWindow.populationPanel;
 
 import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
@@ -12,14 +12,39 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * This class is a JPanel which contains LabeledSlider's for each parameter in the 
+ * creation of a new starting population. 
+ * 
+ * @author Aaron
+ *
+ */
 public class InitPopParameterPanel extends JComponent {
-
+	/**
+	 * The panel that everything is added to
+	 */
 	private JPanel contentPane;
-	
+	/**
+	 * LabeledSlider which holds the minimum amount of nodes in any created graph
+	 */
 	private LabeledSlider numNodesFrom;
+	/**
+	 * LabeledSlider which holds the maximum amount of nodes in any created graph
+	 */
 	private LabeledSlider numNodesTo;
+	/**
+	 * Holds the minimum amount of edges in any created graph
+	 */
 	private LabeledSlider numEdgesFrom;
+	/**
+	 * Holds the maximum amount of edges in any created graph
+	 */
 	private LabeledSlider numEdgesTo;
+	/**
+	 * Holds the fitness threshold, all created graphs are tested for their fitness, and
+	 * all graphs with fitness below this threshold will be throw out, and a new graph
+	 * will be generated instead. 
+	 */
 	private LabeledSlider fitnessThreshold;
 
 	/**
@@ -57,6 +82,10 @@ public class InitPopParameterPanel extends JComponent {
 		contentPane.setPreferredSize(new Dimension( 297, 200));
 	}
 	
+	/**
+	 * This method graphs the values from this component, and changes the
+	 * parameters of the genetic algorithm
+	 */
 	public void setParameters(){
 		
 		GAParameters.setNumNodesFrom( this.numNodesFrom.getValue() );

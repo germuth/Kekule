@@ -21,7 +21,6 @@ import shared.Utils;
  * Once normalized, there are only 24 distinct Kekule cells of 5 ports. The classification steps are based on
  * those outlined in Hesselink's Paper.
  * @author Aaron
- *
  */
 public class Classify {
 
@@ -216,8 +215,8 @@ public class Classify {
 	}
 	
 	/**
-	 * Removes uncessary cells from raw
-	 * TODO seems to be the excat same as above...
+	 * Removes unnecessary cells from raw
+	 * TODO seems to be the exact same as above...
 	 * 		except permVariants instead of allVariants
 	 * @param rank
 	 * @param raw

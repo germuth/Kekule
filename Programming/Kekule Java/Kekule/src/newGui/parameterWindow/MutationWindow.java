@@ -1,4 +1,4 @@
-package newGui.ParameterWindows;
+package newGui.parameterWindow;
 
 import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;
@@ -19,15 +19,39 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 
 import shared.Utils;
-
+/**
+ * Mutation Window
+ * 
+ * This class is a pop up window which contains LabeledSliders for each parameter of
+ * mutation within the genetic algorithm. This includes the percentage chance that each
+ * possible mutation will be applied.
+ * 
+ * @author Aaron
+ */
 public class MutationWindow extends JFrame {
-
+	/**
+	 * JPanel which holds all contents of this frame
+	 */
 	private JPanel contentPane;
-	
+	/**
+	 * Holds the percentage chance to add a node
+	 */
 	private LabeledSlider addN;
+	/**
+	 * Holds the percentage chance to remove a node
+	 */
 	private LabeledSlider removeN;
+	/**
+	 * Holds the percentage chance to add an edge
+	 */
 	private LabeledSlider addE;
+	/**
+	 * Holds the percentage chance to remove an edge
+	 */
 	private LabeledSlider removeE;
+	/**
+	 * Holds the percentage chance to extend all ports of the graph
+	 */
 	private LabeledSlider extendP;
 	
 
@@ -85,6 +109,9 @@ public class MutationWindow extends JFrame {
 
 	}
 	
+	/**
+	 * Takes all values in this window, and sets them in GAParameters
+	 */
 	public void setParameters(){
 		
 		GAParameters.setAddNodeChance( Utils.percent( this.addN.getValue() ) );

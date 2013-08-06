@@ -7,10 +7,12 @@ import java.awt.Color;
 import java.awt.Font;
 
 /**
+ * LoadingBar
+ * 
  * This class is meant to be a small JPanel which
  * contains two JLabels which change depending on the current
  * task being executed (Genetic Algorithm) and then a JProgressBar
- * to display the actual precentage
+ * to display the actual percentage
  * @author Aaron
  *
  */
@@ -30,12 +32,12 @@ public class LoadingBar extends JPanel {
 	 */
 	private JLabel currentProgress;
 	/**
-	 * What stage the loading bar is currenting in
+	 * What stage the loading bar is currently in
 	 */
 	private int stage;
 	/**
-	 * The total populaiton Size. This is used to deterimine
-	 * the percent through the inital pop geneartion we are 
+	 * The total population Size. This is used to determine
+	 * the percent through the initial pop generation we are 
 	 * at any point
 	 */
 	private int popSize;
@@ -70,7 +72,7 @@ public class LoadingBar extends JPanel {
 	}
 	
 	/**
-	 * Sets the currest stage we are not.
+	 * Sets the current stage we are not.
 	 * Not exactly working TODO
 	 * @param stage
 	 */
@@ -90,7 +92,7 @@ public class LoadingBar extends JPanel {
 	/**
 	 * Updates the current progress on this loading bars 
 	 * JProgress bar
-	 * @param progress, current percetage complete
+	 * @param progress, current percentage complete
 	 */
 	public void updateProgress(int progress){
 		int currentStage = this.stage;
