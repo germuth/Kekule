@@ -1,11 +1,11 @@
 package geneticAlgorithm;
 
 import graphs.Graph;
+import gui.LoadingBar;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import newGui.LoadingBar;
 import shared.BitVector;
 import shared.Cell;
 import shared.GraphtoCell;

@@ -1,7 +1,7 @@
 package geneticAlgorithm;
 
 import graphs.Graph;
-import gui.GraphToSMILES;
+import graphs.GraphToSMILES;
 
 import java.util.ArrayList;
 import java.util.Collections;

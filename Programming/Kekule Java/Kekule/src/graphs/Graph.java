@@ -1,7 +1,6 @@
 package graphs;
 
 import geneticAlgorithm.GeneticAlgorithm;
-import gui.GraphToSMILES;
 
 import java.util.ArrayList;
 import java.util.Collections;

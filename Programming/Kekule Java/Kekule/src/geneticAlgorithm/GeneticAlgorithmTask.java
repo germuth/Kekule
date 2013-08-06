@@ -1,20 +1,24 @@
 package geneticAlgorithm;
 
+import gui.MainFrame;
+
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 import javax.swing.SwingWorker;
 
-import newGui.MainFrame;
 import shared.Cell;
 import shared.InputParser;
 
 /**
+ * Genetic Algorithm
+ * 
+ * First, an explanation on why a swing worker is used:
+ * (stolen from the Internet)
  * Generally, SwingWorker is used to perform long-running tasks in Swing.
  * Running long-running tasks on the Event Dispatch Thread (EDT) can cause 
- * the GUI to lock up, so one of the things which were done is to use 
+ * the GUI to lock up, so one of the things which was done is to use 
  * SwingUtilities.invokeLater and invokeAndWait which keeps the GUI 
  * responsive by which prioritizing the other AWT events before running 
  * the desired task (in the form of a Runnable).
@@ -23,60 +27,50 @@ import shared.InputParser;
  * allow returning data from the the executed Runnable to the
  * original method. This is what SwingWorker was designed to address.
  * 
- * 
+ * Therefore, we use a swing worker to execute the (long-running) genetic algorithm,
+ * which we can than use to yield a list of graphs (in SMILES notation)
  * @author Aaron
  */
-
-/*
-public class GeneticAlgorithmTask extends SwingWorker<ArrayList<String>, Void>{
-	private int rank;
-	private int classification;
-	private Cell cell;
-	
-	private LoadingBar loadingBar;
-
-	public GeneticAlgorithmTask(int rank, int classification, LoadingBar loadingBar){
-		this.rank = rank;
-		this.classification = classification;
-		this.loadingBar = loadingBar;
-		
-		this.setProgress(0);
-		
-		ArrayList<Cell> classifications = InputParser.readClassification(rank);
-		this.cell = classifications.get(classification - 1);
-	}
-
-	@Override
-	protected ArrayList<String> doInBackground() throws Exception {
-		return GeneticAlgorithm.setUpAndRun( this.cell, this );
-	}
-	
-	public void done(){
-		Toolkit.getDefaultToolkit().beep();
-	}
-
-}
-*/
 public class GeneticAlgorithmTask extends SwingWorker<ArrayList<String>, Integer> {
+	/**
+	 * A cell object of the cell of this.rank and this.classification. This cell is obtained
+	 * by reading from the full classification text documents
+	 */
 	private Cell cell;
+	/**
+	 * The main graphical user interface. A reference is stored here, so when the task
+	 * has finished executing, it can update the results in the user interface
+	 */
 	private MainFrame main;
+	/**
+	 * The rank (number of ports) we are giving to the genetic algorithm to search for
+	 */
 	private int rank;
+	/**
+	 * The classification number (from Hesselink's classification) that we are giving
+	 * to the genetic algorithm to search for
+	 */
 	private int classification;
 	
+	/**
+	 * The main constructor for a genetic algorithm task
+	 * @param rank, the rank of cell 
+	 * @param classification, of the cell
+	 * @param main, a reference to the MainFrame window 
+	 */
 	public GeneticAlgorithmTask(int rank, int classification, MainFrame main){
 		this.main = main;
 		this.rank = rank;
 		this.classification = classification;
-		//this.loadingBar = loadingBar;
-		
+
 		this.setProgress(0);
 		
 		ArrayList<Cell> classifications = InputParser.readClassification(rank);
 		this.cell = classifications.get(classification - 1);
 	}
 
-    /*
-     * Main task. Executed in background thread.
+    /**
+     * Starts the genetic algorithm in an alternate thread
      */
     @Override
     public ArrayList<String> doInBackground() {
@@ -85,8 +79,10 @@ public class GeneticAlgorithmTask extends SwingWorker<ArrayList<String>, Integer
         return GeneticAlgorithm.setUpAndRun( this.cell, this );
     }
 
-    /*
-     * Executed in event dispatching thread
+    /**
+     * Retrieves the results from the genetic algorithm. This thread is called
+     * by the event-dispatching thread, not the alternate one used to compute
+     * the genetic algorithm
      */
     @Override
     public void done() {
@@ -109,6 +105,11 @@ public class GeneticAlgorithmTask extends SwingWorker<ArrayList<String>, Integer
         
     }
     
+    /**
+     * Set's the progress of the task, which is in turned used to display a 
+     * loading bar for the genetic algorithm as it runs
+     * @param progress, the current percentage complete (0-100)
+     */
     public void setProgressBar(int progress){
 		this.setProgress(progress);
 	}

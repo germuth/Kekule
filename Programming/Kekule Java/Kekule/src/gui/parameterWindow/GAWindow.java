@@ -1,4 +1,4 @@
-package newGui.parameterWindow;
+package gui.parameterWindow;
 
 import geneticAlgorithm.GAParameters;
 import gui.LabeledSlider;

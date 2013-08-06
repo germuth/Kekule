@@ -1,4 +1,7 @@
-package newGui.parameterWindow;
+package gui.parameterWindow;
+
+import gui.parameterWindow.populationPanel.InitPopParameterPanel;
+import gui.parameterWindow.populationPanel.PopParameterPanel;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -10,8 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import newGui.parameterWindow.populationPanel.InitPopParameterPanel;
-import newGui.parameterWindow.populationPanel.PopParameterPanel;
 
 /**
  * Population Window

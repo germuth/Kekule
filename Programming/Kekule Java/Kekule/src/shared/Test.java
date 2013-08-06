@@ -1,7 +1,7 @@
 package shared;
 
 import graphs.Graph;
-import gui.GraphToSMILES;
+import graphs.GraphToSMILES;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-
-import gui.ImageRenderer;
 
 public class Test {
 	//adding edges
@@ -28,7 +26,7 @@ public class Test {
 		String smileBef = GraphToSMILES.convertSMILES(ga);
 		smiles.add(smileCur);
 		smiles.add(smileBef);
-		ImageRenderer.main(smiles);
+		//ImageRenderer.main(smiles);
 		
 		//Set<Integer> allPossiblePortSelections = new HashSet<Integer>();
 		//for(int i = 1; i <=5 ; i++){

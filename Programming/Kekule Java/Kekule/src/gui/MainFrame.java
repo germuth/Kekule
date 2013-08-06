@@ -1,6 +1,9 @@
-package newGui;
+package gui;
 
 import geneticAlgorithm.GeneticAlgorithmTask;
+import gui.parameterWindow.GAWindow;
+import gui.parameterWindow.MutationWindow;
+import gui.parameterWindow.PopulationWindow;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -32,9 +35,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import newGui.parameterWindow.GAWindow;
-import newGui.parameterWindow.MutationWindow;
-import newGui.parameterWindow.PopulationWindow;
 
 /**
  * MainFrame

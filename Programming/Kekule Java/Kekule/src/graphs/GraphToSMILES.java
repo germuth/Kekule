@@ -1,6 +1,5 @@
-package gui;
+package graphs;
 
-import graphs.Graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -200,15 +199,4 @@ public class GraphToSMILES {
 		
 		return tree;
 	}
-	
-	/**
-	 * DFS a graph to obtain the spanning tree
-	 * Only add edges if it reaches a node we haven't seen before
-	 * @param edges
-	 * @param currentNode
-	 */
-	//public void DFS(ArrayList<BitVector> edges, BitVector currentNode){
-	//	
-	//	
-	//}
 }
