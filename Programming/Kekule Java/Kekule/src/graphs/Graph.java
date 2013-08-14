@@ -217,7 +217,7 @@ public class Graph implements Comparable<Graph>{
 		//if it makes degree too high
 		Graph temp = new Graph(this);
 		temp.addEdge(edge);
-		if( temp.getHighestDegree() > 3 || temp.getHighestPortDegree() > 2){
+		if( temp.getHighestDegree() > 4 || temp.getHighestPortDegree() > 3){
 			return true;
 		}
 		return false;

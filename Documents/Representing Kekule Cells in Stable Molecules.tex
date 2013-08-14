@@ -83,34 +83,35 @@ Section 2 consists of the restrictions used to obtain more realistic graphs, and
 
 \section{Restrictions}
 
+\subsection{Degree}
+
 Carbon is tetravalent, meaning it has 4 valence electrons available to form covalent chemical bonds. This means (in most cases), carbon is only stable when bonded with 4 bonding electrons, in order to complete its octet. These 4 electrons may be provided from 4 distinct molecules, or there could be one or more molecules providing multiple electrons.
 
-In $\pi$ conjugated systems, every carbon atom contains precisely one double bond. Double bonds hold twice the amount of electrons and therefore each carbon can be at most connected to 3 distinct atoms. This is seen in all polycyclic polyunsaturated hydrocarbons. In this way, each node in our graphs has a maximum degree of 3. Ports however, must be able to interact with the outside world. If we assume this connection is through molecular wires, as in \cite{9}, or through an omniconjugated molecule \cite{v06}, then each port must hold back one of it's valence electrons to be able to connect to atoms outside the molecule. For this reason, we restrict ports to have a maximum degree of 2. 
-%Talk about if ports have double bonds like internal nodes do.
+In $\pi$ conjugated systems, every carbon atom contains precisely one double bond. Double bonds hold twice the amount of electrons and therefore each carbon can be at most connected to 3 distinct atoms. This is seen in all polycyclic polyunsaturated hydrocarbons. In this way, each node in our graphs has a maximum degree of 3. 
 
-Cycles must also be confined. Due to steric hinderance, cycles such as cyclopropane or cyclobutane are rarely stable in $\pi$ conjugated systems. Huckel's rule states that only cycles with 4n + 2 (2, 6, 10, etc.) delocalized electrons are considered aromatic and stable. However, Huckel's rule is mainly meant for monocyclic systems, meaning pentagons and heptagons can be stable in certain arrangements (see Azulene, Figure ~\ref{fig:azulene}). More on this in Section 4. For this reason, we currently only expand cycles of length 3 or 4. 
+The situation is slightly more complex for ports. Ports are not required to contain a double bond, and different resonance structures of the same graph may or may not contain double bonds at every port. However, all cells in Hesselink's classification, are 'flexible'. Flexible in this context, means that every port in the graph has atleast one port assignment where that port contains a double bond. And since any cell can be translated / port renamed to obtain one of the classified cells, it is safe to assume every port will contain a double bond in atleast one resonance structure, limiting ports to a degree of 3 as well. 
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=50mm]{azulene.png}
-\caption{Azulene, a structure composed of an aromatic heptene and pentene ring attached together.}
-\label{fig:azulene}
-\end{figure}
+Ports must also be able to interact with the outside world, by definition. If we assume this connection is through molecular wires, as in \cite{9}, or through an omniconjugated molecule \cite{v06}, then each port must hold back one of its valence electrons to be able to connect to atoms outside the molecule. For this reason, we restrict ports to have a maximum degree of 2. 
 
-Cycle extension is done by inserting two additional carbon atoms into the cycle at the same position (see Figure ~\ref{fig:cycleExtension}). This has no effect on the Kekul\'e cell as the two atoms are conjugated with the rest of the ring and simply expand it. This procedure is nearly identical to operation v of \cite{v06}. Care must be taken to not select two nodes which also are a part of another cycle, as the resulting graph will contain unrealistic bonding distances and cycle connectivity. Currently cycles of length 8 and 9 are not reduced to their corresponding cycles of length 6 and 7. 
+\subsection{Cycles}
+When cycles within graphs are created, the concept of aromaticity is introduced. In Chemistry, conjugated ring formations are called aromatic, and the molecule must have certain criteria to meet or the ring will not be stable. This means any cycles formed within our graphs must also meet these criteria if they are to be considered stable. Aromatic molecules show increased stability compared to normal non-aromatic compounds. Anti-aromatic rings show decreased stability. In order to be considered aromatic a molecule must have:
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=90mm]{cycleExtension.png}
-\caption{This shows the extension of the left 4 cycle into a proper 6 cycle. The top half shows a correct procedure, selecting to add nodes between A and B. The bottom half shows the incorrect procedure of adding two nodes in between B and D. Double bonds are excluded from this diagram for clarity.}
-\label{fig:cycleExtension}
-\end{figure}
+\begin{enumerate}
+\item{A delocalized conjugated $\pi$ system, resulting from alternating single and double bonds}
+\item{Coplanar stucture, where all atoms of the ring are contained in the same plane}
+\item{Contributing atoms arranged in one or more cycles}
+\item{The number of contributing $\pi$ delocalized electrons must be even, but not a multiple of 4 (4n + 2, where n = 0,1,2,...)}
+\end{enumerate}
 
-Cycles are detected using an upper bounded implementation of the 'flooding' algorithm (need cite here). In the flooding algorithm, each node sends out a packet to all if it's neighbors. Any time a node receives a packet, it appends its name and sends the new packet to all of its neighbors. Packets are not sent back to the node who it was just received it from. If at any time a packet has been appended by the same node twice, we have found a cycle. As soon as a packet finds a cycle, the packet is discontinued. Packets of length $>$ 12 are also discontinued. This introduces the error that a graph could contain a cycle of length 13. The amount of computation time saved is usually worth it, considering how unlikely a cycle of length 13 or greater is. 
+All of our graphs will by default meet the first condition. The second condition is difficult to determine. Aromatic rings are planar because it is comprised of multiple conjugated bonds. Each $\pi$ conjugated bond results from the overlap in the nodal planes of each bonding atom. This causes a cloud of electron probability above and below the covalent bond. Each cloud generates a small electromagnetic field, which works to keep the ring flat (need cite here). Often non-aromatic molecules will align themselves in one plane to achieve aromatic status, where as anti-aromatic molecules will dis-align themselves to avoid anti-aromaticity (making them non-aromatic). A consequence of planarity is that any graph of the molecule should be able to visualized such that no edges are intersecting. (Currently we don't 100\% detect whether graphs are planar or not).
 
-Some optimizations can be made considering the subset of all possible graphs we are dealing with. Packets only begin on nodes with degree of 3, as this is guaranteed to find all cycles. Every point within a cycle has a degree of 2, so if that cycle is connected to any other node, then at least one of that cycles nodes will have a degree of 3. If there are no nodes with degree of 3, the graph either contains no cycles, or the graph is one big cycle. Therefore, in this case, we only start a single packet at one random node with degree 2. Despite the optimization, this process is still the bottleneck of each iteration for the genetic algorithm.
+\subsubsection{Angle Strain}
 
-Not only must cycle size be restricted, but cycle connectivity. In realistic polycyclic polyunsaturated systems, any two rings of the system share at most two atoms. This is seen in naphthalene (see Figure ~\ref{fig:polycyclic}), both hexagons share two common atoms. Even in complex polycyclic molecules such as pyracylene (see Figure 6), each cycle shares at most two nodes. Two cycles cannot share a single node (spiro-compound) as the shared node would have a degree of 4. Notice in figure ~\ref{fig:polycyclic}, the unrealistic compound has two cycles which share 4 nodes.
+One factor attributing to whether a molecule can adopt a planar configuration is angle strain. When carbon contains a single double bond and two additional single bonds, its preferred conformational configuration is trigonal planar. In this configuration, each atom is 120 degrees from each other and contained in the same plane. Smaller rings such as cyclobutadiene ([4] annulene) force angles of 90 between atoms if they are to remain planar. For this reason, cyclobutadiene adopts a non-planar configuration and is not aromatic. Larger rings can face the same difficulties, for example cyclodecapentene ([10] annulene) can't adopt a planar configuration as the bond angles would be 144 degrees. For this reason, cyclodecapentene is also not considered aromatic. Some larger rings such as [18] annulene can adopt a aromatic conformation, but rings of such sizes are quite rare.  We limit cycles to size 5-8. Any cycles of other sizes which appear can usually be artificially altered, through cycle expansion or contraction (see Section 3.4).
+
+\subsubsection{Cycle Connectivity}
+
+In regards to the third condition, groups of rings must also be considered. Instead of a single ring being aromatic, the group of rings may be deemed aromatic. In most ring systems, any two rings of a system share at most two atoms. This preserves the geometry of each cycle individually. This is seen in naphthalene (see Figure ~\ref{fig:polycyclic}), both hexagons share two common atoms. Even in complex polycyclic molecules such as pyracylene (see Figure 6), each cycle shares at most two nodes with any other cycle. Two cycles cannot share a single node (spiro-compound) as the shared node would have a degree of 4. Notice in figure ~\ref{fig:polycyclic}, the unrealistic compound has two cycles which share 4 nodes. To account for this, all cycles of each graph are found, and their intersections are computed. Unrealistic graphs are discarded.
 
 \begin{figure}[ht!]
 \centering
@@ -119,20 +120,61 @@ Not only must cycle size be restricted, but cycle connectivity. In realistic pol
 \label{fig:polycyclic}
 \end{figure}
 
-Graphs must be planar. In order for a molecule to be considered aromatic, all of its contributing atoms must be coplanar. This is because aromatic systems are comprised of multiple conjugated bonds. Each $\pi$ conjugated bond results from the overlap in the nodal planes of each bonding atom. This causes a cloud of electron probability above and below the covalent bond. Each cloud generates a small electromagnetic field, which works to keep the ring flat (need cite here). A consequence of planarity is that any graph of the molecule should be able to visualized such that no edges are intersecting. (  currently we don't 100\% detect whether graphs are planar or not ) 
+\subsubsection{Huckel's Rule}
 
-Finally, graphs representing molecules must be connected. A disjoint graph represents two molecules rather than one. Two disjoint graphs can sometimes be connected using the following procedure. If we add internal vertices which must always conjugate ’within’ themselves, they will not interfere with the cell. For example, see Figure ~\ref{fig:disjoint}.
+The fourth condition is the most difficult. Due to the filling of quantum-mechanical electron orbitals, only aromatic molecules with 4n+2 electrons exhibit aromaticity. Compounds with 4n electrons exhibit anti-aromaticity. Groups of cycles add their delocalized electrons together to be one single $\pi$ conjugated system (see Figure ~\ref{fig:azulene}). This condition alone implies we must limit all ring systems to size of length 2, 6, or 10. However, Huckel's rule is mainly meant for monocyclic systems and has been shown to be inaccurate for many compounds containing more than three fused aromatic rings (see Figure ~\ref{fig:pyrene}) \cite{HuckelBad}. To account for this, in polycyclic systems, certain extensions to the rule have been added to better predict aromaticity \cite{HuckelExtension}.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=90mm]{disjoint2.png}
-\caption{Process used to turn a disjoint graph to a connected graph with the same cell. Two new nodes E and F can be added which always conjugate to each other.}
-\label{fig:disjoint}
+\includegraphics[width=50mm]{azulene.png}
+\caption{Azulene, a structure composed of an aromatic heptene and pentene ring attached together. The total amount of $\pi$ contributing electrons is 10, 7 from heptene and 3 from pentene. Since 10 = 4n + 2 (where n = 2), Huckel's rule correctly predicts this structure to be aromatic.}
+\label{fig:azulene}
 \end{figure}
 
-In the right-hand graph of Figure 7, F is not a port and so must always contain a double bond. The only other node which is available to form a double bond with F is E, so in every resonance structure of this molecule E and F will contain a double bond with each other (as shown in right diagram). Therefore d or b can never form a double bond with their new edge (that would result in two adjacent double bonds), and the Kekul\'e cell has not been changed. This now resembles a stable connected molecule. This procedure is similar to Operation iii and Operation vi of [3].
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=50mm]{pyrene.png}
+\caption{Although Pyrene has 16 conjugated electrons (which does not satisfy 4n + 2), it is still an aromatic molecule.}
+\label{fig:pyrene}
+\end{figure}
 
-Although these restrictions do a good job of trimming out almost all unrealistic graphs, they are not absolute. Cycles of length 5 and 7 are seen in naturally occurring hydrocarbons, but it is difficult to determine what arrangement makes than stable (need more research here). Additionally, our procedure makes no attempt to ensure all bonding distances are realistic and the molecules displayed can be synthesized (more on this in Section 4). 
+
+
+We choose to ignore Huckel's rule and any extensions. This is because even anti-aromatic compounds such as pentalene (8 contributing electorons) can be stabilized by adding the appropriate substituent. Either electron-donating or electron-withdrawing groups can be attached to the ring to allow aromaticity (see Figure ~\ref{fig:pentalene}). Additionally, it is possible to insert hereroatoms into the structure, such as nitrogen and sulphur. In addition to possibly making the molecules easier to synthesize, the nitrogen may add electrons to the conjugated system while leaving the switching behavior undisturbed \cite{v06} (see Figure, not existant yet%~\ref{fig:pyrrole}%). Although such substituents cannot, in every case, allow a stable molecule, they can in most cases. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=160mm]{pentalene.png}
+\caption{Pentalene can attach either the electron-donating Me \cite{methylPentalene} or N(Me)$_2$ \cite{nitrogenPentalene} group to achieve aromatic structure.}
+\label{fig:pentalene}
+\end{figure}
+
+Despite ignoring Huckel's rule, we cannot discard this problem completely. Since ports do not need to contain a double bond, in some resonance structures of the same molecule, the amount of contributing electrons may be different (see Figure ~\ref{fig:badBenzene} and ~\ref{fig:badNapthalene}). Unless every resonance structure is aromatic, or at least every structure can be made aromatic by the same substituent, the molecule will not be able to realize all port assignments of the cell and is therefore unfit.  
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=130mm]{noSenseBenzene.png}
+\caption{Below is a graph of benzene, which represents K5 of Hesselink's class 4 classification. The first line gives the structure, the second line the port assignment, and the third line the amount of electrons contributing to the ring. The problem here, is that only 2 and 6 are aromatic, and if we add substituents to stabilize the 4 electron structures, the 2 and 6 become unstable. }
+\label{fig:badBenzene}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{noSenseNapthalene.png}
+\caption{Napthalene also can represent K5 of Hesselink's class 4 classification. This graph has the same problem as before. In fact, most graphs with 2 or more ports within a cycle system have this problem.}
+\label{fig:badNapthalene}
+\end{figure}
+
+To account for this, we must ensure that each ring contains the same amount of electrons in every resonance structure. It is a difficult problem to determine which port placements could cause this. We have yet to discover a general solution. In any ring system, a single port is allowed, since a double bond spans two atoms, this has no effect. However, when two ports are added into a ring, or two rings are conjoined, it becomes unclear. For example, see Figure ~\ref{fig:checkMarks}. To ensure all results are manageable, all rings systems are restricted to one port. This means graphs such as napthalene, can only have a single port within the cycle. But if one graph contained two bridged napthalenes, each could contain a single port. This unnecessarily removes some graphs which could work, but it is a costly computation to determine for each graph whether it works. All other ports within the graph must be exo-cyclic. 
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=130mm]{checkMarks.png}
+\caption{Benzene and Pentalene with two ports at various locations. Structures with a checkmark below indicate all resonance structures contain the same amount of double bonds. Structures with an x, indicate the opposite, and are unfit.}
+\label{fig:checkMarks}
+\end{figure}
+
+Finally, graphs representing molecules must be connected. A disjoint graph more accurately represents two molecules rather than one. Although these restrictions do a good job of trimming out almost all unrealistic graphs, they are not absolute. Additionally, our restrictions make no attempt to ensure all graphs can be synthesized (more on this in Section 4). 
 
 \section{Genetic Algorithm}
 
@@ -176,47 +218,43 @@ Crossover begins by randomly selecting 2 graphs from the sub-population. These g
 
 Fitness values are integers given to a graph. Any graphs cell can be calculated using Hesselink's procedure here: (explain a lot ). The fitness is calculated by iterating over the graphs cell compared to the cell we are evolving towards. For every port assignment they share, the fitness is incremented by one. For every port assignment that is missing, or is extra, fitness is decremented one point. If a cell is empty, with no port assignments \footnote{This can happen when the genetic algorithm creates a graph which has a (non-port) vertex with no edges to it (degree 0). There is no way for this graph to have a Kekul\'e structure since the lone vertex can never have a double bond.}, it is given a fitness value of -10, in attempt to discourage that graph from evolving onward. 
 
+\subsection{Cycle Detection}
+
+Cycles are detected using an upper bounded implementation of the 'flooding' algorithm (need cite here). In the flooding algorithm, each node sends out a packet to all if it's neighbors. Any time a node receives a packet, it appends its name and sends the new packet to all of its neighbors. Packets are not sent back to the node who it was just received it from. If at any time a packet has been appended by the same node twice, we have found a cycle. As soon as a packet finds a cycle, the packet is discontinued. Packets of length $>$ 12 are also discontinued. This introduces the error that a graph could contain a cycle of length 13. The amount of computation time saved is usually worth it, considering how unlikely a cycle of length 13 or greater is. 
+
+Some optimizations can be made considering the subset of all possible graphs we are dealing with. Packets only begin on nodes with degree of 3, as this is guaranteed to find all cycles. Every point within a cycle has a degree of 2, so if that cycle is connected to any other node, then at least one of that cycles nodes will have a degree of 3. If there are no nodes with degree of 3, the graph either contains no cycles, or the graph is one big cycle. Therefore, in this case, we only start a single packet at one random node with degree 2. Despite the optimization, this process is still the bottleneck of each iteration for the genetic algorithm.
+
+\subsection{Cycle Extension and Contraction}
+Cycle extension is done by inserting two additional carbon atoms into the cycle at the same position (see Figure ~\ref{fig:cycleExtension}). This has no effect on the Kekul\'e cell as the two atoms are conjugated with the rest of the ring and simply expand it. This procedure is nearly identical to operation v of \cite{v06}. Care must be taken to not select two nodes which also are a part of another cycle, as the resulting graph will contain unrealistic bonding distances and cycle connectivity. The opposite procedure can be used to contract cycles. Contraction is only possible if there are two neighboring nodes with no edges outside the ring. Graphs with un-alterable cycles are excluded (maybe).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{cycleExtension.png}
+\caption{This shows the extension of the left 4 cycle into a proper 6 cycle. The top half shows a correct procedure, selecting to add nodes between A and B. The bottom half shows the incorrect procedure of adding two nodes in between B and D. Double bonds are excluded from this diagram for clarity.}
+\label{fig:cycleExtension}
+\end{figure}
+
+\subsection{Connecting a Disjoint Graph}
+A disjoint graph is not an accurate representation of a molecule. Luckily, disjoint graphs can often be connected using the following procedure. If we add internal vertices which must always conjugate ’within’ themselves, they will not interfere with the cell. For example, see Figure ~\ref{fig:disjoint}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{disjoint2.png}
+\caption{Process used to turn a disjoint graph to a connected graph with the same cell. Two new nodes E and F can be added which always conjugate to each other.}
+\label{fig:disjoint}
+\end{figure}
+
+In the right-hand graph of Figure ~\ref{fig:disjoint}, F is not a port and so must always contain a double bond. The only other node which is available to form a double bond with F is E, so in every resonance structure of this molecule E and F will contain a double bond with each other (as shown in right diagram). Therefore d or b can never form a double bond with their new edge (that would result in two adjacent double bonds), and the Kekul\'e cell has not been changed. This now resembles a stable connected molecule. This procedure is similar to Operation iii and Operation vi of [3].
+
 \subsection{Additional Note}
 
 It should be noted that rather than using the genetic algorithm to approximate a solution (as seen in most applications), an answer generated by it is only useful if it found an actual solution. However, for all cells of rank \textless 6 and most cells of rank 6, the genetic algorithm can converge to multiple solutions for a given cell. 
 
 \section{Results}
 
-Most graphs produced by the algorithm can be feasibly realized in stable molecules. However, results are not perfect. As stated previously, rings of sizes other than 6 are not always stable. Generally, stable molecules are ones that have been deemed chemically aromatic. In order to be aromatic a molecule must meet the following requirements: 
+Most graphs produced by the algorithm can be feasibly realized in stable molecules. However, results are not perfect. As stated previously, rings of sizes other than 6 are not always stable. 
 
-\begin{enumerate}
-\item A delocalized conjugated $\pi$ system, most commonly an arrangement of alternating single and double bonds
-\item Coplanar structure, with all the contributing atoms in the same plane
-\item Contributing atoms arranged in one or more rings
-\item 4n + 2 $\pi$ delocalized electrons as declared by Huckel's Rule.
-\end{enumerate}
-
-All structures generated will meet the first condition. The third condition is not necessary as non-ring structures can be used as well. The fourth condition is one currently not considered. We could, after finding all cycles within each molecule, detect groups of cycles and ensure each group has 4n + 2 delocalized electrons. This would mean all results satisfy condition 4, but this would exclude many potential molecules. Huckel's rule has been shown to be inaccurate for many compounds containing more than three fused aromatic rings (see Figure ~\ref{fig:pyrene}) \cite{HuckelBad}. For polycyclic systems, certain extensions to the rule have been added \cite{HuckelExtension}.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=50mm]{pyrene.png}
-\caption{Although Pyrene has 16 conjugated electrons (which does not satisfy 4n + 2), it is still an aromatic molecule.}
-\label{fig:pyrene}
-\end{figure}
-
-We choose to ignore Huckel's rule and any extensions. This is because even anti-aromatic compounds such as pentalene can be stabilized by adding the appropriate substituent. Either electron-donating or electron-withdrawing groups can be attached to the ring to allow aromaticity (see Figure ~\ref{fig:pentalene}). Additionally, it is possible to insert hereroatoms into the structure, such as nitrogen and sulphur. In addition to making the molecules easier to synthesize, the nitrogen may add electrons to conjugated system to meet Huckel's rule (see Figure ~\ref{fig:pyrrole}). Although such alterations are not always possible, most graphs can resemble realistic molecules. 
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=160mm]{pentalene.png}
-\caption{Pentalene can attach either the electron-donating Me \cite{methylPentalene} or N(Me)$_2$ \cite{nitrogenPentalene} group to achieve aromatic structure.}
-\label{fig:pentalene}
-\end{figure}
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=90mm]{pentalene.png}
-\caption{Pyrrole is a heterocyclic aromatic compound, containing a nitrogen. It is considered aromatic due to Huckels Rule (4n + 2, where n = 1}. 4 electrons come from the carbon atoms, two from each double bond, and two additional electrons from nitrogen's lone pair, making 6 total contributing electrons.}
-\label{fig:pyrrole}
-\end{figure}
-
-The second condition is another current drawback. Since the cycle detection algorithm needs an upper bound, in rare cases, cycles above this limit can appear. This can cause other smaller cycles which share more than two atoms with the large cycle to not be detected. Additionally, some bonding distances may be unrealistic. For examples of both, see Figure ~\ref{fig:unrealistic}.
+Planarity? The second condition is another current drawback. Since the cycle detection algorithm needs an upper bound, in rare cases, cycles above this limit can appear. This can cause other smaller cycles which share more than two atoms with the large cycle to not be detected. Additionally, some bonding distances may be unrealistic. For examples of both, see Figure ~\ref{fig:unrealistic}.
 
 \begin{figure}[ht!]
 \centering
@@ -227,7 +265,7 @@ The second condition is another current drawback. Since the cycle detection algo
  
 In most small cases (ports \textless 6), the genetic algorithm is able to obtain atleast 10 different graphs which satisfy the cell immediately. For some of the later classifications of rank 5, and cells of rank 6 or higher, it can take longer. Some cells of rank 6 it is unable to find a graph for. As it is possible that no such realistic graph exists for some cells, it is difficult to determine whether a solution exists. The number of nodes is currently maxed at 31 nodes, as nodes are stored in a bit array, which would overflow the integer at 32.
 
-Below is graphs for all cells of rank 4 and 5. Double bonds are excluded from the graphs shown below, as only one resonance structure could be seen at a time. As stated previously, the genetic algorithm is capable of coming to multiple solutions for each cell, and the ones shown below are simply ones selected by us. Notice the trend that as the Kekul\'e cell number increases, the Kekul\'e cell becomes longer. This means more resonance structures of each graph, and more connections between atoms. The higher amount of connectivity required in each cell makes it so the next graph is usually more difficult to find than the last one. Looking at Figures ~\ref{fig:rank5Results1} and ~\ref{fig:rank5Results2}, it is easy to see that the graphs get bigger and more complex as the cell number increases. 
+Below is graphs for all cells of rank 4 and 5. Double bonds are excluded from the graphs shown below, as only one resonance structure could be seen at a time. Some graphs may have cells different than the title below them. This is because their cells can be port translated to achieve the classified cell. This is acceptable since switching behaviour is invariant across port translation \cite{HH13}. As stated previously, the genetic algorithm is capable of coming to multiple solutions for each cell, and the ones shown below are simply ones selected by us. Notice the trend that as the Kekul\'e cell number increases, the Kekul\'e cell becomes longer. This means more resonance structures of each graph, and more connections between atoms. The higher amount of connectivity required in each cell makes it so the next graph is usually more difficult to find than the last one. Looking at Figures ~\ref{fig:rank5Results1} and ~\ref{fig:rank5Results2}, it is easy to see that the graphs get bigger and more complex as the cell number increases. 
 
 \begin{figure}[ht!]
 \centering
@@ -293,9 +331,11 @@ There are many possible improvements in this area. The number of nodes could be 
 
 \bibitem{HuckelExtension} Kruszewski, J., and Krygowski, T. M. An Extension of the Hückel 4N+ 2 Rule to Polycyclic Non-alternant Conjugated Hydrocarbons. Canadian Journal of Chemistry, 53(6), 945-951. 1975.
 
-\bibitem{methylPentalene} Hafner, K., Dönges, R., Goedecke, E. and Kaiser, R. Concerning Pentalene, 2-Methylpentalene, and 1,3-Dimethylpentalene. Angew. Chem. Int. Ed. Engl., 12: 337–339. 1973.
+\bibitem{methylPentalene} Hafner, K., Donges, R., Goedecke, E. and 
+Kaiser, R. Concerning Pentalene, 2-Methylpentalane, and 1,3-
+Dimethylpentalene. Angew. Chem. Int. Ed. Engl., 12: 337-339. 1973.
 
-\bibitem{nitrogenPentalene} Hafner, K., Bangert, K. F. and Orfanos, V. 1,3-Bis(dimethylamino)pentalene. Angew. Chem. Int. Ed. Engl., 6: 451–452. 1967.
+\bibitem{nitrogenPentalene} Hafner, K., Bangert, K. F. and Orfanos, V 1,3-Bis(dimethylamino)pentalene. Angew. Chem. Int. Ed. Engl., 6: 451–452. 1967.
 
 \end{thebibliography}
 
