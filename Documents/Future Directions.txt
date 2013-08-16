@@ -3,6 +3,13 @@ Directions:
 Thing to do as of 7/22/2013
 
 IMPORTANT:
+- new restriction, ports must be excluded from cycles
+	- but not always
+	- one port within a cycle is allowed
+	- how do i even detect port in cycle
+	- i guess in fitness it could decrement those guys
+		- but it would be better if just never generated
+	
 - optimize flooding algorithm
 	- could count number of cycles perhaps
 		- do it one at a time until you have all the cycles
@@ -12,10 +19,10 @@ IMPORTANT:
 - 6 3 is broken
 
 NOT IMPORTANT: 
--Fix error when image rendered gets an empty list
--Make a method to have a bitvector edge remove one of it's nodes
+- Fix error when image rendered gets an empty list
+- Make a method to have a bitvector edge remove one of it's nodes
 - makea method for bitvector addition and subtraction ^^
--Turn cell into an arraylist instead of an array
+- Turn cell into an arraylist instead of an array
 - make an edge cell and a kekule cell
 - use appendName() method
 - still getting overflow errors

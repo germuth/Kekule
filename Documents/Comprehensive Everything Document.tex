@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{pslatex} % Font Times New Roman
 
-\usepackage{amsmath,amssymb,amsfonts,fancyhdr,lastpage}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,fancyhdr,lastpage}
 \usepackage{makeidx, graphicx}
 
 \setlength{\textheight}{9.0in}
@@ -34,6 +34,58 @@ Silicon transistors may slowly be reaching their minimum size. Possible alternat
 \end{abstract}
 
 \section{Introduction}
+
+First a review of organic chemistry is given in section 1.1. A brief review of graph theory is given in Section 1.2. Section 1.3 begins to introdoce Kekul\'e theory. Section 1.4 introduces the current problem, and our current work. Definitions for many terms are given after each subsection.
+
+\subsection{The Chemistry}
+
+Carbon is the $6^{th}$ element of the periodic table and backbone of all organic molecules. It is tetravalent, meaning it has 4 valence electrons available to form chemical covalent bonds. In such bonds, atoms share electrons relatively equally between them. For example, a neutral chlorine atom has 7 electrons in its outer shell. According to the octet rule, most atoms are stable with 8 electrons. For example, chlorine commonly dimerizes with itself, sharing one electron each way to give each chlorine 8 shared electrons in its outer shell (see Figure \ref{fig:chlorine}).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=110mm]{chlorine.jpg}
+\caption{This shows the forming of a covalent bond between two neutral chlorine atoms. Each atom initially has 7 electrons, until they each share an electron with each other, yielding them both 8 electrons. Carbon only possesses 4 electrons in it's neutral state, and therefore usually shares electrons with 4 other atoms.}
+\label{fig:chlorine}
+\end{figure}
+
+Each possible bonding partner of carbon will contribute a single electron to the covalent bond, meaning carbon, in its full valency will have 8 electrons. This is considered a full octet, and the stable configuration of carbon. However, 4 bonding partners is not always needed in order to be stable. If Carbon was bonded to 3 other atoms, but one of them was able to share 2 electrons (a double bond), carbon would still have a full valency of 8 electrons (see Figure \ref{fig:C02}).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=60mm]{c02.jpg}
+\caption{This figure shows the Lewis Structure of Carbon dioxide. Each oxygen is capable of sharing 2 electrons. Since carbon has 4 electrons normally, they are split evenly between the oxygen atoms. This results with every atom having 8 electrons. Carbon is said to be double-bonded to each oxygen.}
+\label{fig:C02}
+\end{figure}
+
+According to the Valence Bond Theory, such single and double bonds have different electron structures. Single bonds are named "sigma ($\sigma$) bonds", and are caused by the head-on overlapping between atomic orbitals. Sigma Bonds are the strongest type of covalent bond. Double bonds are named "pi ($\pi$) bonds", and result from electron overlap in the nodal plane of both atoms. Double bonds are weaker, but still resilient.
+
+Many organic molecules display alternating paths of single and double bonds. In this configuration, every atom is connected with precisely one double bond. This is named conjugation, and can increase molecular stability. Conjugation implies the possibility of different resonance structures, where every double bond shifts in one direction to obtain a different representation of the same molecule. The amount of such resonance structures is a measure of stability. The actual molecule results from the superposition of all resonance contributors.
+
+Each of the nodal lobes involved in pi bond conjugation allow their electrons to delocalize across the molecule. Since electrical current is the flow of electrons, such alternating paths are postulated to be electrically conductive \cite{H13,HK88}. When electricity (specifically a `soliton') is ran through a conjugated system, all single and double bonds are interchanged \cite{HK88}. 
+
+This allows some molecules to display a `switching' property. A channel is defined as a path through a molecule. A channel is open when the path is alternating, and closed otherwise. When some alternating paths are toggled, other paths may be opened or closed. This resembles the behavior of circuitry, and is proposed as a basis for molecular computation. This proposal is quite speculative.
+
+\subsubsection{Definitions}
+
+\begin{description}
+\item[Organic Compound] An organic compound is any member of a large class of gaseous, liquid, or solid chemical compounds whose molecules contain carbon.
+\item[Valence Electron] An electron that can participate in the formation of a chemical bond; 
+\item[Tetravalence] The state of an atom with four electrons available for covalent chemical bonding.
+\item[Covalent Bond] A chemical bond that involves the sharing of electron pairs between atoms.
+\item[Octet rule] A chemical rule of thumb that states that atoms tend to combine in such a way that they each have eight electrons in their valence shells.
+\item[Lewis Structure] Diagrams that show the bonding between atoms of a molecule by drawing each electron as a 'dot'.
+\item[Double bond] A chemical bond between two chemical elements involving four bonding electrons instead of the usual two.
+\item[Valence Bond Theory] A basic theory developed to use to explain chemical bonding. It explains how the atomic orbitals of the atoms combine to give individual chemical bonds when a molecule is formed. 
+\item[Sigma Bond] The strongest type of covalent chemical bond. They are formed by head-on overlapping between atomic orbitals. Commonly referred to as a 'single bond'.
+\item[Pi Bond] Commonly referred to as a 'double bond'.
+\end{description}
+
+\subsection{Graph Theory}
+
+\subsection{Kekul\'e Theory}
+
+\subsection{The Problem}
+
 
 Moore's Law (see Figure ~\ref{fig:MooresLaw}) in 1965 \cite{Moore} predicted that, over the history of computing hardware, the number of transistors on a single circuit will double approximately every two years (see Figure 1). Although his prediction has proven to be accurate, there are signs which show this exponential progress is coming to an end \cite{MooreEnd}. Conventional silicon transistors may soon reach their minimum physical size. As they get smaller, so does the amount of current which runs through them. The amount of leakage current is approaching the order of magnitude of the actual current running through the transistor itself \cite{v06}. At this point, current silicon transistors will no longer be able to continue decreasing in size.
 
