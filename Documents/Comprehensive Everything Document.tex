@@ -35,7 +35,7 @@ Silicon transistors may slowly be reaching their minimum size. Possible alternat
 
 \section{Introduction}
 
-First a review of organic chemistry is given in section 1.1. A brief review of graph theory is given in Section 1.2. Section 1.3 begins to introdoce Kekul\'e theory. Section 1.4 introduces the current problem, and our current work. Definitions for many terms are given after each subsection.
+First a review of organic chemistry is given in section 1.1. A brief review of graph theory is given in Section 1.2. Section 1.3 outlines the current need for smaller computational elements. Section 1.4 begins to introduce molecular electronics. Section 1.5 introduces Kekule Theory.  Definitions for many terms are given after each subsection.
 
 \subsection{The Chemistry}
 
@@ -48,7 +48,7 @@ Carbon is the $6^{th}$ element of the periodic table and backbone of all organic
 \label{fig:chlorine}
 \end{figure}
 
-Each possible bonding partner of carbon will contribute a single electron to the covalent bond, meaning carbon, in its full valency will have 8 electrons. This is considered a full octet, and the stable configuration of carbon. However, 4 bonding partners is not always needed in order to be stable. If Carbon was bonded to 3 other atoms, but one of them was able to share 2 electrons (a double bond), carbon would still have a full valency of 8 electrons (see Figure \ref{fig:C02}).
+Each possible bonding partner will contribute a single electron to the covalent bond, meaning carbon, who has only 4 electrons, will have 8 electrons in its full valency. This is considered a full octet, and the stable configuration of carbon. However, 4 bonding partners is not always needed in order to be stable. If Carbon was bonded to 3 other atoms, but one of them was able to share 2 electrons (a double bond), carbon would still have a full valency of 8 electrons (see Figure \ref{fig:C02}).
 
 \begin{figure}[ht!]
 \centering
@@ -57,13 +57,26 @@ Each possible bonding partner of carbon will contribute a single electron to the
 \label{fig:C02}
 \end{figure}
 
-According to the Valence Bond Theory, such single and double bonds have different electron structures. Single bonds are named "sigma ($\sigma$) bonds", and are caused by the head-on overlapping between atomic orbitals. Sigma Bonds are the strongest type of covalent bond. Double bonds are named "pi ($\pi$) bonds", and result from electron overlap in the nodal plane of both atoms. Double bonds are weaker, but still resilient.
+However, Electrons can't be clearly identified as either a particle, or a wave. In fact they show traits of both entities. Electrons have mass, indicating they are indeed a particle. However, physical experiments such as the two-slit experiment have shown that electrons can form an interference pattern, an attribute only seen by waves, such as light. This phenomenon is called the wave particle duality. 
+
+Werner Heisenberg then postulated an uncertainty principle, saying you may only know either an electrons position, or momentum at one point in time. In this way, you can only ever know half the information about where an electron is traveling. However, electrons are known to orbit the atom. Because of this, electrons are said to be in 'orbitals' around the atom. These are regions of 3D space where the electron is most likely to appear, most of the time. These electron probability clouds are only a guess as to where the electrons should be, when orbiting an atom.
+ 
+According to the Valence Bond Theory, such single and double bonds have different electron structures. Single bonds are named "sigma ($\sigma$) bonds", and are caused by the head-on overlapping between atomic orbitals. Sigma Bonds are the strongest type of covalent bond. Double bonds are named "pi ($\pi$) bonds", and result from electron overlap in the nodal plane of both atoms. Double bonds are weaker, but still resilient. See Figure \ref{fig:bonds}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=75mm]{bonds.png}
+\caption{The green electron overlap constitutes a sigma bond. Where as each set of dotted lines betewen the blue electron cloud constitutes a pi bond.}
+\label{fig:bonds}
+\end{figure}
 
 Many organic molecules display alternating paths of single and double bonds. In this configuration, every atom is connected with precisely one double bond. This is named conjugation, and can increase molecular stability. Conjugation implies the possibility of different resonance structures, where every double bond shifts in one direction to obtain a different representation of the same molecule. The amount of such resonance structures is a measure of stability. The actual molecule results from the superposition of all resonance contributors.
 
 Each of the nodal lobes involved in pi bond conjugation allow their electrons to delocalize across the molecule. Since electrical current is the flow of electrons, such alternating paths are postulated to be electrically conductive \cite{H13,HK88}. When electricity (specifically a `soliton') is ran through a conjugated system, all single and double bonds are interchanged \cite{HK88}. 
 
 This allows some molecules to display a `switching' property. A channel is defined as a path through a molecule. A channel is open when the path is alternating, and closed otherwise. When some alternating paths are toggled, other paths may be opened or closed. This resembles the behavior of circuitry, and is proposed as a basis for molecular computation. This proposal is quite speculative.
+
+The 'real' structure is a weighted average of all resonance structures, with the most stable resonance structure as the most important contributors. 
 
 \subsubsection{Definitions}
 
@@ -78,16 +91,32 @@ This allows some molecules to display a `switching' property. A channel is defin
 \item[Valence Bond Theory] A basic theory developed to use to explain chemical bonding. It explains how the atomic orbitals of the atoms combine to give individual chemical bonds when a molecule is formed. 
 \item[Sigma Bond] The strongest type of covalent chemical bond. They are formed by head-on overlapping between atomic orbitals. Commonly referred to as a 'single bond'.
 \item[Pi Bond] Commonly referred to as a 'double bond'.
+\item[Conjugated System] A system of connected p-orbitals with delocalized electrons in compounds with alternating single and multiple bonds
 \end{description}
 
 \subsection{Graph Theory}
 
-\subsection{Kekul\'e Theory}
+Perfect matching. 
+
+
+Graph Theory, a discipline of mathematics and computer science, is the study of graphs. Graphs in this context model relations between objects. Such objects are represented using nodes or verticies. Relations between them are called edges, and can be single or bidirectional (see Figure \ref{fig:graph}).  
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=75mm]{graph.png}
+\caption{This graph is composed of 8 nodes. Nodes are sometimes labeled, in this case with numbers. Edges in this graph are directed (they can only be traversed in one direction), and so this graph is called a directed graph.}
+\label{fig:graph}
+\end{figure}
+
+There are many different types of graphs. An undirected graph contains only bidirectional edges. A weighted graph has costs to each edge you must pay to traverse the edge. If there exists a path between two verticies, they are said to be connected. If every possible pair of nodes within a graph is connected, the graph is deemed connected. 
 
 \subsection{The Problem}
 
+%this whole paragraph semi plagarizes
+As the use of electronic systems become more vital to our society, demands for new technological developments are ever increasing. %First sentence needs to be reworded in our own words. 
+A large portion of the current technological development has been spent reducing the size of the conventional silicon transistor. Smaller transistors allow faster computation. Approximately every 2 years, twice the amount of transistors have been able to fit in the same space.
 
-Moore's Law (see Figure ~\ref{fig:MooresLaw}) in 1965 \cite{Moore} predicted that, over the history of computing hardware, the number of transistors on a single circuit will double approximately every two years (see Figure 1). Although his prediction has proven to be accurate, there are signs which show this exponential progress is coming to an end \cite{MooreEnd}. Conventional silicon transistors may soon reach their minimum physical size. As they get smaller, so does the amount of current which runs through them. The amount of leakage current is approaching the order of magnitude of the actual current running through the transistor itself \cite{v06}. At this point, current silicon transistors will no longer be able to continue decreasing in size.
+Gordon Moore, predicted this trend (see Figure ~\ref{fig:MooresLaw}) in 1965 \cite{Moore}, and since then it has been accurate. However, there are signs which show this exponential progress is coming to an end \cite{MooreEnd}. Conventional silicon transistors may soon reach their minimum physical size. As they get smaller, so does the amount of current which runs through them. The amount of leakage current (current lost through transit) is approaching the order of magnitude of the actual current running through the transistor itself \cite{v06}. At this point, current silicon transistors will no longer be able to continue decreasing in size.
 
 \begin{figure}[ht!]
 \centering
@@ -96,7 +125,35 @@ Moore's Law (see Figure ~\ref{fig:MooresLaw}) in 1965 \cite{Moore} predicted tha
 \label{fig:MooresLaw}
 \end{figure}
 
-One alternative possibility to allow smaller circuitry is to use single molecules as computational elements. $\pi$-conjugated organic molecules have been the main focus, and there have been solutions to make them perform as wires \cite{9}, diodes \cite{10,11}, resistors \cite{12,13}, transistors \cite{14, 15, 16, 17}, and switches \cite{18, 19}. Following this it was shown that a single molecule can represent an entire Boolean function or logic gate (AND\cite{20} , OR\cite{21}, IF THEN (implication)\cite{22}, NAND\cite{23}, and NOR\cite{24}). M. H.  van der Veen \cite{v06} has shown that a single molecule can facilitate all 16 fundamental logic operations. These molecules can even be combined to achieve bi-functional logic with increased complexity (another cite).
+Unless a new innovation which allows scientists to overcome the current fundamental physical limitations of silicon transistors, a new approach is needed. 
+
+\subsection{Molecular Electronics}
+
+One alternative possibility to allow smaller circuitry is to use single molecules as computational elements. $\pi$ conjugated systems have been suggested as delocalization allows electrons to move freely over a conjugated area. Molecules must also display charge transmission, carry electrical charges through the entire molecule. One technique to allow charge transmission is doping. 
+
+%more re-wording needed here
+Doping involves introducing an impurity into an electrical conductor to modify its electrical properties. Often such an impurity can increase the conductance. Conductive polymers can be doped by adding chemical reactants to oxidize, or sometimes reduce, the system so that electrons are pushed into the conducting orbitals within the already potentially conducting system. This allows charge transmission. 
+
+%more re-wording here
+A special kind of charge transmission is the use of solitons. A soliton is defined as a self-reinforcing solitary wave, maintaining its shape while traveling at a constant speed. In this case, the wave could be considered a pair of electrons, 'hopping' across all double bonds. As a soliton migrates, it displaces electrons from nearby double bonds to single bonds, effectively inverting the conjugated system (all double bonds become single, and vice versa). If two solitons traverse the same path (polaron), the bonds remain unchanged.
+
+Using this technology, much effort has gone into molecular circuitry. The earliest progress was spent trying to make molecular equivalents of the current silicon approach (wires, transistors, switches, and logic gates). 
+
+An electrical wire is a passive element, intended to interconnect separate components. Large polymers such as phenyl-enthylnylanthracene has been suggested as wires, both theoretically and experimentally. Usually such wires are tested using gold electrodes with resilient thiol-Au bonds. 
+
+A rectifier (or diode) is an electric device which converts an alternating current (AC) into a direct current (DC). Molecular electronics have used complex conjugated molecules to achieve rectification. Such molecules only conduct electricity after a certain voltage is reached. This filters the output to only show voltage above certain threshold, rectifying the output to an asymmetric flow of current. 
+
+Other silicon based components have been mirrored as well. However, considerable research has gone into using molecules as logic gates, rather than constructing logic gates out of multiple transistors or diodes. This began the search for molecular switches. 
+
+Early approaches were simply molecular switches, rather than switches based on voltage. de Silva et al showed a crown-ether which works models an AND gate. The molecule fluoresces, only if both sodium and hydrogen ions have bound to it. In this way, the florescent output models an AND gate. All 16 logic operations can now be realized using the field of photophysical, photochemical, and electrochemical processes. 
+
+The main problem with this approach is that most molecules are either based on optical input and/or operating in a solution environment. However, if logic gates are actually to be implemented, they must be able to operate in solid-state electronics. Ideally, molecules could use current itself as input and output, rather than optics or chemical reactions. 
+
+Many proposals have been made with such features. The change transmission property of certain conjugated molecules can be used as a switching mechanism. Aviram and Ratner composed a rectifying diode, which functioned like a AND gate using current-voltage levels. Joachim et al, showed, in theory, a single molecule which can act as an OR or a NOR gate, depending on an additional input. Despite promising results, Ellenbogen and Love showed that large and somewhat unrealistic molecules would be required for the design of standard logic gates from related wires and diodes. 
+
+\subsection{Soliton Electronics}
+
+Forrest Carter in 1982 introduced a switching mechanism based on the bond inversion from the traversal of a soliton. A path within a molecule only  facilitates charge transmission when there is an alternating path between the two atoms. When a path within the molecule is inverted from a soliton, other alternating paths may be 'destroyed' or 'created'. This mimics molecular switching.  Groves discussed exactly how soliton switches could be used to constuct logic gates by interconnecting molecules in either series (AND gate) or parallel (OR gate). M. H.  van der Veen \cite{v06} has shown that a single molecule can facilitate all 16 fundamental logic operations. These molecules can even be combined to achieve bi-functional logic with increased complexity (another cite).
 
 M. H. van der Veen \cite{v06} describes $\pi$-logic, a way to determine which Boolean operations any $\pi$-conjugated system can preform. All of this allows for, in theory the design of highly compact and complex logic circuits. There still exists many technical problems in applying this potential.
 
@@ -112,15 +169,47 @@ In $\pi$-logic, molecules have terminals which consist of atoms where connection
 %(Might exclude this next paragraph) 
 To begin the analysis using $\pi$-logic, all possible double bond patterns of the molecule are deduced. Two terminals are selected for an output, and whether the path between them is open or closed represents an output of '1' or '0' respectively. The other terminals are paired, and each pair represents an input of '1' or '0', again depending on the openness of the path. From this you can observe all the different Kekul\'e structures of the molecule and map the inputs to the outputs, resulting with a Boolean function. If the terminals are paired in a different orientation, you may redo the process and have the same molecule represent another Boolean function. 
 
-Kekul\'e theory \cite{H13, HH13} was introduced to investigate and systematize this qualitative switching behavior. In Kekul\'e theory, terminals are called ports, and pathways are called channels. A Kekul\'e state is a configuration of bonds such that every node (other than the ports) has precisely one double bond. Ports may or may not have a double bond. Each Kekul\'e state (or resonance structure) of the molecule has a so called port assignment, the set of ports which contain a double bond. A Kekul\'e cell then consists of the set of port assignments for every resonance structure of that molecule (see Figure ~\ref{fig:kekuleCell}). The rank of a cell or molecule is defined as its number of ports.
+The main criticism to the soliton approach is its difficulty in actual implementation. Exhibiting any amount of control over single particles across the molecular level is an extreme feat in of itself. Another difficulty is the combination of molecular and conventional electronics. Charge transport through conjugated systems as well as through the macroscopic electrode to the molecule must be fully understood. Proper covalent connections between molecules must also been realized. These interconnections must not change the functionality of the molecule itself. 
+
+%where to put...
+(Where to put this paragraph...) $\pi$-conjugated organic molecules have been the main focus, and there have been solutions to make them perform as wires \cite{9}, diodes \cite{10,11}, resistors \cite{12,13}, transistors \cite{14, 15, 16, 17}, and switches \cite{18, 19}. Following this it was shown that a single molecule can represent an entire Boolean function or logic gate (AND\cite{20} , OR\cite{21}, IF THEN (implication)\cite{22}, NAND\cite{23}, and NOR\cite{24}). 
+
+\subsection{Kekul\'e Theory}
+
+Kekul\'e theory \cite{H13, HH13} was introduced to investigate and systematize the qualitative switching behavior of certain conjugated systems. In Kekul\'e theory, certain boundary atoms which connect to outside the molecule are called ports.  Alternating pathways through the molecule from one port to another are called channels. A Kekul\'e state is a configuration of bonds such that every node (other than the ports) has precisely one double bond. Ports may or may not have a double bond. Each Kekul\'e state (or resonance structure) of the molecule has a so called port assignment, the set of ports (in that Kekul\'e state) which contain a double bond. A Kekul\'e cell then consists of the set of port assignments for every resonance structure of that molecule (see Figure ~\ref{fig:kekuleCell}). The rank of a cell or molecule is defined as its number of ports.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=110mm]{KekuleCell.png}
-\caption{The Kekul\'e cell of a simple molecule (2-methylbutene). The 3 structures indicate the 3 possible arrangements of double bonds. The second row indicates the port assignment (which ports contain a double bond) for each structure, and the third row is the Kekul\'e cell for the entire molecule. }
+\caption{The Kekul\'e cell of a simple molecule (2-methylbutene). The 3 structures indicate the 3 possible arrangements of double bonds. Each of these could be called either a Kekul\'e state, or a resonance structure. The second row indicates the port assignment (which ports contain a double bond) for each structure, and the third row is the Kekul\'e cell for the entire molecule. This cell has rank 3.}
 \label{fig:kekuleCell}
 \end{figure}
 
+Molecules are represented by graphs, where nodes resemble atoms and edges resemble bonds. The internal nodes of a graph is all nodes other than the port nodes. A sub-graph is used to show the set of double bonds of any given molecule. To find all possible Kekul\'e states (or resonance structures) of a given molecule/graph, Kekul\'e theory uses perfect matching from graph theory. If every node of the sub-graph has a degree of 1 (indicating they contain precisely one double bond), the sub-graph is said to be perfectly matching, and resemble a resonance structure. Kekul\'e allows near-perfect matchings, as only the internal nodes must contain a double bond, ports are not required. If we find all near-perfect matchings of a graph, we have discovered all Kekul\'e states (resonance structures) of the molecule. 
+
+Hesselink et al.\cite{HH13} proves that, in any resonance structure, the presence of an alternating path (of single and double bonds) between two ports is completely determined by the Kekul\'e cell. Since alternating paths of single and double bonds conduct electricity, a Kekul\'e cell captures the electrical switching behavior first found by Forrest Carter. Sending a soliton across an open channel in a graph causes the port assignment to change, and therefore the presence of alternating paths.
+
+\subsection{Kekul\'e Cell Classification}
+
+Hesselink \cite{H13} then went to classify all possible Kekul\'e cells with a given rank. First, cell invariant operations were defined. The renaming of ports was shown to have no effect on the Kekul\'e cell. Cell translation over a port assignment was defined as the symmetric set difference between the port assignment and the cell(see Figure translation). The translated cell was also shown to preserve all behavior. 
+
+Hesselink uses these cell invariant operations to converge all possible Kekul\'e cells of a given rank into a single equivalence classification. The first normalization translates all cells to contain the empty port assignment '0'. However, simply containing the empty port assignment is not specific enough, so ports are translated so their 'center' contains the empty port assignment. The 'center' of a Kekul\'e cell is a subset of the cell itself, and consisting of all the 'minimal' h(k).
+
+h(K) is the weight list of each port assignment from a Kekul\'e cell. Ports which are used more often in larger port assignments are given larger weights. Each port's weight is added to obtain the weight of the entire port assignment. The center of a cell becomes the port assignments with minimal weight. 
+%not sure about this
+These port assignments are the ones translated to contain the empty port assignment. 
+
+The next step of the normalization involves finding all optimal cells. Optimal cells are defined to be centered and have a minimal m(K). To calculate m(K), all ports must have their weight calculated. Then, based on the alphabetical ordering of the ports, a list of their weights is created. This sequence is called a weighted histogram. m(K) is minimal when this list is descending in numerical order. %exact sentence copy
+This means ports which occur more often are concentrated near the beginning of the port enumeration. The set of optimal cells is called the raw classification. 
+
+%not sure about this paragraph at all
+Finally the raw classification is pruned according to minimal to yield the final classification. When two or more ports have the same weight, their weighted histogram has many possible permutations which will produce a descending order. Histograms in alphabetical order are chosen over their counterparts to achieve the final classification. 
+
+\subsection{Searching for Graphs}
+
+
+Hesselink identifies the cell from a graph using this.
+Hesselink searches for graphs from a cell using this.
 The switching behavior of a molecule is completely determined by its Kekul\'e cell \cite{H13, HH13}. This allows us to search in the opposite direction from before. Rather than searching for any switching behavior a given molecule may exhibit, we can take a required switching behavior needed in a circuitry element, and search for a molecule who has this behavior.
 
 Hesselink \cite{H13} has developed a method to classify all possible Kekul\'e cells, and has given classifications for all cells with ports $\le 6$ . Therefore, any switching behavior can be converted to a cell, and any cell can be converted to one of Hesselink's \cite{H13} classified cells.
