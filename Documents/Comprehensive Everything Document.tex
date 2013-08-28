@@ -509,13 +509,19 @@ Below is graphs for all cells of rank 4 and 5. Double bonds are excluded from th
 
 Finding graphs for cells of higher ranks builds on this challenge. Not only is every graph larger, but there must be an additional atom with degree of 2. The number of combinations increases drastically, with 3 classes of rank 3, 7 classes of rank 4, 24 classes of rank 5, and 214 classes of rank 6. When attempting to find graphs for all cells of rank 6, we were able to find graphs for X out of 214. All graphs found can be viewed here: (website).
 
-Increasing the number of nodes to above 32 will likely yield more results in some cases, however, it will lower performance. It is possible many graphs do not have a realistic graph which matches it's cell.
+Increasing the number of nodes to above 32 will likely yield more results in some cases, however, it will lower performance. It is possible many graphs do not have a realistic graph which matches the cell.
 
 Even if all graphs produced represent stable molecules, there are additional problems. Each hydrocarbon must be able to be easily synthesized for it to be of any use. Analysis on the synthesis of hydrocarbons here.
 
 Polycylic aromatic hydrocarbons are commonly produced as byproducts of fuel burning, and have been classified as carcinogenic, mutagenic, and teratogenic. This could pose a challenging problem if we wish to use large aromatic hydrocarbons in circuitry. 
 
-There are many possible improvements in this area. The number of nodes could be increased to allow larger graphs. Although this would increase the amount of computation required, perhaps it is possible to implement a more efficient cycle detection algorithm, or even calculate fitness on every 2nd iteration of the genetic algorithm. These changes may allow even more results to be yielded from a heuristic genetic algorithm based approach.
+\subsection{Pending Work and Future Directions}
+Currently a genetic algorithm is implemented in Java as per Section 3 and has provided results for all the figures seen previously. However, the Restriction section needs review and completeness from a chemist, to ensure correctness. Other pending work includes research into the synthesis of hydrocarbons, obtaining a complete profile of the genetic algorithm's effectiveness, fact checking / citations, and the formatting of this document.
+
+It would be interesting to see an approach using graph modification, rather than creation. Then one could use such graphs found by Hesselink, and mutate them until they resemble realistic graphs. Some methods include Hesselink et al's \cite{HH13} process of splitting a node of high degree into two nodes of lower degree (or vice versa). It can also be used to shift edges between certain nodes. \cite{v06} also outlines many operations to edit graphs without changing the switching behavior. A formal comparison between such methods and our own in finding realistic graphs would be invaluable.
+
+There are many possible improvements in our implementation of graph generation through a genetic algorithm. As of now, graphs have only been found for cells of small rank (\textless 7). One technique to allow the discovery of more graphs would be to increase the number of maximum nodes. This could yield more results on some of the more difficult cells, but involve more computation, even in the average case. Perhaps it is possible to implement a more efficient cycle detection algorithm, or even calculate fitness on every 2nd iteration of the genetic algorithm. These changes may allow even more results to be yielded from a heuristic genetic algorithm based approach.
+
 
 %\section{Conclusion}
 
