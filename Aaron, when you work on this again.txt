@@ -1,0 +1,5 @@
+Need to reword comprehensive everything document. Alot of it isn't completely your words, and needs citations.
+The results section has old results, they do not all meet the new restrictions you have made.
+You must implement the new restrictions. I think the main one is the amount of ports allowed in a ring.
+
+GL HF
