@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -558,6 +559,31 @@ public class Graph implements Comparable<Graph>{
 		return degree1List;
 	}
 	
+	public ArrayList<BitVector> getAllNodes(int num){
+		ArrayList<BitVector> degree1List = new ArrayList<BitVector>();
+		
+		int lastNode = 1 << ( this.numNodes - 1 );
+		//cycle through all nodes
+		for(int node = 1; node <= lastNode; node *= 2 ){
+			
+			int degree = 0;
+			Cell edges = this.getEdgeCell();
+			//cycle through edges and count occurences of that node
+			for(int i = 0; i < edges.size(); i++){
+				BitVector edge = edges.getPA()[i];
+				if(edge.contains(node)){
+					degree++;
+				}
+			}
+			if(num == -1 ||
+					num == degree){
+				degree1List.add( new BitVector(node));
+			}
+		}
+		
+		return degree1List;
+	}
+	
 	/**
 	 * Extends every port of this graph out one node, and replaces its former position with an 
 	 * internal vertex. The interval vertex is bonded to everything the port was bonded to. The port
@@ -720,8 +746,12 @@ public class Graph implements Comparable<Graph>{
 	 */
 	public Graph connect(Cell cell){
 		
-		//get all nodes of degree == 1
-		Set<BitVector> degreeOne = this.getAllNodesWithDegree1();
+		int before = this.countNodes();
+		ArrayList<BitVector> degreeOne1 = this.getAllNodes(-1);
+		Set<BitVector> degreeOne = new HashSet<BitVector>();
+		for(BitVector b : degreeOne1){
+			degreeOne.add(b);
+		}
 		
 		//get all pairs of such nodes
 		PowerSet<BitVector> pairs = new PowerSet<BitVector>(degreeOne, 2, 2);
@@ -759,9 +789,11 @@ public class Graph implements Comparable<Graph>{
 			//if no longer disjoint
 			//AND has the same cell
 			//then we did it!
-			if( !connected.isDisjoint() ){
+			//if( !connected.isDisjoint() ){
+			//if there are more nodes accessible now than before
+			if( before < connected.countNodes() - 2){
 				//if(GraphtoCell.makeCell(connected).equals(cell) ){
-					connected.name += "Connected";
+				//	connected.name += "Connected";
 					return connected;
 				//}
 			}
@@ -770,12 +802,68 @@ public class Graph implements Comparable<Graph>{
 		return this;
 	}
 	
+	public void shortenCycles(){
+		//get cell and fitness before hand
+		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
+		
+		for(int i = 0; i < allCycles.size(); i++){
+			if( allCycles.get(i).size() <= 6){
+				allCycles.remove(i);
+				i--;
+			}
+		}
+		//port <= (1 << (extended.numPorts - 1))7
+		
+		for(ArrayList<BitVector> theCycle: allCycles){
+			//grab all pairs of nodes in cycle
+			for(int i = 0; i < theCycle.size(); i++){
+				BitVector node1 = theCycle.get(i);
+				for(int j = i + 1; j < theCycle.size(); j++){
+					BitVector node2 = theCycle.get(j);
+					
+					BitVector edge = new BitVector( node1.getNumber() +
+							node2.getNumber() );
+					if( this.getEdgeCell().contains( edge ) &&
+							this.getDegree(node1) == 2 &&
+							this.getDegree(node2) == 2){
+						//if they aren't ports
+						if( node1.getNumber() > (1 << (this.numPorts - 1)) &&
+								node2.getNumber() > (1 << (this.numPorts - 1))){
+							
+							//get left
+							BitVector left = null;
+							ArrayList<BitVector> n = this.getAllNeighbours(node1);
+							n.remove(node2);
+							if( n.size() == 1){
+								left = n.get(0);
+							}
+							//get right
+							BitVector right = null;
+							ArrayList<BitVector> m = this.getAllNeighbours(node2);
+							m.remove(node1);
+							if( n.size() == 1){
+								right = m.get(0);
+							}
+							
+							//connect them, which excludes node1 and node2
+							if( left != null && right != null){
+								this.removeEdge(new BitVector(node1.getNumber() + node2.getNumber()));
+								this.removeEdge(new BitVector(left.getNumber() + node1.getNumber()));
+								this.removeEdge(new BitVector(right.getNumber() + node2.getNumber()));
+								this.addEdge(new BitVector(left.getNumber() + right.getNumber()));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	/**
 	 * Gets all cycles of this graph, and turns and 4 cycles into 6 cycles, and
 	 * any 3 cycles into 5 cycles. This fits carbon chemistry much better. Checks to see if 
 	 * the cell or fitness changed, if it did, it writes errors to console.
 	 */
-	public void widenCycles() {	
+	public void widenCycles(){
 		//get cell and fitness before hand
 		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
 		
@@ -783,6 +871,7 @@ public class Graph implements Comparable<Graph>{
 		ArrayList<ArrayList<BitVector>> fixingSpots = new ArrayList<ArrayList<BitVector>>();
 		
 		for(int i = 0; i < allCycles.size(); i++){
+			
 			ArrayList<BitVector> currentCycle = allCycles.get(i);
 			
 			//if square or triangle
@@ -906,6 +995,117 @@ public class Graph implements Comparable<Graph>{
 		}
 		return spot;
 	}
+	
+	public Graph expandNode(){
+		// get cell
+		Cell kCell = GraphtoCell.makeCell(this);
+		kCell.normalize();
+		
+		// try a merge
+		ArrayList<BitVector> degree5 = this.getAllNodes(6);
+		if(degree5.isEmpty()){
+			degree5 = this.getAllNodes(5);
+		}
+		if(degree5.isEmpty()){
+			degree5 = this.getAllNodes(4);
+		}
+		// if matches cell, return
+		for (int i = 0; i < degree5.size(); i++) {
+			BitVector node = degree5.get(i);
+
+			ArrayList<BitVector> allNeighbours = this.getAllNeighbours(node);
+			
+			Graph expand = new Graph(this);
+			expand.addTwoNodes();
+			int lastNode = 1 << ( this.numNodes - 1 );
+			int newNode1 = lastNode*2;
+			int newNode2 = newNode1*2;
+			
+			for(BitVector bv: allNeighbours){
+				expand.removeEdge(new BitVector(bv.getNumber() + node.getNumber()));
+			}
+			
+			expand.addEdge(new BitVector(node.getNumber() + newNode1));
+			expand.addEdge(new BitVector(node.getNumber() + newNode2));
+			
+			for(int a = 0; a < allNeighbours.size(); a++){
+				if(a  + 1> allNeighbours.size() / 2){
+					expand.addEdge(new BitVector(newNode1 + allNeighbours.get(a).getNumber()));
+				} else{
+					expand.addEdge(new BitVector(newNode2 + allNeighbours.get(a).getNumber()));
+				}
+			}
+
+			Cell cell2 = GraphtoCell.makeCell(expand);
+			cell2.normalize();
+
+			if (kCell.equals(cell2)) {
+				return expand;
+			}
+		}
+		return this;
+	}
+
+	public Graph mergeNode(){
+		//get cell
+		Cell kCell = GraphtoCell.makeCell(this);
+		kCell.normalize();
+		
+		//try a merge
+		ArrayList<BitVector> degreeTwo = this.getAllNodes(2);
+		//if matches cell, return
+		for(int i = 0; i < degreeTwo.size(); i++){
+			BitVector node = degreeTwo.get(i);
+			
+			ArrayList<BitVector> neighbours = this.getAllNeighbours(node);
+			if(neighbours.size() != 2){
+				System.out.println("weird");
+				return this;
+			}
+			BitVector u1 = neighbours.get(0);
+			BitVector u2 = neighbours.get(1);
+			//get all edges connected to new graph
+			ArrayList<BitVector> allNeighbours = this.getAllNeighbours(u1);
+			//allNeighbours.remove(u2);
+			//allNeighbours.remove(node);
+			ArrayList<BitVector> allNeighbours2 = this.getAllNeighbours(u2);
+			//allNeighbours2.remove(u1);
+			//allNeighbours2.remove(node);
+			
+			//allNeighbours.addAll(allNeighbours2);
+			
+			//allNeighbours = Utils.removeDups(allNeighbours);
+			
+			Graph merged = new Graph(this);
+			
+			for(BitVector bv : allNeighbours){
+				merged.removeEdge(new BitVector(bv.getNumber() + u1.getNumber()));
+			}
+			for(BitVector bv : allNeighbours2){
+				merged.removeEdge(new BitVector(bv.getNumber() + u2.getNumber()));
+			}
+			merged.addEdge(new BitVector(u1.getNumber() + u2.getNumber()));
+			
+			allNeighbours.remove(u2);
+			allNeighbours.remove(node);
+			allNeighbours2.remove(u1);
+			allNeighbours2.remove(node);
+			allNeighbours.addAll(allNeighbours2);
+			allNeighbours = Utils.removeDups(allNeighbours);
+			
+			for(BitVector bv : allNeighbours){
+				merged.addEdge(new BitVector(bv.getNumber() + node.getNumber()));
+			}
+			
+			Cell cell2 = GraphtoCell.makeCell(merged);
+			cell2.normalize();
+			
+			if(kCell.equals(cell2)){
+				return merged;
+			}
+		}
+		return this;
+	}
 
 	/**
 	 * Checks whether this graph is planar. Uses Euller statements below.
@@ -954,6 +1154,13 @@ public class Graph implements Comparable<Graph>{
 	 * @return whether this (graph) is disjoint or not (as in connected)
 	 */
 	public boolean isDisjoint() {
+		if( this.countNodes() == this.numNodes){
+			return false;
+		}
+		return true;
+	}
+	
+	public int countNodes(){
 		BitVector[] edges = this.edgeCell.getPA();
 		//holds whether we already visited this node
 		HashMap<BitVector, Boolean> reached = new HashMap<BitVector, Boolean>();
@@ -986,11 +1193,7 @@ public class Graph implements Comparable<Graph>{
 			}
 		}
 		
-		if(numberReached == this.numNodes){
-			return false;
-		}
-		return true;
-		
+		return numberReached;
 	}
 	
 	/**
@@ -1196,5 +1399,19 @@ public class Graph implements Comparable<Graph>{
 			return -1;
 		}
 		return 0;
+	}
+	
+	public String toString(){
+		String name = "G ";
+		BitVector[] list =this.edgeCell.getPA();
+		for(int i =0; i < list.length; i++){
+			BitVector current = list[i];
+			
+			name += current.firstBit() + "-" + current.remove(current.firstBit()).firstBit();
+			
+			name += " ";
+		}
+		
+		return name;
 	}
 }
