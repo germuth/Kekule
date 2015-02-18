@@ -108,23 +108,19 @@
 	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-tautomer-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-valencycheck.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cdk-valencycheck-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/antlr.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/beam-core-0.3-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/beam-func-0.3-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/cmlxom-2.5-b1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/commons-cli-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/commons-math3-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/guava-14.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/jama-1.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/javacc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/jgrapht-0.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/jniinchi-0.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/log4j.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/signatures-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/vecmath1.2-1.14.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/xercesImpl-2.9.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/xml-apis.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/xom-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aaron/Downloads/cdk-master/cdk-master/jar/xpp3-1.1.4c.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/antlr.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/cmlxom-2.5-b1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/commons-cli-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/jama-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/javacc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/jgrapht-0.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/jniinchi-0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/signatures-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/vecmath1.2-1.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/xercesImpl-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/xml-apis.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/xom-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/Documents/GitHub/Kekule/Programming/Kekule Java/jars/xpp3-1.1.4c.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

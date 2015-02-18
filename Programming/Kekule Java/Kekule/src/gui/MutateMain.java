@@ -52,50 +52,22 @@ import com.sun.org.apache.xml.internal.serializer.utils.Utils;
  *
  */
 public class MutateMain extends JFrame{
-	/**
-	 * The main JPanel of which everything is added to
-	 */
 	private JPanel contentPane;
 	/**
-	 * The center piece of the grahpical user interface. It is the JPanel
+	 * The center piece of the graphical user interface. It is the JPanel
 	 * which displays the molecular structure
 	 */
 	private StructureDisplayer structureDisplayer; 
-	/**
-	 * The JTextField used to input the rank
-	 */
 	private JTextField rank;
-	/**
-	 * The JTextField used to input a classification
-	 */
 	private JTextField classification;
-	/**
-	 * The AddToLibrary button, currently not used
-	 */
 	private JButton addToLib;
-	/**
-	 * The Previous button, to look through all results from the GA
-	 */
 	private JButton previous;
-	/**
-	 * The Next button, to look through all results from the GA
-	 */
 	private JButton next;
 	/**
 	 * A checkbox which determines whether the textual representation
 	 * of the cell will be displayed on the structure generator. 
 	 */
 	private JCheckBox displayCell;
-	/**
-	 * A button to run the genetic algorithm, using the current rank
-	 * and classification from the JTextFields, and the parameters
-	 * from the menus
-	 */
-	private JButton run;
-	/**
-	 * The loading bar for the genetic algorithm
-	 */
-	private LoadingBar loadBar;
 	/**
 	 * THe textField which shows the SMILES representation of each graph
 	 * on the bottom of this frame
@@ -114,33 +86,17 @@ public class MutateMain extends JFrame{
 	/**
 	 * The list of graphs in SMILES format, taken from the genetic algorithm.
 	 */
-	private ArrayList<String> graphs;
+	private ArrayList<String> currentSMILES;
 	
 	private ArrayList<String> cells;
-	private ArrayList<Graph> actualGraphs;
+	private ArrayList<Graph> currentGraphs;
 	private ArrayList<Graph> originalGraphs;
 	
 	/**
 	 * The textual representation of the current cell
 	 */
 	private String cell;
-	/**
-	 * The parameter window for the genetic algorithm. Accessed from the menu.
-	 */
-	private GAWindow gaParams;
-	/**
-	 * The parameter window for the population, accessed from the menu.
-	 */
-	private PopulationWindow popParams;
-	/**
-	 * The Mutation window for the genetic algorthm, accessed from the menu.
-	 */
-	private MutationWindow mutaParams;
 
-	/**
-	 * The main method to
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -153,11 +109,68 @@ public class MutateMain extends JFrame{
 			}
 		});
 	}
+	
+	public static void showGraphs(ArrayList<Graph> graphs) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MutateMain frame = new MutateMain(graphs);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * THe main constructor to display all elements within this frame
 	 */
 	public MutateMain() {
+		setUpGUI();
+		
+		ArrayList<Graph> gg = shared.Utils.getRank6Graphs(this);
+		
+		ArrayList<String> smiles = new ArrayList<String>();
+		ArrayList<String> cells = new ArrayList<String>();
+		this.currentGraphs = new ArrayList<Graph>();
+		this.originalGraphs = new ArrayList<Graph>();
+		int i = 1;
+		for(Graph g : gg){
+			//TODO Automatically connect?
+			Graph g2 = g.connect(null).connect(null);
+			String next = GraphToSMILES.convertSMILES(g2);
+			smiles.add(next);
+			this.currentGraphs.add(g2);
+			this.originalGraphs.add(new Graph(g2));
+			cells.add(i + "");
+			i++;
+		}
+		this.collectAndShowResults(smiles, cells);
+	}
+	
+	public MutateMain(ArrayList<Graph> graphs){
+		setUpGUI();
+		
+		ArrayList<String> smiles = new ArrayList<String>();
+		ArrayList<String> cells = new ArrayList<String>();
+		this.currentGraphs = new ArrayList<Graph>();
+		this.originalGraphs = new ArrayList<Graph>();
+		int i = 1;
+		for(Graph g : graphs){
+			//TODO Automatically connect?
+			Graph g2 = g.connect(null).connect(null);
+			String next = GraphToSMILES.convertSMILES(g2);
+			smiles.add(next);
+			this.currentGraphs.add(g2);
+			this.originalGraphs.add(new Graph(g2));
+			cells.add(i + "");
+			i++;
+		}
+		this.collectAndShowResults(smiles, cells);
+	}
+	
+	public void setUpGUI(){
 		setTitle("Interactive Kekule Theory");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 720, 500);
@@ -188,135 +201,86 @@ public class MutateMain extends JFrame{
 		JMenu mnViewLibarary = new JMenu("View Libarary");
 		menuBar.add(mnViewLibarary);
 		
-		JMenu mnGeneticAlgorithm = new JMenu("Genetic Algorithm");
-		this.gaParams = new GAWindow();
-		gaParams.setVisible(false);
-		
-		
-		menuBar.add(mnGeneticAlgorithm);
-		//genetic algorithm parameter window
-		JMenuItem mntmOpenParameterWindow = new JMenuItem("Open Parameter Window");
-		mnGeneticAlgorithm.add(mntmOpenParameterWindow);
-		mntmOpenParameterWindow.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				MutateMain.this.gaParams.setVisible(true);
-			}
-		});
-		
-		JMenu mnPopulation = new JMenu("Population");
-		this.popParams = new PopulationWindow();
-		this.popParams.setVisible(false);
-		
-		menuBar.add(mnPopulation);
-		//population parameter window
-		JMenuItem mntmOpenParameterWindow_1 = new JMenuItem("Open Parameter Window");
-		mnPopulation.add(mntmOpenParameterWindow_1);
-		mntmOpenParameterWindow_1.addActionListener( new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MutateMain.this.popParams.setVisible(true);
-			}
-		});
-		
-		JMenu mnMutation = new JMenu("Mutation");
-		this.mutaParams = new MutationWindow();
-		this.mutaParams.setVisible(false);
-		
-		menuBar.add(mnMutation);
-		//mutation parameter window
-		JMenuItem mntmOpenParameterWindow_2 = new JMenuItem("Open Parameter Window");
-		mnMutation.add(mntmOpenParameterWindow_2);
-		mntmOpenParameterWindow_2.addActionListener( new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MutateMain.this.mutaParams.setVisible(true);
-			}	
-		});
-		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		//the left JPanel
-				//contains rank, classification, addToLib, Previous
-				//and loading bar
-				JPanel leftBorder = new JPanel();
-				contentPane.add(leftBorder, BorderLayout.WEST);
-				leftBorder.setPreferredSize(new Dimension(100, 500));
-				leftBorder.setLayout(null);
-				
-				JLabel lblRank = new JLabel("Rank:");
-				lblRank.setBounds(5, 9, 38, 14);
-				leftBorder.add(lblRank);
-				
-				this.rank = new JTextField();
-				this.rank.setBounds(7, 34, 86, 20);
-				leftBorder.add(this.rank);
-				
-				JLabel lblClassification = new JLabel("Classification:");
-				lblClassification.setBounds(5, 65, 86, 14);
-				leftBorder.add(lblClassification);
-				
-				this.classification = new JTextField();
-				this.classification.setBounds(7, 90, 86, 20);
-				leftBorder.add(this.classification);
-				this.classification.setColumns(10);
-				
-				this.previous = new JButton("Previous");
-				this.previous.setBounds(7, 212, 86, 64);
-				this.previous.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0){
-						String graph = MutateMain.this.getPreviousGraph();
-						
-						MutateMain.this.structureDisplayer.setGraph(graph);
-				        MutateMain.this.structureDisplayer.drawCurrentSMILES();
-					}
-				});
-				leftBorder.add(this.previous);
-				
-				this.next = new JButton("Next");
-				this.next.setBounds(7, 285, 86, 64);
-				this.next.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0){
-						String graph = MutateMain.this.getNextGraph();
-						
-						MutateMain.this.structureDisplayer.setGraph(graph);
-				        MutateMain.this.structureDisplayer.drawCurrentSMILES();
-					}
-				});
-				
-				this.addToLib = new JButton("Revert");
-				this.addToLib.setBounds(7, 138, 86, 64);
-				this.addToLib.addActionListener(new ActionListener(){
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						MutateMain.this.actualGraphs.set(index, MutateMain.this.originalGraphs.get(index));
-						String smiles = GraphToSMILES.convertSMILES( MutateMain.this.actualGraphs.get(index) );
-						MutateMain.this.graphs.set(index, smiles);
-						
-							
-							MutateMain.this.graphs.set(MutateMain.this.index, smiles);
-							MutateMain.this.SMILES.setText(smiles);
-						
-							MutateMain.this.structureDisplayer.setGraph(smiles);
-							MutateMain.this.structureDisplayer.drawCurrentSMILES();
-						
-					}
-				});
-				
-				leftBorder.add(this.addToLib);
-				
-				leftBorder.add(this.next);
-				
-				JLabel lblSmiles = new JLabel("SMILES:");
-				lblSmiles.setHorizontalAlignment(SwingConstants.TRAILING);
-				lblSmiles.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				lblSmiles.setBounds(5, 394, 86, 26);
-				leftBorder.add(lblSmiles);
-				
-				
+		// the left JPanel
+		// contains rank, classification, addToLib, Previous
+		// and loading bar
+		JPanel leftBorder = new JPanel();
+		contentPane.add(leftBorder, BorderLayout.WEST);
+		leftBorder.setPreferredSize(new Dimension(100, 500));
+		leftBorder.setLayout(null);
+
+		JLabel lblRank = new JLabel("Rank:");
+		lblRank.setBounds(5, 9, 38, 14);
+		leftBorder.add(lblRank);
+
+		this.rank = new JTextField();
+		this.rank.setBounds(7, 34, 86, 20);
+		leftBorder.add(this.rank);
+
+		JLabel lblClassification = new JLabel("Classification:");
+		lblClassification.setBounds(5, 65, 86, 14);
+		leftBorder.add(lblClassification);
+
+		this.classification = new JTextField();
+		this.classification.setBounds(7, 90, 86, 20);
+		leftBorder.add(this.classification);
+		this.classification.setColumns(10);
+
+		this.previous = new JButton("Previous");
+		this.previous.setBounds(7, 212, 86, 64);
+		this.previous.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String graph = MutateMain.this.getPreviousGraph();
+
+				MutateMain.this.structureDisplayer.setGraph(graph);
+				MutateMain.this.structureDisplayer.drawCurrentSMILES();
+			}
+		});
+		leftBorder.add(this.previous);
+
+		this.next = new JButton("Next");
+		this.next.setBounds(7, 285, 86, 64);
+		this.next.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String graph = MutateMain.this.getNextGraph();
+
+				MutateMain.this.structureDisplayer.setGraph(graph);
+				MutateMain.this.structureDisplayer.drawCurrentSMILES();
+			}
+		});
+
+		this.addToLib = new JButton("Revert");
+		this.addToLib.setBounds(7, 138, 86, 64);
+		this.addToLib.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				MutateMain.this.currentGraphs.set(index, MutateMain.this.originalGraphs.get(index));
+				String smiles = GraphToSMILES.convertSMILES(MutateMain.this.currentGraphs.get(index));
+				MutateMain.this.currentSMILES.set(index, smiles);
+
+				MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
+				MutateMain.this.SMILES.setText(smiles);
+
+				MutateMain.this.structureDisplayer.setGraph(smiles);
+				MutateMain.this.structureDisplayer.drawCurrentSMILES();
+
+			}
+		});
+
+		leftBorder.add(this.addToLib);
+
+		leftBorder.add(this.next);
+
+		JLabel lblSmiles = new JLabel("SMILES:");
+		lblSmiles.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblSmiles.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSmiles.setBounds(5, 394, 86, 26);
+		leftBorder.add(lblSmiles);
 		
 		//the right JPanel of this frame
 		//contains textbox, next button, check box, 
@@ -330,26 +294,16 @@ public class MutateMain extends JFrame{
 		gl.setRows(6);
 		rightBorder.setLayout(gl);
 		
-//		JLabel lblAaronGermuth = new JLabel("Aaron Germuth &");
-//		lblAaronGermuth.setForeground(Color.LIGHT_GRAY);
-//		lblAaronGermuth.setBounds(0, 330, 100, 14);
-//		rightBorder.add(lblAaronGermuth);
-//		
-//		JLabel lblAlexAravind = new JLabel("Alex Aravind");
-//		lblAlexAravind.setForeground(Color.LIGHT_GRAY);
-//		lblAlexAravind.setBounds(0, 347, 73, 14);
-//		rightBorder.add(lblAlexAravind);
-		
 		JButton fixRings = new JButton("Fix all Rings");
 		rightBorder.add(fixRings);
 		fixRings.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Graph g = MutateMain.this.actualGraphs.get(MutateMain.this.index);
+				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
 				g.widenCycles();
 				g.shortenCycles();
 				String smiles = GraphToSMILES.convertSMILES(g);
-				MutateMain.this.graphs.set(MutateMain.this.index, smiles);
+				MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
 				MutateMain.this.SMILES.setText(smiles);
 				
 				MutateMain.this.structureDisplayer.setGraph(smiles);
@@ -361,12 +315,12 @@ public class MutateMain extends JFrame{
 		expandNode.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Graph g = MutateMain.this.actualGraphs.get(MutateMain.this.index);
+				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
 				Graph g2 = g.expandNode();
 				if( g2 != null){
-					MutateMain.this.actualGraphs.set(MutateMain.this.index, g2);
+					MutateMain.this.currentGraphs.set(MutateMain.this.index, g2);
 					String smiles = GraphToSMILES.convertSMILES(g2);
-					MutateMain.this.graphs.set(MutateMain.this.index, smiles);
+					MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
 					MutateMain.this.SMILES.setText(smiles);
 				
 					MutateMain.this.structureDisplayer.setGraph(smiles);
@@ -380,12 +334,12 @@ public class MutateMain extends JFrame{
 		condenseNode.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Graph g = MutateMain.this.actualGraphs.get(MutateMain.this.index);
+				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
 				Graph g2 = g.mergeNode();
 				if( g2 != null){
-					MutateMain.this.actualGraphs.set(MutateMain.this.index, g2);
+					MutateMain.this.currentGraphs.set(MutateMain.this.index, g2);
 					String smiles = GraphToSMILES.convertSMILES(g2);
-					MutateMain.this.graphs.set(MutateMain.this.index, smiles);
+					MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
 					MutateMain.this.SMILES.setText(smiles);
 				
 					MutateMain.this.structureDisplayer.setGraph(smiles);
@@ -399,11 +353,11 @@ public class MutateMain extends JFrame{
 		disjoint.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Graph g = MutateMain.this.actualGraphs.get(MutateMain.this.index);
+				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
 				Graph g2 = g.connect(null);
-				MutateMain.this.actualGraphs.set(MutateMain.this.index, g2);
+				MutateMain.this.currentGraphs.set(MutateMain.this.index, g2);
 				String smiles = GraphToSMILES.convertSMILES(g2);
-				MutateMain.this.graphs.set(MutateMain.this.index, smiles);
+				MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
 				MutateMain.this.SMILES.setText(smiles);
 				
 				MutateMain.this.structureDisplayer.setGraph(smiles);
@@ -417,12 +371,12 @@ public class MutateMain extends JFrame{
 		portExt.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Graph g = MutateMain.this.actualGraphs.get(MutateMain.this.index);
+				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
 				Graph g2 = g.extendPorts();
 				if( g2 != null){
-					MutateMain.this.actualGraphs.set(MutateMain.this.index, g2);
+					MutateMain.this.currentGraphs.set(MutateMain.this.index, g2);
 					String smiles = GraphToSMILES.convertSMILES(g2);
-					MutateMain.this.graphs.set(MutateMain.this.index, smiles);
+					MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
 					MutateMain.this.SMILES.setText(smiles);
 				
 					MutateMain.this.structureDisplayer.setGraph(smiles);
@@ -467,34 +421,7 @@ public class MutateMain extends JFrame{
 		displayCell.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		this.displayCell.setBounds(0, 300, 99, 23);
 		rightBorder.add(this.displayCell);
-		
-		ArrayList<Graph> gg = shared.Utils.getRank6Graphs(this);
-		
-		ArrayList<String> smiles = new ArrayList<String>();
-		ArrayList<String> cells = new ArrayList<String>();
-		this.actualGraphs = new ArrayList<Graph>();
-		this.originalGraphs = new ArrayList<Graph>();
-		int i = 1;
-		for(Graph g : gg){
-			String next = GraphToSMILES.convertSMILES(g);
-//			int ps = 0;
-//			for(int a = 0; a < next.length(); a++){
-//				char curr = next.charAt(a);
-//				if(curr == 'P'){
-//					ps++;
-//				}
-//			}
-//			if(ps == 6){
-				smiles.add(next);
-				this.actualGraphs.add(g);
-				this.originalGraphs.add(new Graph(g));
-				cells.add(i + "");
-		//	}
-			i++;
-		}
-		this.collectAndShowResults(smiles, cells);
 	}
-	
 	/**
 	 * Saves the current image of the content pane in png form. 
 	 * The image is currently saved to a non-relative address, 
@@ -512,6 +439,7 @@ public class MutateMain extends JFrame{
                     BufferedImage.TYPE_INT_RGB);
             Graphics g = i.getGraphics();
             paint(g);
+            //TODO hardcoded
             File f = new File("C:\\Users\\Aaron\\Documents\\GitHub\\Kekule\\Programming\\Kekule Java\\Kekule\\lib\\" 
             	 + imageFile );
             ImageIO.write(i, "png", f);
@@ -534,13 +462,13 @@ public class MutateMain extends JFrame{
 	 * @param cell, textual representation of cell we were searching for
 	 */
 	public void collectAndShowResults(ArrayList<String> graphs, ArrayList<String> cell){
-		this.index = 1;
+		this.index = 0;
 		if( graphs.size() > 0){
-			this.graphs = graphs;
+			this.currentSMILES = graphs;
 			this.cells = cell;
-			this.structureDisplayer.setGraph( this.graphs.get(index) );
+			this.structureDisplayer.setGraph( this.currentSMILES.get(index) );
 			this.structureDisplayer.drawCurrentSMILES();
-			this.SMILES.setText( this.graphs.get(index) );
+			this.SMILES.setText( this.currentSMILES.get(index) );
 			int count = 0;
 			int length = cell.get(0).length();
 			while( length > 60){
@@ -550,7 +478,7 @@ public class MutateMain extends JFrame{
 			this.cellLabel.setText(cell.get(index));
 			this.cellLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, (14 - count)));
 		} else{
-			System.out.println("none of them graphs found yo");
+			System.out.println("Graphs Not Found");
 		}
 	}
 	
@@ -561,14 +489,14 @@ public class MutateMain extends JFrame{
 	 * @return the next graph
 	 */
 	public String getNextGraph() {
-		if (index >= this.graphs.size() - 1) {
+		if (index >= this.currentSMILES.size() - 1) {
 			index = 0;
 		} else {
 			index++;
 		}
-		this.SMILES.setText( this.graphs.get(index) );
-		this.cellLabel.setText( this.cells.get(index));
-		return graphs.get(index);
+		this.SMILES.setText( this.currentSMILES.get(index) );
+		this.cellLabel.setText( this.currentGraphs.get(index).getName().replace("graph", ""));
+		return currentSMILES.get(index);
 	}
 
 	/**
@@ -579,12 +507,12 @@ public class MutateMain extends JFrame{
 	 */
 	public String getPreviousGraph() {
 		if( index <= 0){
-			index = this.graphs.size() - 1;
+			index = this.currentSMILES.size() - 1;
 		} else{
 			index--;
 		}
-		this.SMILES.setText( this.graphs.get(index) );
-		this.cellLabel.setText( this.cells.get(index));
-		return graphs.get(index);
+		this.SMILES.setText( this.currentSMILES.get(index) );
+		this.cellLabel.setText( this.currentGraphs.get(index).getName().replace("graph", ""));
+		return currentSMILES.get(index);
 	}
 }

@@ -180,7 +180,7 @@ public class GeneticAlgorithm{
 	 * 
 	 * @param g, the graph we are calculating the fitness for
 	 */
-	public static void calculateFitness( Graph g){
+	public static void calculateFitness(Graph g){
 		//fitness already calculated
 		if( g.getFitness() != 0){
 			return;

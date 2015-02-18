@@ -2,12 +2,15 @@ package all;
 
 import graphs.ClassifyGraph;
 import graphs.Graph;
+import gui.MutateMain;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
+import shared.BitVector;
 import shared.Cell;
 import shared.CellToGraph;
 import shared.GraphtoCell;
@@ -63,7 +66,8 @@ public class Main {
 			case 5: System.exit(0);
 			//sixth temporary option
 			//searches for graphs with 6 ports, but loads the pre defined classification
-			case 6: cheat();
+			case 6: cheat(); break;
+			case 7: findByRandom(); break;
 			default:
 				System.out.println("Number not Understood. Try Again");
 			}
@@ -126,7 +130,9 @@ public class Main {
 			
 			//removes cycles of length 3 and 4
 			for(int k = 0; k < allGraphs.size(); k++){
-				allGraphs.get(k).widenCycles();
+				if(allGraphs.get(k) != null){
+					allGraphs.get(k).widenCycles();					
+				}
 			}
 			
 			allGraphs = Utils.removeNulls(allGraphs);
@@ -281,21 +287,25 @@ public class Main {
 			System.out.println("K" + (i+1));
 			Cell current = classifications.get(i);
 			
-			ArrayList<Graph> allGraphs = CellToGraph.findGraph(current.getNumPorts(), internal, current);
-			CellToGraph.removeHighDegree(allGraphs);
-			
-			//remove disjoint graphs
-			CellToGraph.removeDisjoint(allGraphs, current);
-			
-			//removes cycles of length 3 and 4
-			for(int k = 0; k < allGraphs.size(); k++){
-				allGraphs.get(k).widenCycles();
-			}
-			
-			allGraphs = Utils.removeNulls(allGraphs);
+			ArrayList<Graph> allGraphs = new ArrayList<Graph>();
+//			ArrayList<Graph> allGraphs = CellToGraph.findGraph(current.getNumPorts(), internal, current);
+//			CellToGraph.removeHighDegree(allGraphs);
+//			
+//			//remove disjoint graphs
+//			CellToGraph.removeDisjoint(allGraphs, current);
+//			
+//			//removes cycles of length 3 and 4
+//			for(int k = 0; k < allGraphs.size(); k++){
+//				if(allGraphs.get(k) != null){
+//					allGraphs.get(k).widenCycles();					
+//				}
+//			}
+//			
+//			allGraphs = Utils.removeNulls(allGraphs);
 			
 			graphsForEachCell.add(allGraphs);
 		}
+		
 		System.out.println("Trying Template Molecules");
 		ArrayList<Graph> extras =  CellToGraph.tryTemplateMolecules( null , rank) ;
 		for(int i = 0; i < extras.size(); i++){
@@ -461,4 +471,151 @@ public class Main {
 		System.out.println("5. Quit");
 	}
 
+	private static void findByRandom(){
+		//reading classification
+		File f = new File("FullClassificationRank6.txt");
+		Scanner s = null;
+		try {
+			s = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			System.err.println("File was unable to be found/read");
+			e.printStackTrace();
+		}
+		int rank = 6;
+		s.nextLine();
+		s.nextLine();
+		s.nextLine();
+		
+		ArrayList<Cell> classifications = new ArrayList<Cell>();
+		
+		Cell input = null;
+		try {
+			input = InputParser.readCell2(s, rank);
+		} catch (Exception e1) {
+			System.err.println("Cell was unable to be read from file");
+			e1.printStackTrace();
+		}
+		
+		while(input != null){
+			classifications.add(input);
+			
+			try{
+				input = InputParser.readCell2(s, rank);
+			}
+			catch(Exception e){
+				input = null;
+			}
+		}
+		
+		
+		System.out.println("Searching For Graphs: ");
+
+		ArrayList<ArrayList<Graph>> graphsForEachCell = new ArrayList<ArrayList<Graph>>();
+		
+		graphsForEachCell = findGraphsRandomly(classifications);
+//		for(int i = 0; i < classifications.size(); i++){
+//			System.out.println("K" + (i+1));
+//			Cell current = classifications.get(i);
+//			
+//			graphsForEachCell.add(findGraphRandomly(current));
+//		}
+		System.out.println("Done");
+		
+		ArrayList<Graph> theGraphs = new ArrayList<Graph>();
+		for(int i = 0; i < graphsForEachCell.size(); i++){
+			ArrayList<Graph> current = graphsForEachCell.get(i);
+			
+			System.out.print("K" + (i+1) + " ");
+			if(!current.isEmpty()){
+				for(int j = 0; j < current.size(); j++){
+					Graph currentG = current.get(j);
+					currentG.widenCycles();
+					currentG.getEdgeCell().sortBySize();
+					currentG.getEdgeCell().removeDuplicates();
+					currentG.writeGraph();
+					
+					theGraphs.add(currentG);
+				}
+			} else {
+				System.out.println("No Graph Found!");
+			}
+		}
+		
+		MutateMain.showGraphs(theGraphs);
+	}
+	
+	private static ArrayList<ArrayList<Graph>>findGraphsRandomly(ArrayList<Cell> classifications) {
+		ArrayList<ArrayList<Graph>> graphs = new ArrayList<ArrayList<Graph>>();
+		for(int i = 0; i < 214; i++){
+			graphs.add(new ArrayList<Graph>());
+		}
+		Random random = new Random();
+		
+		//only try 1000 times
+		for(int i = 0; i < 1000; i++){
+			int nP = 6;
+			int nC = 6;
+
+			// add anywhere from (to) -> (from) nodes
+			int from = 0;
+			int to = 20;
+			nC += from + random.nextInt(to - from);
+
+			// edges always added
+			// add atleast enough to connect all your nodes
+			// which is num nodes - 1
+			// PLUS from -> to
+			from = 0;
+			to = 25;
+			int edgesToAdd = nC - 1 + from + random.nextInt(to - from);
+
+			Cell c = new Cell();
+			c.setNumPorts(6);
+
+			// the graph
+			Graph newbie = new Graph("G" + (i+1), nP, nC, c);
+
+			// loop adding all the edges
+			// care must be taken that
+			// we don't add an edge we already have
+			// the bit Vector generated is a valid edge
+			// the edge doesn't overflow the max degree allocated
+			innerloop : for (int j = 0; j < edgesToAdd; j++) {
+				int node1 = 1 << random.nextInt(nC);
+				int node2 = 1 << random.nextInt(nC);
+
+				BitVector bv = new BitVector(node1 + node2);
+
+				int attempts = 0;
+				while (newbie.isBadEdge(bv) && attempts < 15) {
+					node1 = 1 << random.nextInt(nC);
+					node2 = 1 << random.nextInt(nC);
+					bv = new BitVector(node1 + node2);
+					attempts++;
+				}
+
+				if (attempts < 15) {
+					newbie.addEdge(bv);
+				} else {
+					break innerloop;
+				}
+			}
+
+			Cell gsCell = GraphtoCell.makeCell(newbie);
+			// cell may be empty if there is a secluded port
+			if (gsCell.size() == 0 || newbie.hasBadCycles()) {
+				continue;
+			} else {
+				gsCell.normalize();
+				gsCell.sortBySize();
+				int index = classifications.indexOf(gsCell);
+				if(index == -1){
+					continue;
+				}else{
+					graphs.get(index).add(newbie);
+				}
+			}
+		}
+		return graphs;
+	}
 }

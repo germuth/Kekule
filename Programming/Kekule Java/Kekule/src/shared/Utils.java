@@ -70,6 +70,10 @@ public class Utils {
 					
 					Graph current = new Graph("graph" + graphCount++, numPorts, numNodes, edges);
 					graphs.add(current);
+				}else if(next.contains("No graph found")){
+					//Hesselink didn't find every graph
+					//still want to associate correct numbers which each one though
+					graphCount++;
 				}
 			}
 		} catch( FileNotFoundException ex){
@@ -248,6 +252,10 @@ public class Utils {
 	 * @return a new list without duplicates ( as specified by object's .equals() method)
 	 */
 	public static <T> ArrayList<T> deleteDuplicates(ArrayList<T> list){
+		if(list.size() < 2){
+			return list;
+		}
+		
 		ArrayList<T> newList = new ArrayList<T>();
 		newList.add(list.get(0));
 		for(int i = 0; i < list.size(); i++){

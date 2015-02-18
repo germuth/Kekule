@@ -77,10 +77,6 @@ public class StructureDisplayer extends JComponent{
 		this.validate();
 	}
 	
-	/**
-	 * Sets the current graph of this structure displayer
-	 * @param graph
-	 */
 	public void setGraph(String graph) {
 		this.graph = graph;
 	}
@@ -160,23 +156,6 @@ public class StructureDisplayer extends JComponent{
 			// the renderer needs to have a toolkit-specific font manager
 			AtomContainerRenderer renderer = new AtomContainerRenderer(
 					generators, new AWTFontManager());
-			RendererModel model = renderer.getRenderer2DModel();
-
-			// attempt to highlight the first and last atom of our rendered
-			// molecule
-			IAtom first = newMolecule.getFirstAtom();
-			IAtom last = newMolecule.getLastAtom();
-
-			Color highlight = Color.blue;
-
-			// map from atom to its highlighted colour
-			Map<IChemObject, Color> colors = new HashMap<IChemObject, Color>();
-
-			colors.put(first, highlight);
-			colors.put(last, highlight);
-
-			// give colour hash map to renderer
-			model.getParameter(RendererModel.ColorHash.class).setValue(colors);
 
 			// the call to 'setup' only needs to be done on the first paint
 			renderer.setup(newMolecule, drawArea);

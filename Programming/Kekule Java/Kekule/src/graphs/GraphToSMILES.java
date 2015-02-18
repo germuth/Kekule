@@ -125,7 +125,12 @@ public class GraphToSMILES {
 		if( nodeNumbers.containsKey(b)){
 			ArrayList<Integer> l = (ArrayList<Integer>) nodeNumbers.get(b);
 			for(int i: l){
-				name += (i + "");
+				if(i > 9){
+					//% appears in front of the index of ring closure labels above 9
+					name += ("%" + i);
+				}else{
+					name += (i + "");					
+				}
 			}
 		}
 		return name;
