@@ -145,7 +145,7 @@ public class StructureDisplayer extends JComponent{
 
 			// grab new molecule with coordinates
 			IMolecule newMolecule = sdg.getMolecule();
-
+			
 			// create generators for renderer
 			List<IGenerator<IAtomContainer>> generators = new ArrayList<IGenerator<IAtomContainer>>();
 			generators.add(new BasicSceneGenerator());

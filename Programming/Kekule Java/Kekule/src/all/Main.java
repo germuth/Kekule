@@ -7,6 +7,8 @@ import gui.MutateMain;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -68,6 +70,7 @@ public class Main {
 			//searches for graphs with 6 ports, but loads the pre defined classification
 			case 6: cheat(); break;
 			case 7: findByRandom(); break;
+			case 8: test(); break;
 			default:
 				System.out.println("Number not Understood. Try Again");
 			}
@@ -524,18 +527,25 @@ public class Main {
 		ArrayList<Graph> theGraphs = new ArrayList<Graph>();
 		for(int i = 0; i < graphsForEachCell.size(); i++){
 			ArrayList<Graph> current = graphsForEachCell.get(i);
-			
+			Collections.sort(current, new Comparator<Graph>(){
+
+				@Override
+				public int compare(Graph o1, Graph o2) {
+					return new Integer(o1.getNumNodes()).compareTo(o2.getNumNodes());
+				}
+				
+			});
 			System.out.print("K" + (i+1) + " ");
 			if(!current.isEmpty()){
-				for(int j = 0; j < current.size(); j++){
-					Graph currentG = current.get(j);
+//				for(int j = 0; j < current.size(); j++){
+					Graph currentG = current.get(0);
 					currentG.widenCycles();
 					currentG.getEdgeCell().sortBySize();
 					currentG.getEdgeCell().removeDuplicates();
 					currentG.writeGraph();
 					
 					theGraphs.add(currentG);
-				}
+//				}
 			} else {
 				System.out.println("No Graph Found!");
 			}
@@ -552,7 +562,10 @@ public class Main {
 		Random random = new Random();
 		
 		//only try 1000 times
-		for(int i = 0; i < 1000; i++){
+		for(int i = 0; i < 10000; i++){
+			if(i % 1000 == 0){
+				System.out.println(i);
+			}
 			int nP = 6;
 			int nC = 6;
 
@@ -617,5 +630,16 @@ public class Main {
 			}
 		}
 		return graphs;
+	}
+	
+	public static void test(){
+//		K174 G174_P: 6 Nodes,  6 Ports
+//		Edges: 0-1, 0-2, 1-3, 2-3, 2-4, 3-4, 0-5, 1-5, 4-5
+		Graph g = InputParser.readGraph(input);
+		if(g.hasBadCycles()){
+			System.out.println("bad cycles");
+		}else{
+			System.out.println("nope, they are good");
+		}
 	}
 }

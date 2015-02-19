@@ -279,10 +279,12 @@ public class Graph implements Comparable<Graph>{
 	 * then parse through and eliminate super cycles
 	 * if union of two cycles equals any other cycles, remove that cycle
 	 * return list if cycles
+	 * 
+	 * TODO
+	 * http://efficientbits.blogspot.ca/2012/12/scaling-up-faster-ring-detection-in-cdk.html
 	 */
 	public ArrayList<ArrayList<BitVector>> getAllCycles(){
 		ArrayList<ArrayList<BitVector>> allCycles = new ArrayList<ArrayList<BitVector>>();
-		
 		
 		LinkedList<ArrayList<BitVector>> openList = new LinkedList<ArrayList<BitVector>>();
 		
@@ -351,13 +353,35 @@ public class Graph implements Comparable<Graph>{
 		if( allCycles.isEmpty() ){
 			return allCycles;
 		}
-		//sort all cycles, so identical ones can be identified
-		for(int i = 0; i < allCycles.size(); i++){
-			Collections.sort( allCycles.get(i) );
-		}
-		//remove identical cycles
-		allCycles = Utils.deleteDuplicates(allCycles);
 		
+		//delete all duplicates
+		for(int i = 0; i < allCycles.size(); i++){
+			ArrayList<BitVector> cycle1 = allCycles.get(i);
+			if(cycle1 == null){
+				continue;
+			}
+			for(int j = i + 1; j < allCycles.size(); j++){
+				ArrayList<BitVector> cycle2 = allCycles.get(j);
+				if(cycle2 == null){
+					continue;
+				}
+				
+				if(cycle1.size() == cycle2.size()){
+					if(cycle1.containsAll(cycle2)){
+						allCycles.set(j, null);
+						continue;
+					}
+				}
+			}
+		}
+		
+//		//sort all cycles, so identical ones can be identified
+//		for(int i = 0; i < allCycles.size(); i++){
+//			Collections.sort( allCycles.get(i) );
+//		}
+//		//remove identical cycles
+//		allCycles = Utils.deleteDuplicates(allCycles);
+
 		//remove super cycles
 		allCycles = removeSuperCycles( allCycles );
 		
@@ -370,12 +394,13 @@ public class Graph implements Comparable<Graph>{
 	 */
 	public ArrayList<ArrayList<BitVector>> removeSuperCycles( ArrayList<ArrayList<BitVector>> allCycles ){
 		//for each cycle
-		//iterate backwards to get the larger cycles first
 		for(int i = 0; i < allCycles.size(); i++){
 			if( allCycles.get(i) == null){
 				continue;
 			}
 			ArrayList<BitVector> currentCycle = allCycles.get(i);
+			
+			ArrayList<String> currEdges = makeEdgesString(currentCycle);
 			
 			//if this one of the other cycles is a subset of this cycle, then 
 			//this cycle is not chord-less, and should be removed 
@@ -389,16 +414,56 @@ public class Graph implements Comparable<Graph>{
 				
 				if( isSubSet(cycle2, currentCycle)){
 					allCycles.set(i, null);
+					continue;
 				}
+				
 			}
 			
-			//THIS IS PRINTING THAT WE HAVE NO CYCLES!!!
+			//If the other currently used cycles include every edge in this cycle so far
+			//then do not include this cycle
+			ArrayList<String> totalEdgesUsed = new ArrayList<String>();
+			for(int j = 0; j < i; j++){
+				ArrayList<BitVector> cycle2 = allCycles.get(j);
+				if(cycle2 == null){
+					continue;
+				}
+				ArrayList<String> edges2 = makeEdgesString(cycle2);
+				totalEdgesUsed.addAll(edges2);
+			}
+			
+			if(totalEdgesUsed.containsAll(currEdges)){
+				allCycles.set(i, null);
+			}
 		}
 
 		allCycles = Utils.removeNulls( allCycles );
 	
 		return allCycles;
 	}
+	
+	//TEMP
+	public static ArrayList<String> makeEdgesString(ArrayList<BitVector> cycle){
+		ArrayList<String> edges = new ArrayList<String>();
+		for(int i = 1; i < cycle.size(); i++){
+			String first = cycle.get(i-1).toString();
+			String second = cycle.get(i).toString();
+			if(first.compareTo(second) < 0 ){
+				edges.add(first + "-" + second);
+			}else{
+				edges.add(second + "-" + first);
+			}
+		}
+		
+		String first = cycle.get( cycle.size() - 1).toString();
+		String second = cycle.get(0).toString();
+		if(first.compareTo(second) == -1){
+			edges.add(first + "-" + second);
+		}else{
+			edges.add(second + "-" + first);
+		}
+		return edges;
+	}
+	
 	
 	//TODO make a lot of methods private
 	/**
