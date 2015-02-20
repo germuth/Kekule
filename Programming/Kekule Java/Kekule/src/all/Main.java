@@ -131,10 +131,10 @@ public class Main {
 			//remove disjoint graphs
 			CellToGraph.removeDisjoint(allGraphs, current);
 			
-			//removes cycles of length 3 and 4
+			//removes cycles that aren't 5 or 6
 			for(int k = 0; k < allGraphs.size(); k++){
 				if(allGraphs.get(k) != null){
-					allGraphs.get(k).widenCycles();					
+					allGraphs.get(k).tryToFixCycleSize();				
 				}
 			}
 			
@@ -398,9 +398,9 @@ public class Main {
 			//remove disjoint graphs
 			CellToGraph.removeDisjoint(allGraphs, cell);
 			
-			//removes cycles of length 3 and 4
+			//removes all cycles that aren't 5 or 6 long
 			for(int k = 0; k < allGraphs.size(); k++){
-				allGraphs.get(k).widenCycles();
+				allGraphs.get(k).tryToFixCycleSize();
 			}
 			
 			allGraphs.addAll( CellToGraph.tryTemplateMolecules( cell, cell.getNumPorts()) );
@@ -516,22 +516,16 @@ public class Main {
 		ArrayList<ArrayList<Graph>> graphsForEachCell = new ArrayList<ArrayList<Graph>>();
 		
 		graphsForEachCell = findGraphsRandomly(classifications);
-//		for(int i = 0; i < classifications.size(); i++){
-//			System.out.println("K" + (i+1));
-//			Cell current = classifications.get(i);
-//			
-//			graphsForEachCell.add(findGraphRandomly(current));
-//		}
 		System.out.println("Done");
 		
 		ArrayList<Graph> theGraphs = new ArrayList<Graph>();
 		for(int i = 0; i < graphsForEachCell.size(); i++){
 			ArrayList<Graph> current = graphsForEachCell.get(i);
+			
 			Collections.sort(current, new Comparator<Graph>(){
-
 				@Override
 				public int compare(Graph o1, Graph o2) {
-					return new Integer(o1.getNumNodes()).compareTo(o2.getNumNodes());
+					return new Integer(o1.getNumEdges()).compareTo(o2.getNumEdges());
 				}
 				
 			});
@@ -539,7 +533,7 @@ public class Main {
 			if(!current.isEmpty()){
 //				for(int j = 0; j < current.size(); j++){
 					Graph currentG = current.get(0);
-					currentG.widenCycles();
+//					currentG.widenCycles();
 					currentG.getEdgeCell().sortBySize();
 					currentG.getEdgeCell().removeDuplicates();
 					currentG.writeGraph();
@@ -562,7 +556,7 @@ public class Main {
 		Random random = new Random();
 		
 		//only try 1000 times
-		for(int i = 0; i < 10000; i++){
+		for(int i = 0; i < 100000; i++){
 			if(i % 1000 == 0){
 				System.out.println(i);
 			}
@@ -614,19 +608,19 @@ public class Main {
 				}
 			}
 
+			//test what cell this graph is
 			Cell gsCell = GraphtoCell.makeCell(newbie);
-			// cell may be empty if there is a secluded port
-			if (gsCell.size() == 0 || newbie.hasBadCycles()) {
-				continue;
-			} else {
+			if(gsCell.size() != 0){
 				gsCell.normalize();
 				gsCell.sortBySize();
 				int index = classifications.indexOf(gsCell);
-				if(index == -1){
-					continue;
-				}else{
-					graphs.get(index).add(newbie);
-				}
+				//found matching cell
+				if(index != -1){
+					newbie.tryToFixCycleSize();
+					if(newbie.tryToConnect() && newbie.isRealistic()){
+						graphs.get(index).add(newbie);
+					}
+				}				
 			}
 		}
 		return graphs;
@@ -636,10 +630,11 @@ public class Main {
 //		K174 G174_P: 6 Nodes,  6 Ports
 //		Edges: 0-1, 0-2, 1-3, 2-3, 2-4, 3-4, 0-5, 1-5, 4-5
 		Graph g = InputParser.readGraph(input);
-		if(g.hasBadCycles()){
-			System.out.println("bad cycles");
-		}else{
+		g.tryToFixCycleSize();
+		if( g.isRealistic()){
 			System.out.println("nope, they are good");
+		}else{
+			System.out.println("bad something");
 		}
 	}
 }

@@ -95,15 +95,11 @@ public class Population {
 		for (int i = 0; i < answer.size(); i++) {
 			Graph current = answer.get(i);
 			
-			//widen cycles in graph
-			//TODO returns itself rather than null?
-			current.widenCycles();
+			current.tryToFixCycleSize();
 			
 			if( current.isDisjoint() ){
-				Graph g = current.connect(null);
-				
-				if( !g.equals(current)){
-					answer.add(g);
+				if(current.tryToConnect()){
+					answer.add(current);
 				}
 			}
 			
@@ -126,7 +122,7 @@ public class Population {
 					System.out.println("K" + index + " " + c.toString());
 					smiles.add(smile);
 					System.out.println("SMILES: " + smile);
-					if( current.hasBadCycles() ){
+					if( !current.isRealistic() ){
 						System.out.print("Baddy ");
 					}
 					System.out.println( current.getFitness() );

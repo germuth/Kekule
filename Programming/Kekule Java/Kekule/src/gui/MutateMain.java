@@ -137,12 +137,10 @@ public class MutateMain extends JFrame{
 		this.originalGraphs = new ArrayList<Graph>();
 		int i = 1;
 		for(Graph g : gg){
-			//TODO Automatically connect?
-			Graph g2 = g.connect(null).connect(null);
-			String next = GraphToSMILES.convertSMILES(g2);
+			String next = GraphToSMILES.convertSMILES(g);
 			smiles.add(next);
-			this.currentGraphs.add(g2);
-			this.originalGraphs.add(new Graph(g2));
+			this.currentGraphs.add(g);
+			this.originalGraphs.add(new Graph(g));
 			cells.add(i + "");
 			i++;
 		}
@@ -158,12 +156,10 @@ public class MutateMain extends JFrame{
 		this.originalGraphs = new ArrayList<Graph>();
 		int i = 1;
 		for(Graph g : graphs){
-			//TODO Automatically connect?
-			Graph g2 = g.connect(null).connect(null);
-			String next = GraphToSMILES.convertSMILES(g2);
+			String next = GraphToSMILES.convertSMILES(g);
 			smiles.add(next);
-			this.currentGraphs.add(g2);
-			this.originalGraphs.add(new Graph(g2));
+			this.currentGraphs.add(g);
+			this.originalGraphs.add(new Graph(g));
 			cells.add(i + "");
 			i++;
 		}
@@ -300,8 +296,7 @@ public class MutateMain extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
-				g.widenCycles();
-				g.shortenCycles();
+				g.tryToFixCycleSize();
 				String smiles = GraphToSMILES.convertSMILES(g);
 				MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
 				MutateMain.this.SMILES.setText(smiles);
@@ -354,14 +349,15 @@ public class MutateMain extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Graph g = MutateMain.this.currentGraphs.get(MutateMain.this.index);
-				Graph g2 = g.connect(null);
-				MutateMain.this.currentGraphs.set(MutateMain.this.index, g2);
-				String smiles = GraphToSMILES.convertSMILES(g2);
-				MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
-				MutateMain.this.SMILES.setText(smiles);
-				
-				MutateMain.this.structureDisplayer.setGraph(smiles);
-		        MutateMain.this.structureDisplayer.drawCurrentSMILES();
+				if(g.tryToConnect()){
+					MutateMain.this.currentGraphs.set(MutateMain.this.index, g);
+					String smiles = GraphToSMILES.convertSMILES(g);
+					MutateMain.this.currentSMILES.set(MutateMain.this.index, smiles);
+					MutateMain.this.SMILES.setText(smiles);
+					
+					MutateMain.this.structureDisplayer.setGraph(smiles);
+					MutateMain.this.structureDisplayer.drawCurrentSMILES();					
+				}
 			}
 		});
 		

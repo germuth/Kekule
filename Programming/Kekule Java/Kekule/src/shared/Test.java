@@ -20,7 +20,7 @@ public class Test {
 		Graph g = InputParser.readGraph(new Scanner(System.in));
 		g.getAllCycles();
 		Graph ga = new Graph(g);
-		ga.widenCycles();
+		ga.tryToFixCycleSize();
 		
 		String smileCur = GraphToSMILES.convertSMILES(g);
 		String smileBef = GraphToSMILES.convertSMILES(ga);

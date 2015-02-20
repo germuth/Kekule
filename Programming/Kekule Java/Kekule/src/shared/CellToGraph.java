@@ -161,12 +161,7 @@ public class CellToGraph {
 			if(g == null){
 				continue;
 			}
-			if( g.isDisjoint() ){
-				//if new graph found, it replaces old non-connected one
-				//if no new connected graph found, null is placed there
-				Graph connected = g.connect(cell);
-				allGraphs.set(i, connected);
-			}
+			g.tryToConnect();
 		}
 	}
 	

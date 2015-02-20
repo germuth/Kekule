@@ -218,27 +218,53 @@ public class Graph implements Comparable<Graph>{
 		//if it makes degree too high
 		Graph temp = new Graph(this);
 		temp.addEdge(edge);
-		if( temp.getHighestDegree() > 4 || temp.getHighestPortDegree() > 3){
+		//TODO this used to be 4 and 3?
+		if( temp.getHighestDegree() > 3 || temp.getHighestPortDegree() > 3){
 			return true;
 		}
 		return false;
 	}
 	
 	/**
-	 * Checks the graph for a bad cycles. 
-	 * Bad cycles are defined as when a graph has 2 cycles which
-	 * share more than one edge (or more than two nodes). This is 
-	 * Infeasible in carbon chemistry and so is used to decrement
-	 * the fitness of the graph
+	 * Returns the best guess towards whether this graph represents a realistic 
+	 * molecule according to carbon chemistry. It currently checks the following:
+	 * 		- No node has degree greater than 3
+	 * 		- The Graph is connected
+	 * 		- Cycle sizes are 5 or 6 (7 can exist in reality, but it is rare)
+	 * 		- Cycle connectivity is realistic ( see isBadCycleConnectivity() )
 	 */
-	public boolean hasBadCycles(){
+	public boolean isRealistic(){
+		//degree
+		if(this.getHighestDegree() > 3){
+			return false;
+		}
+		//cycle sizes
 		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
+		for(ArrayList<BitVector> cycle: allCycles){
+			if(cycle.size() != 5 && cycle.size() != 6){
+				return false;
+			}
+		}
+		//connected
+		if(this.isDisjoint()){
+			return false;
+		}
+		return !hasBadCycleConnectivity(allCycles);
+	}
+	
+	/**
+	 * Checks the graph for a bad cycle connectivity.
+	 * Bad Cycle connectivity is when it is generally not realistic to carbon chemistry. For example
+	 * 		- no two cycles can share more than one edge
+	 * 		- a cycle of length 5 can only share an edge with one other cycle of length 5
+	 * 			- it can share more with cycles of other sizes
+	 */
+	private boolean hasBadCycleConnectivity(ArrayList<ArrayList<BitVector>> allCycles){
 		//iterate through all pairs of cycles
 		//if any two have intersection greater than 2
 		//this graph indeed has bad cycles
 		for(int i = 0; i < allCycles.size(); i++){
-			ArrayList<BitVector> cycle1 = allCycles.get(i);
-			
+			ArrayList<BitVector> cycle1 = allCycles.get(i);	
 			for(int j = i + 1; j < allCycles.size(); j++){
 				ArrayList<BitVector> cycle2 = new ArrayList<BitVector>( allCycles.get(j) );
 				
@@ -250,7 +276,37 @@ public class Graph implements Comparable<Graph>{
 				}
 			}
 		}
+		
+		//check for cycles of length 5
+		for(ArrayList<BitVector> cycle1: allCycles){
+			if(cycle1.size() == 5){
+				int partners = 0;
+				for(ArrayList<BitVector> cycle2: allCycles){
+					if(!cycle1.equals(cycle2) && cycle2.size() == 5){
+						partners++;
+					}
+				}
+				if(partners > 1){
+					return true;
+				}
+			}
+		}
 		return false;
+	}
+	
+	/**
+	 * Tries to fix all cycles whose size are not 5 or 6
+	 * This can often be done by adding or removing two nodes, without
+	 * affecting the graph's cell
+	 */
+	public void tryToFixCycleSize(){
+		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
+		int before = this.getNumNodes();
+		this.shortenCycles(allCycles);
+		if(before != this.getNumNodes()){
+			System.out.println(before + " shortened to " + this.getNumNodes());			
+		}
+		this.widenCycles(allCycles);
 	}
 	
 	/**
@@ -440,8 +496,7 @@ public class Graph implements Comparable<Graph>{
 	
 		return allCycles;
 	}
-	
-	//TEMP
+
 	public static ArrayList<String> makeEdgesString(ArrayList<BitVector> cycle){
 		ArrayList<String> edges = new ArrayList<String>();
 		for(int i = 1; i < cycle.size(); i++){
@@ -552,6 +607,9 @@ public class Graph implements Comparable<Graph>{
 	public int getHighestDegree(){
 		int max = -1;
 		int lastNode = 1 << ( this.numNodes - 1 );
+		if(numNodes > 30){
+			System.out.println("Big");
+		}
 		//cycle through all nodes
 		for(int node = 1; node <= lastNode; node *= 2 ){
 			
@@ -595,53 +653,28 @@ public class Graph implements Comparable<Graph>{
 	}
 	
 	/**
-	 * Returns a set of all nodes in this graph that have a degree
-	 * of 1
+	 * Find all nodes with specified degree
+	 * if degree == -1, you will get all nodes
+	 * @param degree
 	 * @return
 	 */
-	public Set<BitVector> getAllNodesWithDegree1(){
-		Set<BitVector> degree1List = new HashSet<BitVector>();
-		
-		int lastNode = 1 << ( this.numNodes - 1 );
-		//cycle through all nodes
-		for(int node = 1; node <= lastNode; node *= 2 ){
-			
-			int degree = 0;
-			Cell edges = this.getEdgeCell();
-			//cycle through edges and count occurences of that node
-			for(int i = 0; i < edges.size(); i++){
-				BitVector edge = edges.getPA()[i];
-				if(edge.contains(node)){
-					degree++;
-				}
-			}
-			
-			if(degree == 1){
-				degree1List.add( new BitVector(node) );
-			}
-		}
-		
-		return degree1List;
-	}
-	
-	public ArrayList<BitVector> getAllNodes(int num){
+	public ArrayList<BitVector> getAllNodes(int degree){
 		ArrayList<BitVector> degree1List = new ArrayList<BitVector>();
 		
 		int lastNode = 1 << ( this.numNodes - 1 );
 		//cycle through all nodes
 		for(int node = 1; node <= lastNode; node *= 2 ){
 			
-			int degree = 0;
+			int currDegree = 0;
 			Cell edges = this.getEdgeCell();
 			//cycle through edges and count occurences of that node
 			for(int i = 0; i < edges.size(); i++){
 				BitVector edge = edges.getPA()[i];
 				if(edge.contains(node)){
-					degree++;
+					currDegree++;
 				}
 			}
-			if(num == -1 ||
-					num == degree){
+			if(degree == -1 || degree == currDegree){
 				degree1List.add( new BitVector(node));
 			}
 		}
@@ -793,99 +826,82 @@ public class Graph implements Comparable<Graph>{
 	}
 
 	/**
-	 * Turns this graph from a disjoint graph to a connected graph. Only
-	 * works in the case of a graph split into two sections. 
+	 * Turns this graph from a disjoint graph to a connected graph.
 	 * 
-	 * Only returns the new graph if it's cell is the same as the old one, although
-	 * using it's current procedure I believe this will always be the case. 
-	 * 
-	 * Connects them by adding two interval vertices. One of the vertices is connected to 
+	 * Connects graph by adding two interval vertices. One of the vertices is connected to 
 	 * a node on each half of the graph. The other internal vertex is attached only to the 
-	 * other vertex. This means they must alwasy share a double bond, meaning the 
+	 * other vertex. This means they must always share a double bond, meaning the 
 	 * bonds added to connect the graphs can never be used for a double bond and the cell
 	 * is alwasy the same (probably).
 	 * 
-	 * (This) the graph, is not edited, a new one is produced off of it.
-	 * @param cell
-	 * @return a new Graph which is connected, or null if procedure failed
+	 * Returns whether it was successful in connecting the graph. Or true in the case that
+	 * the graph was never disjoint in the first place
 	 */
-	public Graph connect(Cell cell){
+	public boolean tryToConnect(){
+		if(!this.isDisjoint()){
+			return true;
+		}
 		
 		int before = this.countNodes();
-		ArrayList<BitVector> degreeOne1 = this.getAllNodes(-1);
-		Set<BitVector> degreeOne = new HashSet<BitVector>();
-		for(BitVector b : degreeOne1){
-			degreeOne.add(b);
+		ArrayList<BitVector> nodes = this.getAllNodes(-1);
+		Set<BitVector> allNodes = new HashSet<BitVector>();
+		for(BitVector b : nodes){
+			allNodes.add(b);
 		}
 		
-		//get all pairs of such nodes
-		PowerSet<BitVector> pairs = new PowerSet<BitVector>(degreeOne, 2, 2);
-		Iterator<Set<BitVector>> i = pairs.iterator();
-		
-		//and for every pair, try adding connection there, and see if it is still disjoint
-		//and whether it still has same cell
-		while( i.hasNext() ){
-			Set<BitVector> pair = i.next();
-			
-			if(pair.isEmpty()){
-				continue;
-			}
-			
-			Iterator<BitVector> i2 = pair.iterator();
-			int first = i2.next().getNumber();
-			int second = i2.next().getNumber();
-			
-			//new graph
-			Graph connected = new Graph(this);
-			//get last node so we know number of new two nodes we are adding
-			int lastNode = 1 << ( this.numNodes - 1 );
-			int newNode1 = lastNode*2;
-			int newNode2 = newNode1*2;
-			//add two new nodes
-			connected.addTwoNodes();
-			
-			//add edge from new1 -> new2
-			connected.addEdge(new BitVector( newNode1 + newNode2 ));
-			//add edges from port 1 to new1
-			connected.addEdge(new BitVector( first + newNode1) );
-			//and edge from port 2 to new1
-			connected.addEdge(new BitVector( second + newNode1) );
-			
-			//if no longer disjoint
-			//AND has the same cell
-			//then we did it!
-			//if( !connected.isDisjoint() ){
-			//if there are more nodes accessible now than before
-			if( before < connected.countNodes() - 2){
-				//if(GraphtoCell.makeCell(connected).equals(cell) ){
-				//	connected.name += "Connected";
-					return connected;
-				//}
+		int lastNode = 1 << ( this.numNodes - 1 );
+		//cycle through all pairs of nodes
+		for(int first = 1; first <= lastNode; first*= 2 ){
+			for(int second = first*2; second <= lastNode; second *= 2){
+				int newNode1 = lastNode*2;
+				int newNode2 = newNode1*2;
+				//add two new nodes
+				if(this.addTwoNodes()){
+					//add edge from new1 -> new2
+					this.addEdge(new BitVector( newNode1 + newNode2 ));
+					//add edges from port 1 to new1
+					this.addEdge(new BitVector( first + newNode1) );
+					//and edge from port 2 to new1
+					this.addEdge(new BitVector( second + newNode1) );
+					
+					//if there are more nodes accessible now than before
+					if( before < this.countNodes() - 2){
+						//call again if not completely this yet
+						return tryToConnect();
+					}
+				}else{
+					return false;
+				}
 			}
 		}
-		
-		return this;
+		return false;
 	}
 	
-	public void shortenCycles(){
-		//get cell and fitness before hand
-		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
+	/**
+	 * This method attempts to shorten all cycles of length 7 or greater.
+	 * Some cycles may be unable to be shortened
+	 * 
+	 * This method calls itself everytime a cycle is found and fixed, which restarts and
+	 * tries to fix all cycles again. 
+	 */
+	private void shortenCycles(ArrayList<ArrayList<BitVector>> allCycles) {
+		ArrayList<ArrayList<BitVector>> localAllCycles = new ArrayList<ArrayList<BitVector>>();
+		localAllCycles.addAll(allCycles);
 		
-		for(int i = 0; i < allCycles.size(); i++){
-			if( allCycles.get(i).size() <= 6){
-				allCycles.remove(i);
+		for(int i = 0; i < localAllCycles.size(); i++){
+			if( localAllCycles.get(i).size() <= 6){
+				localAllCycles.remove(i);
 				i--;
 			}
 		}
-		//port <= (1 << (extended.numPorts - 1))7
 		
-		for(ArrayList<BitVector> theCycle: allCycles){
+		for(ArrayList<BitVector> theCycle: localAllCycles){
 			//grab all pairs of nodes in cycle
 			for(int i = 0; i < theCycle.size(); i++){
 				BitVector node1 = theCycle.get(i);
 				for(int j = i + 1; j < theCycle.size(); j++){
 					BitVector node2 = theCycle.get(j);
-					
+					//create edge between them
 					BitVector edge = new BitVector( node1.getNumber() +
 							node2.getNumber() );
 					if( this.getEdgeCell().contains( edge ) &&
@@ -899,6 +915,7 @@ public class Graph implements Comparable<Graph>{
 							BitVector left = null;
 							ArrayList<BitVector> n = this.getAllNeighbours(node1);
 							n.remove(node2);
+							//only want nodes with degree 2
 							if( n.size() == 1){
 								left = n.get(0);
 							}
@@ -912,10 +929,23 @@ public class Graph implements Comparable<Graph>{
 							
 							//connect them, which excludes node1 and node2
 							if( left != null && right != null){
-								this.removeEdge(new BitVector(node1.getNumber() + node2.getNumber()));
+//								this.removeEdge(new BitVector(node1.getNumber() + node2.getNumber()));
 								this.removeEdge(new BitVector(left.getNumber() + node1.getNumber()));
 								this.removeEdge(new BitVector(right.getNumber() + node2.getNumber()));
 								this.addEdge(new BitVector(left.getNumber() + right.getNumber()));
+								
+								//we now need to reconstruct the graph
+								//the two nodes that were removed are not guaranteed to be the last two nodes numerically, 
+								//so we cannot simply go this.numNodes -= 2
+								//we must iterate through each of the nodes, and rename the nodes
+								//and then reset up our cell
+								//TODO for now, it just adds to extra nodes to the graph...
+								//TODO also uncomment the above thing
+								
+								//now that we have removed a cycle, we call the method again to try to remove another cycle
+								//or make this one even smaller
+								//we have to restart completely because at this point some nodes may not be considered again (node1, node2)
+								shortenCycles(allCycles);
 							}
 						}
 					}
@@ -923,15 +953,13 @@ public class Graph implements Comparable<Graph>{
 			}
 		}
 	}
+	
 	/**
 	 * Gets all cycles of this graph, and turns and 4 cycles into 6 cycles, and
 	 * any 3 cycles into 5 cycles. This fits carbon chemistry much better. Checks to see if 
 	 * the cell or fitness changed, if it did, it writes errors to console.
 	 */
-	public void widenCycles(){
-		//get cell and fitness before hand
-		ArrayList<ArrayList<BitVector>> allCycles = this.getAllCycles();
-		
+	private void widenCycles(ArrayList<ArrayList<BitVector>> allCycles){
 		//spots where we add nodes to alleviate small cycles
 		ArrayList<ArrayList<BitVector>> fixingSpots = new ArrayList<ArrayList<BitVector>>();
 		
@@ -960,105 +988,124 @@ public class Graph implements Comparable<Graph>{
 			// add two new nodes
 			int newNode1 = lastNode * 2;
 			int newNode2 = newNode1 * 2;
-			this.addTwoNodes();
+			if (this.addTwoNodes()) {
+				// remove edge from node1 -> node2
+				this.removeEdge(new BitVector(node1 + node2));
 
-			// remove edge from node1 -> node2
-			this.removeEdge(new BitVector(node1 + node2));
-
-			// add edge from new1 -> new2
-			this.addEdge(new BitVector(newNode1 + newNode2));
-			// add edge from node1 to new1
-			this.addEdge(new BitVector(node1 + newNode1));
-			// and edge from node2 to new1
-			this.addEdge(new BitVector(node2 + newNode2));
+				// add edge from new1 -> new2
+				this.addEdge(new BitVector(newNode1 + newNode2));
+				// add edge from node1 to new1
+				this.addEdge(new BitVector(node1 + newNode1));
+				// and edge from node2 to new1
+				this.addEdge(new BitVector(node2 + newNode2));
+			}else{
+				break;
+			}
 		}
 		
 	}
 	
 	/**
-	 * Given all cycles, and one specific one, it finds two nodes of that cycle which are both
-	 * not located in any other cycle. If this is impossible, an empty list is returned 
-	 * 
-	 * TODO use methods here rather than like 20 break statements
+	 * Given all cycles, and one specific one, it finds an edge of that cycle that is 
+	 * not located in any cycles. This edge can be safely increased in size.
+	 * If this is impossible, an empty list is returned 
 	 */
-	private ArrayList<BitVector> getTwoNodesFromCycle(ArrayList<BitVector> theCycle, ArrayList<ArrayList<BitVector>> allCycles){
-		ArrayList<BitVector> currentCycle = theCycle; 
-		
-		BitVector finalNode1 = null;
-		BitVector finalNode2 = null;
-		
-		//if theCycle is the only cycle in the graph
-		//than any two adjacent nodes will work
-		if( allCycles.size() == 1 ){
-			
-			loop:
-			//grab first two from cycle who are connected
-			for(int i = 0; i < theCycle.size(); i++){
-				BitVector node1 = theCycle.get(i);
-				for(int j = i + 1; j < theCycle.size(); j++){
-					BitVector node2 = theCycle.get(j);
-					
-					BitVector edge = new BitVector( node1.getNumber() +
-							node2.getNumber() );
-					if( this.getEdgeCell().contains( edge )){
-						finalNode1 = node1;
-						finalNode2 = node2;
-						break loop;
-					}
-				}
+	private ArrayList<BitVector> getTwoNodesFromCycle(ArrayList<BitVector> theCycle, ArrayList<ArrayList<BitVector>> allCycles){	
+
+		ArrayList<String> potentialEdges = makeEdgesString(theCycle);
+		for(ArrayList<BitVector> cycle: allCycles){
+			if(cycle.equals(theCycle)){
+				continue;
 			}
-		} 
-		// more than one cycle in graph
-		else {
-			// find any two adjacent nodes of cycle which aren't both in the
-			// same cycle
-			// try all pairs one works\
-			nodeSelection:
-			for (int j = 0; j < currentCycle.size(); j++) {
-				BitVector node1 = currentCycle.get(j);
-				nodeSelectionIn:
-				for (int k = j + 1; k < currentCycle.size(); k++) {
-					BitVector node2 = currentCycle.get(k);
-
-					// make sure node1 and node2 connected in our cycle
-					if (this.edgeCell.contains(new BitVector(node1.getNumber()
-							+ node2.getNumber()))) {
-						//there must be no other cycle which contains this edge
-						
-						
-						// for each other cycle
-						for (int l = 0; l < allCycles.size(); l++) {
-							// exclude current Cycle
-							if (allCycles.get(l).equals(currentCycle)) {
-								continue;
-							}
-							
-							//if cycle contains both nodes
-							if (allCycles.get(l).contains(node1)
-									&& allCycles.get(l).contains(node2)) {
-								//this is not good
-								break nodeSelectionIn;
-							} 
-
-						}
-					
-						//made it to the end
-						finalNode1 = node1;
-						finalNode2 = node2;
-						break nodeSelection;
-
-					}
-						}	
-				} 	
+			//removes all the overlapping edges as potential edges
+			potentialEdges.removeAll(makeEdgesString(cycle));
 		}
 		
-		ArrayList<BitVector> spot = new ArrayList<BitVector>();
-		//if two nodes were found
-		if( finalNode1 != null){
-			spot.add( finalNode1 );
-			spot.add( finalNode2 );
+		ArrayList<BitVector> twoNodesFromEdge = new ArrayList<BitVector>();
+		if(!potentialEdges.isEmpty()){
+			String edge = potentialEdges.get(0).replace("-", " ");
+			Scanner edgeScanner = new Scanner(edge);
+			int firstNode = edgeScanner.nextInt();
+			int secondNode = edgeScanner.nextInt();
+			edgeScanner.close();
+			
+			twoNodesFromEdge.add(new BitVector(1 << firstNode));
+			twoNodesFromEdge.add(new BitVector(1 << secondNode));
 		}
-		return spot;
+		return twoNodesFromEdge;
+		
+//		//if theCycle is the only cycle in the graph
+//		//than any two adjacent nodes will work
+//		if( allCycles.size() == 1 ){
+//			
+//			loop:
+//			//grab first two from cycle who are connected
+//			for(int i = 0; i < theCycle.size(); i++){
+//				BitVector node1 = theCycle.get(i);
+//				for(int j = i + 1; j < theCycle.size(); j++){
+//					BitVector node2 = theCycle.get(j);
+//					
+//					BitVector edge = new BitVector( node1.getNumber() +
+//							node2.getNumber() );
+//					if( this.getEdgeCell().contains( edge )){
+//						finalNode1 = node1;
+//						finalNode2 = node2;
+//						break loop;
+//					}
+//				}
+//			}
+//		} 
+//		// more than one cycle in graph
+//		else {
+//			// find any two adjacent nodes of cycle which aren't both in the
+//			// same cycle
+//			// try all pairs one works\
+//			nodeSelection:
+//			for (int j = 0; j < currentCycle.size(); j++) {
+//				BitVector node1 = currentCycle.get(j);
+//				nodeSelectionIn:
+//				for (int k = j + 1; k < currentCycle.size(); k++) {
+//					BitVector node2 = currentCycle.get(k);
+//
+//					// make sure node1 and node2 connected in our cycle
+//					if (this.edgeCell.contains(new BitVector(node1.getNumber()
+//							+ node2.getNumber()))) {
+//						//there must be no other cycle which contains this edge
+//						
+//						
+//						// for each other cycle
+//						for (int l = 0; l < allCycles.size(); l++) {
+//							// exclude current Cycle
+//							if (allCycles.get(l).equals(currentCycle)) {
+//								continue;
+//							}
+//							
+//							//if cycle contains both nodes
+//							if (allCycles.get(l).contains(node1)
+//									&& allCycles.get(l).contains(node2)) {
+//								//this is not good
+//								break nodeSelectionIn;
+//							} 
+//
+//						}
+//					
+//						//made it to the end
+//						finalNode1 = node1;
+//						finalNode2 = node2;
+//						break nodeSelection;
+//
+//					}
+//						}	
+//				} 	
+//		}
+//		
+//		ArrayList<BitVector> spot = new ArrayList<BitVector>();
+//		//if two nodes were found
+//		if( finalNode1 != null){
+//			spot.add( finalNode1 );
+//			spot.add( finalNode2 );
+//		}
+//		return spot;
 	}
 	
 	public Graph expandNode(){
@@ -1401,11 +1448,12 @@ public class Graph implements Comparable<Graph>{
 		return name;
 	}
 	
-	public void addTwoNodes(){
-		this.numNodes += 2;
-		if(this.numNodes >= 31){
-			System.err.println("31 Nodes Reached");
+	public boolean addTwoNodes(){
+		if(this.numNodes + 2 >= 31){
+			return false;
 		}
+		this.numNodes += 2;
+		return true;
 	}
 
 	public Cell getEdgeCell() {
@@ -1422,6 +1470,10 @@ public class Graph implements Comparable<Graph>{
 	
 	public int getNumNodes() {
 		return numNodes;
+	}
+	
+	public int getNumEdges() {
+		return this.edgeCell.size();
 	}
 
 	public void setNumNodes(int numNodes) {
