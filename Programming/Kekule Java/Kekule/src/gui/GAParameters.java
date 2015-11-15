@@ -1,5 +1,4 @@
-package geneticAlgorithm;
-
+package gui;
 /**
  * GAParameters
  * 

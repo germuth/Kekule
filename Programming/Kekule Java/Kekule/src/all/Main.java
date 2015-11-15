@@ -3,16 +3,15 @@ package all;
 import graphs.ClassifyGraph;
 import graphs.Graph;
 import gui.MutateMain;
+import all.RandomGraphs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Random;
 import java.util.Scanner;
 
-import shared.BitVector;
 import shared.Cell;
 import shared.CellToGraph;
 import shared.GraphtoCell;
@@ -71,6 +70,7 @@ public class Main {
 			case 6: cheat(); break;
 			case 7: findByRandom(); break;
 			case 8: test(); break;
+			case 9: findByGeneticAlg(); break;
 			default:
 				System.out.println("Number not Understood. Try Again");
 			}
@@ -510,12 +510,11 @@ public class Main {
 			}
 		}
 		
-		
 		System.out.println("Searching For Graphs: ");
 
 		ArrayList<ArrayList<Graph>> graphsForEachCell = new ArrayList<ArrayList<Graph>>();
-		
-		graphsForEachCell = findGraphsRandomly(classifications);
+
+		graphsForEachCell = RandomGraphs.findGraphForAllCellsRandomly(classifications);
 		System.out.println("Done");
 		
 		ArrayList<Graph> theGraphs = new ArrayList<Graph>();
@@ -548,82 +547,82 @@ public class Main {
 		MutateMain.showGraphs(theGraphs);
 	}
 	
-	private static ArrayList<ArrayList<Graph>>findGraphsRandomly(ArrayList<Cell> classifications) {
-		ArrayList<ArrayList<Graph>> graphs = new ArrayList<ArrayList<Graph>>();
-		for(int i = 0; i < 214; i++){
-			graphs.add(new ArrayList<Graph>());
+	private static void findByGeneticAlg(){
+		//reading classification
+		File f = new File("FullClassificationRank6.txt");
+		Scanner s = null;
+		try {
+			s = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			System.err.println("File was unable to be found/read");
+			e.printStackTrace();
 		}
-		Random random = new Random();
+		int rank = 6;
+		s.nextLine();
+		s.nextLine();
+		s.nextLine();
 		
-		//only try 1000 times
-		for(int i = 0; i < 100000; i++){
-			if(i % 1000 == 0){
-				System.out.println(i);
+		ArrayList<Cell> classifications = new ArrayList<Cell>();
+		
+		Cell input = null;
+		try {
+			input = InputParser.readCell2(s, rank);
+		} catch (Exception e1) {
+			System.err.println("Cell was unable to be read from file");
+			e1.printStackTrace();
+		}
+		
+		while(input != null){
+			classifications.add(input);
+			
+			try{
+				input = InputParser.readCell2(s, rank);
 			}
-			int nP = 6;
-			int nC = 6;
-
-			// add anywhere from (to) -> (from) nodes
-			int from = 0;
-			int to = 20;
-			nC += from + random.nextInt(to - from);
-
-			// edges always added
-			// add atleast enough to connect all your nodes
-			// which is num nodes - 1
-			// PLUS from -> to
-			from = 0;
-			to = 25;
-			int edgesToAdd = nC - 1 + from + random.nextInt(to - from);
-
-			Cell c = new Cell();
-			c.setNumPorts(6);
-
-			// the graph
-			Graph newbie = new Graph("G" + (i+1), nP, nC, c);
-
-			// loop adding all the edges
-			// care must be taken that
-			// we don't add an edge we already have
-			// the bit Vector generated is a valid edge
-			// the edge doesn't overflow the max degree allocated
-			innerloop : for (int j = 0; j < edgesToAdd; j++) {
-				int node1 = 1 << random.nextInt(nC);
-				int node2 = 1 << random.nextInt(nC);
-
-				BitVector bv = new BitVector(node1 + node2);
-
-				int attempts = 0;
-				while (newbie.isBadEdge(bv) && attempts < 15) {
-					node1 = 1 << random.nextInt(nC);
-					node2 = 1 << random.nextInt(nC);
-					bv = new BitVector(node1 + node2);
-					attempts++;
-				}
-
-				if (attempts < 15) {
-					newbie.addEdge(bv);
-				} else {
-					break innerloop;
-				}
-			}
-
-			//test what cell this graph is
-			Cell gsCell = GraphtoCell.makeCell(newbie);
-			if(gsCell.size() != 0){
-				gsCell.normalize();
-				gsCell.sortBySize();
-				int index = classifications.indexOf(gsCell);
-				//found matching cell
-				if(index != -1){
-					newbie.tryToFixCycleSize();
-					if(newbie.tryToConnect() && newbie.isRealistic()){
-						graphs.get(index).add(newbie);
-					}
-				}				
+			catch(Exception e){
+				input = null;
 			}
 		}
-		return graphs;
+		
+		
+		System.out.println("Searching For Graphs: ");
+
+		ArrayList<ArrayList<Graph>> graphsForEachCell = new ArrayList<ArrayList<Graph>>();
+		
+		for(int i = 0; i < classifications.size(); i++){
+			
+			
+		}
+//		graphsForEachCell = findGraphsRandomly(classifications);
+		System.out.println("Done");
+		
+		ArrayList<Graph> theGraphs = new ArrayList<Graph>();
+		for(int i = 0; i < graphsForEachCell.size(); i++){
+			ArrayList<Graph> current = graphsForEachCell.get(i);
+			
+			Collections.sort(current, new Comparator<Graph>(){
+				@Override
+				public int compare(Graph o1, Graph o2) {
+					return new Integer(o1.getNumEdges()).compareTo(o2.getNumEdges());
+				}
+				
+			});
+			System.out.print("K" + (i+1) + " ");
+			if(!current.isEmpty()){
+//				for(int j = 0; j < current.size(); j++){
+					Graph currentG = current.get(0);
+//					currentG.widenCycles();
+					currentG.getEdgeCell().sortBySize();
+					currentG.getEdgeCell().removeDuplicates();
+					currentG.writeGraph();
+					
+					theGraphs.add(currentG);
+//				}
+			} else {
+				System.out.println("No Graph Found!");
+			}
+		}
+		
+		MutateMain.showGraphs(theGraphs);
 	}
 	
 	public static void test(){

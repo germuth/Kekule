@@ -1,5 +1,6 @@
 package gui;
 
+import gui.StructureDisplayer;
 import geneticAlgorithm.GeneticAlgorithmTask;
 import gui.parameterWindow.GAWindow;
 import gui.parameterWindow.MutationWindow;

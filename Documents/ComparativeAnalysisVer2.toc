@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Current Limitations}{3}
+\contentsline {section}{\numberline {2}Realistic Graphs}{3}
+\contentsline {section}{\numberline {3}Restrictions}{3}
+\contentsline {subsection}{\numberline {3.1}Degree}{3}
+\contentsline {subsection}{\numberline {3.2}Cycles}{4}
+\contentsline {subsubsection}{\numberline {3.2.1}Huckel's Rule}{4}
+\contentsline {section}{\numberline {4}Obtaining Realistic Graphs}{5}
+\contentsline {subsection}{\numberline {4.1}Template Molecules}{5}
+\contentsline {subsection}{\numberline {4.2}Modification}{5}
+\contentsline {subsubsection}{\numberline {4.2.1}Cycle Extension and Contraction}{6}
+\contentsline {subsubsection}{\numberline {4.2.2}Connecting a Disjoint Graph}{6}
+\contentsline {subsubsection}{\numberline {4.2.3}Split a Node}{7}
+\contentsline {subsection}{\numberline {4.3}Genetic Algorithm}{7}
+\contentsline {subsubsection}{\numberline {4.3.1}Mutation}{7}
+\contentsline {subsubsection}{\numberline {4.3.2}Crossover}{8}
+\contentsline {subsubsection}{\numberline {4.3.3}Fitness Function}{8}
+\contentsline {section}{\numberline {5}Results}{8}

@@ -2,6 +2,7 @@ package geneticAlgorithm;
 
 import graphs.Graph;
 import graphs.GraphToSMILES;
+import gui.MutateMain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,58 +89,103 @@ public class Population {
 			}
 		}
 		
-		//cleaner output
-		answer = Utils.deleteDuplicates(answer);	
 		ArrayList<String> smiles = new ArrayList<String>();
-		
-		for (int i = 0; i < answer.size(); i++) {
-			Graph current = answer.get(i);
-			
-			current.tryToFixCycleSize();
-			
-			if( current.isDisjoint() ){
-				if(current.tryToConnect()){
-					answer.add(current);
-				}
-			}
-			
-			Cell c = GraphtoCell.makeCell( current );
-			c.normalize();
-			
-			int index = 0;
-			//identify which classification each graph is
-			for(int j = 0; j < classy.size(); j++){
-				if( c.equals(classy.get(j)) ){
-					index = j + 1;
-				}
-			}
+		for(Graph g: answer){
+			Graph copy = new Graph(g);
+			// test what cell this graph is
+				Cell gsCell = GraphtoCell.makeCell(g);
+				if (gsCell.size() != 0) {
+					gsCell.normalize();
+					gsCell.sortBySize();
+					int index = classy.indexOf(gsCell);
+					if(index != -1){
+						g.tryToConnect();
+						g.tryToFixCycleSize();	
 
-			if (!current.isDisjoint()) {
-				String smile = GraphToSMILES.convertSMILES(current);
+ 						for(int k = 0; k < 3; k++){
+//							g = g.mergeNode();
+							g.tryToFixCycleSize();
+						}
+						if (g.isRealistic()) {
+							String smile = GraphToSMILES.convertSMILES(g);
 
-				if (!smiles.contains(smile)) {
-					current.writeGraph();
-					System.out.println("K" + index + " " + c.toString());
-					smiles.add(smile);
-					System.out.println("SMILES: " + smile);
-					if( !current.isRealistic() ){
-						System.out.print("Baddy ");
+							if (!smiles.contains(smile)) {
+								g.writeGraph();
+								System.out.println("K" + (index+1) + " " + gsCell.toString());
+								smiles.add(smile);
+//								System.out.println("SMILES: " + smile);
+//								if (!g.isRealistic()) {
+//									System.out.print("Baddy ");
+//								}
+								System.out.println(g.getFitness());
+//								System.out.println("Cycles: " + g.getAllCycles());
+								System.out.println("");
+
+							}
+						}else{
+							System.out.println("GRAPH WAS BAD");
+						}
+					}else{
+						System.out.println("SOMETHING WRONG WITH GENETIC ALGORITHM");
 					}
-					System.out.println( current.getFitness() );
-					System.out.println("Cycles: " + current.getAllCycles());
-					System.out.println("");
-
 				}
 			}
-			else{
-				System.err.println("THIS GRAPH WAS DISJOINT");
-			}
-		}
-		if( !smiles.isEmpty() ){
-		} else{
-			System.out.println("No Graphs Found!");
-			return new ArrayList<String>();
-		}
+//		
+//		//cleaner output
+//		answer = Utils.deleteDuplicates(answer);
+//		ArrayList<String> smiles = new ArrayList<String>();
+//		
+//		for (int i = 0; i < answer.size(); i++) {
+//			Graph current = answer.get(i);
+//			
+//			current.tryToFixCycleSize();
+//			
+//			if( current.isDisjoint() ){
+//				if(current.tryToConnect()){
+//					answer.add(current);
+//				}
+//			}
+//			
+//			Cell c = GraphtoCell.makeCell( current );
+//			if (c.size() != 0) {
+//				c.normalize();
+//
+//				int index = 0;
+//				// identify which classification each graph is
+//				for (int j = 0; j < classy.size(); j++) {
+//					if (c.equals(classy.get(j))) {
+//						index = j + 1;
+//					}
+//				}
+//
+//				if (!current.isDisjoint()) {
+//					String smile = GraphToSMILES.convertSMILES(current);
+//
+//					if (!smiles.contains(smile)) {
+//						current.writeGraph();
+//						System.out.println("K" + index + " " + c.toString());
+//						smiles.add(smile);
+//						System.out.println("SMILES: " + smile);
+//						if (!current.isRealistic()) {
+//							System.out.print("Baddy ");
+//						}
+//						System.out.println(current.getFitness());
+//						System.out.println("Cycles: " + current.getAllCycles());
+//						System.out.println("");
+//
+//					}
+//				} else {
+//					System.err.println("THIS GRAPH WAS DISJOINT");
+//				}
+//			} else {
+//				System.out.println("Graph had no cell?");
+//			}
+//		}
+//		if( !smiles.isEmpty() ){
+//		} else{
+//			System.out.println("No Graphs Found!");
+//			return new ArrayList<String>();
+//		}
 		return smiles;
 	}
 	

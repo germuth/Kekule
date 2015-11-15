@@ -2,6 +2,7 @@ package shared;
 
 
 
+
 /**
  * BitVector
  * 
@@ -155,7 +156,7 @@ public class BitVector implements Comparable<BitVector>{
 	public int firstNode(){
 		int k = 0;
 		int x = this.getNumber();
-		while( ( ( x>>k) & 1 ) == 0 ){
+		while( ( ( x >> k) & 1 ) == 0 ){
 			k++;
 		}
 		return k;

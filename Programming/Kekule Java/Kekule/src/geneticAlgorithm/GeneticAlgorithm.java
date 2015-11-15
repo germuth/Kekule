@@ -101,10 +101,7 @@ public class GeneticAlgorithm{
 	}
 	
 	/**
-	 * Runs the genetic algorithm. A population of graphs is evolved towards the required
-	 * cell. Numbers in comments below are simply default values, and the actual values currently
-	 * used are the static variables of this class. 
-	 * TODO However, once the graphical interface is working properly, all values will come from there.
+	 * Runs the genetic algorithm. A population of graphs is evolved towards the required cell
 	 */
 	private static void geneticAlgorithm(Population population, int maxFitness){
 		
@@ -191,7 +188,7 @@ public class GeneticAlgorithm{
 		Cell gsCell = GraphtoCell.makeCell(g);
 		// cell may be empty if there is a secluded port
 		if (gsCell.size() == 0) {
-			g.setFitness(-10);
+			g.setFitness(-100);
 		} 
 		else {
 			gsCell.normalize();

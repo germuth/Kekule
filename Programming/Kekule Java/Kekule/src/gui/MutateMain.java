@@ -2,9 +2,6 @@ package gui;
 
 import graphs.Graph;
 import graphs.GraphToSMILES;
-import gui.parameterWindow.GAWindow;
-import gui.parameterWindow.MutationWindow;
-import gui.parameterWindow.PopulationWindow;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,7 +19,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -31,15 +27,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import shared.Cell;
-import shared.GraphtoCell;
-
-import com.sun.org.apache.xml.internal.serializer.utils.Utils;
 
 
 /**
@@ -96,19 +86,6 @@ public class MutateMain extends JFrame{
 	 * The textual representation of the current cell
 	 */
 	private String cell;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MutateMain frame = new MutateMain();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public static void showGraphs(ArrayList<Graph> graphs) {
 		EventQueue.invokeLater(new Runnable() {
@@ -122,30 +99,6 @@ public class MutateMain extends JFrame{
 			}
 		});
 	}
-
-	/**
-	 * THe main constructor to display all elements within this frame
-	 */
-	public MutateMain() {
-		setUpGUI();
-		
-		ArrayList<Graph> gg = shared.Utils.getRank6Graphs(this);
-		
-		ArrayList<String> smiles = new ArrayList<String>();
-		ArrayList<String> cells = new ArrayList<String>();
-		this.currentGraphs = new ArrayList<Graph>();
-		this.originalGraphs = new ArrayList<Graph>();
-		int i = 1;
-		for(Graph g : gg){
-			String next = GraphToSMILES.convertSMILES(g);
-			smiles.add(next);
-			this.currentGraphs.add(g);
-			this.originalGraphs.add(new Graph(g));
-			cells.add(i + "");
-			i++;
-		}
-		this.collectAndShowResults(smiles, cells);
-	}
 	
 	public MutateMain(ArrayList<Graph> graphs){
 		setUpGUI();
@@ -156,6 +109,9 @@ public class MutateMain extends JFrame{
 		this.originalGraphs = new ArrayList<Graph>();
 		int i = 1;
 		for(Graph g : graphs){
+			if(g == null){
+				System.out.println("DEBUG LINE");
+			}
 			String next = GraphToSMILES.convertSMILES(g);
 			smiles.add(next);
 			this.currentGraphs.add(g);
@@ -471,7 +427,7 @@ public class MutateMain extends JFrame{
 				count++;
 				length -= 10;
 			}
-			this.cellLabel.setText(cell.get(index));
+			this.cellLabel.setText(this.currentGraphs.get(index).getName());
 			this.cellLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, (14 - count)));
 		} else{
 			System.out.println("Graphs Not Found");

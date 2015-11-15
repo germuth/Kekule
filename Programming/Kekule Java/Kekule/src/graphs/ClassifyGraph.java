@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import classification.Classify;
-
-
 import shared.BitVector;
 import shared.Cell;
 import shared.Histogram;
 import shared.Utils;
+import classification.Classify;
 
 public class ClassifyGraph {
 

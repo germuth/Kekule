@@ -3,12 +3,10 @@ package all;
 import graphs.Graph;
 
 import java.io.File;
-import java.util.BitSet;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeSet;
 
 import shared.BitVector;
 import shared.Cell;

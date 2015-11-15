@@ -3,6 +3,7 @@ package graphs;
 import geneticAlgorithm.GeneticAlgorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -219,7 +220,7 @@ public class Graph implements Comparable<Graph>{
 		Graph temp = new Graph(this);
 		temp.addEdge(edge);
 		//TODO this used to be 4 and 3?
-		if( temp.getHighestDegree() > 3 || temp.getHighestPortDegree() > 3){
+		if( temp.getHighestDegree() > 3 || temp.getHighestPortDegree() > 2){
 			return true;
 		}
 		return false;
@@ -1266,8 +1267,57 @@ public class Graph implements Comparable<Graph>{
 	 * @return whether this (graph) is disjoint or not (as in connected)
 	 */
 	public boolean isDisjoint() {
-		if( this.countNodes() == this.numNodes){
-			return false;
+//		if( this.countNodes() == this.numNodes){
+//			return false;
+//		}
+//		return true;
+		//TODO temporary i guess
+		return !this.portsConnected();
+	}
+	
+	public boolean portsConnected(){
+		BitVector[] edges = this.edgeCell.getPA();
+		//holds whether we already visited this node
+		HashMap<BitVector, Boolean> reached = new HashMap<BitVector, Boolean>();
+		
+		boolean[] portFound = new boolean[this.numPorts];
+		Arrays.fill(portFound, false);
+		
+		//start searching at node 1
+		BitVector first = new BitVector(1);
+		LinkedList<BitVector> openList = new LinkedList<BitVector>();
+		openList.add(first);
+		
+		while( !openList.isEmpty() ){
+			
+			BitVector parent = openList.pop();
+			reached.put( parent, true );
+			
+			int num = parent.firstNode();
+			if(num < this.numPorts){
+				portFound[num] = true;
+			}
+			
+			//search all edges
+			for(BitVector edge : edges){
+				//if edges goes from this node to another
+				if(edge.contains( parent.getNumber() ) ){
+					//find out who another is
+					BitVector another = new BitVector( edge.getNumber() - parent.getNumber() );
+					
+					//if we haven't already been to another
+					if( reached.get( another ) == null && !openList.contains(another) ){
+						//add to openList
+						openList.add(another);	
+					}
+				}
+			}
+		}
+		
+		for(int i = 0; i < portFound.length; i++){
+			if(!portFound[i]){
+				return false;
+			}
 		}
 		return true;
 	}

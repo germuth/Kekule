@@ -6,9 +6,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-
 import shared.BitVector;
-import shared.Cell; 
+import shared.Cell;
 import shared.Histogram;
 import shared.Permutations;
 import shared.Utils;

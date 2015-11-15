@@ -1,19 +1,10 @@
 package shared;
-import graphs.Graph;
-import gui.MutateMain;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeSet;
-
 
 /**
  * Utils
@@ -38,49 +29,6 @@ public class Utils {
 		}
 		
 		return list;
-	}
-	public static ArrayList<Graph> getRank6Graphs(MutateMain pp){
-		ArrayList<Graph> graphs = new ArrayList<Graph>();
-		int graphCount = 1;
-		//InputStream is = pp.getClass().getResourceAsStream("Rank6HesselinkGraphs.txt");
-	    //InputStreamReader isr = new InputStreamReader(is);
-		//InputFlatFile currentFile = new InputFlatFile("theFile.txt");
-		File f = new File("Rank6HesselinkGraphs.txt");
-		try {
-			//Scanner s = new Scanner(isr);
-			Scanner s = new Scanner(f);
-			
-			while(s.hasNextLine()){
-				String next = s.nextLine();
-				if( next.contains("Gra6nr")){
-					Scanner s1 = new Scanner(next);
-					s1.next();
-					int numPorts = s1.nextInt();
-					String numNodesO = s1.next();
-					numNodesO = numNodesO.substring(0, numNodesO.length() - 1);
-					int numNodes = Integer.parseInt(numNodesO);
-					Set<String> edges = new TreeSet<String>();
-					while( s1.hasNext()){
-						String temp = s1.next();
-						temp = temp.replace(",", " ");
-						temp = temp.replace(".", " ");
-						temp = temp.replace("-", " ");
-						edges.add(temp);
-					}
-					
-					Graph current = new Graph("graph" + graphCount++, numPorts, numNodes, edges);
-					graphs.add(current);
-				}else if(next.contains("No graph found")){
-					//Hesselink didn't find every graph
-					//still want to associate correct numbers which each one though
-					graphCount++;
-				}
-			}
-		} catch( FileNotFoundException ex){
-			ex.printStackTrace();
-		}
-		
-		return graphs;
 	}
 	
 	public static double percent(int p){
