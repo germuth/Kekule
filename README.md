@@ -167,6 +167,9 @@ Kekule Java -> Translated program in java with many additions
 Main is located here:
 https://github.com/germuth/Kekule/blob/master/Programming/Kekule%20Java/Kekule/src/all/Main.java
 
+Finally, for an idea of some future directions:
+https://github.com/germuth/Kekule/blob/master/Aaron%2C%20when%20you%20work%20on%20this%20again.txt
+
 <b>References</b>
 
 [1] W. H. Hesselink, Graph Theory for alternating hydrocarbons with attached ports. Indagationes
