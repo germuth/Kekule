@@ -1,5 +1,8 @@
 Need to reword comprehensive everything document. Alot of it isn't completely your words, and needs citations.
 The results section has old results, they do not all meet the new restrictions you have made.
-You must implement the new restrictions. I think the main one is the amount of ports allowed in a ring.
+I'm think that there is a limit on the number of ports that can be allowed in one ring since all the conjugated
+forms would not realistically be possible. That means conjugation wouldn't exist and electricity wouldn't flow.
+You must implement the new restrictions. I think the main one is the amount of ports allowed in a ring. Needs
+to be restricted (1 or 2)?
 
 GL HF
